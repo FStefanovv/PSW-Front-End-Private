@@ -17,9 +17,9 @@
         <th></th>
     </tr>
     <tr *ngFor="let app of appointmentsToShow">
-        <td>{{app.patient}}</td>
+        <td>{{app.patientId}}</td>
         <td>{{app.start}}</td>
-        <td>{{app.room}}</td>
+        <td>No room</td>
         <td>{{app.status}}</td>
         <td>
             <button class="reschedule-button">

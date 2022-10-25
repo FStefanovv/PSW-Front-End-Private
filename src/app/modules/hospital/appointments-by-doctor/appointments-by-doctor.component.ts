@@ -15,11 +15,11 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   appointments: Appointment[] = [];
   appointmentsToShow: Appointment[] = [];
-  appointmentType: string = 'Scheduled';
+  appointmentType:  number = 0;
 
   changeAppType(e: any){
     if(!e.target.value)
-      this.appointmentType = 'Scheduled';
+      this.appointmentType =  0;
     this.appointmentType = e.target.value;
     console.log(this.appointmentType)
     this.appointmentsToShow = this.appointments.filter(app => app.status == this.appointmentType)
@@ -28,19 +28,13 @@ export class AppointmentsByDoctorComponent implements OnInit {
   constructor(private appointmentService: AppointmentService) { }
 
   ngOnInit(): void {
-    this.getAppointmentsByDoctor();
-    this.appointmentsToShow = this.appointments.filter(app => app.status='Scheduled');
-    console.log('currently shown appointments ',this.appointmentsToShow);
-  }
-
-  getAppointmentsByDoctor(): void {
     const doctor = 'DOC1';
-    this.appointments = this.appointmentService.getAppointmentsByDoctorNoHttp(doctor);
-    //the lines bellow will be uncommented once appointments are fetched from the back-end
-    /*
-    this.appointmentService.getAppointmentsByDoctor(doctor)
-      .subscribe(appointments => this.appointments = appointments);
-    */
+    this.appointmentService.getAppointmentsByDoctor(doctor).subscribe(res => 
+      {
+      this.appointments = res;
+      })
+    console.log(this.appointments);
+    this.appointmentsToShow = this.appointments.filter(app => app.status==0);
   }
 
 }
