@@ -1,0 +1,7 @@
+<h1>Sta je bre ovo</h1>
+<p *ngIf="appointments.length === 0">nista nema</p>
+<ul>
+    <li *ngFor="let app of appointments">
+        {{app.id}}
+    </li>
+</ul>
