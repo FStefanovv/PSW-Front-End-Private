@@ -3,14 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Appointment } from '../model/appointment.model';
 import { Observable } from 'rxjs';
 
-const appointments = [
-  { id: 'APP1', start: 'aaaa', status: 'scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC1' },
-  { id: 'APP2', start: 'aaaa', status: 'scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC2' },
-  { id: 'APP3', start: 'aaaa', status: 'scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC3' },
-  { id: 'APP4', start: 'aaaa', status: 'scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC1' },
-  { id: 'APP5', start: 'aaaa', status: 'scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC1' }
-];
-
 @Injectable({
   providedIn: 'root'
 })
@@ -23,9 +15,18 @@ export class AppointmentService {
   constructor(private http: HttpClient) { }
 
 
-  getAppointmentsByDoctorNoHttp(doctorId: string): Appointment[]{
+  appointments = [
+    { id: 'APP1', start: 'aaaa', status: 'Scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC1' },
+    { id: 'APP2', start: 'bbbb', status: 'Scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC2' },
+    { id: 'APP3', start: 'cccc', status: 'Scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC3' },
+    { id: 'APP4', start: 'dddd', status: 'Finished', patient: 'PAT2', room: 'R1', doctor: 'DOC1' },
+    { id: 'APP5', start: 'eeee', status: 'Scheduled', patient: 'PAT3', room: 'R1', doctor: 'DOC1' },
+    { id: 'APP6', start: 'ffff', status: 'Finished', patient: 'PAT2', room: 'R1', doctor: 'DOC1' },
+    { id: 'APP7', start: 'gggg', status: 'Scheduled', patient: 'PAT3', room: 'R1', doctor: 'DOC1' }
+  ];
 
-    return appointments.filter(app => app.doctor === doctorId);
+  getAppointmentsByDoctorNoHttp(doctorId: string): Appointment[]{
+    return this.appointments.filter(app => app.doctor === doctorId);
   }
 
   getAppointmentsByDoctor(): Observable<Appointment[]>{

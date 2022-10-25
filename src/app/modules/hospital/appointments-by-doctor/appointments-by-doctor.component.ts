@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
 import { Appointment } from '../model/appointment.model';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-appointments-by-doctor',
@@ -10,17 +14,28 @@ import { Appointment } from '../model/appointment.model';
 export class AppointmentsByDoctorComponent implements OnInit {
 
   appointments: Appointment[] = [];
+  appointmentsToShow: Appointment[] = [];
+  appointmentType: string = 'Scheduled';
+
+  changeAppType(e: any){
+    if(!e.target.value)
+      this.appointmentType = 'Scheduled';
+    this.appointmentType = e.target.value;
+    console.log(this.appointmentType)
+    this.appointmentsToShow = this.appointments.filter(app => app.status == this.appointmentType)
+  }
 
   constructor(private appointmentService: AppointmentService) { }
 
   ngOnInit(): void {
     this.getAppointmentsByDoctor();
+    this.appointmentsToShow = this.appointments.filter(app => app.status='Scheduled');
   }
 
   getAppointmentsByDoctor(): void {
-    const doctor = 'DOC1'
+    const doctor = 'DOC1';
     this.appointments = this.appointmentService.getAppointmentsByDoctorNoHttp(doctor);
-
+    console.log(this.appointments);
     //the lines bellow will be uncommented once appointments are fetched from the back-end
     /*
     this.appointmentService.getAppointmentsByDoctor(doctor)
