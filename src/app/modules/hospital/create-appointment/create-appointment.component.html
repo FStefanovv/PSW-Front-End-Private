@@ -1,0 +1,11 @@
+<div class="container">
+    <div>
+        <mat-form-field>
+            <mat-label>PatientId</mat-label>
+            <input matInput [(ngModel)]="appointment.patientId">
+        </mat-form-field><br>
+        <button mat-stroked-button (click)="createAppointment()">
+            Submit
+        </button>
+    </div>
+</div>
