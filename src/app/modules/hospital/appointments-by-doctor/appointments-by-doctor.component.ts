@@ -30,12 +30,12 @@ export class AppointmentsByDoctorComponent implements OnInit {
   ngOnInit(): void {
     this.getAppointmentsByDoctor();
     this.appointmentsToShow = this.appointments.filter(app => app.status='Scheduled');
+    console.log('currently shown appointments ',this.appointmentsToShow);
   }
 
   getAppointmentsByDoctor(): void {
     const doctor = 'DOC1';
     this.appointments = this.appointmentService.getAppointmentsByDoctorNoHttp(doctor);
-    console.log(this.appointments);
     //the lines bellow will be uncommented once appointments are fetched from the back-end
     /*
     this.appointmentService.getAppointmentsByDoctor(doctor)

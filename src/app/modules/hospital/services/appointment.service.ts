@@ -14,7 +14,6 @@ export class AppointmentService {
 
   constructor(private http: HttpClient) { }
 
-
   appointments = [
     { id: 'APP1', start: 'aaaa', status: 'Scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC1' },
     { id: 'APP2', start: 'bbbb', status: 'Scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC2' },
@@ -42,4 +41,6 @@ export class AppointmentService {
       
       return this.http.post<any>(url, appointment, {headers: this.headers});
   }
+
+  
 }
