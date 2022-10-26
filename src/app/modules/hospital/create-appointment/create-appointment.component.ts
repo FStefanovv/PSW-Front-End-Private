@@ -13,11 +13,6 @@ export class CreateAppointmentComponent {
     constructor(private appointmentService: AppointmentService, private router: Router) { }
 
     public createAppointment(){
-        this.appointment.id = "APP6"
-        this.appointment.doctorId = "DOC1"
-        this.appointment.roomId = 1
-        var date = Date.now()
-        this.appointment.start = date
         this.appointmentService.createAppointment(this.appointment).subscribe(
             res => {
                 alert("Appointment napravljen")

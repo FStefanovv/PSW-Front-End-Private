@@ -8,14 +8,13 @@ enum Status {
 }
 
 export class Appointment{
-    appointmentDuration: number = 20
     id: string = ""
     doctorId: string = ""
     patientId: string = ""
-    start: number = Date.now()
+    start: string = ""
     roomId: number = 0
     status: string = ""
-    
+    appointmentDuration: number = 20
 
     public constructor(obj?: any) {
         if (obj) {

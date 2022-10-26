@@ -1,8 +1,32 @@
 <div class="container">
     <div>
         <mat-form-field>
-            <mat-label>PatientId</mat-label>
+            <mat-label>id</mat-label>
+            <input matInput [(ngModel)]="appointment.id">
+        </mat-form-field><br>
+        <mat-form-field>
+            <mat-label>doctorId</mat-label>
+            <input matInput [(ngModel)]="appointment.doctorId">
+        </mat-form-field><br>
+        <mat-form-field>
+            <mat-label>patientId</mat-label>
             <input matInput [(ngModel)]="appointment.patientId">
+        </mat-form-field><br>
+        <mat-form-field>
+            <mat-label>start</mat-label>
+            <input matInput [(ngModel)]="appointment.start">
+        </mat-form-field><br>
+        <mat-form-field>
+            <mat-label>roomId</mat-label>
+            <input matInput [(ngModel)]="appointment.roomId">
+        </mat-form-field><br>
+        <mat-form-field>
+            <mat-label>status</mat-label>
+            <input matInput [(ngModel)]="appointment.status">
+        </mat-form-field><br>
+        <mat-form-field>
+            <mat-label>appointmentDuration</mat-label>
+            <input matInput [(ngModel)]="appointment.appointmentDuration">
         </mat-form-field><br>
         <button mat-stroked-button (click)="createAppointment()">
             Submit

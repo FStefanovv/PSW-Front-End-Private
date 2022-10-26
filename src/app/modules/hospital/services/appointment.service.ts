@@ -15,9 +15,9 @@ export class AppointmentService {
   constructor(private http: HttpClient) { }
 
   appointments = [
-    { id: 'APP1',doctorId: 'DOC1', patientId: 'PAT1', start: Date.now(),roomId: 1, status: 'Scheduled',appointmentDuration: 20 },
-    { id: 'APP2',doctorId: 'DOC1', patientId: 'PAT1', start: Date.now(),roomId: 1, status: 'Scheduled',appointmentDuration: 20 },
-    { id: 'APP3',doctorId: 'DOC1', patientId: 'PAT1', start: Date.now(),roomId: 1, status: 'Scheduled',appointmentDuration: 20 }
+    { id: 'APP1',doctorId: 'DOC1', patientId: 'PAT1', start: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 },
+    { id: 'APP2',doctorId: 'DOC1', patientId: 'PAT1', start: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 },
+    { id: 'APP3',doctorId: 'DOC1', patientId: 'PAT1', start: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 }
   ];
 
   getAppointmentsByDoctorNoHttp(doctorId: string): Appointment[]{
@@ -40,7 +40,9 @@ export class AppointmentService {
   // }
 
   createAppointment(appointment: any): Observable<any>{
-    return this.http.post<any>(this.apiHost + 'api/Appointment', appointment, {headers: this.headers})
+    console.log(appointment)
+    return this.http.post<any>(this.apiHost + 'api/appointment', appointment, {headers: this.headers})
+    
   }
   
 }
