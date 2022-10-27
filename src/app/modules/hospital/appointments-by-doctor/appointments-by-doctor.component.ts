@@ -13,15 +13,14 @@ import { FormControl } from '@angular/forms';
 })
 export class AppointmentsByDoctorComponent implements OnInit {
 
-  appointments: Appointment[] = [];
-  appointmentsToShow: Appointment[] = [];
-  appointmentType:  number = 0;
+  public appointments: Appointment[] = [];
+  public appointmentsToShow: Appointment[] = [];
+  public appointmentType:  number = 0;
 
   changeAppType(e: any){
     if(!e.target.value)
       this.appointmentType =  0;
     this.appointmentType = e.target.value;
-    console.log(this.appointmentType)
     this.appointmentsToShow = this.appointments.filter(app => app.status == this.appointmentType)
   }
 
@@ -29,12 +28,9 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   ngOnInit(): void {
     const doctor = 'DOC1';
-    this.appointmentService.getAppointmentsByDoctor(doctor).subscribe(res => 
-      {
+    this.appointmentService.getAppointmentsByDoctor(doctor).subscribe(res => {
       this.appointments = res;
-      })
-    console.log(this.appointments);
-    this.appointmentsToShow = this.appointments.filter(app => app.status==0);
+      this.appointmentsToShow = this.appointments.filter(app => app.status==this.appointmentType)});
   }
 
 }

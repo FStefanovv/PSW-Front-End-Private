@@ -1,8 +1,8 @@
 <div>
     <span>Show: </span>
     <form>
-        <input type="radio" value="Finished"   (change)="changeAppType($event)" name="appointment-type">past appointmnets
-        <input type="radio" value="Scheduled" checked="True" (change)="changeAppType($event)" name="appointment-type">scheduled appointments
+        <input type="radio" value="1"   (change)="changeAppType($event)" name="appointment-type">past appointmnets
+        <input type="radio" value="0" checked="True" (change)="changeAppType($event)" name="appointment-type">scheduled appointments
     </form>
 </div>
 
@@ -19,15 +19,15 @@
     <tr *ngFor="let app of appointmentsToShow">
         <td>{{app.patientId}}</td>
         <td>{{app.start}}</td>
-        <td>No room</td>
+        <td>{{app.roomId}}</td>
         <td>{{app.status}}</td>
         <td>
-            <button class="reschedule-button">
+            <button class="reschedule-button" [disabled]="appointmentType==1">
                 Reschedule
             </button>
         </td>
         <td>
-            <button class="cancel-button">
+            <button class="cancel-button" [disabled]="appointmentType==1">
                 Cancel
             </button>
         </td>
