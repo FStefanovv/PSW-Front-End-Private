@@ -8,20 +8,20 @@ enum Status {
 }
 
 export class Appointment{
-    id: string = ""
     doctorId: string = ""
     patientId: string = ""
-    start: string = ""
+    startDate: string = ""
+    startTime: string = ""
     roomId: number = 0
     status: string = ""
     appointmentDuration: number = 20
 
     public constructor(obj?: any) {
         if (obj) {
-            this.id = obj.id;
             this.doctorId = obj.doctorId;
             this.patientId = obj.patientId;
-            this.start = obj.start;
+            this.startDate = obj.startDate;
+            this.startTime = obj.startTime;
             this.roomId = obj.roomId;
             this.status = obj.status;     
             this.appointmentDuration = obj.appointmentDuration;

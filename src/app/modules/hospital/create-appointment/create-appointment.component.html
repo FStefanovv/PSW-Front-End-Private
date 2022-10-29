@@ -1,35 +1,38 @@
 <div class="container">
     <div>
-        <mat-form-field>
-            <mat-label>id</mat-label>
-            <input matInput [(ngModel)]="appointment.id">
-        </mat-form-field><br>
-        <mat-form-field>
-            <mat-label>doctorId</mat-label>
-            <input matInput [(ngModel)]="appointment.doctorId">
-        </mat-form-field><br>
-        <mat-form-field>
-            <mat-label>patientId</mat-label>
-            <input matInput [(ngModel)]="appointment.patientId">
-        </mat-form-field><br>
-        <mat-form-field>
-            <mat-label>start</mat-label>
-            <input matInput [(ngModel)]="appointment.start">
-        </mat-form-field><br>
-        <mat-form-field>
-            <mat-label>roomId</mat-label>
-            <input matInput [(ngModel)]="appointment.roomId">
-        </mat-form-field><br>
-        <mat-form-field>
-            <mat-label>status</mat-label>
-            <input matInput [(ngModel)]="appointment.status">
-        </mat-form-field><br>
-        <mat-form-field>
-            <mat-label>appointmentDuration</mat-label>
-            <input matInput [(ngModel)]="appointment.appointmentDuration">
-        </mat-form-field><br>
-        <button mat-stroked-button (click)="createAppointment()">
-            Submit
-        </button>
+        <table>
+            <tr>
+                <td>PatientId</td>
+                <td><input matInput [(ngModel)]="appointment.patientId"></td>
+                
+            </tr>
+            <tr>
+                <td>Day</td>
+                <td><input type="date" matInput [(ngModel)]="appointment.startDate"></td>
+            </tr>
+            <tr>
+                <td>Start</td>
+                <td><select matNativeControl [(ngModel)]="appointment.startTime">
+                        <option>8:00</option>
+                        <option>8:20</option>
+                        <option>8:40</option>
+                        <option>9:00</option>
+                        <option>9:20</option>
+                        <option>9:40</option>
+                        <option>10:00</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>RoomId</td>
+                <td><input matInput [(ngModel)]="appointment.roomId"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button mat-stroked-button (click)="createAppointment()">
+                    Submit
+                </button></td>
+            </tr>
+        </table>
     </div>
 </div>

@@ -15,9 +15,9 @@ export class AppointmentService {
   constructor(private http: HttpClient) { }
 
   appointments = [
-    { id: 'APP1',doctorId: 'DOC1', patientId: 'PAT1', start: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 },
-    { id: 'APP2',doctorId: 'DOC1', patientId: 'PAT1', start: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 },
-    { id: 'APP3',doctorId: 'DOC1', patientId: 'PAT1', start: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 }
+    { id: 'APP1',doctorId: 'DOC1', patientId: 'PAT1', startDate: "", startTime: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 },
+    { id: 'APP2',doctorId: 'DOC1', patientId: 'PAT1', startDate: "", startTime: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 },
+    { id: 'APP3',doctorId: 'DOC1', patientId: 'PAT1', startDate: "",startTime: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 }
   ];
 
   getAppointmentsByDoctorNoHttp(doctorId: string): Appointment[]{
