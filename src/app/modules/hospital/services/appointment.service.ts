@@ -42,5 +42,7 @@ export class AppointmentService {
       return this.http.post<any>(url, appointment, {headers: this.headers});
   }
 
-  
+  updateAppointment(appointment: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'api/appointments/' + appointment.id, appointment, { headers: this.headers });
+  }
 }
