@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵqueryRefresh } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
 import { Appointment } from '../model/appointment.model';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MyDialogComponent } from '../my-dialog/my-dialog.component';
+import { Observable, interval, Subscription } from 'rxjs';
 
 
 @Component({
@@ -17,6 +20,7 @@ export class AppointmentsByDoctorComponent implements OnInit {
   appointmentsToShow: Appointment[] = [];
   appointmentType: string = 'Scheduled';
 
+
   changeAppType(e: any){
     if(!e.target.value)
       this.appointmentType = 'Scheduled';
@@ -25,11 +29,11 @@ export class AppointmentsByDoctorComponent implements OnInit {
     this.appointmentsToShow = this.appointments.filter(app => app.status == this.appointmentType)
   }
 
-  constructor(private appointmentService: AppointmentService) { }
+  constructor(private appointmentService: AppointmentService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAppointmentsByDoctor();
-    this.appointmentsToShow = this.appointments.filter(app => app.status='Scheduled');
+    this.appointmentsToShow = this.appointments.filter(app => app.status=='Scheduled');
     console.log('currently shown appointments ',this.appointmentsToShow);
   }
 
@@ -42,5 +46,28 @@ export class AppointmentsByDoctorComponent implements OnInit {
       .subscribe(appointments => this.appointments = appointments);
     */
   }
+  openDialog(id: any): void {
+   
+
+    this.dialog.open(MyDialogComponent).beforeClosed().subscribe(result => {
+      if (result) {
+        
+     
+        this.appointments = this.appointments.filter((app) => app.id !== id);
+
+      //  this.appointmentService.updateAppointment(appointment)
+      //    .subscribe(app => {
+      //  if (app.id === id)
+      //    app.status='Cancelled'
+      //});
+      
+        
+      }
+
+
+    })
+
+  }
+
 
 }

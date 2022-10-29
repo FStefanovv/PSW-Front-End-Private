@@ -8,7 +8,8 @@ import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
-
+import { MatDialogModule} from '@angular/material/dialog' ;
+import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.component";
 
 
 @NgModule({
@@ -23,9 +24,11 @@ import { MatRadioModule } from '@angular/material/radio';
     MaterialModule,
     PagesModule,
     HospitalModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MyDialogComponent]
 })
 export class AppModule { }
