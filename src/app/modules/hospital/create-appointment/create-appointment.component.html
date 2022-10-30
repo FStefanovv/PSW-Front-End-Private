@@ -4,11 +4,13 @@
             <tr>
                 <td>PatientId</td>
                 <td><input matInput [(ngModel)]="appointment.patientId"></td>
+                <td *ngIf="patNull">Choose patient</td>
                 
             </tr>
             <tr>
                 <td>Day</td>
                 <td><input type="date" matInput [(ngModel)]="appointment.startDate"></td>
+                <td *ngIf="dateNull">Choose date</td>
             </tr>
             <tr>
                 <td>Start</td>
@@ -22,10 +24,7 @@
                         <option>10:00</option>
                     </select>
                 </td>
-            </tr>
-            <tr>
-                <td>RoomId</td>
-                <td><input matInput [(ngModel)]="appointment.roomId"></td>
+                <td *ngIf="timeNull">Choose time</td>
             </tr>
             <tr>
                 <td></td>
@@ -34,5 +33,6 @@
                 </button></td>
             </tr>
         </table>
+        <label>{{errorMsg}}</label>
     </div>
 </div>

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Appointment } from '../model/appointment.model';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError,  } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +43,10 @@ export class AppointmentService {
 
   createAppointment(appointment: any): Observable<any>{
     console.log(appointment)
-    return this.http.post<any>(this.apiHost + 'api/appointment', appointment, {headers: this.headers})
+    return this.http.post<any>(this.apiHost + 'api/appointment', appointment, {headers: this.headers}).pipe(catchError(this.errorHandler))
     
   }
-  
+  errorHandler(error: HttpErrorResponse){
+    return throwError(() => new Error('test'))
+  }
 }
