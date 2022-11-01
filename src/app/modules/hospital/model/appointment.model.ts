@@ -2,9 +2,12 @@ export class Appointment {
     id: string = "";
 
     patientId: string = "";
-    roomId: string = "";
+    roomNumber: string = "";
     start: string = "";
     status?: number;
+    date?: string;
+    startTime?: string;
+    cancellable?: boolean;
 
     appointmentDuration: number = 20;
     
@@ -12,9 +15,10 @@ export class Appointment {
         if(obj){
             this.id = obj.Id;
             this.patientId = obj.PatientId;
-            this.roomId = obj.RoomId;
+            this.roomNumber = obj.RoomNumber;
             this.start = obj.Start;
             this.status = obj.Status;
+            this.cancellable = this.status==1? false : true;
         }
     }
 }

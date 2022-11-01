@@ -7,7 +7,7 @@ import { MaterialModule } from "./material/material.module";
 import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule} from "@angular/material/select";
 
 
 
@@ -23,7 +23,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MaterialModule,
     PagesModule,
     HospitalModule,
-    MatRadioModule
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
