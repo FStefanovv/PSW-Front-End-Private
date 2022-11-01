@@ -30,7 +30,7 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   constructor(private appointmentService: AppointmentService,public dialog: MatDialog) { }
 
-  constructor(private appointmentService: AppointmentService) { }
+  
   
   ngOnInit(): void {
     const doctor = 'DOC1';
@@ -47,9 +47,6 @@ export class AppointmentsByDoctorComponent implements OnInit {
   
   sortByDateTime(): void {
     this.appointments = this.appointments.sort((a, b) => Date.parse(a.start) > Date.parse(b.start)? 1 : -1);
-    this.getAppointmentsByDoctor();
-    this.appointmentsToShow = this.appointments.filter(app => app.status=='Scheduled');
-    console.log('currently shown appointments ',this.appointmentsToShow);
   }
 
   setDateAndTime(): void {
