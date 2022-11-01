@@ -12,6 +12,7 @@ import { MatDialogModule} from '@angular/material/dialog' ;
 import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.component";
 
 
+
 @NgModule({
   declarations: [
     AppComponent

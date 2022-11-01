@@ -17,10 +17,12 @@ td, th {
 tr {
     height: 60px;
     background-color: #ccddff;
+    transition: .2s ease;
 }
 
-tr:nth-of-type(2n+1) {
+tr:hover {
     background-color: #b3ccff;
+    cursor: pointer;
 }
 
 button {

@@ -1,19 +1,24 @@
 export class Appointment {
-    id?: string;
-    start?: string;
-    status?: string;
-    patient?: string;
-    room?: string;
-    doctor?: string;
+    id: string = "";
 
+    patientId: string = "";
+    roomNumber: string = "";
+    start: string = "";
+    status?: number;
+    date?: string;
+    startTime?: string;
+    cancellable?: boolean;
+
+    appointmentDuration: number = 20;
+    
     public constructor(obj: any){
         if(obj){
-            this.id = obj.id;
-            this.start = obj.start;
-            this.status = obj.status;
-            this.patient = obj.patient;
-            this.room = obj.room;
-            this.doctor = obj.doctor;
+            this.id = obj.Id;
+            this.patientId = obj.PatientId;
+            this.roomNumber = obj.RoomNumber;
+            this.start = obj.Start;
+            this.status = obj.Status;
+            this.cancellable = this.status==1? false : true;
         }
     }
 }

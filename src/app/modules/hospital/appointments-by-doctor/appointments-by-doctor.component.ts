@@ -8,7 +8,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MyDialogComponent } from '../my-dialog/my-dialog.component';
 import { Observable, interval, Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-appointments-by-doctor',
   templateUrl: './appointments-by-doctor.component.html',
@@ -16,35 +15,50 @@ import { Observable, interval, Subscription } from 'rxjs';
 })
 export class AppointmentsByDoctorComponent implements OnInit {
 
-  appointments: Appointment[] = [];
-  appointmentsToShow: Appointment[] = [];
-  appointmentType: string = 'Scheduled';
+  public appointments: Appointment[] = [];
+  
+  public appointmentsToShow: Appointment[] = [];
 
+  public appointmentType:  number = -1;
 
-  changeAppType(e: any){
-    if(!e.target.value)
-      this.appointmentType = 'Scheduled';
-    this.appointmentType = e.target.value;
-    console.log(this.appointmentType)
-    this.appointmentsToShow = this.appointments.filter(app => app.status == this.appointmentType)
-  }
+  filterAppointments(e: any){
+    if(this.appointmentType==-1)
+      this.appointmentsToShow = this.appointments;
+    else
+      this.appointmentsToShow = this.appointments.filter(app => app.status == this.appointmentType);
+  } 
 
   constructor(private appointmentService: AppointmentService,public dialog: MatDialog) { }
 
+  constructor(private appointmentService: AppointmentService) { }
+  
   ngOnInit(): void {
+    const doctor = 'DOC1';
+    this.appointmentService.getAppointmentsByDoctor(doctor).subscribe(res => {
+
+      this.appointments = res;
+
+      this.sortByDateTime();
+      this.setDateAndTime();
+
+      this.appointmentsToShow = this.appointments;
+    });
+  }
+  
+  sortByDateTime(): void {
+    this.appointments = this.appointments.sort((a, b) => Date.parse(a.start) > Date.parse(b.start)? 1 : -1);
     this.getAppointmentsByDoctor();
     this.appointmentsToShow = this.appointments.filter(app => app.status=='Scheduled');
     console.log('currently shown appointments ',this.appointmentsToShow);
   }
 
-  getAppointmentsByDoctor(): void {
-    const doctor = 'DOC1';
-    this.appointments = this.appointmentService.getAppointmentsByDoctorNoHttp(doctor);
-    //the lines bellow will be uncommented once appointments are fetched from the back-end
-    /*
-    this.appointmentService.getAppointmentsByDoctor(doctor)
-      .subscribe(appointments => this.appointments = appointments);
-    */
+  setDateAndTime(): void {
+    for(let app of this.appointments){
+        const dateTimeSplit = app.start.split(' ');
+        app.date = dateTimeSplit[0];
+        const time = dateTimeSplit[1].split(':')
+        app.startTime = time[0]+':'+time[1];
+    }
   }
   openDialog(id: any): void {
    

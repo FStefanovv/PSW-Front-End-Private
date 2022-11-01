@@ -8,31 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class AppointmentService {
 
-  apiHost: string = '';
+  apiHost: string = 'http://localhost:5000/api/Appointments/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-
 
   constructor(private http: HttpClient) { }
 
-  appointments = [
-    { id: 'APP1', start: 'aaaa', status: 'Scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC1' },
-    { id: 'APP2', start: 'bbbb', status: 'Scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC2' },
-    { id: 'APP3', start: 'cccc', status: 'Scheduled', patient: 'PAT1', room: 'R1', doctor: 'DOC3' },
-    { id: 'APP4', start: 'dddd', status: 'Finished', patient: 'PAT2', room: 'R1', doctor: 'DOC1' },
-    { id: 'APP5', start: 'eeee', status: 'Scheduled', patient: 'PAT3', room: 'R1', doctor: 'DOC1' },
-    { id: 'APP6', start: 'ffff', status: 'Finished', patient: 'PAT2', room: 'R1', doctor: 'DOC1' },
-    { id: 'APP7', start: 'gggg', status: 'Scheduled', patient: 'PAT3', room: 'R1', doctor: 'DOC1' }
-  ];
+  getAppointmentsByDoctor(doctor: string): Observable<Appointment[]>{
+    const url = `${this.apiHost}GetAllByDoctor/${doctor}`;
 
-  getAppointmentsByDoctorNoHttp(doctorId: string): Appointment[]{
-    return this.appointments.filter(app => app.doctor === doctorId);
-  }
+    //this.responseData = this.http.get<Appointment[]>(url, {headers: this.headers}); 
+    //console.log(responseData.values[]);
 
-  getAppointmentsByDoctor(): Observable<Appointment[]>{
-    //this should have the id value of the doctor 
-    const doctor = 'DOC1';
-    const url = `${this.apiHost}/api/appointments/getbydoctor/${doctor}`;
-    
     return this.http.get<Appointment[]>(url, {headers: this.headers});
   }
 
@@ -45,4 +31,5 @@ export class AppointmentService {
   updateAppointment(appointment: any): Observable<any> {
     return this.http.put<any>(this.apiHost + 'api/appointments/' + appointment.id, appointment, { headers: this.headers });
   }
+
 }
