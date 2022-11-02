@@ -1,5 +1,6 @@
 import { Component, OnInit, ɵɵqueryRefresh } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
+import { CreateAppointmentDTO } from '../model/createAppointmentDTO.model';
 import { Appointment } from '../model/appointment.model';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormGroup } from '@angular/forms';
