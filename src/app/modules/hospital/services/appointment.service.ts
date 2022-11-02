@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-//import { Appointment } from '../model/createAppointmentDTO.model';
+import { Appointment } from '../model/appointment.model';
 import { CreateAppointmentDTO } from '../model/createAppointmentDTO.model';
 import { Observable, throwError } from 'rxjs';
 import { catchError,  } from 'rxjs/operators';
@@ -12,28 +12,18 @@ import { catchError,  } from 'rxjs/operators';
 export class AppointmentService {
 
   apiHost: string = 'http://localhost:5000/';
+  apiHost1: string = 'http://localhost:5000/api/Appointments/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-
 
   constructor(private http: HttpClient) { }
 
-  appointments = [
-    { id: 'APP1',doctorId: 'DOC1', patientId: 'PAT1', startDate: "", startTime: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 },
-    { id: 'APP2',doctorId: 'DOC1', patientId: 'PAT1', startDate: "", startTime: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 },
-    { id: 'APP3',doctorId: 'DOC1', patientId: 'PAT1', startDate: "",startTime: "Date.now()",roomId: 1, status: 'Scheduled',appointmentDuration: 20 }
-  ];
+  getAppointmentsByDoctor(doctor: string): Observable<Appointment[]>{
+    const url = `${this.apiHost1}GetAllByDoctor/${doctor}`;
 
-  getAppointmentsByDoctorNoHttp(doctorId: string): CreateAppointmentDTO[]{
-    // return this.appointments.filter(app => app.doctor === doctorId);
-    return this.appointments.filter(app => doctorId === 'DOC1');
-  }
+    //this.responseData = this.http.get<Appointment[]>(url, {headers: this.headers}); 
+    //console.log(responseData.values[]);
 
-  getAppointmentsByDoctor(): Observable<CreateAppointmentDTO[]>{
-    //this should have the id value of the doctor 
-    const doctor = 'DOC1';
-    const url = `${this.apiHost}/api/appointments/getbydoctor/${doctor}`;
-    
-    return this.http.get<CreateAppointmentDTO[]>(url, {headers: this.headers});
+    return this.http.get<Appointment[]>(url, {headers: this.headers});
   }
 
   createAppointment(appointment: any): Observable<any>{
@@ -44,4 +34,9 @@ export class AppointmentService {
   errorHandler(error: HttpErrorResponse){
     return throwError(() => new Error('test'))
   }
+
+  updateAppointment(appointment: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'api/appointments/' + appointment.id, appointment, { headers: this.headers });
+  }
+
 }

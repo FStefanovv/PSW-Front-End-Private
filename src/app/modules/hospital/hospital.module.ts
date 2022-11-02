@@ -9,6 +9,7 @@ import { RoomsComponent } from "./rooms/rooms.component";
 import { UpdateRoomComponent } from "./update-room/update-room.component";
 import { AppointmentsByDoctorComponent } from './appointments-by-doctor/appointments-by-doctor.component';
 import { CreateAppointmentComponent } from "./create-appointment/create-appointment.component";
+import { MyDialogComponent } from './my-dialog/my-dialog.component';
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
     CreateRoomComponent,
     UpdateRoomComponent,
     AppointmentsByDoctorComponent,
-    CreateAppointmentComponent
+    CreateAppointmentComponent,
+    MyDialogComponent
   ],
   imports: [
     CommonModule,
