@@ -5,7 +5,15 @@
         <option value="0">Scheduled</option>
         <option value="1">Finished</option>
     </select>
+    <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+    Filter: <input type="date" [(ngModel)]="filterDate" (change)="filterAppointmentsByDate($event)">
+    <select name="filter" id="filter"[(ngModel)]="typeDate">
+        <option value="day">Day</option>
+        <option value="week">Week</option>
+    </select>
 </div>
+
+
 
 
 <table cellspacing="0">
