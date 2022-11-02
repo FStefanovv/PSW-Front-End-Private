@@ -33,6 +33,8 @@ export class AppointmentsByDoctorComponent implements OnInit {
   
   
   ngOnInit(): void {
+   
+    
     const doctor = 'DOC1';
     this.appointmentService.getAppointmentsByDoctor(doctor).subscribe(res => {
 
@@ -43,6 +45,7 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
       this.appointmentsToShow = this.appointments;
     });
+   
   }
   
   sortByDateTime(): void {
@@ -57,28 +60,28 @@ export class AppointmentsByDoctorComponent implements OnInit {
         app.startTime = time[0]+':'+time[1];
     }
   }
-  openDialog(id: any): void {
-   
-
-    this.dialog.open(MyDialogComponent).beforeClosed().subscribe(result => {
-      if (result) {
-        
-     
-        this.appointments = this.appointments.filter((app) => app.id !== id);
-
-      //  this.appointmentService.updateAppointment(appointment)
-      //    .subscribe(app => {
-      //  if (app.id === id)
-      //    app.status='Cancelled'
-      //});
+  cancelled(id: any): void {
+    if (confirm('Are you sure to cancel this appointment?')) {
+      this.appointments = this.appointments.filter((app) => app.id !== id);
+      this.appointmentService.refreshList();
+      this.appointmentService.deleteAppointment(id)
+        .subscribe(
+          res => {
+            this.appointmentService.refreshList();
+            window.location.reload();
+          }
+          
+        );
       
-        
-      }
-
-
-    })
-
+      
+    }
+   
+   
   }
+
+
+
+
 
 
 }
