@@ -5,7 +5,7 @@ export class Appointment {
     roomNumber: string = "";
     start: string = "";
     status?: number;
-    date?: string;
+    date: string = "";
     startTime?: string;
     cancellable?: boolean;
 
