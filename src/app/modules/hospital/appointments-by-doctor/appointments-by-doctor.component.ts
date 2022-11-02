@@ -22,6 +22,10 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   public appointmentType:  number = -1;
 
+  filterDate : string = '';
+  typeDate : string ="day";
+
+
   filterAppointments(e: any){
     if(this.appointmentType==-1)
       this.appointmentsToShow = this.appointments;
@@ -79,7 +83,33 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
     })
 
+
   }
 
+  onSearchTextEntered(searchValue : string){
+    if(searchValue != ''){
+      this.appointmentsToShow = this.appointments.filter(app => searchValue === '' || app.patientId.toLowerCase().includes(searchValue));
+      console.log('currently shown appointments ',this.appointmentsToShow);
+    }
+    else
+        this.appointmentsToShow = this.appointments;
+  }
 
+  filterAppointmentsByDate(e: any): void{
+  
+      if(this.filterDate === '')
+        this.appointmentsToShow = this.appointments;
+      else if(this.typeDate==='day')
+        this.appointmentsToShow = this.appointments.filter(app => app.date === this.filterDate);
+      else if(this.typeDate==='week'){
+        const firstfulldate = new Date(this.filterDate); // ceo datum 14.11.2000
+        const lastday = firstfulldate.getDate() + 7;
+        const lastfulldate = new Date(this.filterDate);
+        lastfulldate.setDate(lastday);
+      
+        this.appointmentsToShow = this.appointments.filter(app => new Date(app.date) >= firstfulldate && new Date(app.date)  <= lastfulldate)
+      }
+    }
 }
+
+
