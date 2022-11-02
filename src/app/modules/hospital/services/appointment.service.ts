@@ -11,9 +11,14 @@ import { catchError,  } from 'rxjs/operators';
 })
 export class AppointmentService {
 
+
+ 
+
   apiHost: string = 'http://localhost:5000/';
-  apiHost1: string = 'http://localhost:5000/api/Appointments/';
+
+
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  list!: Appointment[];
 
   constructor(private http: HttpClient) { }
 
@@ -36,7 +41,17 @@ export class AppointmentService {
   }
 
   updateAppointment(appointment: any): Observable<any> {
-    return this.http.put<any>(this.apiHost + 'api/appointments/' + appointment.id, appointment, { headers: this.headers });
+    return this.http.put<any>(this.apiHost  + appointment.id, appointment, { headers: this.headers });
+  }
+
+  refreshList() {
+    this.http.get(this.apiHost)
+      .toPromise()
+      .then(res => this.list = res as Appointment[])
+  }
+
+  deleteAppointment(id: any): Observable<any> {
+    return this.http.delete<any>(this.apiHost  + id, { headers: this.headers });
   }
 
 }
