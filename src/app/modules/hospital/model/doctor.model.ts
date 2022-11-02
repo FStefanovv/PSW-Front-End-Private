@@ -1,5 +1,5 @@
 import { Room } from 'src/app/modules/hospital/model/room.model';
-import { Appointment } from 'src/app/modules/hospital/model/appointment.model';
+import { CreateAppointmentDTO } from 'src/app/modules/hospital/model/createAppointmentDTO.model';
 
 export class Doctor{
     id: string =""
@@ -9,7 +9,7 @@ export class Doctor{
     room: Room = new Room()
     startWorkTime: number = 0
     endWorkTime: number = 0
-    appointments: Array<Appointment> = []
+    appointments: Array<CreateAppointmentDTO> = []
 
     public constructor(obj?: any) {
         if (obj) {

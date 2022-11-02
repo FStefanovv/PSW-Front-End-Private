@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
-import { Appointment } from '../model/appointment.model';
+import { CreateAppointmentDTO } from '../model/createAppointmentDTO.model';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
@@ -13,8 +13,8 @@ import { FormControl } from '@angular/forms';
 })
 export class AppointmentsByDoctorComponent implements OnInit {
 
-  appointments: Appointment[] = [];
-  appointmentsToShow: Appointment[] = [];
+  appointments: CreateAppointmentDTO[] = [];
+  appointmentsToShow: CreateAppointmentDTO[] = [];
   appointmentType: string = 'Scheduled';
 
   changeAppType(e: any){

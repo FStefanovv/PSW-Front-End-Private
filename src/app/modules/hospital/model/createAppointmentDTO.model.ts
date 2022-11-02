@@ -1,13 +1,4 @@
-import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
-import { Room } from 'src/app/modules/hospital/model/room.model';
-
-enum Status {
-    Scheduled, 
-    Finished,
-    Cancelled
-}
-
-export class Appointment{
+export class CreateAppointmentDTO{
     doctorId: string = ""
     patientId: string = ""
     startDate: string = ""

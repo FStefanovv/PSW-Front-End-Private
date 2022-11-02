@@ -1,5 +1,6 @@
 <div class="container">
     <div>
+        <label>{{doctor?.id}}</label>
         <table>
             <tr>
                 <td>PatientId</td>
@@ -11,17 +12,12 @@
                 <td>Day</td>
                 <td><input type="date" matInput [(ngModel)]="appointment.startDate"></td>
                 <td *ngIf="dateNull">Choose date</td>
+                <td *ngIf="dateInPast">Pichadill</td>
             </tr>
             <tr>
                 <td>Start</td>
                 <td><select matNativeControl [(ngModel)]="appointment.startTime">
-                        <option>8:00</option>
-                        <option>8:20</option>
-                        <option>8:40</option>
-                        <option>9:00</option>
-                        <option>9:20</option>
-                        <option>9:40</option>
-                        <option>10:00</option>
+                        <option *ngFor="let item of arrayForShift">{{item}}</option>
                     </select>
                 </td>
                 <td *ngIf="timeNull">Choose time</td>
