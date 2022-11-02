@@ -29,7 +29,7 @@ const routes: Routes = [
     UpdateRoomComponent,
     AppointmentsByDoctorComponent,
     MyDialogComponent,
-    SearchComponent
+    SearchComponent,
     CreateAppointmentComponent,
     MyDialogComponent
   ],

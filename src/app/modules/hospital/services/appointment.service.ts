@@ -14,7 +14,7 @@ export class AppointmentService {
 
  
 
-  apiHost: string = 'http://localhost:5000/';
+  apiHost: string = 'http://localhost:5000/api/appointments';
 
 
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -23,7 +23,7 @@ export class AppointmentService {
   constructor(private http: HttpClient) { }
 
   getAppointmentsByDoctor(doctor: string): Observable<Appointment[]>{
-    const url = `${this.apiHost1}GetAllByDoctor/${doctor}`;
+    const url = `${this.apiHost}/GetAllByDoctor/${doctor}`;
 
     //this.responseData = this.http.get<Appointment[]>(url, {headers: this.headers}); 
     //console.log(responseData.values[]);
@@ -33,7 +33,7 @@ export class AppointmentService {
 
   createAppointment(appointment: any): Observable<any>{
     console.log(appointment)
-    return this.http.post<any>(this.apiHost + 'api/appointment/CreateAppointment', appointment, {headers: this.headers}).pipe(catchError(this.errorHandler))
+    return this.http.post<any>(this.apiHost + '/CreateAppointment', appointment, {headers: this.headers}).pipe(catchError(this.errorHandler))
     
   }
   errorHandler(error: HttpErrorResponse){
@@ -41,7 +41,7 @@ export class AppointmentService {
   }
 
   updateAppointment(appointment: any): Observable<any> {
-    return this.http.put<any>(this.apiHost  + appointment.id, appointment, { headers: this.headers });
+    return this.http.put<any>(this.apiHost  +'/'+appointment.id, appointment, { headers: this.headers });
   }
 
   refreshList() {
@@ -51,7 +51,7 @@ export class AppointmentService {
   }
 
   deleteAppointment(id: any): Observable<any> {
-    return this.http.delete<any>(this.apiHost  + id, { headers: this.headers });
+    return this.http.delete<any>(this.apiHost  + '/'+id, { headers: this.headers });
   }
 
 }
