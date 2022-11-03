@@ -40,8 +40,8 @@ export class AppointmentService {
     return throwError(() => new Error('test'))
   }
 
-  updateAppointment(appointment: any): Observable<any> {
-    return this.http.put<any>(this.apiHost  +'/'+appointment.id, appointment, { headers: this.headers });
+  rescheduleAppointment(value : any): Observable<any> {
+    return this.http.put<any>(this.apiHost + '/' + value.id, value, { headers: this.headers }).pipe(catchError(this.errorHandler));
   }
 
   refreshList() {
