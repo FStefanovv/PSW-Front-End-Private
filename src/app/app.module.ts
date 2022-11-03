@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule} from '@angular/material/dialog' ;
 import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.component";
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -26,7 +27,8 @@ import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.compon
     PagesModule,
     HospitalModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

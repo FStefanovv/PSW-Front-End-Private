@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵɵqueryRefresh } from '@angular/core';
+import { Component, OnInit, ɵɵqueryRefresh, ViewChild } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
 import { CreateAppointmentDTO } from '../model/createAppointmentDTO.model';
 import { Appointment } from '../model/appointment.model';
@@ -8,6 +8,8 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MyDialogComponent } from '../my-dialog/my-dialog.component';
 import { Observable, interval, Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
+import { RescheduleAppointmentDTO } from '../model/rescheduleAppointmentDTO.model';
 
 @Component({
   selector: 'app-appointments-by-doctor',
@@ -25,6 +27,8 @@ export class AppointmentsByDoctorComponent implements OnInit {
   filterDate : string = '';
   typeDate : string ="day";
 
+  @ViewChild('rescheduleForm') form: NgForm;
+  public parsedDate: string[] | undefined;
 
   filterAppointments(e: any){
     if(this.appointmentType==-1)
@@ -32,14 +36,10 @@ export class AppointmentsByDoctorComponent implements OnInit {
     else
       this.appointmentsToShow = this.appointments.filter(app => app.status == this.appointmentType);
   } 
-
   constructor(private appointmentService: AppointmentService,public dialog: MatDialog) { }
 
-  
-  
   ngOnInit(): void {
    
-    
     const doctor = 'DOC1';
     this.appointmentService.getAppointmentsByDoctor(doctor).subscribe(res => {
 
@@ -50,7 +50,6 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
       this.appointmentsToShow = this.appointments;
     });
-   
   }
   
   sortByDateTime(): void {
@@ -65,6 +64,7 @@ export class AppointmentsByDoctorComponent implements OnInit {
         app.startTime = time[0]+':'+time[1];
     }
   }
+
   cancelled(id: any): void {
     if (confirm('Are you sure to cancel this appointment?')) {
       this.appointments = this.appointments.filter((app) => app.id !== id);
@@ -74,20 +74,10 @@ export class AppointmentsByDoctorComponent implements OnInit {
           res => {
             this.appointmentService.refreshList();
             window.location.reload();
-          }
-          
-        );
-      
-      
+          }   
+        );  
     }
-   
-   
   }
-
-
-
-
-
 
   onSearchTextEntered(searchValue : string){
     if(searchValue != ''){
@@ -112,6 +102,21 @@ export class AppointmentsByDoctorComponent implements OnInit {
       
         this.appointmentsToShow = this.appointments.filter(app => new Date(app.date) >= firstfulldate && new Date(app.date)  <= lastfulldate)
       }
+    }
+
+    onRescheduleClicked(id : string){
+      let rescheduledApp = this.appointments.find((a) => {return a.id === id});
+      this.form.setValue({
+        appId: rescheduledApp?.id,
+        patientId: rescheduledApp?.patientId,
+        date: rescheduledApp?.date,
+        time: rescheduledApp?.startTime
+      });
+    }
+
+    onAppointmentRescheduled(appointment: any){
+      let rescheduledAppointment = new RescheduleAppointmentDTO(appointment.appId, appointment.date, appointment.time);
+      this.appointmentService.rescheduleAppointment(rescheduledAppointment);
     }
 }
 
