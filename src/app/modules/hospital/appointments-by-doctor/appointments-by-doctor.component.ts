@@ -89,15 +89,16 @@ export class AppointmentsByDoctorComponent implements OnInit {
   }
 
   filterAppointmentsByDate(e: any): void{
-  
+    let flagString = this.filterDate.split("-")
+    let fullDate = flagString[0] + '/' + flagString[1] + '/' + flagString[2]
       if(this.filterDate === '')
         this.appointmentsToShow = this.appointments;
       else if(this.typeDate==='day')
-        this.appointmentsToShow = this.appointments.filter(app => app.date === this.filterDate);
+        this.appointmentsToShow = this.appointments.filter(app => app.date === fullDate);
       else if(this.typeDate==='week'){
-        const firstfulldate = new Date(this.filterDate); // ceo datum 14.11.2000
+        const firstfulldate = new Date(fullDate); // ceo datum 14.11.2000
         const lastday = firstfulldate.getDate() + 7;
-        const lastfulldate = new Date(this.filterDate);
+        const lastfulldate = new Date(fullDate);
         lastfulldate.setDate(lastday);
       
         this.appointmentsToShow = this.appointments.filter(app => new Date(app.date) >= firstfulldate && new Date(app.date)  <= lastfulldate)
