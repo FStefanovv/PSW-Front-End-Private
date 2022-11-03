@@ -66,16 +66,23 @@ export class AppointmentsByDoctorComponent implements OnInit {
   }
 
   cancelled(id: any): void {
-    if (confirm('Are you sure to cancel this appointment?')) {
-      this.appointments = this.appointments.filter((app) => app.id !== id);
-      this.appointmentService.refreshList();
-      this.appointmentService.deleteAppointment(id)
-        .subscribe(
-          res => {
-            this.appointmentService.refreshList();
-            window.location.reload();
-          }   
-        );  
+    let app = this.appointmentsToShow.find((a) => { return a.id === id })
+    if (app?.cancellable) {
+      if (confirm('Are you sure to cancel this appointment?')) {
+        this.appointments = this.appointments.filter((app) => app.id !== id);
+        this.appointmentService.refreshList();
+        this.appointmentService.deleteAppointment(id)
+          .subscribe(
+            res => {
+              this.appointmentService.refreshList();
+              window.location.reload();
+            }
+          );
+      }
+    }
+    else {
+        alert("Choosen appointment is not cancellable")
+      
     }
   }
 
