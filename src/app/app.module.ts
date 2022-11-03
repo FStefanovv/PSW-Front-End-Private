@@ -10,14 +10,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { IntegrationModule } from "./modules/integration/integration.module";
+import { MatDialogModule} from '@angular/material/dialog';
+import { PopUpComponent } from './pop-up/pop-up.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-  
-   
+    PopUpComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { IntegrationModule } from "./modules/integration/integration.module";
     MatRadioModule,
     FormsModule,
     ReactiveFormsModule,
-    IntegrationModule
+    IntegrationModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
