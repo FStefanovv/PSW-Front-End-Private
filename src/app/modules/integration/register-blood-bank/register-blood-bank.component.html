@@ -1,0 +1,24 @@
+<p>register-blood-bank works!</p>
+<h1>Register new blood bank</h1>
+  <div class="fform">
+  <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+  
+    <label>Name</label><br/>
+    <input type="text" id="name" formControlName="name" [(ngModel)]="bb.username"><br/>
+    <div>
+    <small *ngIf="reactiveForm.get('name').errors?.['required']"> This field is required</small>
+    </div>
+    <label>Server adress</label><br/>
+    <input type="text" id="path" formControlName="path" [(ngModel)]="bb.path"><br/>
+    <div>
+        <small *ngIf="reactiveForm.get('path').errors?.['required']"> This field is required</small>
+        </div>
+    <label>Email</label><br/>
+    <input type="text" name="email"  formControlName="email" [(ngModel)]="bb.email"><br/>
+    <div>
+        <small *ngIf="reactiveForm.get('email').errors?.['required']" > This field is required</small>
+        </div> 
+    <input type="submit" [disabled]="!reactiveForm.valid"value="submit">
+
+</form>
+</div>

@@ -8,12 +8,16 @@ import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { IntegrationModule } from "./modules/integration/integration.module";
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+  
+   
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,10 @@ import { MatRadioModule } from '@angular/material/radio';
     MaterialModule,
     PagesModule,
     HospitalModule,
-    MatRadioModule
+    MatRadioModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IntegrationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
