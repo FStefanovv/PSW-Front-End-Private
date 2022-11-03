@@ -67,7 +67,8 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   cancelled(id: any): void {
     let app = this.appointmentsToShow.find((a) => { return a.id === id })
-    if (app?.cancellable) {
+    let trueFlag = app?.status === 1 ? false : true
+    if (trueFlag) {
       if (confirm('Are you sure to cancel this appointment?')) {
         this.appointments = this.appointments.filter((app) => app.id !== id);
         this.appointmentService.refreshList();
