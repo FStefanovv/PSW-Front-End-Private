@@ -66,16 +66,23 @@ export class AppointmentsByDoctorComponent implements OnInit {
   }
 
   cancelled(id: any): void {
-    if (confirm('Are you sure to cancel this appointment?')) {
-      this.appointments = this.appointments.filter((app) => app.id !== id);
-      this.appointmentService.refreshList();
-      this.appointmentService.deleteAppointment(id)
-        .subscribe(
-          res => {
-            this.appointmentService.refreshList();
-            window.location.reload();
-          }   
-        );  
+    let app = this.appointmentsToShow.find((a) => { return a.id === id })
+    if (app?.cancellable) {
+      if (confirm('Are you sure to cancel this appointment?')) {
+        this.appointments = this.appointments.filter((app) => app.id !== id);
+        this.appointmentService.refreshList();
+        this.appointmentService.deleteAppointment(id)
+          .subscribe(
+            res => {
+              this.appointmentService.refreshList();
+              window.location.reload();
+            }
+          );
+      }
+    }
+    else {
+        alert("Choosen appointment is not cancellable")
+      
     }
   }
 
@@ -89,15 +96,16 @@ export class AppointmentsByDoctorComponent implements OnInit {
   }
 
   filterAppointmentsByDate(e: any): void{
-  
+    let flagString = this.filterDate.split("-")
+    let fullDate = flagString[0] + '/' + flagString[1] + '/' + flagString[2]
       if(this.filterDate === '')
         this.appointmentsToShow = this.appointments;
       else if(this.typeDate==='day')
-        this.appointmentsToShow = this.appointments.filter(app => app.date === this.filterDate);
+        this.appointmentsToShow = this.appointments.filter(app => app.date === fullDate);
       else if(this.typeDate==='week'){
-        const firstfulldate = new Date(this.filterDate); // ceo datum 14.11.2000
+        const firstfulldate = new Date(fullDate); // ceo datum 14.11.2000
         const lastday = firstfulldate.getDate() + 7;
-        const lastfulldate = new Date(this.filterDate);
+        const lastfulldate = new Date(fullDate);
         lastfulldate.setDate(lastday);
       
         this.appointmentsToShow = this.appointments.filter(app => new Date(app.date) >= firstfulldate && new Date(app.date)  <= lastfulldate)
@@ -116,7 +124,11 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
     onAppointmentRescheduled(appointment: any){
       let rescheduledAppointment = new RescheduleAppointmentDTO(appointment.appId, appointment.date, appointment.time);
-      this.appointmentService.rescheduleAppointment(rescheduledAppointment);
+      this.appointmentService.rescheduleAppointment(rescheduledAppointment).subscribe(
+        res => {
+          alert("radi")
+        }
+      );
     }
 }
 
