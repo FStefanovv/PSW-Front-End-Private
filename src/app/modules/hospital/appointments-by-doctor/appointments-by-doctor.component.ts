@@ -116,7 +116,11 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
     onAppointmentRescheduled(appointment: any){
       let rescheduledAppointment = new RescheduleAppointmentDTO(appointment.appId, appointment.date, appointment.time);
-      this.appointmentService.rescheduleAppointment(rescheduledAppointment);
+      this.appointmentService.rescheduleAppointment(rescheduledAppointment).subscribe(
+        res => {
+          alert("radi")
+        }
+      );
     }
 }
 
