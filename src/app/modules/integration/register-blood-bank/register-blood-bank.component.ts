@@ -31,19 +31,15 @@ export class RegisterBloodBankComponent implements OnInit {
     
     console.log(this.bb);
     this.BloodBankService.registerNewbBoodBank(this.bb)
-    .subscribe(
+    .subscribe((data)=>
       {
-        next : response =>{
-          this.bb = response
-          console.log(response)
-        },
-        error : message =>{
-          console.log(message.Error)
-          alert(message.Error)
-        }
-
-      }
-    )
+        
+          this.bb = data;
+          console.log(this.bb);
+          alert(data);
+       
+      });
+    
   }
 
 }
