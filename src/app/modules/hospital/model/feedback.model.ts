@@ -1,6 +1,6 @@
 export class Feedback {
   id: number = 0;
-  patientId: string = '';
+  patientName: string = 'username1';
   text: string = '';
   date: string = '';
   approved: boolean = false;
@@ -8,7 +8,6 @@ export class Feedback {
   public constructor(obj?: any) {
     if (obj) {
       this.id = obj.id;
-      this.patientId = obj.patientId;
       this.text = obj.text;
       this.date = obj.date;
       this.approved = obj.approved;

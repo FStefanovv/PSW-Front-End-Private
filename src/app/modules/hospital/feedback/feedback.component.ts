@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { Feedback } from 'src/app/modules/hospital/model/feedback.model';
 import { FeedbackService } from 'src/app/modules/hospital/services/feedback.service';
+import { MatButtonModule } from '@angular/material/button';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-feedback',
@@ -14,7 +16,9 @@ export class FeedbackComponent implements OnInit {
 
   public dataSourceApproved = new MatTableDataSource<Feedback>();
   public dataSourcePending = new MatTableDataSource<Feedback>();
-  public displayedColumns = ['id', 'text', 'date'];
+  public selectedRow = new SelectionModel<Feedback>(false, []);
+  public selectedIndex = 0;
+  public displayedColumns = ['username', 'text', 'date'];
   public feedback: Feedback[] = [];
 
   constructor(private feedbackService: FeedbackService, private router: Router) { }
@@ -36,12 +40,20 @@ export class FeedbackComponent implements OnInit {
     this.dataSourceApproved.data = this.feedback.filter(f => f.approved = true);
   }
 
+
   public changeToApproved(): void {
 
-    //selektovan kmentar proslediti ovde i promeniti polje approved u true
-    //promeniti onda pendingsourcedata i approved sourcedata
-    //proslediti taj komenntar u service update
-    
+    if (this.selectedRow.selected.length != 0) {
+
+      this.selectedIndex = this.dataSourcePending.data.findIndex((d: Feedback) => d === this.selectedRow.selected[0]);
+      this.feedbackService.changeToApproved(this.selectedIndex);
+
+      this.dataSourcePending.data.splice(this.selectedIndex, 1);
+      this.dataSourcePending = new MatTableDataSource<Feedback>(this.dataSourcePending.data);
+      this.dataSourceApproved.data.push(this.selectedRow.selected[0]);
+      this.dataSourceApproved = new MatTableDataSource<Feedback>(this.dataSourceApproved.data);
+    }
+   
   }
   }
 
