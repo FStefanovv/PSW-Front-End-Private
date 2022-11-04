@@ -3,6 +3,7 @@ import { BackendService } from 'angular-in-memory-web-api';
 import {BloodBank} from '../models/blood-bank'
 import {FormBuilder, FormControl, FormGroup, Validators,ReactiveFormsModule} from '@angular/forms'
 import { BloodBankService } from '../services/blood-bank.service';
+import {PopUpComponent} from "../../../pop-up/pop-up.component";
 
 @Component({
   selector: 'app-register-blood-bank',
@@ -28,18 +29,22 @@ export class RegisterBloodBankComponent implements OnInit {
        });
   }
   onSubmit(){
-    
+
     console.log(this.bb);
     this.BloodBankService.registerNewbBoodBank(this.bb)
-    .subscribe((data)=>
+
+    .subscribe(
+      (data) =>
       {
-        
-          this.bb = data;
-          console.log(this.bb);
-          alert(data);
-       
-      });
-    
+          this.bb = data
+          console.log(this.bb)
+          new PopUpComponent(this.bb);
+       //   alert(message.Error)
+
+
+      }
+    )
+
   }
 
 }
