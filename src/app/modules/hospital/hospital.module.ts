@@ -11,6 +11,7 @@ import { AppointmentsByDoctorComponent } from './appointments-by-doctor/appointm
 import { CreateAppointmentComponent } from "./create-appointment/create-appointment.component";
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { SearchComponent } from './search/search.component';
+import { CreateBloodRecordComponent } from './create-blood-record/create-blood-record.component';
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'rooms/:id', component: RoomDetailComponent },  
   { path: 'rooms/:id/update', component: UpdateRoomComponent },
   { path: 'appointments/add', component: CreateAppointmentComponent},
-  { path: 'appointments', component: AppointmentsByDoctorComponent}
+  { path: 'appointments', component: AppointmentsByDoctorComponent},
+  { path: 'bloodRecord/add', component: CreateBloodRecordComponent}
 ];
 
 @NgModule({
@@ -31,7 +33,8 @@ const routes: Routes = [
     MyDialogComponent,
     SearchComponent,
     CreateAppointmentComponent,
-    MyDialogComponent
+    MyDialogComponent,
+    CreateBloodRecordComponent
   ],
   imports: [
     CommonModule,
