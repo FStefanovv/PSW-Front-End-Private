@@ -15,43 +15,43 @@ import { SelectionModel } from '@angular/cdk/collections';
 export class FeedbackComponent implements OnInit {
 
   public dataSourceApproved = new MatTableDataSource<Feedback>();
+  public approvedFeedback: Feedback[] = [];
   public dataSourcePending = new MatTableDataSource<Feedback>();
-  public selectedRow = new SelectionModel<Feedback>(false, []);
-  public selectedIndex = 0;
+  public pendingFeedback: Feedback[] = [];
   public displayedColumns = ['username', 'text', 'date'];
   public feedback: Feedback[] = [];
+
+  public selectedRow = new SelectionModel<Feedback>(false, []);
+  public selectedIndex = 0;
 
   constructor(private feedbackService: FeedbackService, private router: Router) { }
 
   ngOnInit(): void {
     this.feedbackService.getAllFeedback().subscribe( res => {
       this.feedback = res;
-      this.getPending();
-      this.getApproved();
+      this.approvedFeedback = this.feedback.filter(f => f.approved === true);
+      this.pendingFeedback = this.feedback.filter(f => f.approved === false);
+      this.dataSourcePending.data = this.pendingFeedback;
+      this.dataSourceApproved.data = this.approvedFeedback;
      
     })
   }
-
-  public getPending(): void {
-    this.dataSourcePending.data = this.feedback.filter(f => f.approved = false);
-  }
-
-  public getApproved(): void {
-    this.dataSourceApproved.data = this.feedback.filter(f => f.approved = true);
-  }
-
 
   public changeToApproved(): void {
 
     if (this.selectedRow.selected.length != 0) {
 
-      this.selectedIndex = this.dataSourcePending.data.findIndex((d: Feedback) => d === this.selectedRow.selected[0]);
-      this.feedbackService.changeToApproved(this.selectedIndex);
+      this.selectedIndex = this.pendingFeedback.findIndex((d: Feedback) => d === this.selectedRow.selected[0]);
+      this.feedbackService.changeToApproved(this.selectedRow.selected[0]);
 
-      this.dataSourcePending.data.splice(this.selectedIndex, 1);
-      this.dataSourcePending = new MatTableDataSource<Feedback>(this.dataSourcePending.data);
-      this.dataSourceApproved.data.push(this.selectedRow.selected[0]);
-      this.dataSourceApproved = new MatTableDataSource<Feedback>(this.dataSourceApproved.data);
+      this.approvedFeedback.push(this.selectedRow.selected[0]);
+      this.pendingFeedback.splice(this.selectedIndex, 1);
+
+      this.dataSourcePending = new MatTableDataSource<Feedback>(this.pendingFeedback);
+
+      this.dataSourceApproved = new MatTableDataSource<Feedback>(this.approvedFeedback);
+
+      this.selectedRow.selected.length=0;
     }
    
   }
