@@ -23,7 +23,7 @@ export class FeedbackComponent implements OnInit {
 
   public selectedRow = new SelectionModel<Feedback>(false, []);
   public selectedIndex = 0;
-
+  
   constructor(private feedbackService: FeedbackService, private router: Router) { }
 
   ngOnInit(): void {
@@ -42,15 +42,12 @@ export class FeedbackComponent implements OnInit {
     if (this.selectedRow.selected.length != 0) {
 
       this.selectedIndex = this.pendingFeedback.findIndex((d: Feedback) => d === this.selectedRow.selected[0]);
-      this.feedbackService.changeToApproved(this.selectedRow.selected[0]);
-
+      this.feedbackService.acceptFeedback(this.selectedRow.selected[0]).subscribe();
       this.approvedFeedback.push(this.selectedRow.selected[0]);
       this.pendingFeedback.splice(this.selectedIndex, 1);
 
       this.dataSourcePending = new MatTableDataSource<Feedback>(this.pendingFeedback);
-
       this.dataSourceApproved = new MatTableDataSource<Feedback>(this.approvedFeedback);
-
       this.selectedRow.selected.length=0;
     }
    
