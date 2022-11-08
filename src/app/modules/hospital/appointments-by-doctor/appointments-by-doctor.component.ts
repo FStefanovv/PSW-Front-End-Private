@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵɵqueryRefresh, ViewChild } from '@angular/core';
+import { Component, OnInit, ɵɵqueryRefresh, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
 import { CreateAppointmentDTO } from '../model/createAppointmentDTO.model';
 import { Appointment } from '../model/appointment.model';
@@ -10,6 +10,8 @@ import { MyDialogComponent } from '../my-dialog/my-dialog.component';
 import { Observable, interval, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { RescheduleAppointmentDTO } from '../model/rescheduleAppointmentDTO.model';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-appointments-by-doctor',
@@ -27,8 +29,15 @@ export class AppointmentsByDoctorComponent implements OnInit {
   filterDate : string = '';
   typeDate : string ="day";
 
+  appId: string = "proba"
+  patientId: string = "proba1"
+  date: string = "proba2"
+  time: any
+
+
   @ViewChild('rescheduleForm') form: NgForm;
   public parsedDate: string[] | undefined;
+message: any;
 
   filterAppointments(e: any){
     if(this.appointmentType==-1)
@@ -36,10 +45,10 @@ export class AppointmentsByDoctorComponent implements OnInit {
     else
       this.appointmentsToShow = this.appointments.filter(app => app.status == this.appointmentType);
   } 
-  constructor(private appointmentService: AppointmentService,public dialog: MatDialog) { }
+  constructor(private appointmentService: AppointmentService,public dialog: MatDialog,private router: Router) { }
 
   ngOnInit(): void {
-   
+    this.appId="zjuu"
     const doctor = 'DOC1';
     this.appointmentService.getAppointmentsByDoctor(doctor).subscribe(res => {
 
@@ -67,7 +76,7 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   cancelled(id: any): void {
     let app = this.appointmentsToShow.find((a) => { return a.id === id })
-    const trueFlag = (app?.status == 0) ? true : false;
+    let trueFlag = app?.status === 1 ? false : true
     if (trueFlag) {
       if (confirm('Are you sure to cancel this appointment?')) {
         this.appointments = this.appointments.filter((app) => app.id !== id);
@@ -114,23 +123,11 @@ export class AppointmentsByDoctorComponent implements OnInit {
     }
 
     onRescheduleClicked(id : string){
-      let rescheduledApp = this.appointments.find((a) => {return a.id === id});
-      this.form.setValue({
-        appId: rescheduledApp?.id,
-        patientId: rescheduledApp?.patientId,
-        date: rescheduledApp?.date,
-        time: rescheduledApp?.startTime
-      });
+      const rescheduledApp = this.appointments.find((a) => {return a.id === id});
+      this.router.navigate(['appointments/reschedule'],{queryParams:{id:rescheduledApp?.id}})
     }
 
-    onAppointmentRescheduled(appointment: any){
-      let rescheduledAppointment = new RescheduleAppointmentDTO(appointment.appId, appointment.date, appointment.time);
-      this.appointmentService.rescheduleAppointment(rescheduledAppointment).subscribe(
-        res => {
-          alert("radi")
-        }
-      );
-    }
+    
 }
 
 
