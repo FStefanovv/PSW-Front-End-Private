@@ -12,6 +12,7 @@ import { CreateAppointmentComponent } from "./create-appointment/create-appointm
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { SearchComponent } from './search/search.component';
 import { CreateBloodRecordComponent } from './create-blood-record/create-blood-record.component';
+import { RescheduleAppointmentComponent } from "./reschedule-appointment/reschedule-appointment.component";
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'rooms/:id/update', component: UpdateRoomComponent },
   { path: 'appointments/add', component: CreateAppointmentComponent},
   { path: 'appointments', component: AppointmentsByDoctorComponent},
-  { path: 'bloodRecord/add', component: CreateBloodRecordComponent}
+  { path: 'bloodRecord/add', component: CreateBloodRecordComponent},
+  { path: 'appointments/reschedule', component: RescheduleAppointmentComponent}
 ];
 
 @NgModule({
@@ -34,7 +36,8 @@ const routes: Routes = [
     SearchComponent,
     CreateAppointmentComponent,
     MyDialogComponent,
-    CreateBloodRecordComponent
+    CreateBloodRecordComponent,
+    RescheduleAppointmentComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  exports: [ RouterModule ]
+  exports: [ RouterModule,
+    CreateBloodRecordComponent
+  ]
 })
 export class HospitalModule { }
