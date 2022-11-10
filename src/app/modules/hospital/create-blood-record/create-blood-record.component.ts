@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreateBloodRecordDTO } from '../model/createBloodRecord.modleDTO';
-import { BloodRecordService } from '../services/blood-record.service';
+import { BloodService } from '../services/blood.service';
 
 @Component({
     selector: 'create-blood-record',
@@ -11,10 +11,14 @@ import { BloodRecordService } from '../services/blood-record.service';
 export class CreateBloodRecordComponent {
     public createBloodRecordDTO: CreateBloodRecordDTO = new CreateBloodRecordDTO()
 
-    constructor(private bloodRecordService: BloodRecordService,private router: Router) { }
+    constructor(private bloodService: BloodService,private router: Router) { }
 
     public createBloodRecord() {
-
+        this.bloodService.createBloodRecord(this.createBloodRecordDTO).subscribe(res =>{
+            alert("Poslato")
+        },error => {
+            alert("Nije poslato")
+        })
     }
 
 }
