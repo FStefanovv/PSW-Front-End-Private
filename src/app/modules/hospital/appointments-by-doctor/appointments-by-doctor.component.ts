@@ -29,16 +29,6 @@ export class AppointmentsByDoctorComponent implements OnInit {
   filterDate : string = '';
   typeDate : string ="day";
 
-  appId: string = "proba"
-  patientId: string = "proba1"
-  date: string = "proba2"
-  time: any
-
-
-  @ViewChild('rescheduleForm') form: NgForm;
-  public parsedDate: string[] | undefined;
-message: any;
-
   filterAppointments(e: any){
     if(this.appointmentType==-1)
       this.appointmentsToShow = this.appointments;
@@ -48,7 +38,6 @@ message: any;
   constructor(private appointmentService: AppointmentService,public dialog: MatDialog,private router: Router) { }
 
   ngOnInit(): void {
-    this.appId="zjuu"
     const doctor = 'DOC1';
     this.appointmentService.getAppointmentsByDoctor(doctor).subscribe(res => {
 
@@ -92,7 +81,6 @@ message: any;
     }
     else {
         alert("Choosen appointment is not cancellable")
-      
     }
   }
 

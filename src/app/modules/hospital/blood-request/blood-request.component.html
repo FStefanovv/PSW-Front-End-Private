@@ -1,0 +1,36 @@
+<div>
+  <table>
+    <tr>
+      <td>Blood Type</td>
+      <td><select matNativeControl [(ngModel)]="bloodRequestDTO.type">
+        <option>A</option>
+        <option>B</option>
+        <option>AB</option>
+        <option>O</option>
+      </select></td>
+      <td *ngIf="typeNull">Choose type</td>
+    </tr>
+    <tr>
+      <td>Amount(liters)</td>
+      <td><input type="number" matInput [(ngModel)]="bloodRequestDTO.amount"/></td>
+      <td *ngIf="amountNull">Amount cannot be zero or minus</td>
+    </tr>
+    <tr>
+      <td>Reason</td>
+      <td><input type="text" matInput [(ngModel)]="bloodRequestDTO.reason"/></td>
+      <td *ngIf="reasonNull">Write reason</td>
+    </tr>
+    <tr>
+      <td>Request date</td>
+      <td><input type="date" matInput [(ngModel)]="bloodRequestDTO.requestDate"/></td>
+      <td *ngIf="dateNull">Pick date</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button mat-stroked-button (click)="bloodRequest()">
+        Submit
+      </button></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
