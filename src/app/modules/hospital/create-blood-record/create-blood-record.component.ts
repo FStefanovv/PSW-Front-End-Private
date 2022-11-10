@@ -10,15 +10,34 @@ import { BloodService } from '../services/blood.service';
 })
 export class CreateBloodRecordComponent {
     public createBloodRecordDTO: CreateBloodRecordDTO = new CreateBloodRecordDTO()
+    amountNull: boolean = false
+    typeNull: boolean = false
+    reasonNull: boolean = false
 
     constructor(private bloodService: BloodService,private router: Router) { }
 
     public createBloodRecord() {
+        if(!this.isValidInputAmount()) this.amountNull = true
+        if(!this.isValidInputType()) this.typeNull = true
+        if(!this.isValidInputReason()) this.reasonNull = true
+        if(this.amountNull == true || this.typeNull == true || this.reasonNull == true) return        
         this.bloodService.createBloodRecord(this.createBloodRecordDTO).subscribe(res =>{
             alert("Poslato")
         },error => {
-            alert("Nije poslato")
+            alert("Los zahtev")
         })
     }
 
+    private isValidInputAmount(): boolean{
+        this.amountNull = false
+        return this.createBloodRecordDTO.amount > 0
+    }
+    private isValidInputType(): boolean{
+        this.typeNull = false
+        return this.createBloodRecordDTO.type != ''
+    }
+    private isValidInputReason(): boolean{
+        this.reasonNull = false
+        return this.createBloodRecordDTO.reason != ''  
+    }
 }
