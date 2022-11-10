@@ -12,15 +12,10 @@ import { RescheduleAppointmentDTO } from '../model/rescheduleAppointmentDTO.mode
 })
 
 export class RescheduleAppointmentComponent implements OnInit {
-    @ViewChild('rescheduleForm') form: NgForm;
-    public parsedDate: string[] | undefined;
+  @ViewChild('rescheduleForm') form: NgForm;
+  public parsedDate: string[] | undefined;
 
-    //public appointmentToChange: RescheduleAppointmentDTO = new RescheduleAppointmentDTO()
-
-    idproba: string | null
-    
-
-    constructor(private appointmentService: AppointmentService,public router: Router) { }
+  constructor(private appointmentService: AppointmentService,public router: Router) { }
 
   ngOnInit(): void {
     const queryString = window.location.search;
