@@ -43,6 +43,6 @@ export class BloodRequestComponent{
   }
   private isValidInputDate(): boolean{
     this.dateNull = false
-    return  this.bloodRequestDTO.requestDate != ''
+    return  this.bloodRequestDTO.due != ''
   }
 }

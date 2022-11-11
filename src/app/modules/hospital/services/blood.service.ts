@@ -15,11 +15,11 @@ export class BloodService {
     constructor(private http: HttpClient) { }
 
     sendBloodRequest(bloodRequestDTO: any): Observable<BloodRequestDTO> {
-        return this.http.post<BloodRequestDTO>(this.apiHost + 'api/bloodRequest',bloodRequestDTO,{headers: this.headers})
+      return this.http.post<BloodRequestDTO>(this.apiHost + 'api/Blood/CreateBloodRequest',bloodRequestDTO,{headers: this.headers})
     }
 
     createBloodRecord(createBloodReacord: any): Observable<CreateBloodRecordDTO>{
-        return this.http.post<CreateBloodRecordDTO>(this.apiHost+ 'api/createBloodRecord',createBloodReacord, {headers: this.headers}).pipe(catchError(this.errorHandler))
+        return this.http.post<CreateBloodRecordDTO>(this.apiHost+ 'api/Blood/CreateConsumptionRecord',createBloodReacord, {headers: this.headers}).pipe(catchError(this.errorHandler))
     }
 
     errorHandler(error: HttpErrorResponse){
