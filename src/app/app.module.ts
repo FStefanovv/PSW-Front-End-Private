@@ -13,7 +13,6 @@ import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.compon
 import { FormsModule } from '@angular/forms';
 
 
-
 @NgModule({
   declarations: [
     AppComponent

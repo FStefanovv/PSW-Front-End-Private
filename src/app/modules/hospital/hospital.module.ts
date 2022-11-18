@@ -15,6 +15,8 @@ import { CreateBloodRecordComponent } from './create-blood-record/create-blood-r
 import { RescheduleAppointmentComponent } from "./reschedule-appointment/reschedule-appointment.component";
 import { BloodRequestComponent } from "./blood-request/blood-request.component";
 import { PatientOnTreatmentComponent } from './patient-on-treatment/patient-on-treatment.component';
+import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
+
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -26,10 +28,8 @@ const routes: Routes = [
   { path: 'bloodRecord/add', component: CreateBloodRecordComponent},
   { path: 'appointments/reschedule', component: RescheduleAppointmentComponent},
   { path: 'bloodRequest', component: BloodRequestComponent},
-  { path: 'patients-treatments', component: PatientOnTreatmentComponent}
- 
- 
-
+  { path: 'patients-treatments', component: PatientOnTreatmentComponent},
+  { path: 'vacation-requests', component: VacationRequestsByDoctorComponent}
 ];
 
 @NgModule({
@@ -46,7 +46,8 @@ const routes: Routes = [
     CreateBloodRecordComponent,
     RescheduleAppointmentComponent,
     BloodRequestComponent,
-    PatientOnTreatmentComponent
+    PatientOnTreatmentComponent,
+    VacationRequestsByDoctorComponent
   ],
   imports: [
     CommonModule,
