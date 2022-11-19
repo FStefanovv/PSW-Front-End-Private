@@ -5,18 +5,26 @@
         <th>Room</th>
         <th>Bed</th>
         <th>Therapy</th>
+        <th>Start</th>
+        <th></th>
         <th></th>
         
     </tr>
   
-    <tr>
-        <td>Milojko</td>
-        <td>108</td>
-        <td>1</td>
-        <td>Detoksikacija vocem</td>
+    <tr *ngFor="let treatment of treatmentsToShow">
+        <td>{{treatment.id}}</td>
+        <td>{{treatment.room}}</td>
+        <td>{{treatment.bed}}</td>
+        <td>{{treatment.therapy}}</td>
+        <td>{{treatment.startDate}}</td>
         <td>
-            <button  class="discharge-button" (click)="discharge()">
+            <button  class="discharge-button" (click)="discharge(treatment.id)">
                 Discharge
+            </button>
+        </td>
+        <td>
+            <button  class="update-button" (click)="update(treatment.id)">
+                Update
             </button>
         </td>
         
