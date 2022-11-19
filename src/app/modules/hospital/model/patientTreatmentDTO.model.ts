@@ -7,7 +7,7 @@ export class PatientTreatmentDTO{
     startDate: string=""
     status: string = ""
 
-    constructor(obj:any){
+    constructor(obj?:any){
         if(obj){
             this.id=obj.Id;
             this.patient=obj.Patient;

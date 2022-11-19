@@ -16,6 +16,7 @@ import { RescheduleAppointmentComponent } from "./reschedule-appointment/resched
 import { BloodRequestComponent } from "./blood-request/blood-request.component";
 import { PatientOnTreatmentComponent } from './patient-on-treatment/patient-on-treatment.component';
 import { DischargePatientComponent } from './discharge-patient/discharge-patient.component';
+import { UpdateTreatmentComponent } from './update-treatment/update-treatment.component';
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'appointments/reschedule', component: RescheduleAppointmentComponent},
   { path: 'bloodRequest', component: BloodRequestComponent},
   { path: 'patients/treatments', component: PatientOnTreatmentComponent},
-  {path: 'patients/discharge', component: DischargePatientComponent}
+  { path: 'patients/discharge', component: DischargePatientComponent},
+  { path: 'patients/treatments/update', component:UpdateTreatmentComponent}
  ];
  
 
@@ -47,7 +49,8 @@ const routes: Routes = [
     RescheduleAppointmentComponent,
     BloodRequestComponent,
     PatientOnTreatmentComponent,
-    DischargePatientComponent
+    DischargePatientComponent,
+    UpdateTreatmentComponent
   ],
   imports: [
     CommonModule,
