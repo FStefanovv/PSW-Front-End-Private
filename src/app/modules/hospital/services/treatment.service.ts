@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PatientTreatment } from '../model/patientTreatment.model';
+import { DischargePatientDTO } from '../model/dischargePatientDTO';
+import { PatientTreatmentDTO } from '../model/patientTreatmentDTO.model';
+
 
 
 @Injectable({
@@ -10,6 +12,7 @@ import { PatientTreatment } from '../model/patientTreatment.model';
 export class TreatmentService {
 
 
+  
 
   apiHost: string = 'http://localhost:5000/';
 
@@ -19,14 +22,19 @@ export class TreatmentService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPatientOnTreatment(): Observable<PatientTreatment[]>{
+  getAllPatientOnTreatment(): Observable<PatientTreatmentDTO[]>{
 
-    return this.http.get<PatientTreatment[]>(this.apiHost + 'api/', {headers: this.headers});
+    return this.http.get<PatientTreatmentDTO[]>(this.apiHost + 'api/', {headers: this.headers});
   
   }
-  getPatientOnTreatmentById(id:any): Observable<PatientTreatment>{
+  getPatientOnTreatmentById(id:any): Observable<PatientTreatmentDTO>{
     
-    return this.http.get<PatientTreatment>(this.apiHost + 'api/' + '/' + id ,{headers: this.headers})
+    return this.http.get<PatientTreatmentDTO>(this.apiHost + 'api/' + '/' + id ,{headers: this.headers})
+  
+  }
+  getPatientToDischarged (id:any): Observable<DischargePatientDTO>{
+    
+    return this.http.get<any>(this.apiHost + 'api/' + '/' + id ,{headers: this.headers})
   
   }
 
@@ -35,7 +43,7 @@ export class TreatmentService {
     return this.http.put<any>(this.apiHost + 'api/', treatment,{headers: this.headers} )
   }
 
-  dischargePatient(id: any): Observable<any> {
-    return this.http.delete<any>(this.apiHost  + 'api/'+id, { headers: this.headers });
+  dischargePatient(treatment: any): Observable<any> {
+    return this.http.put<any>(this.apiHost  + 'api/' + treatment.id, treatment, { headers: this.headers });
   }
 }
