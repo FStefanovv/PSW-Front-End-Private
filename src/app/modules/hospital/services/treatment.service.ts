@@ -6,6 +6,7 @@ import { PatientTreatmentDTO } from '../model/patientTreatmentDTO.model';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })

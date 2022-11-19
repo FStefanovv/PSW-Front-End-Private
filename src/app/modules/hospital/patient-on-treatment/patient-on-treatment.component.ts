@@ -34,7 +34,8 @@ treatmentStatus: string="TREATMENT";
 
   }
   update(id:any){
-
+    const updateTherapy = this.treatments.find((a) => {return a.id === id});
+    this.router.navigate(['patients/treatments/update'],{queryParams:{id:updateTherapy?.id}})
   }
 
 }
