@@ -10,7 +10,7 @@ export class VacationService {
 
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   //srediti
-  apiHost: string = 'http://localhost:xxx/api/xxx';
+  apiHost: string = 'http://localhost:5000/api/Vacation';
 
 
   constructor(private http: HttpClient) { }
