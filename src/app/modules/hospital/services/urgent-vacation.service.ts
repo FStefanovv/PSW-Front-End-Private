@@ -1,9 +1,11 @@
+import { UrgentVacationDoctorDTO } from './../model/urgentVacationDoctorDTO.model';
 import { GetDocsAppsUrgentVac } from './../model/getDocsAppsUrgentVac.model';
 import { Observable, throwError } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Appointment } from '../model/appointment.model';
 import { catchError,  } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,14 @@ export class UrgentVacationService{
   public dto: GetDocsAppsUrgentVac = new GetDocsAppsUrgentVac();
   getAppointmentsForDoctor(id: string,vacationStart: string,vacationEnd: string): Observable<GetDocsAppsUrgentVac[]>{
     return this.http.get<GetDocsAppsUrgentVac[]>(this.apiHost+'api/Doctor/GetDoctorsAppointmentsForVacation/' + id + '/' + vacationStart + '/' + vacationEnd,{headers: this.headers})
+  }
+
+  getDoctors(startDate: string,startTime: string): Observable<UrgentVacationDoctorDTO[]>{
+    return this.http.get<UrgentVacationDoctorDTO[]>(this.apiHost + 'api/Doctor/GetDoctorsForRearrange/' + startDate + '/' + startTime,{headers: this.headers})
+  }
+
+  changeDoctor(doctorId:string,appointmentId:string):Observable<any>{
+    return this.http.post<any>(this.apiHost+ 'api/Appointments/ChangeDoctorForAppointment/' + doctorId + '/' + appointmentId,{headers : this.headers})
   }
 
   errorHandler(error: HttpErrorResponse){
