@@ -17,6 +17,7 @@ import { BloodRequestComponent } from "./blood-request/blood-request.component";
 import { PatientOnTreatmentComponent } from './patient-on-treatment/patient-on-treatment.component';
 import { DischargePatientComponent } from './discharge-patient/discharge-patient.component';
 import { UpdateTreatmentComponent } from './update-treatment/update-treatment.component';
+import { CreateTreatmentComponent } from './create-treatment/create-treatment.component';
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: 'bloodRequest', component: BloodRequestComponent},
   { path: 'patients/treatments', component: PatientOnTreatmentComponent},
   { path: 'patients/discharge', component: DischargePatientComponent},
-  { path: 'patients/treatments/update', component:UpdateTreatmentComponent}
+  { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
+  { path: 'patietns/treatments/create', component: CreateTreatmentComponent}
  ];
  
  
@@ -51,7 +53,8 @@ const routes: Routes = [
     BloodRequestComponent,
     PatientOnTreatmentComponent,
     DischargePatientComponent,
-    UpdateTreatmentComponent
+    UpdateTreatmentComponent,
+    CreateTreatmentComponent
   ],
   imports: [
     CommonModule,
