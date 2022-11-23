@@ -25,26 +25,28 @@ export class TreatmentService {
 
   getAllPatientOnTreatment(): Observable<PatientTreatmentDTO[]>{
 
-    return this.http.get<PatientTreatmentDTO[]>(this.apiHost + 'api/', {headers: this.headers});
+    const doctorId="2"
+
+    return this.http.get<PatientTreatmentDTO[]>(this.apiHost + 'api/InpatientTreatment/GetAllByDoctor'+'/'+ doctorId, {headers: this.headers});
   
   }
   getPatientOnTreatmentById(id:any): Observable<PatientTreatmentDTO>{
     
-    return this.http.get<PatientTreatmentDTO>(this.apiHost + 'api/' + '/' + id ,{headers: this.headers})
+    return this.http.get<PatientTreatmentDTO>(this.apiHost + 'api/InpatientTreatment/GetById' + '/' + id ,{headers: this.headers})
   
   }
   getPatientToDischarged (id:any): Observable<DischargePatientDTO>{
     
-    return this.http.get<any>(this.apiHost + 'api/' + '/' + id ,{headers: this.headers})
+    return this.http.get<any>(this.apiHost + 'api/InpatientTreatment/GetRecordForDishcarged' + '/' + id ,{headers: this.headers})
   
   }
 
-   updateTherapy( treatment: any ): Observable<any>{
+   updateTherapy( therapy: any,id:any ): Observable<any>{
     
-    return this.http.put<any>(this.apiHost + 'api/', treatment,{headers: this.headers} )
+    return this.http.put<any>(this.apiHost + 'api/InpatientTreatment/UpdateTherapy'+'/'+id+'/'+ therapy, {headers: this.headers} )
   }
 
-  dischargePatient(treatment: any): Observable<any> {
-    return this.http.put<any>(this.apiHost  + 'api/' + treatment.id, treatment, { headers: this.headers });
+  dischargePatient(reason: any,id:any): Observable<any> {
+    return this.http.put<any>(this.apiHost  + 'api/InpatientTreatment/Discharge' +'/'+ id + '/'+ reason, { headers: this.headers });
   }
 }
