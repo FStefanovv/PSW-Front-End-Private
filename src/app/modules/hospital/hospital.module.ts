@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'patients/treatments/update', component:UpdateTreatmentComponent}
  ];
  
+ 
 
 @NgModule({
   declarations: [
