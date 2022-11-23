@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DischargePatientDTO } from '../model/dischargePatientDTO';
 import { PatientTreatmentDTO } from '../model/patientTreatmentDTO.model';
-import { UpdatePatientTreatmentDTO } from '../model/updatePatientTreatmentDTO.model';
 import { TreatmentService } from '../services/treatment.service';
 
 @Component({
