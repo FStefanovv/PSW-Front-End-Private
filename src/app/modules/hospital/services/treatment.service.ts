@@ -49,4 +49,14 @@ export class TreatmentService {
   dischargePatient(reason: any,id:any): Observable<any> {
     return this.http.put<any>(this.apiHost  + 'api/InpatientTreatment/Discharge' +'/'+ id + '/'+ reason, { headers: this.headers });
   }
+
+  getRoomsWithFreeBeds(): Observable<any[]> {
+    return this.http.get<any> (this.apiHost + 'api/Rooms/GetAllWithFreeBeds',{headers: this.headers})
+  }
+   
+  getFreeBeds(roomId:any): Observable<any[]>{
+    return this.http.get<any> (this.apiHost + 'api/Equipment/GetAvailableRoomBeds/'+roomId,{headers: this.headers})
+
+  }
+
 }

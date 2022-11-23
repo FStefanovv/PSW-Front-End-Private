@@ -1,0 +1,33 @@
+<div class="container">
+    <div  >
+        <h2>Discharge</h2>
+        <form #createForm="ngForm" (ngSubmit)="onTreatmentCreate(createForm.value)">
+            <label>Doctor id</label>
+            <input type="text" name="doctorId" ngModel >
+            <br>
+            <label>Patient</label>
+            <input type="text" name="patientId" ngModel >
+            <br>
+            <label>Room</label>
+            <select   name="roomId" (change)="freeBed($event)" ngModel>
+                <option *ngFor="let item1 of listOfRooms">{{item1}}</option>
+            </select>
+            <br>
+            <label>Bed</label>
+            <select  name="bedId" ngModel>
+                <option *ngFor="let item2 of listOfBeds">{{item2}}</option>
+            </select>
+            <br>
+            <br>
+            <label>Reason</label>
+            <input type="text" name="reason" ngModel >
+            <br>
+            <br>
+            <label>Therapy</label>
+            <input type="text" name="therapy" ngModel >
+            <br>
+            <br>
+            <input type="submit" value="Create">
+        </form>
+    </div>
+</div>
