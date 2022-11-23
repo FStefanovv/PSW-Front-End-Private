@@ -1,6 +1,6 @@
 import { Appointment } from './../model/appointment.model';
 import { UrgentVacationService } from './../services/urgent-vacation.service';
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 
 @Component({
@@ -12,6 +12,8 @@ export class ShowDoctorsForChange implements OnInit{
   @Input() startTime: string
   @Input() doctors: any
   @Input() appId : string
+  @Input() callbackFunction : (id: string) => void
+  
   constructor(public urgentVacationService: UrgentVacationService) {}
 
   ngOnInit(): void {
@@ -21,6 +23,7 @@ export class ShowDoctorsForChange implements OnInit{
   public selectDoctor(id: string){
     this.urgentVacationService.changeDoctor(id,this.appId).subscribe(
       res => {
+        this.callbackFunction(this.appId)
         alert("Kaficaaaaaaaa")
       }
     )

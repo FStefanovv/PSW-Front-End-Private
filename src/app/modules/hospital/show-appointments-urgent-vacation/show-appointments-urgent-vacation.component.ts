@@ -14,10 +14,23 @@ export class ShowAppointmentsUrgentVacationComponent implements OnInit{
   doctors: any
   showDoctors: boolean = false
   appId: string 
+  idToDelete: string
 
   constructor(public urgentVacationService: UrgentVacationService) {}
   ngOnInit():void{
     
+  }
+
+  callbackFunctionToDelete = (id: string): void => {
+    for (var i =0; i < this.appsList.length; i++)
+      if (this.appsList[i].id === id) {
+        this.appsList.splice(i,1);
+        break;
+   }
+  }
+
+  onProbaClicked(eventData: {idToDelete:string}){
+
   }
 
   public changeDoctor(p: any){

@@ -3,5 +3,5 @@
     <tr><td>Patient</td><td>Scheduled due</td><td></td></tr>
     <tr *ngFor="let app of appsList"><td>{{app.patient}}</td><td>{{app.date}} {{app.time}}</td><td><button (click)="changeDoctor(app)">Zameni</button></td></tr>
   </table>
-  <show-doctors-for-change *ngIf="showDoctors" [startDate]="startDate" [startTime]="startTime" [doctors]="doctors" [appId]="appId"></show-doctors-for-change>
+  <show-doctors-for-change *ngIf="showDoctors" [startDate]="startDate" [startTime]="startTime" [doctors]="doctors" [appId]="appId" [callbackFunction]="callbackFunctionToDelete"></show-doctors-for-change>
 </div>
