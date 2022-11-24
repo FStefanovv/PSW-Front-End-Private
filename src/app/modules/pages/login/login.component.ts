@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
+import { User } from '../../hospital/model/user.model';
+import { UserService } from '../../hospital/services/user.service';
 
 @Component({
   selector: 'app-login',
