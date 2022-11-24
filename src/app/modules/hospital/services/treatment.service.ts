@@ -25,7 +25,7 @@ export class TreatmentService {
 
   getAllPatientOnTreatment(): Observable<PatientTreatmentDTO[]>{
 
-    const doctorId="2"
+    const doctorId="DOC1"
 
     return this.http.get<PatientTreatmentDTO[]>(this.apiHost + 'api/InpatientTreatment/GetAllByDoctor'+'/'+ doctorId, {headers: this.headers});
   
