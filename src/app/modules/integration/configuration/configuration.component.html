@@ -1,0 +1,35 @@
+<div>
+     <div class="card">
+        <p> Configure reports</p>
+        <form [formGroup]="contactForm" (ngSubmit)="submit()">
+ 
+           
+             <div  class="container">
+              
+              <select formControlName="bbank" class="edit" >
+                <option [ngValue]="null" disabled>Select Blood Bank</option>
+                <option *ngFor="let c of listbb" [value]="c.id">{{c.username}}</option>
+             </select>
+             
+           
+                
+                <select formControlName="periodd" class="edit pull-right">
+                    <option [ngValue]="null" disabled>Select period</option>
+                     <option *ngFor="let p of periodlist" [value]="p">{{p}}</option> 
+                  </select>
+                 
+              </div>
+             
+
+            
+             
+              <button type="submit"  [disabled]="!contactForm.valid">   Configure</button>
+          
+             
+            </form>
+             
+     </div>
+
+
+
+</div>
