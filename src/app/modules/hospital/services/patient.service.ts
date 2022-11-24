@@ -22,6 +22,9 @@ export class PatientService {
     const url = `${this.apiHost}`;
     return this.http.get<Patient[]>(url, {headers: this.headers});
   }
+  getPatient(id: any): Observable<Patient>{
+    return this.http.get<Patient>(this.apiHost + "/" + id, {headers: this.headers});
+  }
   
   errorHandler(error: HttpErrorResponse){
     return throwError(() => new Error('test'))
