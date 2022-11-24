@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
@@ -13,14 +13,15 @@ import { IntegrationModule } from "./modules/integration/integration.module";
 import { MatDialogModule} from '@angular/material/dialog';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.component";
-
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { AuthInterceptor } from "./auth/auth.interceptor";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PopUpComponent,
+    PopUpComponent
 
 
   ],
@@ -36,9 +37,17 @@ import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.compon
     FormsModule,
     ReactiveFormsModule,
     IntegrationModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [MyDialogComponent]
 })
