@@ -1,16 +1,16 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { HomeComponent } from "./modules/pages/home/home.component";
-import { AppointmentsByDoctorComponent } from "./modules/hospital/appointments-by-doctor/appointments-by-doctor.component";
-import { FeedbackComponent } from "./modules/hospital/feedback/feedback.component"
-import{RegisterBloodBankComponent} from "./modules/integration/register-blood-bank/register-blood-bank.component";
+import { DoctorHomeComponent } from "./modules/pages/doctor-home/doctor-home.component";
+import { LoginComponent } from "./modules/pages/login/login.component";
+import { ManagerHomeComponent } from "./modules/pages/manager-home/manager-home.component";
+
 
 const routes: Routes = [
-  { path: '', redirectTo: '/appointments-by-doctor', pathMatch: 'full' },
-  { path: 'appointments-by-doctor', component: AppointmentsByDoctorComponent },
-  { path: 'feedback', component: FeedbackComponent },
-  {path:'register-blood-bank', component:RegisterBloodBankComponent},
-  { path: 'home', component: HomeComponent }
+ 
+  { path: 'manager-home', component: ManagerHomeComponent },
+  { path: 'doctor-home', component: DoctorHomeComponent },
+  { path: '', component: LoginComponent }
+  
 ];
 
 @NgModule({

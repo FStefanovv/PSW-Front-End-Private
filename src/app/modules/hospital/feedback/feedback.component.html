@@ -10,7 +10,7 @@
               Anonymous
             </div>
             <div *ngIf="!feedback.anonymous">
-              User1
+              {{feedback.patientName}} {{feedback.patientSurname}}
             </div>
           </td>
        </ng-container>
@@ -39,7 +39,7 @@
           Anonymous
         </div>
         <div *ngIf="!feedback.anonymous">
-          User1
+          {{feedback.patientName}} {{feedback.patientSurname}}
         </div>
       </td>
     </ng-container>

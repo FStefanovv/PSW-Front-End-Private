@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'rooms/add', component: CreateRoomComponent },
   { path: 'rooms/:id', component: RoomDetailComponent },  
   { path: 'rooms/:id/update', component: UpdateRoomComponent },
-  { path: 'feedback/', component: FeedbackComponent },
+  { path: 'feedback', component: FeedbackComponent },
   { path: 'appointments/add', component: CreateAppointmentComponent},
   { path: 'appointments', component: AppointmentsByDoctorComponent}
 ];

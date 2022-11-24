@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from 'src/app/app-routing.module'; 
-import { HomeComponent } from './home/home.component';
+import { ManagerHomeComponent } from './manager-home/manager-home.component';
+import { DoctorHomeComponent } from './doctor-home/doctor-home.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    HomeComponent,
+    DoctorHomeComponent,
+    ManagerHomeComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
