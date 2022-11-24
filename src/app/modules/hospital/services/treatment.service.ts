@@ -55,8 +55,12 @@ export class TreatmentService {
   }
    
   getFreeBeds(roomId:any): Observable<any[]>{
-    return this.http.get<any> (this.apiHost + 'api/Equipment/GetAvailableRoomBeds/'+roomId,{headers: this.headers})
+    return this.http.get<any> (this.apiHost + 'api/Equipment/GetAvailableRoomBeds'+'/'+ roomId,{headers: this.headers})
 
+  }
+
+  createTreatment(treatment: any ): Observable<any>{
+    return this.http.post<any>(this.apiHost + 'api/InpatientTreatment/CreateRequest', treatment, {headers: this.headers})
   }
 
 }
