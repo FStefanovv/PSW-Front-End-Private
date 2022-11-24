@@ -38,44 +38,44 @@
         <table>
             <tr>
                 <td>DoctorId</td>
-                <td><input matInput [(ngModel)]="treatment.doctorId"> </td>
+                <td><input matInput [(ngModel)]="treatment.doctorId"> </td>             
                 <!-- <td *ngIf="patNull">Choose patient</td> -->
                 
             </tr>
             <tr>
                 <td>PatientId</td>
                 <td><input  matInput [(ngModel)]="treatment.patientId"></td>
-                <!-- <td *ngIf="dateNull">Choose date</td>
-                <td *ngIf="dateInPast">Pichadill</td> -->
+                <td *ngIf="patientIdNull">Choose patient</td>
+                
             </tr>
             <tr>
                 <td>RoomId</td>
                 <td><select matNativeControl [(ngModel)]="treatment.roomId" (change)="freeBed($event)">
-                        <option>-1</option>
+                         <option>null</option> 
                         <option *ngFor="let item of listOfRooms">{{item}}</option>
                     </select>
                 </td>
-                <!-- <td *ngIf="timeNull">Choose time</td> -->
+                <td *ngIf="roomIdNull">Choose room</td> 
             </tr>
             <tr>
                 <td>BedId</td>
                 <td><select matNativeControl [(ngModel)]="treatment.bedId">
-                        <option>-1</option>
+                         <option>null</option> 
                         <option *ngFor="let item1 of listOfBeds">{{item1}}</option>
                     </select>
                 </td>
-                <!-- <td *ngIf="timeNull">Choose time</td> -->
+                <td *ngIf="bedIdNull">Choose bed</td>
             </tr>
             <tr>
                 <td>Reason</td>
                 <td><input matInput [(ngModel)]="treatment.AdmissionReason"> </td>
-                <!-- <td *ngIf="patNull">Choose patient</td> -->
+                <td *ngIf="reasonNull">Choose reason</td>
                 
             </tr>
             <tr>
                 <td>Therapy</td>
                 <td><input matInput [(ngModel)]="treatment.Therapy"> </td>
-                <!-- <td *ngIf="patNull">Choose patient</td> -->
+                <td *ngIf="therapyNull">Choose therapy</td> 
                 
             </tr>
 
