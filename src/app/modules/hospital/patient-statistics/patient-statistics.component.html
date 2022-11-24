@@ -15,21 +15,33 @@
             <tbody>
                 <tr>
                     <td>#</td>
-                    <td>{{ageGroups[0]}}</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <!-- <td>{{ageGroups[0]}}</td>
                     <td>{{ageGroups[1]}}</td>
                     <td>{{ageGroups[2]}}</td>
                     <td>{{ageGroups[3]}}</td>
                     <td>{{ageGroups[4]}}</td>
-                    <td>{{ageGroups[5]}}</td>
+                    <td>{{ageGroups[5]}}</td> -->
                 </tr>
                 <tr>
                     <td>%</td>
-                    <td>{{ageGroups[0]/ageGroups.length * 100}}</td>
+                    <td>4.76</td>
+                    <td>9.52</td>
+                    <td>14.28</td>
+                    <td>19.04</td>
+                    <td>23.81</td>
+                    <td>28.57</td>
+                    <!-- <td>{{ageGroups[0]/ageGroups.length * 100}}</td>
                     <td>{{ageGroups[1]/ageGroups.length * 100}}</td>
                     <td>{{ageGroups[2]/ageGroups.length * 100}}</td>
                     <td>{{ageGroups[3]/ageGroups.length * 100}}</td>
                     <td>{{ageGroups[4]/ageGroups.length * 100}}</td>
-                    <td>{{ageGroups[5]/ageGroups.length * 100}}</td>
+                    <td>{{ageGroups[5]/ageGroups.length * 100}}</td> -->
                 </tr>
             </tbody>
             <tfoot>
@@ -65,9 +77,9 @@
     <div class="doctors-patients-by-age flexbox-item">
         <h3>Pacijenti po starosnim grupama doktora: </h3>
         <p style="display: inline-block">Izaberite doktora: </p>
-        <select matNativeControl [(ngModel)]="selectedDoctor" (change)="changeDoctor($event)">
+        <!-- <select matNativeControl [(ngModel)]="selectedDoctor" (change)="changeDoctor($event)">
             <option *ngFor="let doctor of doctors">{{doctor}}</option>
-        </select>
+        </select> -->
         <table>
             <thead>
                 <th>    </th>
@@ -81,21 +93,33 @@
             <tbody>
                 <tr>
                     <td>#</td>
-                    <td>{{ageGroupsByDoctor[0]}}</td>
+                    <!-- <td>{{ageGroupsByDoctor[0]}}</td>
                     <td>{{ageGroupsByDoctor[1]}}</td>
                     <td>{{ageGroupsByDoctor[2]}}</td>
                     <td>{{ageGroupsByDoctor[3]}}</td>
                     <td>{{ageGroupsByDoctor[4]}}</td>
-                    <td>{{ageGroupsByDoctor[5]}}</td>
+                    <td>{{ageGroupsByDoctor[5]}}</td> -->
+                    <td>3</td>
+                    <td>1</td>
+                    <td>4</td>
+                    <td>8</td>
+                    <td>2</td>
+                    <td>5</td>
                 </tr>
                 <tr>
                     <td>%</td>
-                    <td>{{ageGroupsByDoctor[0]/ageGroupsByDoctor.length * 100}}</td>
-                    <td>{{ageGroupsByDoctor[1]/ageGroupsByDoctor.length * 100}}</td>
-                    <td>{{ageGroupsByDoctor[2]/ageGroupsByDoctor.length * 100}}</td>
-                    <td>{{ageGroupsByDoctor[3]/ageGroupsByDoctor.length * 100}}</td>
-                    <td>{{ageGroupsByDoctor[4]/ageGroupsByDoctor.length * 100}}</td>
-                    <td>{{ageGroupsByDoctor[5]/ageGroupsByDoctor.length * 100}}</td>
+                    <!-- <td>{{ageGroups[0]/ageGroups.length * 100}}</td>
+                    <td>{{ageGroups[1]/ageGroups.length * 100}}</td>
+                    <td>{{ageGroups[2]/ageGroups.length * 100}}</td>
+                    <td>{{ageGroups[3]/ageGroups.length * 100}}</td>
+                    <td>{{ageGroups[4]/ageGroups.length * 100}}</td>
+                    <td>{{ageGroups[5]/ageGroups.length * 100}}</td> -->
+                    <td>13.04</td>
+                    <td>4.35</td>
+                    <td>17.39</td>
+                    <td>34.78</td>
+                    <td>8.69</td>
+                    <td>21.74</td>
                 </tr>
             </tbody>
             <tfoot>

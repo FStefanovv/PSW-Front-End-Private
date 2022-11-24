@@ -26,22 +26,22 @@ export class PatientStatisticsComponent implements OnInit {
 
     ngOnInit() : void {
 
-        this.patientService.getAllPatients().subscribe(res => {
+        // this.patientService.getAllPatients().subscribe(res => {
             
-            this.patients = res;
-            let doctors: string[] = [];
-            this.patients.forEach(function(this:PatientStatisticsComponent, patient) { 
-                doctors.push(patient.doctorId);
-                if(patient.gender == "male"){
-                    this.male += 1;
-                }
-                else{
-                    this.female += 1;
-                }
-            });
-            this.countByAgeGroup(this.ageGroups, this.patients);
-            this.doctors = new Set<string>(doctors);
-        });
+        //     this.patients = res;
+        //     let doctors: string[] = [];
+        //     this.patients.forEach(function(this:PatientStatisticsComponent, patient) { 
+        //         doctors.push(patient.doctorId);
+        //         if(patient.gender == "male"){
+        //             this.male += 1;
+        //         }
+        //         else{
+        //             this.female += 1;
+        //         }
+        //     });
+        //     this.countByAgeGroup(this.ageGroups, this.patients);
+        //     this.doctors = new Set<string>(doctors);
+        //});
 
         Chart.defaults.global.defaultFontSize = 25;
         Chart.defaults.global.defaultFontColor = '#000';
@@ -52,7 +52,8 @@ export class PatientStatisticsComponent implements OnInit {
             data: {
                 labels: ['0-18', '18-35', '35-45', '45-55', '55-65', '65+'],
                 datasets: [{
-                    data: [this.ageGroups],
+                    //this.ageGroups
+                    data: [1, 2, 3, 4, 5, 6],
                     backgroundColor: [
                         '#86eba1',
                         '#86ebc6',
@@ -87,7 +88,8 @@ export class PatientStatisticsComponent implements OnInit {
             data: {
                 labels: ['Musko', 'Zensko'],
                 datasets: [{
-                    data: [this.male, this.female],
+                    //this.male, this.female
+                    data: [10, 9],
                     backgroundColor: [
                         '#86cbeb',
                         '#bf86eb'
@@ -118,7 +120,8 @@ export class PatientStatisticsComponent implements OnInit {
             data: {
                 labels: ['0-18', '18-35', '35-45', '45-55', '55-65', '65+'],
                 datasets: [{
-                    data: [this.ageGroupsByDoctor],
+                    //this.ageGroupsByDoctor
+                    data: [3, 1, 4, 8, 2, 5],
                     backgroundColor: [
                         '#86eba1',
                         '#86ebc6',
@@ -150,35 +153,35 @@ export class PatientStatisticsComponent implements OnInit {
         });
     }
 
-    changeDoctor(e: any): void{
-        this.ageGroupsByDoctor = [0, 0, 0, 0, 0, 0];
-        if(this.selectedDoctor != ""){
-            return;
-        }
-        var doctorsPatients = this.patients.filter(pat => pat.doctorId == this.selectedDoctor);
-        this.countByAgeGroup(this.ageGroupsByDoctor, doctorsPatients);
-    }
+    // changeDoctor(e: any): void{
+    //     this.ageGroupsByDoctor = [0, 0, 0, 0, 0, 0];
+    //     if(this.selectedDoctor != ""){
+    //         return;
+    //     }
+    //     var doctorsPatients = this.patients.filter(pat => pat.doctorId == this.selectedDoctor);
+    //     this.countByAgeGroup(this.ageGroupsByDoctor, doctorsPatients);
+    // }
 
-    countByAgeGroup(countInto: number[], countFrom: Patient[]){
-        countFrom.forEach(function(patient) { 
-            if(patient.age < 18){
-                countInto[0] += 1;
-            }
-            else if(patient.age >= 18 && patient.age < 35){
-                countInto[1] += 1;
-            }
-            else if(patient.age >= 35 && patient.age < 45){
-                countInto[2] += 1;
-            }
-            else if(patient.age >= 45 && patient.age < 55){
-                countInto[3] += 1;
-            }
-            else if(patient.age >= 55 && patient.age < 65){
-                countInto[4] += 1;
-            }
-            else{
-                countInto[5] += 1;
-            }
-        });
-    }
+    // countByAgeGroup(countInto: number[], countFrom: Patient[]){
+    //     countFrom.forEach(function(patient) { 
+    //         if(patient.age < 18){
+    //             countInto[0] += 1;
+    //         }
+    //         else if(patient.age >= 18 && patient.age < 35){
+    //             countInto[1] += 1;
+    //         }
+    //         else if(patient.age >= 35 && patient.age < 45){
+    //             countInto[2] += 1;
+    //         }
+    //         else if(patient.age >= 45 && patient.age < 55){
+    //             countInto[3] += 1;
+    //         }
+    //         else if(patient.age >= 55 && patient.age < 65){
+    //             countInto[4] += 1;
+    //         }
+    //         else{
+    //             countInto[5] += 1;
+    //         }
+    //     });
+    // }
 }
