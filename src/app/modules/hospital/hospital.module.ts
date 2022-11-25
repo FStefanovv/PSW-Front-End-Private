@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'patients/discharge', component: DischargePatientComponent},
   { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
   { path: 'vacations/urgent', component: CreateUrgentVacationComponent},
-  { path: 'vacations/cancel', component: CancelVacationComponent}
+  { path: 'vacations/cancel', component: CancelVacationComponent},
   {path: 'patients/treatments/create', component: CreateTreatmentComponent}
  ];
  
@@ -63,7 +63,7 @@ const routes: Routes = [
     CreateUrgentVacationComponent,
     ShowAppointmentsUrgentVacationComponent,
     ShowDoctorsForChange,
-    CancelVacationComponent
+    CancelVacationComponent,
     CreateTreatmentComponent
   ],
   imports: [
