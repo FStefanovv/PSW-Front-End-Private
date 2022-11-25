@@ -13,6 +13,9 @@ import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.compon
 import { FormsModule } from '@angular/forms';
 
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorIntercept } from "./modules/hospital/services/error.interceptor"; 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -29,7 +32,13 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorIntercept,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [MyDialogComponent]
 })

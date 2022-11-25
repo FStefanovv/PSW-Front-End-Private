@@ -16,7 +16,13 @@ import { RescheduleAppointmentComponent } from "./reschedule-appointment/resched
 import { BloodRequestComponent } from "./blood-request/blood-request.component";
 import { PatientOnTreatmentComponent } from './patient-on-treatment/patient-on-treatment.component';
 import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
-
+import { DischargePatientComponent } from './discharge-patient/discharge-patient.component';
+import { UpdateTreatmentComponent } from './update-treatment/update-treatment.component';
+import { CreateUrgentVacationComponent } from "./create-urgent-vacation/create-urgent-vacation.component"; 
+import { ShowAppointmentsUrgentVacationComponent } from "./show-appointments-urgent-vacation/show-appointments-urgent-vacation.component";
+import { ShowDoctorsForChange } from "./show-doctors-for-change/show-doctors-for-change.component";
+import { CancelVacationComponent } from "./cancel-vacation/cancel-vacation.component";
+import { CreateTreatmentComponent } from './create-treatment/create-treatment.component';
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -30,7 +36,15 @@ const routes: Routes = [
   { path: 'bloodRequest', component: BloodRequestComponent},
   { path: 'patients-treatments', component: PatientOnTreatmentComponent},
   { path: 'vacation-requests', component: VacationRequestsByDoctorComponent}
-];
+  { path: 'patients/treatments', component: PatientOnTreatmentComponent},
+  { path: 'patients/discharge', component: DischargePatientComponent},
+  { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
+  { path: 'vacations/urgent', component: CreateUrgentVacationComponent},
+  { path: 'vacations/cancel', component: CancelVacationComponent},
+  {path: 'patients/treatments/create', component: CreateTreatmentComponent}
+ ];
+ 
+ 
 
 @NgModule({
   declarations: [
@@ -47,7 +61,15 @@ const routes: Routes = [
     RescheduleAppointmentComponent,
     BloodRequestComponent,
     PatientOnTreatmentComponent,
-    VacationRequestsByDoctorComponent
+    VacationRequestsByDoctorComponent,
+
+    DischargePatientComponent,
+    UpdateTreatmentComponent,
+    CreateUrgentVacationComponent,
+    ShowAppointmentsUrgentVacationComponent,
+    ShowDoctorsForChange,
+    CancelVacationComponent,
+    CreateTreatmentComponent
   ],
   imports: [
     CommonModule,
