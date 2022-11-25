@@ -9,6 +9,7 @@ import {PopUpComponent} from "./pop-up/pop-up.component";
 })
 export class AppComponent {
   title = 'HospitalFront';
+
   constructor(private dialogRef: MatDialog) {}
   openDialog(){
     this.dialogRef.open(PopUpComponent, {
@@ -18,4 +19,6 @@ export class AppComponent {
       }
     });
   }
+
+ 
 }

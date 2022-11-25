@@ -1,0 +1,36 @@
+<div class="container">
+    <div  id="content" #content>
+        <h2>Discharge</h2>
+        <form #dischargeForm="ngForm" (ngSubmit)="onPatientDischarge(dischargeForm.value)">
+            <label>Treatment id</label>
+            <input type="text" name="treatmentId" ngModel disabled>
+            <br>
+            <label>Patient</label>
+            <input type="text" name="patientId" ngModel disabled>
+            <br>
+            <label>Room</label>
+            <input type="text" name="room" ngModel disabled>
+            <br>
+            <label>Bed</label>
+            <input type="text" name="bed" ngModel disabled>
+            <br>
+            <br>
+            <label>Therapy</label>
+            <input type="text" name="therapy" ngModel disabled>
+            <br>
+            <br>
+            <label>Start</label>
+            <input type="date" name="startDate" ngModel disabled>
+            <br>
+            <br>
+            <label>End</label>
+            <input type="date" name="endDate" ngModel disabled>
+            <br>
+            <br>
+            <label>Reason</label>
+            <input type="text" name="reason" ngModel >
+            <br>
+            <input type="submit" value="Discharge">
+        </form>
+    </div>
+</div>

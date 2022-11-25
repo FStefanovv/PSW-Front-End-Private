@@ -1,33 +1,43 @@
-<div>
-    <span>Show: </span>
-    <form>
-        <input type="radio" value="Finished"   (change)="changeAppType($event)" name="appointment-type">past appointmnets
-        <input type="radio" value="Scheduled" checked="True" (change)="changeAppType($event)" name="appointment-type">scheduled appointments
-    </form>
+<div style='margin-left:10%;margin-bottom:5%;margin-top:3%'>
+    <label>Appointments to show: </label>
+    <select [(ngModel)]="appointmentType" (change)="filterAppointments($event)">
+        <option value="-1">All</option>
+        <option value="0">Scheduled</option>
+        <option value="1">Finished</option>
+    </select>
+    <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+    Filter: <input type="date" [(ngModel)]="filterDate" (change)="filterAppointmentsByDate($event)">
+    <select name="filter" id="filter"[(ngModel)]="typeDate">
+        <option value="day">Day</option>
+        <option value="week">Week</option>
+    </select>
+    
 </div>
 
 
 <table cellspacing="0">
     <tr>
         <th>Patient</th>
-        <th>Date and time</th>
+        <th>Date</th>
+        <th>Start Time</th>
         <th>Room</th>
-        <th>Status</th>
+        <th>Duration</th>
         <th></th>
         <th></th>
     </tr>
     <tr *ngFor="let app of appointmentsToShow">
-        <td>{{app.patient}}</td>
-        <td>{{app.start}}</td>
-        <td>{{app.room}}</td>
-        <td>{{app.status}}</td>
+        <td>{{app.patientId}}</td>
+        <td>{{app.date}}</td>
+        <td>{{app.startTime}}</td>
+        <td>{{app.roomNumber}}</td>
+        <td>20 minutes</td>
         <td>
-            <button class="reschedule-button">
+            <button ng-disabled="!app.cancellable" class="reschedule-button" (click)="onRescheduleClicked(app.id)">
                 Reschedule
             </button>
         </td>
         <td>
-            <button class="cancel-button">
+            <button  class="cancel-button" [disabled]="" (click)="cancelled(app.id)">
                 Cancel
             </button>
         </td>

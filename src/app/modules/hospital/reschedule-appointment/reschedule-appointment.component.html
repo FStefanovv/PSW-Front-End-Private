@@ -1,0 +1,20 @@
+<div class="container">
+    <div>
+        <h2>Reschedule appointment form</h2>
+        <form #rescheduleForm="ngForm" (ngSubmit)="onAppointmentRescheduled(rescheduleForm.value)">
+            <label>Appointment id</label>
+            <input type="text" name="appId" ngModel>
+            <br>
+            <label>Patient id</label>
+            <input type="text" name="patientId" ngModel disabled>
+            <br>
+            <label>Date</label>
+            <input type="date" name="date" ngModel>
+            <br>
+            <label>Time</label>
+            <input type="text" name="time" ngModel>
+            <br>
+            <input type="submit" value="Reschedule">
+        </form>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div id="content" #content>
+ <table cellspacing="0">
+    <tr>
+        <th>Treatment</th>
+        <th>Patient</th>
+        <th>Room</th>
+        <th>Bed</th>
+        <!-- <th>Therapy</th>
+        <th>Start</th> -->
+        <th></th>
+        <th></th>
+        
+    </tr>
+  
+    <tr *ngFor="let treatment of treatments">
+        <td>{{treatment.id}}</td>
+        <td>{{treatment.patientId}}</td>
+        <td>{{treatment.roomId}}</td>
+        <td>{{treatment.bedId}}</td>
+        <!-- <td>{{treatment.therapy}}</td>
+        <td>{{treatment.startDate}}</td> -->
+        <td>
+            <button  class="discharge-button" (click)="discharge(treatment.id)">
+                Discharge
+            </button>
+        </td>
+        <td>
+            <button  class="update-button" (click)="update(treatment.id)">
+                Update
+            </button>
+        </td>
+        
+    </tr> 
+   
+        
+    
+ </table>
+</div>

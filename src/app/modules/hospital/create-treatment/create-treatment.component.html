@@ -1,0 +1,91 @@
+<!-- <div class="container">
+    <div  >
+        <h2>Create treatment</h2>
+        <form #createForm="ngForm" (ngSubmit)="onTreatmentCreate(createForm.value)">
+            <label>Doctor id</label>
+            <input type="text" name="doctorId" ngModel >
+            <br>
+            <label>Patient</label>
+            <input type="text" name="patientId" ngModel >
+            <br>
+            <label>Room</label>
+            <select   name="roomId" (change)="freeBed($event)" ngModel>
+                <option *ngFor="let item1 of listOfRooms">{{item1}}</option>
+            </select>
+            <br>
+            <label>Bed</label>
+            <select  name="bedId" ngModel>
+                <option *ngFor="let item2 of listOfBeds">{{item2}}</option>
+            </select>
+            <br>
+            <br>
+            <label>Reason</label>
+            <input type="text" name="reason" ngModel >
+            <br>
+            <br>
+            <label>Therapy</label>
+            <input type="text" name="therapy" ngModel >
+            <br>
+            <br>
+            <input type="submit" value="Create">
+        </form>
+    </div>
+</div> -->
+
+<div class="container">
+    <div>
+        <h2>Create treatment</h2>
+        <table>
+            <tr>
+                <td>DoctorId</td>
+                <td><input matInput [(ngModel)]="treatment.doctorId"> </td>             
+                <!-- <td *ngIf="patNull">Choose patient</td> -->
+                
+            </tr>
+            <tr>
+                <td>PatientId</td>
+                <td><input  matInput [(ngModel)]="treatment.patientId"></td>
+                <td *ngIf="patientIdNull">Choose patient</td>
+                
+            </tr>
+            <tr>
+                <td>RoomId</td>
+                <td><select matNativeControl [(ngModel)]="treatment.roomId" (change)="freeBed($event)">
+                         <option>null</option> 
+                        <option *ngFor="let item of listOfRooms">{{item}}</option>
+                    </select>
+                </td>
+                <td *ngIf="roomIdNull">Choose room</td> 
+            </tr>
+            <tr>
+                <td>BedId</td>
+                <td><select matNativeControl [(ngModel)]="treatment.bedId">
+                         <option>null</option> 
+                        <option *ngFor="let item1 of listOfBeds">{{item1}}</option>
+                    </select>
+                </td>
+                <td *ngIf="bedIdNull">Choose bed</td>
+            </tr>
+            <tr>
+                <td>Reason</td>
+                <td><input matInput [(ngModel)]="treatment.AdmissionReason"> </td>
+                <td *ngIf="reasonNull">Choose reason</td>
+                
+            </tr>
+            <tr>
+                <td>Therapy</td>
+                <td><input matInput [(ngModel)]="treatment.Therapy"> </td>
+                <td *ngIf="therapyNull">Choose therapy</td> 
+                
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><button mat-stroked-button (click)="createTreatment()">
+                    Submit
+                </button></td>
+            </tr>
+        </table>
+        <!-- <label>{{errorMsg}}</label> -->
+    </div>
+</div>
