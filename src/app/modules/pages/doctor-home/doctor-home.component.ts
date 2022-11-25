@@ -14,17 +14,10 @@ export class DoctorHomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  doctorHomeClick(){
-    this.router.navigate(['/doctor-home']);
-  }
-
   logOutClick(){
     this.authService.logout();
     this.router.navigate(['/']);
   }
 
-  appointmentsClick(){
-    this.router.navigate(['/appointments']);
-  }
 
 }
