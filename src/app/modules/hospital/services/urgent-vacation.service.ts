@@ -5,14 +5,20 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Appointment } from '../model/appointment.model';
 import { catchError,  } from 'rxjs/operators';
-
+import {
+  HttpEvent,
+  HttpHandler,
+  HttpRequest,
+  HttpInterceptor
+} from '@angular/common/http';
+import { retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UrgentVacationService{
   apiHost: string = 'http://localhost:5000/';
-  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' , 'access-control-allow-origin': '*' });
 
   constructor(private http: HttpClient) { }
 
@@ -29,10 +35,14 @@ export class UrgentVacationService{
   }
 
   changeDoctor(doctorId:string,appointmentId:string):Observable<any>{
-    return this.http.post<any>(this.apiHost+ 'api/Appointments/ChangeDoctorForAppointment/' + doctorId + '/' + appointmentId,{headers : this.headers})
+    return this.http.post<any>(this.apiHost+ 'api/Appointments/ChangeDoctorForAppointment/' + doctorId + '/' + appointmentId,{headers : this.headers}).pipe(catchError(this.errorHandler))
   }
 
   errorHandler(error: HttpErrorResponse){
-    return throwError(() => new Error('test'))
+    console.log(error.headers)
+    return throwError( error)
   }
+  
+
+  
 }

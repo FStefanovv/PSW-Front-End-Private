@@ -24,7 +24,10 @@ export class ShowDoctorsForChange implements OnInit{
     this.urgentVacationService.changeDoctor(id,this.appId).subscribe(
       res => {
         this.callbackFunction(this.appId)
-        alert("Kaficaaaaaaaa")
+        alert("Succesfully changed.")
+      },
+      error =>{
+        alert("Doctor is busy!")
       }
     )
   }

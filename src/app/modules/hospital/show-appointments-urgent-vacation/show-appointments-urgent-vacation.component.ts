@@ -22,6 +22,7 @@ export class ShowAppointmentsUrgentVacationComponent implements OnInit{
   }
 
   callbackFunctionToDelete = (id: string): void => {
+    this.showDoctors = false
     for (var i =0; i < this.appsList.length; i++)
       if (this.appsList[i].id === id) {
         this.appsList.splice(i,1);
@@ -41,6 +42,11 @@ export class ShowAppointmentsUrgentVacationComponent implements OnInit{
         this.appId = p.id
         this.doctors = res
         this.showDoctors = true
+      },
+      error =>{
+        alert("There are no free doctors! Please change dates.")
+        //alert(error.errorMessage)
+        window.location.reload
       }
     )
   }

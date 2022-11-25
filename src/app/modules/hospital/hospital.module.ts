@@ -20,6 +20,7 @@ import { UpdateTreatmentComponent } from './update-treatment/update-treatment.co
 import { CreateUrgentVacationComponent } from "./create-urgent-vacation/create-urgent-vacation.component"; 
 import { ShowAppointmentsUrgentVacationComponent } from "./show-appointments-urgent-vacation/show-appointments-urgent-vacation.component";
 import { ShowDoctorsForChange } from "./show-doctors-for-change/show-doctors-for-change.component";
+import { CancelVacationComponent } from "./cancel-vacation/cancel-vacation.component";
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'patients/treatments', component: PatientOnTreatmentComponent},
   { path: 'patients/discharge', component: DischargePatientComponent},
   { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
-  { path: 'vacations/urgent', component:CreateUrgentVacationComponent}
+  { path: 'vacations/urgent', component: CreateUrgentVacationComponent},
+  { path: 'vacations/cancel', component: CancelVacationComponent}
  ];
  
 
@@ -57,7 +59,8 @@ const routes: Routes = [
     UpdateTreatmentComponent,
     CreateUrgentVacationComponent,
     ShowAppointmentsUrgentVacationComponent,
-    ShowDoctorsForChange
+    ShowDoctorsForChange,
+    CancelVacationComponent
   ],
   imports: [
     CommonModule,
