@@ -11,6 +11,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule} from '@angular/material/dialog' ;
 import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.component";
 import { FormsModule } from '@angular/forms';
+
+
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorIntercept } from "./modules/hospital/services/error.interceptor"; 
 
