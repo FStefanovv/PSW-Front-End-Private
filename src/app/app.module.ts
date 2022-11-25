@@ -20,6 +20,8 @@ import { FormsModule } from '@angular/forms';
 >>>>>>> 1338d49c5d196bdd82f5be7b60b94b3a64f9b9e1
 
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorIntercept } from "./modules/hospital/services/error.interceptor"; 
 
 @NgModule({
   declarations: [
@@ -47,7 +49,13 @@ import { FormsModule } from '@angular/forms';
     FormsModule
 >>>>>>> 1338d49c5d196bdd82f5be7b60b94b3a64f9b9e1
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorIntercept,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [MyDialogComponent]
 })
