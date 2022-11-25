@@ -23,21 +23,25 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+   
     if (!this.checkValidity()) return;
+   
     this.authService
       .login(this.user)
-      .subscribe(response => {
-        var role = JSON.parse(window.atob(localStorage.getItem('id_token').split('.')[1]))["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-        if (role === "MANAGER") {
-          this.router.navigate(['/manager-home']);
-        } else if (role === "DOCTOR") {
+      .subscribe( result =>{
+        let role = result.claims[4].value;
+         if(role === "MANAGER"){
+          this.router.navigate([('/manager-home')]);
+         }else if(role === "DOCTOR"){
           this.router.navigate(['/doctor-home']);
-        }
+         }else{
+          this.toast.error({ detail: 'There is no doctor or manager with this info!', summary: "Please try again.", duration: 5000 });
+         }
       },
         error => {
           this.toast.error({ detail: 'Incorrect email or password!', summary: "Please try again.", duration: 5000 });
           return;
-        });
+  });
   }
 
   checkValidity() {

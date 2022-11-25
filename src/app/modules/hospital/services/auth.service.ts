@@ -15,7 +15,6 @@ export class AuthService {
 
   login(user: User) {
     var logRes = this.userService.login(user);
-    console.log(logRes);
     this.setSession(logRes);
     return logRes.pipe(
       shareReplay());
