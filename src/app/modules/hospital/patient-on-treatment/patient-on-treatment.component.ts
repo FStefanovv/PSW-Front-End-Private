@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./patient-on-treatment.component.css']
 })
 export class PatientOnTreatmentComponent implements OnInit {
-treatments: PatientTreatmentDTO[]=[{id:"t", patient:"Pera", room:"106", bed:"1", therapy:"4x2 brufen", startDate:"11/12/2022", status:"TREATMENT"},{id:"tp", patient:"Sima", room:"106", bed:"2", therapy:"4x2 brufen", startDate:"11/12/2022", status:"TREATMENT"}]
+treatments: PatientTreatmentDTO[]=[]
 treatmentsToShow: PatientTreatmentDTO[]=[]
 treatmentStatus: string="TREATMENT";
 
@@ -19,10 +19,10 @@ treatmentStatus: string="TREATMENT";
   constructor(private treatmentService:TreatmentService, private router:Router) { }
 
   ngOnInit(): void {
-    this.treatmentsToShow = this.treatments.filter(treatment => treatment.status == "TREATMENT");
+    //this.treatmentsToShow = this.treatments.filter(treatment => treatment.status == "TREATMENT");
     this.treatmentService.getAllPatientOnTreatment().subscribe(res=>{
         this.treatments=res
-        this.treatmentsToShow=this.treatments
+        
     })
   }
 
@@ -35,6 +35,8 @@ treatmentStatus: string="TREATMENT";
   update(id:any){
     const updateTherapy = this.treatments.find((a) => {return a.id === id});
     this.router.navigate(['patients/treatments/update'],{queryParams:{id:updateTherapy?.id}})
+
+    
   }
 
 }

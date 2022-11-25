@@ -21,6 +21,7 @@ import { CreateUrgentVacationComponent } from "./create-urgent-vacation/create-u
 import { ShowAppointmentsUrgentVacationComponent } from "./show-appointments-urgent-vacation/show-appointments-urgent-vacation.component";
 import { ShowDoctorsForChange } from "./show-doctors-for-change/show-doctors-for-change.component";
 import { CancelVacationComponent } from "./cancel-vacation/cancel-vacation.component";
+import { CreateTreatmentComponent } from './create-treatment/create-treatment.component';
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -37,7 +38,9 @@ const routes: Routes = [
   { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
   { path: 'vacations/urgent', component: CreateUrgentVacationComponent},
   { path: 'vacations/cancel', component: CancelVacationComponent}
+  {path: 'patients/treatments/create', component: CreateTreatmentComponent}
  ];
+ 
  
 
 @NgModule({
@@ -61,6 +64,7 @@ const routes: Routes = [
     ShowAppointmentsUrgentVacationComponent,
     ShowDoctorsForChange,
     CancelVacationComponent
+    CreateTreatmentComponent
   ],
   imports: [
     CommonModule,

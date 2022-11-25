@@ -14,21 +14,24 @@ import  html2canvas from 'html2canvas'
 export class DischargePatientComponent implements OnInit {
    @ViewChild('dischargeForm')
    form: NgForm;
+   treatments: DischargePatientDTO
 
   constructor(private treatmentService:TreatmentService, private router: Router) { }
 
   ngOnInit(): void {
     const queryString= window.location.search
     const urlParams=new URLSearchParams(queryString)
-    this.treatmentService.getPatientToDischarged(urlParams.get('id')).subscribe(res =>{
+    this.treatmentService.getPatientToDischarged(urlParams.get('id')).subscribe(res =>
+      {
+        this.treatments=res;
       this.form.setValue({
         treatmentId:res.id,
-        patientId: res.patient,
-        room: res.room,
-        bed: res.bed,
+        patientId: res.patientId,
+        room: res.roomId,
+        bed: res.bedId,
         therapy: res.therapy,
         startDate: res.startDate,
-        endDate: Date.now(),
+        endDate: res.endDate,
         reason: ""
       })
 
@@ -59,20 +62,22 @@ export class DischargePatientComponent implements OnInit {
   onPatientDischarge(treatments : any){
   let dischargePatientDTO = new DischargePatientDTO( );
   dischargePatientDTO.id=treatments.Id
-  dischargePatientDTO.patient=treatments.patient
-  dischargePatientDTO.room=treatments.room
-  dischargePatientDTO.bed=treatments.bed
+  console.log(treatments.id)
+  dischargePatientDTO.patientId=treatments.patient
+  dischargePatientDTO.roomId=treatments.room
+  dischargePatientDTO.bedId=treatments.bed
   dischargePatientDTO.therapy=treatments.therapy
   dischargePatientDTO.startDate=treatments.startDate
   dischargePatientDTO.endDate=treatments.endDate
   dischargePatientDTO.reason=treatments.reason
-  dischargePatientDTO.status="DISCHARGED"
-  this.treatmentService.dischargePatient(dischargePatientDTO).subscribe(res =>{alert("Succesfully discharged patient!")})
+
+  
+  this.treatmentService.dischargePatient(dischargePatientDTO.reason,this.treatments.id).subscribe(res =>{alert("Succesfully discharged patient!")})
   if(confirm('Do you want to generate PDF file?'))
       {
          this.generatePDF()
       }
-  this.router.navigate(['patients/treatments'])
+ this.router.navigate(['patients/treatments'])
 
 
  }
