@@ -1,7 +1,6 @@
 import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { PatientTreatmentDTO } from '../model/patientTreatmentDTO.model';
 import { TreatmentService } from '../services/treatment.service';
-import  jsPDF from 'jspdf';
 import  html2canvas from 'html2canvas'
 import { Router } from '@angular/router';
 
