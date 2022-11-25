@@ -15,7 +15,6 @@ import { CreateBloodRecordComponent } from './create-blood-record/create-blood-r
 import { RescheduleAppointmentComponent } from "./reschedule-appointment/reschedule-appointment.component";
 import { BloodRequestComponent } from "./blood-request/blood-request.component";
 import { PatientOnTreatmentComponent } from './patient-on-treatment/patient-on-treatment.component';
-import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
 import { DischargePatientComponent } from './discharge-patient/discharge-patient.component';
 import { UpdateTreatmentComponent } from './update-treatment/update-treatment.component';
 import { CreateUrgentVacationComponent } from "./create-urgent-vacation/create-urgent-vacation.component"; 
@@ -34,8 +33,6 @@ const routes: Routes = [
   { path: 'bloodRecord/add', component: CreateBloodRecordComponent},
   { path: 'appointments/reschedule', component: RescheduleAppointmentComponent},
   { path: 'bloodRequest', component: BloodRequestComponent},
-  { path: 'patients-treatments', component: PatientOnTreatmentComponent},
-  { path: 'vacation-requests', component: VacationRequestsByDoctorComponent}
   { path: 'patients/treatments', component: PatientOnTreatmentComponent},
   { path: 'patients/discharge', component: DischargePatientComponent},
   { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
@@ -61,8 +58,6 @@ const routes: Routes = [
     RescheduleAppointmentComponent,
     BloodRequestComponent,
     PatientOnTreatmentComponent,
-    VacationRequestsByDoctorComponent,
-
     DischargePatientComponent,
     UpdateTreatmentComponent,
     CreateUrgentVacationComponent,
