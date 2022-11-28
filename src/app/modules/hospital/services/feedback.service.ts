@@ -17,7 +17,7 @@ export class FeedbackService {
     return this.http.get<Feedback[]>(this.apiHost + 'api/feedback', { headers: this.headers });
   }
 
-  acceptFeedback(feedback: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + 'api/feedback/verify/' + feedback.id, feedback, { headers: this.headers });
+  changeApproval(feedback: any): Observable<any> {
+    return this.http.post<any>(this.apiHost + 'api/feedback/approval-change/' + feedback.id, feedback, { headers: this.headers });
   }
 }

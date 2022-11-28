@@ -56,9 +56,29 @@ th {
   color: cornsilk;
 }
 
+.hide-button{
+  background-color: forestgreen;
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  border: 20px;
+  font-size: 23px;
+  border-radius: 8px;
+  color: cornsilk;
+}
+
 .approval-button:hover {
   background-color: white;
   color: black;
 }
+
+.hide-button:hover {
+  background-color: white;
+  color: black;
+}
+
+
 
 
