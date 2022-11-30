@@ -4,7 +4,6 @@ import { Routes, RouterModule } from "@angular/router";
 import { AppointmentsByDoctorComponent } from "./modules/hospital/appointments-by-doctor/appointments-by-doctor.component";
 import { FeedbackComponent } from "./modules/hospital/feedback/feedback.component"
 import{RegisterBloodBankComponent} from "./modules/integration/register-blood-bank/register-blood-bank.component";
-import { ConfigurationComponent } from './modules/integration/configuration/configuration.component';
 import { VacationRequestsByDoctorComponent } from "./modules/hospital/vacation-requests-by-doctor/vacation-requests-by-doctor.component";
 import { PatientStatisticsComponent } from "./modules/hospital/patient-statistics/patient-statistics.component";
 import { PatientProfileComponent } from "./modules/hospital/patient-profile/patient-profile.component";
@@ -22,8 +21,7 @@ const routes: Routes = [
   { path: 'feedback', component: FeedbackComponent },
   {path:'register-blood-bank', component:RegisterBloodBankComponent},
   { path: 'manager-home', component: ManagerHomeComponent },
-  { path: 'doctor-home', component: DoctorHomeComponent },
-   {path:'configuration', component:ConfigurationComponent},
+  { path: 'doctor-home', component: DoctorHomeComponent }
   //{ path: '', component: LoginComponent }
 ]
 
