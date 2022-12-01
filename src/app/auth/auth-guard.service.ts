@@ -14,14 +14,13 @@ export class AuthGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot): boolean {
 
     const expectedRole = route.data['expectedRole'];
-    const token = localStorage.getItem('id_token');
-    // decode the token to get its payload
-    const tokenPayload = decode(token);
-    if (!this.auth.isLoggedIn() )
-        // tokenPayload.role !== expectedRole) {
-       // this.router.navigate(['login']);
+    const tokenRole = localStorage.getItem('role');
+    //kad sredimo expiration stavicu i uslov za istek tokena
+    //if (!this.auth.isLoggedIn() )
+         if(tokenRole !== expectedRole) {
+           this.router.navigate(['login']);
         return false;
-      //}
+            }
       return true;
     }
    }

@@ -23,14 +23,18 @@ export class AuthService {
   public setSession(token) {
     console.log(token);
     const expiresAt = moment().add(token.expiresIn, 'second');
-    localStorage.setItem('role', token.claims[4].value);
-    localStorage.setItem('id_token', token.idToken);
+    localStorage.setItem('role', token.claims[5].value);
+    localStorage.setItem('userId', token.claims[0].value);
+    localStorage.setItem('idByRole', token.claims[1].value);
+    localStorage.setItem('fullName', token.claims[3].value + token.claims[4].value);
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
   }
 
   logout() {
-    localStorage.removeItem("id_token");
-    localStorage.removeItem("role");
+    localStorage.removeItem('role');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('idByRole');
+    localStorage.removeItem('fullName');
     localStorage.removeItem("expires_at");
   }
 
