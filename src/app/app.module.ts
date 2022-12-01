@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthInterceptor } from "./auth/auth.interceptor";
 import { AuthGuardService } from "./auth/auth-guard.service";
+import { ErrorIntercept } from "./modules/hospital/services/error.interceptor"; 
 
 
 @NgModule({

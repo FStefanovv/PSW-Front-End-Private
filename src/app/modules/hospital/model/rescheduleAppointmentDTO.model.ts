@@ -1,11 +1,15 @@
 export class RescheduleAppointmentDTO {
-    id: string = "";
+    id: string | null;
+    patientId : string;
     date: string = "";
     time: string = "";
     
-    public constructor(id : string, newDate : string, newTime : string){
-            this.id = id,
-            this.date = newDate,
-            this.time = newTime
+    public constructor(obj? : any){
+           if(obj){
+            this.id = obj.id
+            this.patientId = obj.patientId
+            this.date = obj.newDate
+            this.time = obj.newTime
+           } 
     }
 }

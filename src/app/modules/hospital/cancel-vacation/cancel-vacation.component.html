@@ -1,0 +1,6 @@
+<div>
+  <table>
+    <tr><td>Start</td><td>End</td><td>Description</td><td></td></tr>
+    <tr *ngFor="let vac of vacationList"><td>{{vac.start}}</td><td>{{vac.end}}</td><td>{{vac.description}}</td><td><button (click)="cancelVacation(vac)">Cancel</button></td></tr>
+  </table>
+</div>
