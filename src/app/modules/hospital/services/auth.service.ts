@@ -1,36 +1,36 @@
 import { Injectable } from '@angular/core';
 import { shareReplay, tap } from 'rxjs/operators';
-import { UserService } from './user.service';
 import { User } from '../model/user.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as moment from "moment";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  
+  apiHost: string = 'http://localhost:16177/';
+  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  constructor(private http: HttpClient, private userService: UserService) {
+  
+  constructor(private http: HttpClient) {
   }
 
   login(user: User) {
-    var logRes = this.userService.login(user);
-    this.setSession(logRes);
-    return logRes.pipe(
-      shareReplay());
+    return this.http.post<any>(this.apiHost + 'api/Credentials/login', user, { headers: this.headers }).pipe(shareReplay());
   }
 
-
-
-  private setSession(authResult) {
-    const expiresAt = moment().add(authResult.expiresIn, 'second');
-
-    localStorage.setItem('id_token', authResult.idToken);
+  public setSession(token) {
+    console.log(token);
+    const expiresAt = moment().add(token.expiresIn, 'second');
+    localStorage.setItem('role', token.claims[4].value);
+    localStorage.setItem('id_token', token.idToken);
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
   }
 
   logout() {
     localStorage.removeItem("id_token");
+    localStorage.removeItem("role");
     localStorage.removeItem("expires_at");
   }
 
@@ -46,5 +46,9 @@ export class AuthService {
     const expiration = localStorage.getItem("expires_at");
     const expiresAt = JSON.parse(expiration);
     return moment(expiresAt);
+  }
+
+  getRole() {
+    return localStorage.getItem("role");
   }
 }

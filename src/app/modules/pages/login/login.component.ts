@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { User } from '../../hospital/model/user.model';
-import { UserService } from '../../hospital/services/user.service';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../hospital/services/auth.service';
 import { Router } from '@angular/router';
@@ -28,7 +27,8 @@ export class LoginComponent implements OnInit {
    
     this.authService
       .login(this.user)
-      .subscribe( result =>{
+      .subscribe(result => {
+        this.authService.setSession(result);
         let role = result.claims[4].value;
          if(role === "MANAGER"){
           this.router.navigate([('/manager-home')]);

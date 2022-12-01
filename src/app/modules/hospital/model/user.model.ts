@@ -1,5 +1,6 @@
 export class User {
   id: number = 0;
+  idByRole: number = 0;
   email: string = '';
   password: string = '';
   name: string = '';

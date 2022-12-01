@@ -16,6 +16,7 @@ import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.compon
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthInterceptor } from "./auth/auth.interceptor";
+import { AuthGuardService } from "./auth/auth-guard.service";
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { AuthInterceptor } from "./auth/auth.interceptor";
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    AuthGuardService
   ],
   bootstrap: [AppComponent],
   entryComponents: [MyDialogComponent]
