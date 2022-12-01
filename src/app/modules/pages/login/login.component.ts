@@ -34,7 +34,7 @@ import { Router } from '@angular/router';
 
         result => {
           this.authService.setSession(result);
-          let role = result.claims[4].value;
+          let role = this.authService.getRole();
           if(role === "MANAGER"){
               this.router.navigate([('/manager-home')]);
            }

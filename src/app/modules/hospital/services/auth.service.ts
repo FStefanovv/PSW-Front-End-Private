@@ -55,4 +55,12 @@ export class AuthService {
   getRole() {
     return localStorage.getItem("role");
   }
+
+  getIdByRole() {
+    return localStorage.getItem("idByRole");
+  }
+
+  getUserId() {
+    return localStorage.getItem("userId");
+  }
 }
