@@ -23,6 +23,12 @@ import { ShowAppointmentsUrgentVacationComponent } from "./show-appointments-urg
 import { ShowDoctorsForChange } from "./show-doctors-for-change/show-doctors-for-change.component";
 import { CancelVacationComponent } from "./cancel-vacation/cancel-vacation.component";
 import { CreateTreatmentComponent } from './create-treatment/create-treatment.component';
+import { ReportMain } from "./report-main/report-main.component";
+import { ReportStepOne } from "./report-step-one/report-step-one.component";
+import { ReportNavigation } from "./report-nav-page/report-nav-page.component";
+import { ReportStepTwo } from "./report-step-two/report-step-two.component";
+import { ReportStepThree } from "./report-step-three/report-step-three.component";
+import { ReportStepFour } from "./report-step-four/report-step-four.component";
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -35,13 +41,14 @@ const routes: Routes = [
   { path: 'appointments/reschedule', component: RescheduleAppointmentComponent},
   { path: 'bloodRequest', component: BloodRequestComponent},
   { path: 'patients-treatments', component: PatientOnTreatmentComponent},
-  { path: 'vacation-requests', component: VacationRequestsByDoctorComponent}
+  { path: 'vacation-requests', component: VacationRequestsByDoctorComponent},
   { path: 'patients/treatments', component: PatientOnTreatmentComponent},
   { path: 'patients/discharge', component: DischargePatientComponent},
   { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
   { path: 'vacations/urgent', component: CreateUrgentVacationComponent},
   { path: 'vacations/cancel', component: CancelVacationComponent},
-  {path: 'patients/treatments/create', component: CreateTreatmentComponent}
+  { path: 'patients/treatments/create', component: CreateTreatmentComponent},
+  { path: 'reportdev',component: ReportMain}
  ];
  
  
@@ -62,14 +69,19 @@ const routes: Routes = [
     BloodRequestComponent,
     PatientOnTreatmentComponent,
     VacationRequestsByDoctorComponent,
-
     DischargePatientComponent,
     UpdateTreatmentComponent,
     CreateUrgentVacationComponent,
     ShowAppointmentsUrgentVacationComponent,
     ShowDoctorsForChange,
     CancelVacationComponent,
-    CreateTreatmentComponent
+    CreateTreatmentComponent,
+    ReportMain,
+    ReportStepOne,
+    ReportNavigation,
+    ReportStepTwo,
+    ReportStepThree,
+    ReportStepFour
   ],
   imports: [
     CommonModule,

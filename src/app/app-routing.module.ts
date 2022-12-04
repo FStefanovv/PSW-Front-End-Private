@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/appointments-by-doctor', pathMatch: 'full' },
   { path: 'appointments-by-doctor', component: AppointmentsByDoctorComponent},
   { path: 'home', component: HomeComponent },
-  { path: 'vacation-requests-by-doctor', component: VacationRequestsByDoctorComponent}
+  { path: 'vacation-requests-by-doctor', component: VacationRequestsByDoctorComponent},
   { path: 'patient-statistics', component: PatientStatisticsComponent }
 ];
 
