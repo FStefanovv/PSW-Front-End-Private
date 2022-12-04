@@ -1,0 +1,24 @@
+<table cellspacing="0">
+    <tr>
+        <th>Start</th>
+        <th>End</th>
+        <th>Description</th>
+        <th>Urgency</th>
+        <th>Status</th>
+        <th>Rejection Reason</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let req of requests">
+        <td>{{req.start}}</td>
+        <td>{{req.end}}</td>
+        <td>{{req.description}}</td>
+        <td>{{req.urgency}}</td>
+        <td>{{req.status}}</td>
+        <td>{{req.rejectionReason}}</td>
+        <td>
+            <button  class="cancel-button" *ngIf="req.status=='Waiting For Approval'" (click)="cancel(req.id)">
+                Cancel
+            </button>
+        </td>
+    </tr>
+</table>
