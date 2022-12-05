@@ -23,6 +23,9 @@ import { ShowAppointmentsUrgentVacationComponent } from "./show-appointments-urg
 import { ShowDoctorsForChange } from "./show-doctors-for-change/show-doctors-for-change.component";
 import { CancelVacationComponent } from "./cancel-vacation/cancel-vacation.component";
 import { CreateTreatmentComponent } from './create-treatment/create-treatment.component';
+import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
+import { PatientStatisticsComponent } from "./patient-statistics/patient-statistics.component";
+import { RoleGuardService } from 'src/app/auth/role-guard.service';
 
 
 const routes: Routes = [
@@ -30,7 +33,15 @@ const routes: Routes = [
   { path: 'rooms/add', component: CreateRoomComponent },
   { path: 'rooms/:id', component: RoomDetailComponent },  
   { path: 'rooms/:id/update', component: UpdateRoomComponent },
-  { path: 'feedback', component: FeedbackComponent },
+  {
+    path: 'feedback', component: FeedbackComponent, canActivate: [RoleGuardService],
+    data: { expectedRole: 'MANAGER' }
+  },
+  { path: 'appointments-by-doctor', component: AppointmentsByDoctorComponent },
+  { path: 'vacation-requests-by-doctor', component: VacationRequestsByDoctorComponent },
+  {
+    path: 'patient-statistics', component: PatientStatisticsComponent, canActivate: [RoleGuardService],
+    data: { expectedRole: 'MANAGER' } },
   { path: 'appointments/add', component: CreateAppointmentComponent},
   { path: 'appointments', component: AppointmentsByDoctorComponent},
   { path: 'bloodRecord/add', component: CreateBloodRecordComponent},

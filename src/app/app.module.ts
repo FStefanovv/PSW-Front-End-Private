@@ -16,7 +16,7 @@ import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.compon
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthInterceptor } from "./auth/auth.interceptor";
-import { AuthGuardService } from "./auth/auth-guard.service";
+import { RoleGuardService } from "src/app/auth/role-guard.service";
 import { ErrorIntercept } from "./modules/hospital/services/error.interceptor"; 
 
 
@@ -49,7 +49,7 @@ import { ErrorIntercept } from "./modules/hospital/services/error.interceptor";
       useClass: AuthInterceptor,
       multi: true
     },
-    AuthGuardService
+    RoleGuardService
   ],
   bootstrap: [AppComponent],
   entryComponents: [MyDialogComponent]

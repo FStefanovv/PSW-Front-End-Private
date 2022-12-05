@@ -6,7 +6,7 @@ import decode from 'jwt-decode';
 
 
 @Injectable()
-export class AuthGuardService implements CanActivate {
+export class RoleGuardService implements CanActivate {
 
 
   constructor(public auth: AuthService, public router: Router) { }
@@ -17,11 +17,12 @@ export class AuthGuardService implements CanActivate {
     const tokenRole = localStorage.getItem('role');
     //kad sredimo expiration stavicu i uslov za istek tokena
     //if (!this.auth.isLoggedIn() )
-         if(tokenRole !== expectedRole) {
+
+    if (tokenRole !== expectedRole) {
            this.router.navigate(['login']);
-        return false;
-            }
-      return true;
+           return false;
+      }
+     return true;
     }
    }
 
