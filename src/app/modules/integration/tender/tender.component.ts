@@ -20,6 +20,9 @@ export class TenderComponent implements OnInit {
       this.tenders = res;     
     })
   }
+  seeOffers() {
+    this.router.navigate(['/tender/{id}', { id: 1}]);
+  }
 
   }
 
