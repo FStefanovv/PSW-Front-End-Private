@@ -6,14 +6,15 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { TenderOffersComponent } from './tenderOffers/tenderOffers.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from "@angular/router";
-
+import { CreateTenderComponent } from './create-tender/create-tender.component';
 
 
 const routes: Routes = [
  
   { path: 'register-blood-bank', component: RegisterBloodBankComponent },
   { path: 'tenders', component: TenderComponent},
-  { path: 'tender/:id', component: TenderOffersComponent}
+  { path: 'tender/:id', component: TenderOffersComponent},
+  { path: 'create-tender', component: CreateTenderComponent}
 ];
 
 @NgModule({
@@ -21,12 +22,13 @@ const routes: Routes = [
     RegisterBloodBankComponent,
     ConfigurationComponent,
     TenderComponent,
-    TenderOffersComponent
+    TenderOffersComponent,
+    CreateTenderComponent
   ],
   imports: [
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ]
 })

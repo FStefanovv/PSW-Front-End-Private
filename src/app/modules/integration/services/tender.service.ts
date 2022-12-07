@@ -16,6 +16,9 @@ export class TenderService {
   getAll(): Observable<Tender[]> {
     return this.http.get<Tender[]>(this.apiHost + 'api/tenders', { headers: this.headers });
   }
+  create(tndr:Tender): Observable<Tender[]> {
+    return this.http.post<Tender[]>(this.apiHost + 'api/tenders',tndr, {headers: this.headers});
+  }
 
 
 }
