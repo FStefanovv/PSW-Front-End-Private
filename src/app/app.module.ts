@@ -18,13 +18,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthInterceptor } from "./auth/auth.interceptor";
 import { RoleGuardService } from "./auth/role-guard.service";
-import { ErrorIntercept } from "./modules/hospital/services/error.interceptor"; 
-
+import { AuthService } from "./modules/hospital/services/auth.service";
+import { ErrorIntercept } from "./modules/hospital/services/error.interceptor";
+import { DoctorMenuComponent } from "./modules/pages/doctor-menu/doctor-menu.component";
+import { ManagerMenuComponent } from "./modules/pages/manager-menu/manager-menu.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PopUpComponent
+    PopUpComponent,
+    DoctorMenuComponent,
+    ManagerMenuComponent
   ],
   imports: [
     BrowserModule,

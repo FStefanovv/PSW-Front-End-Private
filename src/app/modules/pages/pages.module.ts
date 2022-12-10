@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
 
   {  path: 'manager-home', component: ManagerHomeComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   declarations: [
     DoctorHomeComponent,
     ManagerHomeComponent,
-    LoginComponent
+    LoginComponent,
+    
   ],
   imports: [
     CommonModule,

@@ -19,7 +19,6 @@ import { ShowDoctorsForChange } from "./show-doctors-for-change/show-doctors-for
 import { CancelVacationComponent } from "./cancel-vacation/cancel-vacation.component";
 import { CreateTreatmentComponent } from './create-treatment/create-treatment.component';
 import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
-import { PatientStatisticsComponent } from "./patient-statistics/patient-statistics.component";
 
 
 const routes: Routes = [
@@ -35,8 +34,7 @@ const routes: Routes = [
   { path: 'vacations/cancel', component: CancelVacationComponent },
   { path: 'patients/treatments/create', component: CreateTreatmentComponent },
   { path: 'appointments-by-doctor', component: AppointmentsByDoctorComponent },
-  { path: 'vacation-requests-by-doctor', component: VacationRequestsByDoctorComponent },
-  { path: 'patient-statistics', component: PatientStatisticsComponent },
+  { path: 'vacation-requests-by-doctor', component: VacationRequestsByDoctorComponent }
 
 ];
 

@@ -21,35 +21,29 @@ export class AuthService {
   }
 
   public setSession(token) {
-    console.log(token);
-    const expiresAt = moment().add(token.expiresIn, 'second');
     localStorage.setItem('role', token.claims[5].value);
     localStorage.setItem('userId', token.claims[0].value);
     localStorage.setItem('idByRole', token.claims[1].value);
-    localStorage.setItem('fullName', token.claims[3].value + token.claims[4].value);
-    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
-  }
-
-  logout() {
-    localStorage.removeItem('role');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('idByRole');
-    localStorage.removeItem('fullName');
-    localStorage.removeItem("expires_at");
+    localStorage.setItem('fullName', token.claims[3].value + ' ' + token.claims[4].value);
+    localStorage.setItem("expires_at", token.validTo);
+    
   }
 
   public isLoggedIn() {
-    return moment().isBefore(this.getExpiration());
+    var currentDateTime = new Date().toISOString();
+    return currentDateTime < this.getExpiration();
   }
 
   isLoggedOut() {
     return !this.isLoggedIn();
   }
 
+  public logOut() {
+    localStorage.clear();
+  }
+
   getExpiration() {
-    const expiration = localStorage.getItem("expires_at");
-    const expiresAt = JSON.parse(expiration);
-    return moment(expiresAt);
+    return localStorage.getItem("expires_at");
   }
 
   getRole() {
@@ -62,5 +56,9 @@ export class AuthService {
 
   getUserId() {
     return localStorage.getItem("userId");
+  }
+
+  getName() {
+    return localStorage.getItem("fullName");
   }
 }
