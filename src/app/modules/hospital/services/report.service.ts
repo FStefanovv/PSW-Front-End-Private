@@ -14,4 +14,8 @@ export class ReportService{
   getSymptoms(): Observable<Symptom[]>{
     return this.http.get<Symptom[]>(this.apiHost+'api/Report/GetAllSymptoms',{headers: this.headers})
   }
+
+  getDrugs(): Observable<any[]>{
+    return this.http.get<any[]>(this.apiHost+'api/Report/GetAllDrugs',{headers: this.headers})
+  }
 }
