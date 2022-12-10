@@ -115,7 +115,10 @@ export class AppointmentsByDoctorComponent implements OnInit {
       this.router.navigate(['appointments/reschedule'],{queryParams:{id:rescheduledApp?.id}})
     }
 
-    
+    writeReport(appId: string){
+        this.router.navigate(['reportdev'],{queryParams:{appointmentId: appId}})
+    }
+
 }
 
 

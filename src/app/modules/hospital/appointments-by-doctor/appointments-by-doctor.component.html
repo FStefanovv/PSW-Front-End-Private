@@ -41,5 +41,10 @@
                 Cancel
             </button>
         </td>
+        <td *ngIf="app.status==1">
+            <button  class="cancel-button" [disabled]="" (click)="writeReport(app.id)">
+                Write report
+            </button>
+        </td>
     </tr>
 </table>

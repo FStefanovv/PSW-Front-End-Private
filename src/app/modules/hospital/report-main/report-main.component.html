@@ -4,7 +4,7 @@
   <report-step-two (descriptionEmit)="descriptionWritten($event)" *ngIf="stepTwo"></report-step-two>
   <report-step-three *ngIf="stepThree"></report-step-three>
   <report-step-four *ngIf="stepFour"></report-step-four>
-
+  <div>{{appointmentId}}</div>
   <div *ngFor="let sym of symptomsArray">
     {{sym.name}}
   </div>

@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component } from "@angular/core";
 import { Symptom } from "../model/symptom.model";
 
@@ -12,6 +13,7 @@ export class ReportMain{
   public stepFour: boolean = false
   public symptomsArray: Symptom[]
   public description: string = ""
+  public appointmentId: string = ""
 
   onSymptomsChoosen(eventData: Symptom[]){
     this.symptomsArray = eventData
@@ -22,7 +24,11 @@ export class ReportMain{
     console.log(this.description)
   }
 
-  constructor(){}
+  constructor(private route: ActivatedRoute){
+    this.route.queryParams.subscribe(params =>{
+      this.appointmentId = params.appointmentId
+    })
+  }
 
 
 }
