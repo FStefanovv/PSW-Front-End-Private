@@ -46,7 +46,7 @@ export class FeedbackComponent implements OnInit {
 
       if (feedback.approved == false) {
 
-        this.feedbackService.changeApproval(feedback).subscribe();
+        this.feedbackService.changeApproval(feedback.id).subscribe();
         this.approvedFeedback.push(feedback);
         this.pendingFeedback.splice(this.selectedIndex, 1);
 
@@ -65,7 +65,7 @@ export class FeedbackComponent implements OnInit {
       var feedback = this.selectedRowApproved.selected[0];
       this.selectedIndex = this.approvedFeedback.findIndex((d: Feedback) => d === feedback);
       if (feedback.approved == true) {
-        this.feedbackService.changeApproval(feedback).subscribe();
+        this.feedbackService.changeApproval(feedback.id).subscribe();
         this.pendingFeedback.push(feedback);
         this.approvedFeedback.splice(this.selectedIndex, 1);
 

@@ -6,7 +6,7 @@ import decode from 'jwt-decode';
 
 
 @Injectable()
-export class AuthGuardService implements CanActivate {
+export class RoleGuardService implements CanActivate {
 
 
   constructor(public auth: AuthService, public router: Router) { }
