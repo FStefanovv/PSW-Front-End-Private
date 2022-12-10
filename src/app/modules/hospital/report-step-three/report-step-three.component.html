@@ -1,14 +1,14 @@
 <div id="stepthree">
   <form class="flex flex-start">
     <!-- Ide neko ime,a vrv i ngFor zbog liste -->
-    <label class="mr-2 text-[15px] font-normal">Naziv</label>
-    <input class="h-5 w-5 mr-4" type="checkbox" id="ImeLeka" value="ImeLekanekokoje ce doci">
-    <label class="mr-2 text-[15px] font-normal">Naziv</label>
-    <input class="h-5 w-5" type="checkbox" id="ImeLeka" value="ImeLekanekokoje ce doci">
+    <div *ngFor="let drug of listOfDrugs" class="">
+    <label class="mr-2 text-[15px] font-normal">{{drug.name}}</label>
+    <input class="h-5 w-5 mr-4" type="checkbox" id={{drug.name}} value={{drug.name}} [(ngModel)]="drug.isChecked" name="drugs">
+  </div>
   </form>
   <div class="">
     <button class="w-20 h-10 mr-20 border-4 border-solid border-red-500 bg-red-200">BACK</button>
   
-    <button class="w-20 h-10 border-4 border-solid border-green-500 bg-green-200">NEXT</button>
+    <button class="w-20 h-10 border-4 border-solid border-green-500 bg-green-200" (click)="submit()">NEXT</button>
   </div>
 </div>

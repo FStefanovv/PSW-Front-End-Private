@@ -1,12 +1,15 @@
 <div>
   <report-nav-page></report-nav-page>
-  <report-step-one (symptomsToReturn)="onSymptomsChoosen($event)" *ngIf="stepOne"></report-step-one>
-  <report-step-two (descriptionEmit)="descriptionWritten($event)" *ngIf="stepTwo"></report-step-two>
-  <report-step-three *ngIf="stepThree"></report-step-three>
+  <report-step-one   (symptomsToReturn)="onSymptomsChoosen($event)" *ngIf="stepOne"></report-step-one>
+  <report-step-two   (descriptionEmit)="descriptionWritten($event)" *ngIf="stepTwo"></report-step-two>
+  <report-step-three (drugsToReturn)="onDrugsChoosen($event)"       *ngIf="stepThree"></report-step-three>
   <report-step-four *ngIf="stepFour"></report-step-four>
 
   <div *ngFor="let sym of symptomsArray">
     {{sym.name}}
+  </div>
+  <div *ngFor="let drug of drugsArray">
+    {{drug.name}}
   </div>
   <div>
     {{description}}

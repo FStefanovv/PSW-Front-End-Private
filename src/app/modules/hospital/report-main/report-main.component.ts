@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Drug } from "../model/drug.model";
 import { Symptom } from "../model/symptom.model";
 
 @Component({
@@ -6,15 +7,19 @@ import { Symptom } from "../model/symptom.model";
   templateUrl: "./report-main.component.html"
 })
 export class ReportMain{
-  public stepOne: boolean = true
+  public stepOne: boolean = false
   public stepTwo: boolean = false
-  public stepThree: boolean = false
+  public stepThree: boolean = true
   public stepFour: boolean = false
   public symptomsArray: Symptom[]
   public description: string = ""
+  public drugsArray: Drug[]
 
   onSymptomsChoosen(eventData: Symptom[]){
     this.symptomsArray = eventData
+  }
+  onDrugsChoosen(e:Drug[]){
+    this.drugsArray = e
   }
 
   descriptionWritten(eventData: {description: string}){
