@@ -12,6 +12,6 @@ export class ReportService{
   constructor(private http: HttpClient) { }
 
   getSymptoms(): Observable<Symptom[]>{
-    return this.http.get<Symptom[]>(this.apiHost+'api/GetAllSymptoms',{headers: this.headers})
+    return this.http.get<Symptom[]>(this.apiHost+'api/Report/GetAllSymptoms',{headers: this.headers})
   }
 }
