@@ -2,15 +2,16 @@
   width: 50%;
   margin: auto;
   margin-top: 50px;
-  border-radius: 3px;
-  border: #DCD6CC 1px solid;
-  background-color: lightgray;
+  border-style: ridge;
+  border-width: 5px;
+  border-color: gray;
+  background-color: mistyrose;
 }
 
 
 table {
   width: 100%;
-  background-color: lightgray;
+  background-color: mistyrose;
 }
 
 .table-title {
@@ -18,18 +19,28 @@ table {
   padding-top: 30px;
   padding-left: 20px;
   font-size: 30px;
-  font-weight:bold;
+  font-family: Verdana;
+  font-weight: bold;
 }
 
-.cell-center {
-  text-align: center;
-  font-size: 22 px;
+.cell-style {
+  text-align: left;
+  font-family: Verdana;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.column-header {
+  text-align: left;
+  font-family: Verdana;
+  font-size: 22px;
 }
 
 .table-header {
   display: flex;
-  color: forestgreen;
-  border-color:dimgray;
+  text-align: center;
+  color: dimgray;
 }
 
 p {
@@ -38,44 +49,61 @@ p {
 }
 
 th {
-  text-decoration: underline;
-  text-decoration-color: lightgreen;
+  color: dimgray;
+  font-family:Verdana;
   font-weight: bold;
+  border-style:none;
+}
+
+tr.mat-row:hover{
+    background-color: lightgrey;
+}
+
+td.mat-cell {
+    border-bottom-style: none;
+    border-top: 1px ridge darkgray;
+
+}
+
+th.mat-header-cell{
+    border-bottom-style: none;
 }
 
 .approval-button {
-  background-color: forestgreen;
+  background-color: dimgray;
   padding: 10px 10px 10px 10px;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   border: 20px;
-  font-size: 23px;
+  font-size: 20px;
+  font-family: Verdana;
   border-radius: 8px;
-  color: cornsilk;
+  color: floralwhite;
 }
 
-.hide-button{
-  background-color: forestgreen;
+.hide-button {
+  background-color: dimgray;
   padding: 10px 10px 10px 10px;
   margin-top: 20px;
   margin-left: auto;
+  font-family: Verdana;
   margin-right: auto;
   display: flex;
   border: 20px;
-  font-size: 23px;
+  font-size: 20px;
   border-radius: 8px;
-  color: cornsilk;
+  color: floralwhite;
 }
 
 .approval-button:hover {
-  background-color: white;
+  background-color: darkgray;
   color: black;
 }
 
 .hide-button:hover {
-  background-color: white;
+  background-color: darkgray;
   color: black;
 }
 

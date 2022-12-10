@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { User } from '../../hospital/model/user.model';
@@ -34,7 +33,7 @@ import { Router } from '@angular/router';
 
         result => {
           this.authService.setSession(result);
-          let role = result.claims[4].value;
+          let role = this.authService.getRole();
           if(role === "MANAGER"){
               this.router.navigate([('/manager-home')]);
            }
@@ -52,7 +51,6 @@ import { Router } from '@angular/router';
         
       );
   }
-
 
    checkValidity() {
      if (this.user.email === '' || this.user.password === '') {

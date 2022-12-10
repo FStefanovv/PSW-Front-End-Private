@@ -1,0 +1,13 @@
+.mat-toolbar {
+  background-color: dimgray;
+  font: bold 22px verdana;
+  color: white;
+}
+
+.mat-button {
+  color: white;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

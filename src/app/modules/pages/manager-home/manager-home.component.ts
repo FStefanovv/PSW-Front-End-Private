@@ -10,10 +10,9 @@ import { AuthService } from '../../hospital/services/auth.service';
 export class ManagerHomeComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) { }
+  name: string;
 
   ngOnInit(): void {
+    this.name = this.authService.getName();
   }
-
- 
-
 }

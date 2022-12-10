@@ -4,7 +4,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MaterialModule } from "./material/material.module";
-import { HospitalModule } from "./modules/hospital/hospital.module";
+import { HospitalManagerModule } from "./modules/hospital/hospital-manager.module";
+import { HospitalDoctorModule } from "./modules/hospital/hospital-doctor.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
@@ -16,16 +17,17 @@ import { MyDialogComponent } from "./modules/hospital/my-dialog/my-dialog.compon
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthInterceptor } from "./auth/auth.interceptor";
-import { RoleGuardService } from "src/app/auth/role-guard.service";
-import { ErrorIntercept } from "./modules/hospital/services/error.interceptor"; 
-
+import { RoleGuardService } from "./auth/role-guard.service";
+import { ErrorIntercept } from "./modules/hospital/services/error.interceptor";
+import { DoctorMenuComponent } from "./modules/pages/doctor-menu/doctor-menu.component";
+import { ManagerMenuComponent } from "./modules/pages/manager-menu/manager-menu.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PopUpComponent
-
-
+    PopUpComponent,
+    DoctorMenuComponent,
+    ManagerMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { ErrorIntercept } from "./modules/hospital/services/error.interceptor";
     HttpClientModule,
     MaterialModule,
     PagesModule,
-    HospitalModule,
+    HospitalManagerModule,
+    HospitalDoctorModule,
     MatRadioModule,
     FormsModule,
     ReactiveFormsModule,

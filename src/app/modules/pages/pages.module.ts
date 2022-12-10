@@ -7,28 +7,30 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
 
 const routes: Routes = [
 
-  { path: 'manager-home', component: ManagerHomeComponent },
+  {  path: 'manager-home', component: ManagerHomeComponent },
   { path: 'doctor-home', component: DoctorHomeComponent },
   { path: '', component: LoginComponent }
 ];
-
 
 @NgModule({
   declarations: [
     DoctorHomeComponent,
     ManagerHomeComponent,
-    LoginComponent
+    LoginComponent,
+    
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     FormsModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class PagesModule { }
