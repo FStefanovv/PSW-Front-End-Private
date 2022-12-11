@@ -4,7 +4,7 @@
       <div class="flex items-center space-x-3 mb-5">
         <div *ngFor="let symptom of symptomsList" class="">
           <label class="mr-2 text-[20px] font-normal">{{symptom.name}}</label>
-          <input class="h-5 w-5" type="checkbox" id={{symptom.name}} value={{symptom.name}} [(ngModel)]="symptom.isChecked">
+          <input class="h-5 w-5" type="checkbox" id={{symptom.name}} value={{symptom.name}} [(ngModel)]="symptom.isChecked" >
         </div>
         
       </div>

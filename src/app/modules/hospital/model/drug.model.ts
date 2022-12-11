@@ -1,5 +1,6 @@
 export class Drug{
     name: string = ""
+    companyName: string="Za milosa"
     isChecked: Boolean = false
   
     public constructor(obj?: any){

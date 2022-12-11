@@ -7,7 +7,7 @@ import { Component, EventEmitter, Output } from "@angular/core";
   selector: 'report-step-one',
   templateUrl: './report-step-one.component.html'
 })
-export class ReportStepOne{7
+export class ReportStepOne{
   @Output() symptomsToReturn = new EventEmitter<Symptom[]>()
   form: FormGroup
   public symptomsList: Array<Symptom>

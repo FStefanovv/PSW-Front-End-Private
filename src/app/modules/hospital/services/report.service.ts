@@ -1,3 +1,4 @@
+import { ReportDTO } from './../model/reportDTO.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -17,5 +18,9 @@ export class ReportService{
 
   getDrugs(): Observable<any[]>{
     return this.http.get<any[]>(this.apiHost+'api/Report/GetAllDrugs',{headers: this.headers})
+  }
+
+  createReport(report: any): Observable<any>{
+    return this.http.post<any>(this.apiHost + 'api/Report/CreateReport',report,{headers: this.headers})
   }
 }

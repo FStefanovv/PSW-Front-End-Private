@@ -1,19 +1,17 @@
 <div id="stepfour">
   <!-- ice ngfro za listu simpotma da se ispise, isto i za lekove -->
   <div>
-    <label>proba</label>
-    <label>,proba</label>
+    <label *ngFor="let symptom of symptoms">{{symptom.name}},</label>
   </div>
   <div class="w-[500px]">
-    <label>Doktoreve beleskeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</label>
+    {{description}}
   </div>
   <div>
-    <label>SImpotom 1</label>
-    <label>SImpotom 2</label>
+    <label *ngFor="let drug of drugs">{{drug.name}},</label>
   </div>
   <div class="">
     <button class="w-20 h-10 mr-20 border-4 border-solid border-red-500 bg-red-200">BACK</button>
   
-    <button class="w-20 h-10 border-4 border-solid border-green-500 bg-green-200">END</button>
+    <button class="w-20 h-10 border-4 border-solid border-green-500 bg-green-200" (click)="submit()">END</button>
   </div>
 </div>

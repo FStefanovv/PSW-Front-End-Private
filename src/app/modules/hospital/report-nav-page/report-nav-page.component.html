@@ -1,6 +1,28 @@
-<div id="navbar" class="flex flex-starts space-x-7">
-  <div class="w-6 h-6 border-2 border-solid border-gray-400 bg-gray-400 text-center rounded-full ">1</div>
-  <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">2</div>
-  <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">3</div>
-  <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">4</div>
+<div >
+  <div id="navbar" class="flex flex-starts space-x-7" *ngIf="recieveFlag === 1">
+    <div class="w-6 h-6 border-2 border-solid border-gray-400 bg-gray-400 text-center rounded-full ">1</div>
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">2</div>
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">3</div>
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">4</div>
+  </div>
+  <div id="navbar" class="flex flex-starts space-x-7" *ngIf="recieveFlag === 2">
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">1</div>
+    <div class="w-6 h-6 border-2 border-solid border-gray-400 bg-gray-400  text-center rounded-full ">2</div>
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">3</div>
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">4</div>
+  </div>
+  <div id="navbar" class="flex flex-starts space-x-7" *ngIf="recieveFlag === 3">
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">1</div>
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">2</div>
+    <div class="w-6 h-6 border-2 border-solid border-gray-400 bg-gray-400  text-center rounded-full ">3</div>
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">4</div>
+  </div>
+  <div id="navbar" class="flex flex-starts space-x-7" *ngIf="recieveFlag === 4">
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">1</div>
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">2</div>
+    <div class="w-6 h-6 border-2 border-solid border-black text-center rounded-full ">3</div>
+    <div class="w-6 h-6 border-2 border-solid border-gray-400 bg-gray-400  text-center rounded-full ">4</div>
+  </div>
 </div>
+
+
