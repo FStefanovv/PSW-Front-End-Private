@@ -18,6 +18,6 @@ export class FeedbackService {
   }
 
   changeApproval(id: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + 'api/feedback/approval-change/' + id, { headers: this.headers });
+    return this.http.post(this.apiHost + 'api/feedback/changeApproval/' + id, { headers: this.headers });
   }
 }

@@ -2,6 +2,7 @@
   background-color: dimgray;
   font: bold 22px verdana;
   color: white;
+  min-height: 100px;
 }
 
 .mat-button {
@@ -10,4 +11,9 @@
 
 .spacer {
   flex: 1 1 auto;
+}
+
+.button {
+  font: bold 22px verdana;
+  background: dimgray;
 }

@@ -1,9 +1,8 @@
 <mat-toolbar color="primary">
-  <a mat-button href='/manager-home'>Home</a>
-  <a mat-button>Statistics</a>
-  <a mat-button href='register-blood-bank'>Blood Bank</a>
-  <a mat-button href='/feedback'>Feedback</a>
-  <a mat-button href='/patient-statistics'>Patient Statistics</a>
+  <button class="button" mat-button (click)="ManagerHomeClick()">Home</button>
+  <button class="button" mat-button (click)="BloodBankClick()">Blood Bank</button>
+  <button class="button" mat-button (click)="FeedbackClick()">Feedback</button>
+  <button class="button" mat-button (click)="StatisticsClick()">Patient Statistics</button>
   <div class="spacer"></div>
-  <a mat-button href='/'>Log Out</a>
+  <button class="button" mat-button (click)="LogOutClick()">Log Out</button>
 </mat-toolbar>

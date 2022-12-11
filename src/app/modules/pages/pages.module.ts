@@ -8,12 +8,17 @@ import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
+import { RoleGuardService } from '../../auth/role-guard.service';
 
 
 const routes: Routes = [
 
-  {  path: 'manager-home', component: ManagerHomeComponent },
-  { path: 'doctor-home', component: DoctorHomeComponent },
+  {
+    path: 'manager-home', component: ManagerHomeComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' }  },
+  {
+    path: 'doctor-home', component: DoctorHomeComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
   { path: '', component: LoginComponent }
 ];
 

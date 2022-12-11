@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../hospital/services/auth.service';
 
 @Component({
   selector: 'app-doctor-menu',
@@ -9,15 +8,34 @@ import { AuthService } from '../../hospital/services/auth.service';
 })
 export class DoctorMenuComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
   }
 
-  logOutClick() {
-    this.authService.logOut();
+  LogOutClick() {
+    localStorage.clear();
     this.router.navigate(['/']);
   }
 
+  DoctorHomeClick() {
+    this.router.navigate(['/doctor-home']);
+  }
+
+  AppointmentsClick() {
+    this.router.navigate(['/appointments']);
+  }
+
+  PatientsClick() {
+    this.router.navigate(['/patients/treatments']);
+  }
+
+  VacationClick() {
+    this.router.navigate(['/vacation-requests-by-doctor']);
+  }
+
+  BloodRequestClick() {
+    this.router.navigate(['/bloodRequest']);
+  }
 }

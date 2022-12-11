@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
-  <a mat-button href='/doctor-home'>Home</a>
-  <a mat-button href='/appointments'>Appointments</a>
-  <a mat-button href='/patients/treatments'>Patients</a>
-  <a mat-button href='/vacation-requests-by-doctor'>Vacation Request</a>
-  <a mat-button href='/bloodRequest'>Blood Request</a>
+  <button class="button" mat-button (click)="DoctorHomeClick()">Home</button>
+  <button class="button" mat-button (click)="AppointmentsClick()">Appointments</button>
+  <button class="button" mat-button (click)="PatientsClick()">Patients</button>
+  <button class="button" mat-button (click)="VacationClick()">Vacation Request</button>
+  <button class="button" mat-button (click)="BloodRequestClick()">Blood Request</button>
   <div class="spacer"></div>
-  <a mat-button href='/'>Log Out</a>
+  <button class="button" mat-button (click)="LogOutClick()">Log Out</button>
 </mat-toolbar>

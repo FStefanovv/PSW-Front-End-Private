@@ -19,22 +19,51 @@ import { ShowDoctorsForChange } from "./show-doctors-for-change/show-doctors-for
 import { CancelVacationComponent } from "./cancel-vacation/cancel-vacation.component";
 import { CreateTreatmentComponent } from './create-treatment/create-treatment.component';
 import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
+import { RoleGuardService } from "../../auth/role-guard.service";
 
 
 const routes: Routes = [
-  { path: 'appointments/add', component: CreateAppointmentComponent },
-  { path: 'appointments', component: AppointmentsByDoctorComponent },
-  { path: 'bloodRecord/add', component: CreateBloodRecordComponent },
-  { path: 'appointments/reschedule', component: RescheduleAppointmentComponent },
-  { path: 'bloodRequest', component: BloodRequestComponent },
-  { path: 'patients/treatments', component: PatientOnTreatmentComponent },
-  { path: 'patients/discharge', component: DischargePatientComponent },
-  { path: 'patients/treatments/update', component: UpdateTreatmentComponent },
-  { path: 'vacations/urgent', component: CreateUrgentVacationComponent },
-  { path: 'vacations/cancel', component: CancelVacationComponent },
-  { path: 'patients/treatments/create', component: CreateTreatmentComponent },
-  { path: 'appointments-by-doctor', component: AppointmentsByDoctorComponent },
-  { path: 'vacation-requests-by-doctor', component: VacationRequestsByDoctorComponent }
+  {
+    path: 'appointments/add', component: CreateAppointmentComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }
+  },
+  {
+    path: 'appointments', component: AppointmentsByDoctorComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
+  {
+    path: 'bloodRecord/add', component: CreateBloodRecordComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }
+  },
+  {
+    path: 'appointments/reschedule', component: RescheduleAppointmentComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
+  {
+    path: 'bloodRequest', component: BloodRequestComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
+  {
+    path: 'patients/treatments', component: PatientOnTreatmentComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
+  {
+    path: 'patients/discharge', component: DischargePatientComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
+  {
+    path: 'patients/treatments/update', component: UpdateTreatmentComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
+  {
+    path: 'vacations/urgent', component: CreateUrgentVacationComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
+  {
+    path: 'vacations/cancel', component: CancelVacationComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
+  {
+    path: 'patients/treatments/create', component: CreateTreatmentComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
+  {
+    path: 'appointments-by-doctor', component: AppointmentsByDoctorComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
+  {
+    path: 'vacation-requests-by-doctor', component: VacationRequestsByDoctorComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  }
 
 ];
 

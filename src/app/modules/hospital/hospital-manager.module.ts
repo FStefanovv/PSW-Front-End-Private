@@ -9,14 +9,30 @@ import { RoomsComponent } from "./rooms/rooms.component";
 import { UpdateRoomComponent } from "./update-room/update-room.component";;
 import { FeedbackComponent } from './feedback/feedback.component';
 import { PatientStatisticsComponent } from "./patient-statistics/patient-statistics.component";
+import { RoleGuardService } from "src/app/auth/role-guard.service";
 
 const routes: Routes = [
-  { path: 'rooms', component: RoomsComponent },
-  { path: 'rooms/add', component: CreateRoomComponent },
-  { path: 'rooms/:id', component: RoomDetailComponent },  
-  { path: 'rooms/:id/update', component: UpdateRoomComponent },
-  { path: 'feedback', component: FeedbackComponent },
-  { path: 'patient-statistics', component: PatientStatisticsComponent },
+  {
+    path: 'rooms', component: RoomsComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' } },
+  {
+    path: 'rooms/add', component: CreateRoomComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' } },
+  {
+    path: 'rooms/:id', component: RoomDetailComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' }
+  },
+  {
+    path: 'rooms/:id/update', component: UpdateRoomComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' }
+  },
+  {
+    path: 'feedback', component: FeedbackComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' }
+  },
+  {
+    path: 'patient-statistics', component: PatientStatisticsComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' } },
  ];
  
  
