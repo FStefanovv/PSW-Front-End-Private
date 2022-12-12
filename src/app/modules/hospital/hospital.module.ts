@@ -23,6 +23,7 @@ import { ShowAppointmentsUrgentVacationComponent } from "./show-appointments-urg
 import { ShowDoctorsForChange } from "./show-doctors-for-change/show-doctors-for-change.component";
 import { CancelVacationComponent } from "./cancel-vacation/cancel-vacation.component";
 import { CreateTreatmentComponent } from './create-treatment/create-treatment.component';
+import { CreateConsiliumComponent } from './create-consilium/create-consilium.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
   { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
   { path: 'vacations/urgent', component: CreateUrgentVacationComponent},
   { path: 'vacations/cancel', component: CancelVacationComponent},
-  {path: 'patients/treatments/create', component: CreateTreatmentComponent}
+  {path: 'patients/treatments/create', component: CreateTreatmentComponent},
+  {path: 'consilium/create', component:CreateConsiliumComponent}
  ];
  
  
@@ -68,7 +70,8 @@ const routes: Routes = [
     ShowAppointmentsUrgentVacationComponent,
     ShowDoctorsForChange,
     CancelVacationComponent,
-    CreateTreatmentComponent
+    CreateTreatmentComponent,
+    CreateConsiliumComponent
   ],
   imports: [
     CommonModule,
