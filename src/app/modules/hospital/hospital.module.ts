@@ -8,6 +8,7 @@ import { RoomDetailComponent } from "./room-detail/room-detail.component";
 import { RoomsComponent } from "./rooms/rooms.component";
 import { UpdateRoomComponent } from "./update-room/update-room.component";
 import { AppointmentsByDoctorComponent } from './appointments-by-doctor/appointments-by-doctor.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 import { CreateAppointmentComponent } from "./create-appointment/create-appointment.component";
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { SearchComponent } from './search/search.component';
@@ -15,7 +16,6 @@ import { CreateBloodRecordComponent } from './create-blood-record/create-blood-r
 import { RescheduleAppointmentComponent } from "./reschedule-appointment/reschedule-appointment.component";
 import { BloodRequestComponent } from "./blood-request/blood-request.component";
 import { PatientOnTreatmentComponent } from './patient-on-treatment/patient-on-treatment.component';
-import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
 import { DischargePatientComponent } from './discharge-patient/discharge-patient.component';
 import { UpdateTreatmentComponent } from './update-treatment/update-treatment.component';
 import { CreateUrgentVacationComponent } from "./create-urgent-vacation/create-urgent-vacation.component"; 
@@ -23,25 +23,27 @@ import { ShowAppointmentsUrgentVacationComponent } from "./show-appointments-urg
 import { ShowDoctorsForChange } from "./show-doctors-for-change/show-doctors-for-change.component";
 import { CancelVacationComponent } from "./cancel-vacation/cancel-vacation.component";
 import { CreateTreatmentComponent } from './create-treatment/create-treatment.component';
+import { CreateConsiliumComponent } from './create-consilium/create-consilium.component';
+
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
   { path: 'rooms/add', component: CreateRoomComponent },
   { path: 'rooms/:id', component: RoomDetailComponent },  
   { path: 'rooms/:id/update', component: UpdateRoomComponent },
+  { path: 'feedback', component: FeedbackComponent },
   { path: 'appointments/add', component: CreateAppointmentComponent},
   { path: 'appointments', component: AppointmentsByDoctorComponent},
   { path: 'bloodRecord/add', component: CreateBloodRecordComponent},
   { path: 'appointments/reschedule', component: RescheduleAppointmentComponent},
   { path: 'bloodRequest', component: BloodRequestComponent},
-  { path: 'patients-treatments', component: PatientOnTreatmentComponent},
-  { path: 'vacation-requests', component: VacationRequestsByDoctorComponent}
   { path: 'patients/treatments', component: PatientOnTreatmentComponent},
   { path: 'patients/discharge', component: DischargePatientComponent},
   { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
   { path: 'vacations/urgent', component: CreateUrgentVacationComponent},
   { path: 'vacations/cancel', component: CancelVacationComponent},
-  {path: 'patients/treatments/create', component: CreateTreatmentComponent}
+  {path: 'patients/treatments/create', component: CreateTreatmentComponent},
+  {path: 'consilium/create', component:CreateConsiliumComponent}
  ];
  
  
@@ -53,6 +55,7 @@ const routes: Routes = [
     CreateRoomComponent,
     UpdateRoomComponent,
     AppointmentsByDoctorComponent,
+    FeedbackComponent,
     MyDialogComponent,
     SearchComponent,
     CreateAppointmentComponent,
@@ -61,15 +64,14 @@ const routes: Routes = [
     RescheduleAppointmentComponent,
     BloodRequestComponent,
     PatientOnTreatmentComponent,
-    VacationRequestsByDoctorComponent,
-
     DischargePatientComponent,
     UpdateTreatmentComponent,
     CreateUrgentVacationComponent,
     ShowAppointmentsUrgentVacationComponent,
     ShowDoctorsForChange,
     CancelVacationComponent,
-    CreateTreatmentComponent
+    CreateTreatmentComponent,
+    CreateConsiliumComponent
   ],
   imports: [
     CommonModule,

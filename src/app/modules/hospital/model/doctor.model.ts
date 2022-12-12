@@ -11,6 +11,7 @@ export class Doctor{
     endWorkTime: number = 0
     appointments: Array<CreateAppointmentDTO> = []
 
+
     public constructor(obj?: any) {
         if (obj) {
             this.id = obj.id;

@@ -13,8 +13,6 @@ import { RescheduleAppointmentDTO } from '../model/rescheduleAppointmentDTO.mode
 export class AppointmentService {
 
 
- 
-
   apiHost: string = 'http://localhost:5000/api/appointments';
 
 
