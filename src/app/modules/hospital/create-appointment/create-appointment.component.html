@@ -4,7 +4,11 @@
         <table>
             <tr>
                 <td>PatientId</td>
-                <td><input matInput [(ngModel)]="appointment.patientId"></td>
+                <td>
+                    <select [(ngModel)]="appointment.patientId" >
+                        <option *ngFor="let patient of patientsForDoctor" value={{patient.id}}>{{patient.name}} {{patient.surname}}</option>
+                    </select>
+                </td>
                 <td *ngIf="patNull">Choose patient</td>
                 
             </tr>

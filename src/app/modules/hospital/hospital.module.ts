@@ -29,6 +29,11 @@ import { ReportNavigation } from "./report-nav-page/report-nav-page.component";
 import { ReportStepTwo } from "./report-step-two/report-step-two.component";
 import { ReportStepThree } from "./report-step-three/report-step-three.component";
 import { ReportStepFour } from "./report-step-four/report-step-four.component";
+import { ShowReportManagment } from "./show-report-managment/show-report-managment.component";
+import { ShowReportDesciption } from "./show-report-description/show-report-desciption.component";
+import { ShowReportDrugs } from "./show-report-drugs/show-report-drugs.component";
+import { ShowReportPatient } from "./show-report-patient/show-report-patient.component";
+import { ShowReportSymptoms } from "./show-report-symptoms/show-report-symptoms.component";
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -48,7 +53,8 @@ const routes: Routes = [
   { path: 'vacations/urgent', component: CreateUrgentVacationComponent},
   { path: 'vacations/cancel', component: CancelVacationComponent},
   { path: 'patients/treatments/create', component: CreateTreatmentComponent},
-  { path: 'reportdev',component: ReportMain}
+  { path: 'reportdev',component: ReportMain},
+  { path: 'showreportdev', component: ShowReportManagment}
  ];
  
  
@@ -81,7 +87,12 @@ const routes: Routes = [
     ReportNavigation,
     ReportStepTwo,
     ReportStepThree,
-    ReportStepFour
+    ReportStepFour,
+    ShowReportManagment,
+    ShowReportDesciption,
+    ShowReportDrugs,
+    ShowReportPatient,
+    ShowReportSymptoms
   ],
   imports: [
     CommonModule,

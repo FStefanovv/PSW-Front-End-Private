@@ -1,3 +1,5 @@
+import { DrugPrescriptionToShow } from './../model/drugPrescriptionToShow.model';
+import { ReportToShow } from './../model/reportToShow.model';
 import { ReportDTO } from './../model/reportDTO.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -22,5 +24,13 @@ export class ReportService{
 
   createReport(report: any): Observable<any>{
     return this.http.post<any>(this.apiHost + 'api/Report/CreateReport',report,{headers: this.headers})
+  }
+
+  getReport(id: string): Observable<ReportToShow>{
+    return this.http.get<ReportToShow>(this.apiHost + 'api/Report/GetReportById/' + id,{headers: this.headers})
+  }
+
+  getDrugPrescription(id: string): Observable<DrugPrescriptionToShow>{
+    return this.http.get<DrugPrescriptionToShow>(this.apiHost + 'api/Report/GetPrescriptionById/' + id,{headers: this.headers})
   }
 }

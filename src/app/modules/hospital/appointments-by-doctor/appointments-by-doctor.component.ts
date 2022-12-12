@@ -119,6 +119,10 @@ export class AppointmentsByDoctorComponent implements OnInit {
         this.router.navigate(['reportdev'],{queryParams:{appointmentId: appId}})
     }
 
+    reviewReport(appId: string){
+      this.router.navigate(['showreportdev'],{queryParams:{appointmentId: appId}})
+    }
+
 }
 
 
