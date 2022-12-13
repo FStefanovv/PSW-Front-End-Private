@@ -23,16 +23,14 @@ export class ReportStepFour{
   ngOnInit():void{
 
   }
-  submit(){
-    console.log(this.appointmentId)
+  public submit(){
     let reportDTO: ReportDTO = new ReportDTO()
     reportDTO.appointmentId = this.appointmentId
     reportDTO.doctorId = "DOC1"
-    reportDTO.patientId = "PAT1"
+    reportDTO.patientId = "stojane"
     reportDTO.description = this.description
     reportDTO.symptoms = this.symptoms
     reportDTO.drugs = this.drugs
-    console.log(reportDTO)
     this.reportService.createReport(reportDTO).subscribe(res=>{
       alert("Poslato")
     })
