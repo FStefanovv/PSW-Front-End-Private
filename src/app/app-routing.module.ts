@@ -10,6 +10,7 @@ import { PatientProfileComponent } from "./modules/hospital/patient-profile/pati
 import { DoctorHomeComponent } from "./modules/pages/doctor-home/doctor-home.component";
 import { LoginComponent } from "./modules/pages/login/login.component";
 import { ManagerHomeComponent } from "./modules/pages/manager-home/manager-home.component";
+import { ShowConsiliumsComponent } from "./modules/hospital/show-consiliums/show-consiliums.component";
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'doctor-home', component: DoctorHomeComponent },
   //ovde mi izlazi greska jer je vec definisano u integration module, mozete slobodno samo tamo stavljati putanje za integracije jer imamo child routes ukljucen
  // {path:'configuration', component:ConfigurationComponent},
-  { path: '', component: LoginComponent }
+  { path: '', component: LoginComponent },
+  { path: 'show-consiliums', component: ShowConsiliumsComponent}
 ]
 
 

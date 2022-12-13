@@ -1,0 +1,20 @@
+<div>
+    <label>Consiliums to show: </label>
+    <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+</div>
+<table cellspacing="20">
+    <tr>
+        <th>Start</th>
+        <th>Duration</th>
+        <th>Topic</th>
+        <th>Room</th>
+        <th>Doctor names</th>
+    </tr>
+    <tr *ngFor="let consilium of consiliumsToShow">
+        <td>{{consilium.Start}}</td>
+        <td>{{consilium.Duration}}</td>
+        <td>{{consilium.Topic}}</td>
+        <td>{{consilium.Room}}</td>
+        <td>{{consilium.DoctorNames}</td>
+    </tr>
+</table>
