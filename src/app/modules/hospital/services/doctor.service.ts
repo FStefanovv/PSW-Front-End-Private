@@ -16,4 +16,8 @@ export class DoctorService{
     getDoctor(id: string): Observable<DoctorShiftDTO> {
         return this.http.get<Doctor>(this.apiHost + 'api/doctor/getDoctorShiftDTO/' + id, {headers: this.headers})
     }
+
+    getDoctors(): Observable<Doctor[]> {
+        return this.http.get<Doctor[]>(this.apiHost + 'api/doctor', {headers: this.headers});
+      }
 }

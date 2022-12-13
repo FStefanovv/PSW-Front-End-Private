@@ -8,6 +8,7 @@ import { RoomDetailComponent } from "./room-detail/room-detail.component";
 import { RoomsComponent } from "./rooms/rooms.component";
 import { UpdateRoomComponent } from "./update-room/update-room.component";
 import { AppointmentsByDoctorComponent } from './appointments-by-doctor/appointments-by-doctor.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 import { CreateAppointmentComponent } from "./create-appointment/create-appointment.component";
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { SearchComponent } from './search/search.component';
@@ -22,12 +23,15 @@ import { ShowAppointmentsUrgentVacationComponent } from "./show-appointments-urg
 import { ShowDoctorsForChange } from "./show-doctors-for-change/show-doctors-for-change.component";
 import { CancelVacationComponent } from "./cancel-vacation/cancel-vacation.component";
 import { CreateTreatmentComponent } from './create-treatment/create-treatment.component';
+import { CreateConsiliumComponent } from './create-consilium/create-consilium.component';
+
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
   { path: 'rooms/add', component: CreateRoomComponent },
   { path: 'rooms/:id', component: RoomDetailComponent },  
   { path: 'rooms/:id/update', component: UpdateRoomComponent },
+  { path: 'feedback', component: FeedbackComponent },
   { path: 'appointments/add', component: CreateAppointmentComponent},
   { path: 'appointments', component: AppointmentsByDoctorComponent},
   { path: 'bloodRecord/add', component: CreateBloodRecordComponent},
@@ -38,7 +42,8 @@ const routes: Routes = [
   { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
   { path: 'vacations/urgent', component: CreateUrgentVacationComponent},
   { path: 'vacations/cancel', component: CancelVacationComponent},
-  {path: 'patients/treatments/create', component: CreateTreatmentComponent}
+  {path: 'patients/treatments/create', component: CreateTreatmentComponent},
+  {path: 'consilium/create', component:CreateConsiliumComponent}
  ];
  
  
@@ -50,6 +55,7 @@ const routes: Routes = [
     CreateRoomComponent,
     UpdateRoomComponent,
     AppointmentsByDoctorComponent,
+    FeedbackComponent,
     MyDialogComponent,
     SearchComponent,
     CreateAppointmentComponent,
@@ -64,7 +70,8 @@ const routes: Routes = [
     ShowAppointmentsUrgentVacationComponent,
     ShowDoctorsForChange,
     CancelVacationComponent,
-    CreateTreatmentComponent
+    CreateTreatmentComponent,
+    CreateConsiliumComponent
   ],
   imports: [
     CommonModule,
