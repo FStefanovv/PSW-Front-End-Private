@@ -4,7 +4,6 @@
         <h3>Pacijenti po starosnom dobu</h3>
         <table>
             <thead>
-                <th>    </th>
                 <th>0-18</th>
                 <th>18-35</th>
                 <th>35-45</th>
@@ -14,34 +13,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>#</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                    <!-- <td>{{ageGroups[0]}}</td>
+                    <td>{{ageGroups[0]}}</td>
                     <td>{{ageGroups[1]}}</td>
                     <td>{{ageGroups[2]}}</td>
                     <td>{{ageGroups[3]}}</td>
                     <td>{{ageGroups[4]}}</td>
-                    <td>{{ageGroups[5]}}</td> -->
-                </tr>
-                <tr>
-                    <td>%</td>
-                    <td>4.76</td>
-                    <td>9.52</td>
-                    <td>14.28</td>
-                    <td>19.04</td>
-                    <td>23.81</td>
-                    <td>28.57</td>
-                    <!-- <td>{{ageGroups[0]/ageGroups.length * 100}}</td>
-                    <td>{{ageGroups[1]/ageGroups.length * 100}}</td>
-                    <td>{{ageGroups[2]/ageGroups.length * 100}}</td>
-                    <td>{{ageGroups[3]/ageGroups.length * 100}}</td>
-                    <td>{{ageGroups[4]/ageGroups.length * 100}}</td>
-                    <td>{{ageGroups[5]/ageGroups.length * 100}}</td> -->
+                    <td>{{ageGroups[5]}}</td>
                 </tr>
             </tbody>
             <tfoot>
@@ -53,20 +30,13 @@
         <h3>Pacijenti po polu</h3>
         <table>
             <thead>
-                <th>    </th>
                 <th>Musko</th>
                 <th>Zensko</th>
             </thead>
             <tbody>
                 <tr>
-                    <td>#</td>
                     <td>{{male}}</td>
                     <td>{{female}}</td>
-                </tr>
-                <tr>
-                    <td>%</td>
-                    <td>{{male/2 * 100}}</td>
-                    <td>{{female/2 * 100}}</td>
                 </tr>
             </tbody>
             <tfoot>
@@ -77,12 +47,13 @@
     <div class="doctors-patients-by-age flexbox-item">
         <h3>Pacijenti po starosnim grupama doktora: </h3>
         <p style="display: inline-block">Izaberite doktora: </p>
-        <!-- <select matNativeControl [(ngModel)]="selectedDoctor" (change)="changeDoctor($event)">
-            <option *ngFor="let doctor of doctors">{{doctor}}</option>
-        </select> -->
+        <select matNativeControl [(ngModel)]="selectedDoctor" (change)="changeDoctor($event)">
+            <option value=""></option>
+            <option *ngFor="let doctor of doctors">{{doctor.id}}</option>
+        </select>
+        <br/>
         <table>
             <thead>
-                <th>    </th>
                 <th>0-18</th>
                 <th>18-35</th>
                 <th>35-45</th>
@@ -92,34 +63,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>#</td>
-                    <!-- <td>{{ageGroupsByDoctor[0]}}</td>
+                    <td>{{ageGroupsByDoctor[0]}}</td>
                     <td>{{ageGroupsByDoctor[1]}}</td>
                     <td>{{ageGroupsByDoctor[2]}}</td>
                     <td>{{ageGroupsByDoctor[3]}}</td>
                     <td>{{ageGroupsByDoctor[4]}}</td>
-                    <td>{{ageGroupsByDoctor[5]}}</td> -->
-                    <td>3</td>
-                    <td>1</td>
-                    <td>4</td>
-                    <td>8</td>
-                    <td>2</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>%</td>
-                    <!-- <td>{{ageGroups[0]/ageGroups.length * 100}}</td>
-                    <td>{{ageGroups[1]/ageGroups.length * 100}}</td>
-                    <td>{{ageGroups[2]/ageGroups.length * 100}}</td>
-                    <td>{{ageGroups[3]/ageGroups.length * 100}}</td>
-                    <td>{{ageGroups[4]/ageGroups.length * 100}}</td>
-                    <td>{{ageGroups[5]/ageGroups.length * 100}}</td> -->
-                    <td>13.04</td>
-                    <td>4.35</td>
-                    <td>17.39</td>
-                    <td>34.78</td>
-                    <td>8.69</td>
-                    <td>21.74</td>
+                    <td>{{ageGroupsByDoctor[5]}}</td>
                 </tr>
             </tbody>
             <tfoot>

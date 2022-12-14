@@ -3,11 +3,11 @@ export class Patient{
     name: string = "";
     surname: string = "";
     email: string = "";
-    gender: string = "";
+    gender: number = 0;
     age: number = 0;
-    bloodType: string = "";
+    bloodType: number = 0;
     allergies: string[] = [];
-    doctorId: string = "";
+    doctorID: string = "";
     active: boolean;
 
     public constructor(obj?: any) {
@@ -20,7 +20,7 @@ export class Patient{
             this.age = obj.age;
             this.bloodType = obj.bloodType;
             this.allergies = obj.allergies;
-            this.doctorId = obj.doctorId;
+            this.doctorID = obj.doctorId;
             this.active = obj.active;
         }
     }
