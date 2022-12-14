@@ -1,0 +1,103 @@
+<div class = "container">
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label>Topic:</label>
+                </td>
+                <td>
+                    <input type="text" matInput [(ngModel)]="freeAppointments.Topic">
+                </td>
+            <tr>
+                <td>
+                    <label>Start date:</label>
+                </td>
+                <td>
+                    <input type="datetime" matInput [(ngModel)]="freeAppointments.StartStr" placeholder="dd/mm/yyyy hh:mm">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>End date:</label>
+                </td>
+                <td>
+                    <input type="datetime" matInput [(ngModel)]="freeAppointments.EndStr" placeholder="dd/mm/yyyy hh:mm">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Duration: </label>
+                </td>
+                <td>
+                    <input type="text" matInput [(ngModel)]="freeAppointments.Duration">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="radioDoctors">Choose by all doctors</label>
+                </td>
+                <td>
+                    <input type="radio" name="radio" id="radioDoctors" value="Doctors"  [(ngModel)]="freeAppointments.DoctorIds"  (change)="isClicked = true" checked>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="radioSpecialities">Choose doctors by specialities: </label>
+                </td>
+                <td>
+                    <input type="radio" name="radio" id="radioSpecialities" value="Specialities" [(ngModel)]="freeAppointments.Specialties"  (change)="isClicked = false" >
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div cellspacing="0">
+        <table *ngIf="isClicked">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr ion-item *ngFor="let doc of allDoctors">
+                <td>{{doc.id}}</td>
+                <td>{{doc.name}}</td>
+                <td>{{doc.surname}}</td>
+                <td>
+                    <button class="select-button" name="button1" id="selected"(click)="selectedDoctor(doc.id)">Select</button>
+                </td>
+                <td>
+                    <button  class="cancel-button" name="button2" id="cancelled" (click)="cancelledDoctor(doc.id)">
+                        Cancel
+                    </button>
+                </td>
+        </table>
+        <table *ngIf="!isClicked">
+          <tr>
+            <th>Specialities</th>
+          </tr>
+          <tr *ngFor="let item of specialities">
+            <td><input type="checkbox" name="" id="" [(ngModel)]="item.isChecked" (change)="specialitiesIDs()">{{item.name}}</td>
+          </tr>
+        </table>
+    </div>
+    <div>
+        <button type="submit" id="submit" name="button" (click)="findAppointments()" (click)="showAppointments = true">Find appointments</button>
+    </div>
+    <div>
+        <table *ngIf="showAppointments">
+            <tr>
+                <th>Start Time</th>
+                <th>Room</th>
+            </tr>
+            <tr *ngFor="let app of potentialAppointments">
+                <td>{{app.Start}}</td>
+                <td>Consilium Room</td>
+                <td><button class="select-appointment" name="button3" id="select" (click)="selectedAppointment(app)">Select</button></td>
+            </tr>
+        </table>
+        <button (click)="createConsilium()"></button>
+    </div>
+</div>
+
+
