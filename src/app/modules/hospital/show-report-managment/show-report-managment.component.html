@@ -10,10 +10,10 @@
     <input type="checkbox"/>
   </div>
   <div>
-    <show-report-patient></show-report-patient>
-    <show-report-symptoms></show-report-symptoms>
-    <show-report-desciption></show-report-desciption>
-    <show-report-drugs></show-report-drugs>
+    <show-report-patient>*ngIf="patient"</show-report-patient>
+    <show-report-symptoms>*ngIf="symptom"</show-report-symptoms>
+    <show-report-desciption>*ngIf="description"</show-report-desciption>
+    <show-report-drugs>*ngIf="drugs"</show-report-drugs>
   </div>
   <div>
     <button class="border" (click)="check()">Napravi</button>

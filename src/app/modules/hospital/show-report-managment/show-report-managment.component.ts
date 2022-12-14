@@ -13,6 +13,10 @@ export class ShowReportManagment{
   public report: ReportToShow
   public drugPrescription: any
   public appointment: any
+  patient: boolean=true
+  symptom: boolean=true
+  description: boolean=true
+  drugs: boolean=true
 
   ngOnInit():void{
     this.route.queryParams.subscribe(params =>{
