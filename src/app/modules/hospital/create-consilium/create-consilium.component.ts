@@ -22,6 +22,7 @@ export class CreateConsiliumComponent implements OnInit {
   public listOfSpecialities = []
   public isClicked : boolean = true;
   public showAppointments : boolean = false;
+  public selectedApp : PotentialAppointmentDTO;
   selectedItemsList = [];
   topicNull: boolean = false
   startDateNull: boolean = false
@@ -44,6 +45,9 @@ export class CreateConsiliumComponent implements OnInit {
 
   selectedDoctor(id : any) : void{
     let doctor = this.allDoctors.find((d) => { return d.id === id })
+    if(this.selectedDoctors.some(drId=>drId==doctor.id)){
+      return;
+    }
     this.selectedDoctors.push(doctor.id);
     let doctorIds = "";
     for(var doc of this.selectedDoctors){
@@ -103,6 +107,7 @@ export class CreateConsiliumComponent implements OnInit {
       this.consiliumService.sendInfoForFreeAppointments(this.freeAppointments).subscribe(res => {
         this.potentialAppointments = res;
         console.log(this.potentialAppointments)
+        this.showAppointments = true;
       },error =>{
         alert("Los zahtev")
       })
@@ -117,6 +122,11 @@ export class CreateConsiliumComponent implements OnInit {
     }
   }
 
-  selectedAppointment(){
+  selectedAppointment(app: any){
+    this.selectedApp = app;
+  }
+
+  createConsilium(){
+    this.consiliumService.createConsilium(this.selectedApp).subscribe()
   }
 }

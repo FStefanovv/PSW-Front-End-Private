@@ -87,15 +87,16 @@
     <div>
         <table *ngIf="showAppointments">
             <tr>
-                <th>Date</th>
-                <th>Time</th>
+                <th>Start Time</th>
+                <th>Room</th>
             </tr>
-            <tr *ngFor="let app of allFreeAppointments">
-                <td>app.date</td>
-                <td>app.time</td>
-                <td><button class="select-appointment" name="button3" id="select" (click)="selectedAppointment()">Select</button></td>
+            <tr *ngFor="let app of potentialAppointments">
+                <td>{{app.Start}}</td>
+                <td>Consilium Room</td>
+                <td><button class="select-appointment" name="button3" id="select" (click)="selectedAppointment(app)">Select</button></td>
             </tr>
         </table>
+        <button (click)="createConsilium()"></button>
     </div>
 </div>
 
