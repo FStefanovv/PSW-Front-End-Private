@@ -10,7 +10,6 @@
     <label>Lekovi</label>
     <input type="checkbox" [(ngModel)]="drugBool"/>
     
-    <button class="border" (click)="sendRequests()">Napravi</button>
 
   </div>
   <div id="content" #content>
@@ -54,17 +53,9 @@
         <label>Drugs: </label>{{drugs.name}} {{drugs.companyName}}
     </div>
     </div> -->
-  
-
-  
-
-
     <div *ngIf="descBool">Opis pregleda:{{report.description}}</div>
   </div>
-  <div>
-    <button class="border" (Onclick)="check()"> PDF </button>
-  </div>
 <div>
-  <button  (click)="radi()"> Generate PDF </button>
+  <button class="border" (click)="radi()"> Generate PDF </button>
 </div>
 </div>

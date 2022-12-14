@@ -43,26 +43,19 @@ export class ShowReportManagment{
         this.appointment = res
       }
     )
-    // this.patientService.getPatientForReport(this.patientId).subscribe(
-    //   res => {
+    this.patientService.getPatientForReport(this.patientId).subscribe(
+      res => {
        
-    //     this.patient = res
-    //   }
-    // )
-
-
+        this.patient = res
+      }
+    )
     this.reportService.getReport(this.appointmentId).subscribe(
       res => {
         this.report = res
         this.symptomList=res.symptoms
-        
-        
       }
 
     )
-  
-  
-
     // this.reportService.getDrugPrescription(this.report.id).subscribe(
     //   res => {
     //     this.drugPrescription = res
@@ -72,15 +65,12 @@ export class ShowReportManagment{
       res => {
         this.drugPrescription = res
         this.drugList=res.drugs
-
-
       }
       )
-    
-
-    
     console.log(this.patient)
   }
+
+
   radi(){
     console.log("radi li")
     this.generatePDF()
