@@ -50,7 +50,7 @@
             </button>
         </td>
         <td *ngIf="app.status==1">
-            <button  class="cancel-button" [disabled]="" (click)="reviewReport(app.id)">
+            <button  class="cancel-button" [disabled]="" (click)="reviewReport(app.id,app.patientId)">
                 Review report
             </button>
         </td>

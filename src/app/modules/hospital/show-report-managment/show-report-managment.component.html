@@ -1,19 +1,19 @@
 <div>
   <div class="flex ">
     <label>Pacijent info</label>
-    <input type="checkbox"/>
+    <input type="checkbox" [(ngModel)]="patientBool"/>
     <label>Simptomi</label>
     <input type="checkbox"/>
     <label>Opis</label>
     <input type="checkbox"/>
     <label>Lekovi</label>
     <input type="checkbox"/>
+    <button class="border" (click)="sendRequests()">Napravi</button>
   </div>
-  <div>
-    <show-report-patient>*ngIf="patient"</show-report-patient>
-    <show-report-symptoms>*ngIf="symptom"</show-report-symptoms>
-    <show-report-desciption>*ngIf="description"</show-report-desciption>
-    <show-report-drugs>*ngIf="drugs"</show-report-drugs>
+  <div *ngIf="patientBool" [(ngModel)]="patient">
+    <div>Ime i prezime:{{patient.name}} {{patient.surname}}</div>
+    <div>Godine:{{patient.age}}</div>
+    <div>Krvna grupa:{{patient.BloodType}}</div>
   </div>
   <div>
     <button class="border" (click)="check()">Napravi</button>
