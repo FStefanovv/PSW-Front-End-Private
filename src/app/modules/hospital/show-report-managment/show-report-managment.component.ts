@@ -56,10 +56,7 @@ export class ShowReportManagment{
       }
 
     )
-    // this.reportService.getDrugPrescription(this.report.id).subscribe(
-    //   res => {
-    //     this.drugPrescription = res
-    //     this.drugList=res.drugs
+
 
     this.reportService.getDrugPrescription(this.reportId).subscribe(
       res => {
