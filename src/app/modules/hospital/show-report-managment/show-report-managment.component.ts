@@ -3,11 +3,14 @@ import { Patient } from './../model/patient.model';
 import { ReportToShow } from './../model/reportToShow.model';
 import { ReportService } from './../services/report.service';
 import { Appointment } from './../model/appointment.model';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
 import { ActivatedRoute } from '@angular/router';
 import { Symptom } from '../model/symptom.model';
 import { Drug } from '../model/drug.model';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import jspdf from 'jspdf';
 @Component({
   selector: 'show-report-managment',
   templateUrl: './show-report-managment.component.html'
@@ -25,6 +28,7 @@ export class ShowReportManagment{
   public patientBool: boolean = false
   public patientId: string 
   public descBool: boolean =false
+  i: number=1
 
 
   ngOnInit():void{
@@ -37,12 +41,12 @@ export class ShowReportManagment{
         this.appointment = res
       }
     )
-    this.patientService.getPatientForReport(this.patientId).subscribe(
-      res => {
+    // this.patientService.getPatientForReport(this.patientId).subscribe(
+    //   res => {
        
-        this.patient = res
-      }
-    )
+    //     this.patient = res
+    //   }
+    // )
 
 
     this.reportService.getReport(this.appointmentId).subscribe(
@@ -50,43 +54,75 @@ export class ShowReportManagment{
         this.report = res
         this.symptomList=res.symptoms
         
+        
       }
 
     )
   
   
-    this.reportService.getDrugPrescription(this.report.id).subscribe(
-      res => {
-        this.drugPrescription = res
-        this.drugList=res.drugs
+    // this.reportService.getDrugPrescription(this.report.id).subscribe(
+    //   res => {
+    //     this.drugPrescription = res
+    //     this.drugList=res.drugs
 
-      }
-    )
+    //   }
+    // )
     
 
     
     console.log(this.patient)
   }
-  
+  radi(){
+    console.log("radi li")
+    this.generatePDF()
+  }
+
   constructor(private reportService: ReportService,
     private appointmentService: AppointmentService,
     private route: ActivatedRoute,
     private patientService: PatientService){}
 
-    
+  @ViewChild('content',{static:true}) el!: ElementRef<HTMLImageElement>
+  
+  generatePDF(){
+    html2canvas(this.el.nativeElement).then((canvas)=>{
+      const imgData = canvas.toDataURL('image/jpeg')
 
+      const pdf = new jsPDF({orientation:'portrait'})
+
+      const imageProps=pdf.getImageProperties(imgData)
+
+      const pdfw = pdf.internal.pageSize.getWidth()
+
+      const pdfh = (imageProps.height*pdfw)/imageProps.width
+
+      pdf.addImage(imgData,'PNG',0,0,pdfw,pdfh)
       
+      pdf.save("output.pdf")
+      
+      window.open(URL.createObjectURL(pdf.output("blob")))
+      this.i=this.i+1
+      
+      
+    })
+  }
   
+
+
+ 
   
 
 
-
-  
-
-
-  check(){
+   check(){
     console.log(this.symptomList)
     console.log(this.drugList)
+    console.log('radi dugme')
+
+    if(confirm('Do you want to generate PDF file?'))
+      {
+         this.generatePDF()
+      }
+   
     
     // if(this.symptomBool){
 
@@ -112,9 +148,12 @@ export class ShowReportManagment{
 
 
   showPatient(){
+    console.log('radi li ovo')
 
   }
   sendRequests(){
 
   }
+
+
 }
