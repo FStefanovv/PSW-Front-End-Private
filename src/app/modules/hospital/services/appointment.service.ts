@@ -59,4 +59,8 @@ export class AppointmentService {
     return this.http.delete<any>(this.apiHost  + '/'+id, { headers: this.headers });
   }
 
+  getAllAppointments(): Observable<Appointment[]>{
+    return this.http.get<any>(this.apiHost, { headers: this.headers});
+  }
+
 }
