@@ -24,6 +24,9 @@
         <th>Duration</th>
         <th></th>
         <th></th>
+        <th></th>
+        <th></th>
+
     </tr>
     <tr *ngFor="let app of appointmentsToShow">
         <td>{{app.patientId}}</td>
@@ -39,6 +42,16 @@
         <td>
             <button  class="cancel-button" [disabled]="" (click)="cancelled(app.id)">
                 Cancel
+            </button>
+        </td>
+        <td *ngIf="app.status==1">
+            <button  class="cancel-button" [disabled]="" (click)="writeReport(app.id)">
+                Write report
+            </button>
+        </td>
+        <td *ngIf="app.status==1">
+            <button  class="cancel-button" [disabled]="" (click)="reviewReport(app.id,app.patientId)">
+                Review report
             </button>
         </td>
     </tr>

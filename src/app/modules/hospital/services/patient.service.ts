@@ -1,3 +1,5 @@
+import { PatientForReport } from './../model/patientForReport.model';
+import { PatientForApp } from './../model/patientForApp.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Patient } from '../model/patient.model';
@@ -24,6 +26,14 @@ export class PatientService {
   }
   getPatient(id: any): Observable<Patient>{
     return this.http.get<Patient>(this.apiHost + "/" + id, {headers: this.headers});
+  }
+
+  getPatientForDoctor(id: string): Observable<PatientForApp[]>{
+    return this.http.get<PatientForApp[]>(this.apiHost+"/GetPatientsForSpecificDoctor/"+ id,{headers : this.headers})
+  }
+
+  getPatientForReport(id: string): Observable<PatientForReport>{
+    return this.http.get<PatientForReport>(this.apiHost+"/GetPatientForReport/"+id,{headers: this.headers})
   }
   
   errorHandler(error: HttpErrorResponse){
