@@ -7,6 +7,8 @@ import { Component, EventEmitter, Output } from "@angular/core";
 export class ReportStepTwo{
   public description: string = ""
   @Output() descriptionEmit = new EventEmitter<{description: string}>()
+  public backString: string = ""
+  @Output() backEmit2 = new EventEmitter<{backString2: string}>()
 
   constructor(){
 
@@ -14,6 +16,9 @@ export class ReportStepTwo{
 
   submit(){
     this.descriptionEmit.emit({description: this.description})
+  }
+  back(){
+    this.backEmit2.emit({backString2: this.backString})
   }
 
 }

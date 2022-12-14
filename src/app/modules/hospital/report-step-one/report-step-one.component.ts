@@ -2,6 +2,7 @@ import { Symptom } from './../model/symptom.model';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { ReportService } from './../services/report.service';
 import { Component, EventEmitter, Output } from "@angular/core";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'report-step-one',
@@ -12,7 +13,7 @@ export class ReportStepOne{
   form: FormGroup
   public symptomsList: Array<Symptom>
 
-  constructor(private reportService: ReportService) {
+  constructor(private reportService: ReportService,private router:Router) {
     
   }
 
@@ -33,5 +34,8 @@ export class ReportStepOne{
     });
     this.symptomsToReturn.emit(returnArray)
     console.log(returnArray)
+  }
+  back(){
+    this.router.navigate(['appointments-by-doctor'])
   }
 }

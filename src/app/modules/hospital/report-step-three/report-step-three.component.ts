@@ -9,7 +9,8 @@ import { ReportService } from "../services/report.service";
 })
 export class ReportStepThree{
   @Output() drugsToReturn = new EventEmitter<Drug[]>()
-  
+  public backString: string = ""
+  @Output() backEmit3 = new EventEmitter<{backString3: string}>()
   form: FormGroup
   public listOfDrugs: Array<Drug>
 
@@ -36,5 +37,9 @@ export class ReportStepThree{
     this.drugsToReturn.emit(returnArray)
     console.log(returnArray)
     
+  }
+  public back(){
+
+    this.backEmit3.emit({backString3: this.backString})
   }
 }

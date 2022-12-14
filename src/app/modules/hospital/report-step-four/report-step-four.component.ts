@@ -3,18 +3,21 @@ import { ReportDTO } from './../model/reportDTO.model';
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Drug } from "../model/drug.model";
 import { Symptom } from "../model/symptom.model";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'report-step-four',
   templateUrl: './report-step-four.component.html'
 })
 export class ReportStepFour{
+  public backString: string = ""
+  @Output() backEmit4 = new EventEmitter<{backString4: string}>()
   @Input() symptoms: Symptom[]
   @Input() drugs: Drug[]
   @Input() description: string = ""
   public appointmentId: string = ""
-  constructor(private reportService: ReportService,private route: ActivatedRoute){
+  
+  constructor(private reportService: ReportService,private route: ActivatedRoute,private router: Router){
     this.route.queryParams.subscribe(params =>{
       this.appointmentId = params.appointmentId
     })
@@ -34,5 +37,13 @@ export class ReportStepFour{
     this.reportService.createReport(reportDTO).subscribe(res=>{
       alert("Poslato")
     })
+    this.router.navigate(['/appointments-by-doctor'])
+  }
+  public back(){
+
+    this.backEmit4.emit({backString4: this.backString})
+
+
+    
   }
 }
