@@ -32,7 +32,7 @@
     "moment": "^2.29.4",
     "ng-angular-popup": "^0.2.0",
     "ng2-bootstrap-modal": "^1.0.1",
-    "ngtoast": "^2.0.1",
+    "ngtoast": "^0.1.9",
     "run-parallel": "^1.2.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
