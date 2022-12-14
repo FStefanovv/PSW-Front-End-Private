@@ -116,6 +116,7 @@ export class CreateConsiliumComponent implements OnInit {
       this.consiliumService.sendInfoForFreeAppointmentsSpecialties(this.freeAppointments).subscribe(res => {
         this.potentialAppointments = res;
         console.log(this.potentialAppointments)
+        this.showAppointments = true;
       },error =>{
         alert("Los zahtev")
       })

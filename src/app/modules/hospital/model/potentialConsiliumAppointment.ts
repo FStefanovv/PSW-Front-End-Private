@@ -2,7 +2,7 @@ import { Duration } from "moment";
 
 export class PotentialAppointmentDTO {
     DoctorIds:string;
-    Start:string;
+    start:string;
     End:string;
     Topic:string;
     Specialties:string;
@@ -11,7 +11,7 @@ export class PotentialAppointmentDTO {
     public constructor(obj?: any){
       if(obj){
         this.DoctorIds = obj.DoctorIds
-        this.Start = obj.Start
+        this.start = obj.start
         this.Specialties = obj.Specialties;
         this.End = obj.End;
         this.Topic = obj.Topic;

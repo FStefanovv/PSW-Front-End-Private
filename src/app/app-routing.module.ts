@@ -11,6 +11,7 @@ import { DoctorHomeComponent } from "./modules/pages/doctor-home/doctor-home.com
 import { LoginComponent } from "./modules/pages/login/login.component";
 import { ManagerHomeComponent } from "./modules/pages/manager-home/manager-home.component";
 import { CreateConsiliumComponent } from "./modules/hospital/create-consilium/create-consilium.component";
+import { CommonModule } from "@angular/common";
 
 
 const routes: Routes = [
@@ -32,7 +33,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), CommonModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -91,12 +91,12 @@
                 <th>Room</th>
             </tr>
             <tr *ngFor="let app of potentialAppointments">
-                <td>{{app.Start}}</td>
+                <td>{{app.start}}</td>
                 <td>Consilium Room</td>
                 <td><button class="select-appointment" name="button3" id="select" (click)="selectedAppointment(app)">Select</button></td>
             </tr>
         </table>
-        <button (click)="createConsilium()"></button>
+        <button (click)="createConsilium()">Create</button>
     </div>
 </div>
 

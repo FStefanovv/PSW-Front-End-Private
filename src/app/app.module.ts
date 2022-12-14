@@ -18,6 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { AuthInterceptor } from "./auth/auth.interceptor";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { ErrorIntercept } from "./modules/hospital/services/error.interceptor"; 
+import { CommonModule } from '@angular/common';
+
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { ErrorIntercept } from "./modules/hospital/services/error.interceptor";
     PagesModule,
     HospitalModule,
     MatRadioModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     IntegrationModule,
