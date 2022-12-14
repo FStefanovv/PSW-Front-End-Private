@@ -1,13 +1,13 @@
 <div>
   <div class="flex ">
     <label>Pacijent info</label>
-    <input type="checkbox"/>
+    <input type="checkbox" />
     <label>Simptomi</label>
-    <input type="checkbox"/>
+    <input type="checkbox" [(ngModel)]="symptomBool"/>
     <label>Opis</label>
     <input type="checkbox"/>
     <label>Lekovi</label>
-    <input type="checkbox"/>
+    <input type="checkbox" [(ngModel)]="drugBool"/>
   </div>
   <div>
     <show-report-patient>*ngIf="patient"</show-report-patient>
@@ -15,6 +15,19 @@
     <show-report-desciption>*ngIf="description"</show-report-desciption>
     <show-report-drugs>*ngIf="drugs"</show-report-drugs>
   </div>
+  <div *ngIf="symptomBool">
+   <div *ngFor="let symptoms of symptomList"  >
+     <label>Symptoms: </label> <label>{{symptoms.name}}</label>
+   </div>
+  </div>
+  
+  <div *ngIf="drugBool">
+   <div *ngFor="let drugs of drugList"> 
+      <label>Report ID: </label> {{drugPrescription.reportId}}
+      <label>Drugs: </label>{{drugs.name}} {{drugs.companyName}}
+   </div>
+  </div>
+  
   <div>
     <button class="border" (click)="check()">Napravi</button>
   </div>

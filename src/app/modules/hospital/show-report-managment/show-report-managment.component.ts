@@ -4,6 +4,8 @@ import { Appointment } from './../model/appointment.model';
 import { Component } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
 import { ActivatedRoute } from '@angular/router';
+import { Symptom } from '../model/symptom.model';
+import { Drug } from '../model/drug.model';
 @Component({
   selector: 'show-report-managment',
   templateUrl: './show-report-managment.component.html'
@@ -13,11 +15,13 @@ export class ShowReportManagment{
   public report: ReportToShow
   public drugPrescription: any
   public appointment: any
-  patient: boolean=true
-  symptom: boolean=true
-  description: boolean=true
-  drugs: boolean=true
-
+  description: string
+  patient: boolean=false
+  symptomBool: boolean=false
+  drugBool: boolean=false
+  
+  symptomList: Array<Symptom>=[]
+  drugList: Array<Drug>=[]
   ngOnInit():void{
     this.route.queryParams.subscribe(params =>{
       this.appointmentId = params.appointmentId
@@ -30,34 +34,64 @@ export class ShowReportManagment{
     this.reportService.getReport(this.appointmentId).subscribe(
       res => {
         this.report = res
+        
       }
     )
-    this.reportService.getDrugPrescription(this.report.id).subscribe(
-      res => {
-        this.drugPrescription = res
-      }
-    )
+    
+
+      this.reportService.getReport(this.appointmentId).subscribe(
+        res => {
+          this.report = res
+          this.symptomList=res.symptoms
+          
+        }
+
+      )
+    
+    
+      this.reportService.getDrugPrescription(this.report.id).subscribe(
+        res => {
+          this.drugPrescription = res
+          this.drugList=res.drugs
+  
+        }
+      )
+      
+    // this.reportService.getDrugPrescription(this.report.id).subscribe(
+    //   res => {
+    //     this.drugPrescription = res
+    //   }
+    // )
   }
   
-  constructor(private reportService: ReportService,private appointmentService: AppointmentService,private route: ActivatedRoute){
-    
-  }
+  constructor(private reportService: ReportService,private appointmentService: AppointmentService,private route: ActivatedRoute){ }
+
+
+  
 
   check(){
-    console.log(this.appointmentId)
-    console.log(this.appointment)
+    console.log(this.symptomList)
+    console.log(this.drugList)
     
-    this.reportService.getReport(this.appointmentId).subscribe(
-      res => {
-        this.report = res
-      }
-    )
-    this.reportService.getDrugPrescription(this.report.id).subscribe(
-      res => {
-        this.drugPrescription = res
-      }
-    )
-    console.log(this.report)
-    console.log(this.drugPrescription)
+    // if(this.symptomBool){
+
+    // this.reportService.getReport(this.appointmentId).subscribe(
+    //   res => {
+    //     this.report = res
+    //     this.symptomList=res.symptoms
+    //   }
+    // )
+    // }
+    // if(this.drugBool){
+    // this.reportService.getDrugPrescription(this.report.id).subscribe(
+    //   res => {
+    //     this.drugPrescription = res
+    //     this.drugList=res.drugs
+
+    //   }
+    // )
+    // }
+    // console.log(this.report)
+    // console.log(this.drugPrescription)
   }
 }
