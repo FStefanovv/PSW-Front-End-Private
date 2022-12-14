@@ -25,6 +25,8 @@
    </div>
   </div>
   
+  <div *ngIf="descBool">Opis pregleda:{{report.description}}</div>
+
   <div *ngIf="drugBool">
    <div *ngFor="let drugs of drugList"> 
       <label>Report ID: </label> {{drugPrescription.reportId}}
@@ -33,7 +35,7 @@
   </div>
   
 
-  <div *ngIf="descBool">Opis pregleda:{{report.description}}</div>
+  
 
   <div>
     <button class="border" (click)="check()">Napravi</button>

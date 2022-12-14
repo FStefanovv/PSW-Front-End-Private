@@ -25,12 +25,14 @@ export class ShowReportManagment{
   public patientBool: boolean = false
   public patientId: string 
   public descBool: boolean =false
+  public reportId: string
 
 
   ngOnInit():void{
     this.route.queryParams.subscribe(params =>{
       this.appointmentId = params.appointmentId
       this.patientId = params.patientId
+      this.reportId = params.reportId
     })
     this.appointmentService.getAppointmentToReschedule(this.appointmentId).subscribe(
       res => {
@@ -55,7 +57,7 @@ export class ShowReportManagment{
     )
   
   
-    this.reportService.getDrugPrescription(this.report.id).subscribe(
+    this.reportService.getDrugPrescription(this.reportId).subscribe(
       res => {
         this.drugPrescription = res
         this.drugList=res.drugs
