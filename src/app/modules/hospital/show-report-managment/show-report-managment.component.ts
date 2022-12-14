@@ -28,13 +28,15 @@ export class ShowReportManagment{
   public patientBool: boolean = false
   public patientId: string 
   public descBool: boolean =false
-  i: number=1
+  public reportId: string
+
 
 
   ngOnInit():void{
     this.route.queryParams.subscribe(params =>{
       this.appointmentId = params.appointmentId
       this.patientId = params.patientId
+      this.reportId = params.reportId
     })
     this.appointmentService.getAppointmentToReschedule(this.appointmentId).subscribe(
       res => {
@@ -60,13 +62,20 @@ export class ShowReportManagment{
     )
   
   
+
     // this.reportService.getDrugPrescription(this.report.id).subscribe(
     //   res => {
     //     this.drugPrescription = res
     //     this.drugList=res.drugs
 
-    //   }
-    // )
+    this.reportService.getDrugPrescription(this.reportId).subscribe(
+      res => {
+        this.drugPrescription = res
+        this.drugList=res.drugs
+
+
+      }
+      )
     
 
     
@@ -101,7 +110,7 @@ export class ShowReportManagment{
       pdf.save("output.pdf")
       
       window.open(URL.createObjectURL(pdf.output("blob")))
-      this.i=this.i+1
+     
       
       
     })

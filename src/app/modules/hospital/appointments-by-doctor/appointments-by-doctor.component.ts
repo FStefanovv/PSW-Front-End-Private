@@ -1,3 +1,4 @@
+import { ReportToShow } from './../model/reportToShow.model';
 import { Patient } from './../model/patient.model';
 import { Component, OnInit, ɵɵqueryRefresh, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
@@ -12,6 +13,7 @@ import { Observable, interval, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { RescheduleAppointmentDTO } from '../model/rescheduleAppointmentDTO.model';
 import { Router } from '@angular/router';
+import { ReportService } from '../services/report.service';
 
 
 @Component({
@@ -27,6 +29,8 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   public appointmentType:  number = -1;
 
+  
+
   filterDate : string = '';
   typeDate : string ="day";
 
@@ -36,7 +40,10 @@ export class AppointmentsByDoctorComponent implements OnInit {
     else
       this.appointmentsToShow = this.appointments.filter(app => app.status == this.appointmentType);
   } 
-  constructor(private appointmentService: AppointmentService,public dialog: MatDialog,private router: Router) { }
+  constructor(private appointmentService: AppointmentService,
+    public dialog: MatDialog,
+    private router: Router,
+    private reportService: ReportService) { }
 
   ngOnInit(): void {
     const doctor = 'DOC1';
@@ -121,11 +128,12 @@ export class AppointmentsByDoctorComponent implements OnInit {
     }
 
     reviewReport(appId: string,patId:string){
-      this.router.navigate(['showreportdev'],{queryParams:{appointmentId: appId,patientId:patId}})
+      this.reportService.getReport(appId).subscribe(
+        res=>{
+        console.log(res)
+        this.router.navigate(['showreportdev'],{queryParams:{appointmentId: appId,patientId:patId,reportId: res.id}})
+      })
     }
-
-
-
 }
 
 
