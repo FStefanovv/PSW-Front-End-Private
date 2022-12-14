@@ -18,6 +18,7 @@ export class ShowReportManagment{
   public patient: any
   public patientBool: boolean = false
   public patientId: string 
+  public descBool: boolean =false
 
   ngOnInit():void{
     this.route.queryParams.subscribe(params =>{
