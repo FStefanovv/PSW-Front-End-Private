@@ -1,3 +1,4 @@
+import { Patient } from './../model/patient.model';
 import { Component, OnInit, ɵɵqueryRefresh, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
 import { CreateAppointmentDTO } from '../model/createAppointmentDTO.model';
@@ -119,9 +120,11 @@ export class AppointmentsByDoctorComponent implements OnInit {
         this.router.navigate(['reportdev'],{queryParams:{appointmentId: appId}})
     }
 
-    reviewReport(appId: string){
-      this.router.navigate(['showreportdev'],{queryParams:{appointmentId: appId}})
+    reviewReport(appId: string,patId:string){
+      this.router.navigate(['showreportdev'],{queryParams:{appointmentId: appId,patientId:patId}})
     }
+
+
 
 }
 
