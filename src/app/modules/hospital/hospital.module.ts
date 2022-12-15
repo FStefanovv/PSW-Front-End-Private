@@ -36,6 +36,7 @@ import { ShowReportPatient } from "./show-report-patient/show-report-patient.com
 import { ShowReportSymptoms } from "./show-report-symptoms/show-report-symptoms.component";
 import { CreateConsiliumComponent } from './create-consilium/create-consilium.component';
 import { PatientStatisticsComponent } from './patient-statistics/patient-statistics.component';
+import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
 
 
 const routes: Routes = [
@@ -56,7 +57,7 @@ const routes: Routes = [
   { path: 'vacations/cancel', component: CancelVacationComponent},
   { path: 'patients/treatments/create', component: CreateTreatmentComponent},
   { path: 'reportdev',component: ReportMain},
-  { path: 'showreportdev', component: ShowReportManagment}
+  { path: 'showreportdev', component: ShowReportManagment},
   {path: 'patients/treatments/create', component: CreateTreatmentComponent},
   {path: 'consilium/create', component:CreateConsiliumComponent}
  ];
