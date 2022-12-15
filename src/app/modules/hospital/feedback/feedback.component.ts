@@ -16,41 +16,85 @@ export class FeedbackComponent implements OnInit {
 
   public dataSourceApproved = new MatTableDataSource<Feedback>();
   public approvedFeedback: Feedback[] = [];
+
   public dataSourcePending = new MatTableDataSource<Feedback>();
   public pendingFeedback: Feedback[] = [];
+
   public displayedColumns = ['username', 'text', 'date'];
   public feedback: Feedback[] = [];
 
-  public selectedRow = new SelectionModel<Feedback>(false, []);
+  public selectedRowPending = new SelectionModel<Feedback>(false, []);
+  public selectedRowApproved = new SelectionModel<Feedback>(false, []);
   public selectedIndex = 0;
   
-  constructor(private feedbackService: FeedbackService, private router: Router) { }
+  constructor(private feedbackService: FeedbackService, private router: Router) {}
 
   ngOnInit(): void {
-    this.feedbackService.getAllFeedback().subscribe( res => {
+    this.feedbackService.getAllFeedback().subscribe(res => {
       this.feedback = res;
+
+      this.feedback.forEach(obj => {
+        obj.date = this.formatDate(obj.date);
+      });
+
       this.approvedFeedback = this.feedback.filter(f => f.approved === true);
       this.pendingFeedback = this.feedback.filter(f => f.approved === false);
       this.dataSourcePending.data = this.pendingFeedback;
       this.dataSourceApproved.data = this.approvedFeedback;
-     
-    })
+    });
+      
   }
 
   public changeToApproved(): void {
 
-    if (this.selectedRow.selected.length != 0) {
+    if (this.selectedRowPending.selected.length != 0 ) {
+      var feedback = this.selectedRowPending.selected[0];
+      this.selectedIndex = this.pendingFeedback.findIndex((d: Feedback) => d === feedback);
 
-      this.selectedIndex = this.pendingFeedback.findIndex((d: Feedback) => d === this.selectedRow.selected[0]);
-      this.feedbackService.acceptFeedback(this.selectedRow.selected[0]).subscribe();
-      this.approvedFeedback.push(this.selectedRow.selected[0]);
-      this.pendingFeedback.splice(this.selectedIndex, 1);
+      if (feedback.approved == false) {
 
-      this.dataSourcePending = new MatTableDataSource<Feedback>(this.pendingFeedback);
-      this.dataSourceApproved = new MatTableDataSource<Feedback>(this.approvedFeedback);
-      this.selectedRow.selected.length=0;
+        this.feedbackService.changeApproval(feedback.id).subscribe();
+        feedback.approved = true;
+        this.approvedFeedback.push(feedback);
+        this.pendingFeedback.splice(this.selectedIndex, 1);
+
+        this.dataSourcePending = new MatTableDataSource<Feedback>(this.pendingFeedback);
+        this.dataSourceApproved = new MatTableDataSource<Feedback>(this.approvedFeedback);
+        this.selectedRowPending.selected.length = 0;
+      }
+     
     }
    
   }
+
+  public changeToPending(): void {
+    
+    if (this.selectedRowApproved.selected.length != 0) {
+      var feedback = this.selectedRowApproved.selected[0];
+      this.selectedIndex = this.approvedFeedback.findIndex((d: Feedback) => d === feedback);
+
+      if (feedback.approved == true) {
+        this.feedbackService.changeApproval(feedback.id).subscribe();
+        feedback.approved = false;
+        this.pendingFeedback.push(feedback);
+        this.approvedFeedback.splice(this.selectedIndex, 1);
+
+        this.dataSourcePending = new MatTableDataSource<Feedback>(this.pendingFeedback);
+        this.dataSourceApproved = new MatTableDataSource<Feedback>(this.approvedFeedback);
+        this.selectedRowApproved.selected.length = 0;
+      }
+
+    }
+
   }
+    private formatDate(d: string): string {
+      let array = d.split("-");
+      let array2 = array[2].split("T");
+      return array2[0] + "." + array[1] + "." + array[0]+ ".";
+     }
+
+  }
+
+
+
 

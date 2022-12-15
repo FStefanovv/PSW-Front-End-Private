@@ -4,6 +4,7 @@ import { Appointment } from '../model/appointment.model';
 import { CreateAppointmentDTO } from '../model/createAppointmentDTO.model';
 import { Observable, throwError } from 'rxjs';
 import { catchError,  } from 'rxjs/operators';
+import { RescheduleAppointmentDTO } from '../model/rescheduleAppointmentDTO.model';
 
 
 @Injectable({
@@ -11,8 +12,6 @@ import { catchError,  } from 'rxjs/operators';
 })
 export class AppointmentService {
 
-
- 
 
   apiHost: string = 'http://localhost:5000/api/appointments';
 
@@ -38,6 +37,10 @@ export class AppointmentService {
   }
   errorHandler(error: HttpErrorResponse){
     return throwError(() => new Error('test'))
+  }
+
+  getAppointmentToReschedule(id: any): Observable<RescheduleAppointmentDTO>{
+    return this.http.get<any>(this.apiHost + '/GetAppToReschedule/' + id, { headers: this.headers})
   }
 
   rescheduleAppointment(value : any): Observable<any> {

@@ -1,0 +1,6 @@
+<div>
+  <table>
+    <tr><td>Ime</td><td>Prezime</td><td></td></tr>
+    <tr *ngFor="let doc of doctors"><td>{{doc.name}}</td><td>{{doc.surname}}</td><td><button (click)="selectDoctor(doc.id)">Izaberi</button></td></tr>
+  </table>
+</div>
