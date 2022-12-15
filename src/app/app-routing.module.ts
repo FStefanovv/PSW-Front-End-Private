@@ -12,6 +12,7 @@ import { LoginComponent } from "./modules/pages/login/login.component";
 import { ManagerHomeComponent } from "./modules/pages/manager-home/manager-home.component";
 import { CreateConsiliumComponent } from "./modules/hospital/create-consilium/create-consilium.component";
 import { CommonModule } from "@angular/common";
+import { ShowConsiliumsComponent } from "./modules/hospital/show-consiliums/show-consiliums.component";
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
   //ovde mi izlazi greska jer je vec definisano u integration module, mozete slobodno samo tamo stavljati putanje za integracije jer imamo child routes ukljucen
  // {path:'configuration', component:ConfigurationComponent},
   { path: '', component: LoginComponent },
-  { path: 'create-consilium', component: CreateConsiliumComponent}
+  { path: 'create-consilium', component: CreateConsiliumComponent},
+  { path: 'show-consiliums', component : ShowConsiliumsComponent}
 ]
 
 

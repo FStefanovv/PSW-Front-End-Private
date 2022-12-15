@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core"
 import { Observable } from "rxjs"
 import { InfoForAppointmentsDTO } from "../model/infoForAppointmentsDTO.model"
 import { PotentialAppointmentDTO } from "../model/potentialConsiliumAppointment"
+import { ShowConsiliumsDTO } from "../model/showConsiliumsDTO"
 
 
 @Injectable({
@@ -23,8 +24,11 @@ export class ConsiliumService {
     }
     
     createConsilium(appointment: any): Observable<PotentialAppointmentDTO>{
-      console.log(appointment)
       return this.http.post<PotentialAppointmentDTO>(this.apiHost+'CreateConsiliumWithDoctors', appointment, {headers: this.headers})
+    }
+
+    getAll() : Observable<ShowConsiliumsDTO[]>{
+      return this.http.get<ShowConsiliumsDTO[]>(this.apiHost ,{headers: this.headers} )
     }
   
 }

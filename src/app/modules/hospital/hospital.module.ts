@@ -26,6 +26,7 @@ import { CreateTreatmentComponent } from './create-treatment/create-treatment.co
 import { CreateConsiliumComponent } from './create-consilium/create-consilium.component';
 import { PatientStatisticsComponent } from './patient-statistics/patient-statistics.component';
 import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
+import { ShowConsiliumsComponent } from './show-consiliums/show-consiliums.component';
 
 
 const routes: Routes = [
@@ -76,7 +77,8 @@ const routes: Routes = [
     CancelVacationComponent,
     CreateTreatmentComponent,
     CreateConsiliumComponent,
-    PatientStatisticsComponent
+    PatientStatisticsComponent,
+    ShowConsiliumsComponent
   ],
   imports: [
     CommonModule,
