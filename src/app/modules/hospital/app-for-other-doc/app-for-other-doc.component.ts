@@ -32,7 +32,7 @@ export class AppForOtherDocComponent implements OnInit {
   public doctorsPatients: string[] = [];
   public appointment: CreateAppointmentDTO = new CreateAppointmentDTO();
   public checkDateSpecialty: CheckDateSpecialtyDTO = new CheckDateSpecialtyDTO();
-  public nzmDoc: DoctorShiftDTO;
+  public nzmDoc: Doctor;
   public arrayForShift: string[] = [];
   
   constructor(private appointmentService: AppointmentService, private patientService: PatientService, private doctorService: DoctorService, private router: Router) { }
@@ -70,19 +70,25 @@ export class AppForOtherDocComponent implements OnInit {
   }
 
   chosenDoctorChange(e: any){
-    console.log(this.currentDoctor);
+    
     let doctorsAppointments = this.appointments.filter(appointment => appointment.doctorId == this.currentDoctor && appointment.status == 1);
-    console.log(doctorsAppointments);
-    console.log(this.appointments);
-    this.doctorService.getDoctor(this.chosenDoctor).subscribe(res => {
-      this.nzmDoc = res
-      for (let index = this.nzmDoc?.startWorkTime; index < this.nzmDoc?.endWorkTime; index++) {
-          this.arrayForShift.push(index.toString() + ":00")
-          this.arrayForShift.push(index.toString() + ":20")
-          this.arrayForShift.push(index.toString() + ":40")
+    this.nzmDoc = this.doctors.find(doctor => doctor.id == this.chosenDoctor);
+    console.log(this.nzmDoc);
+    for (let index = this.nzmDoc?.startWorkTime; index < this.nzmDoc?.endWorkTime; index++) {
+      
+      if(index == 8 || index == 9){
+        this.arrayForShift.push("0" + index.toString() + ":00");
+        this.arrayForShift.push("0" + index.toString() + ":20");
+        this.arrayForShift.push("0" + index.toString() + ":40");
       }
-    });
-    this.arrayForShift = this.updateShiftSlots(doctorsAppointments, this.arrayForShift);
+      else{
+        this.arrayForShift.push(index.toString() + ":00");
+        this.arrayForShift.push(index.toString() + ":20");
+        this.arrayForShift.push(index.toString() + ":40");
+      }
+    }
+    let chosenDoctorsAppointments = this.appointments.filter(appointment => appointment.doctorId == this.chosenDoctor && appointment.status == 0);
+    this.arrayForShift = this.updateShiftSlots(chosenDoctorsAppointments, this.arrayForShift);
   }
 
   scheduleAppointment(){
@@ -106,9 +112,10 @@ export class AppForOtherDocComponent implements OnInit {
   }
 
   updateShiftSlots(appointments: Appointment[], shift: string[]){
+    let appointmentDateFuckingAngular = this.appointmentDate;
     appointments.forEach(function(appointment){
-      if(shift.includes(appointment.startTime) && appointment.date == this.appointmentDate){
-        this.arrayForShift.splice(shift.indexOf(appointment.startTime), 1);
+      if(appointment.start.slice(0, 10) == appointmentDateFuckingAngular && shift.includes(appointment.start.slice(11, 16))){
+        shift = shift.filter(time => time != appointment.start.slice(11, 16));
       }
     });
     return shift;
