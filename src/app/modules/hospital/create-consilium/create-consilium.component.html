@@ -21,7 +21,7 @@
                     <label>End date:</label>
                 </td>
                 <td>
-                    <input type="datetime" id="end" matInput [(ngModel)]="freeAppointments.EndStr" placeholder="dd/mm/yyyy hh:mm">
+                    <input type="datetime" id="end" matInput [(ngModel)]="freeAppointments.EndStr" placeholder="dd/mm/yyyy">
                 </td>
             </tr>
             <tr>
@@ -52,22 +52,17 @@
     </div>
     <div>
         <div *ngIf="isClicked">
-            <ol *ngFor="let doctor of selectedDoctors">
+            <p>Selected doctors:</p>
+            <ul *ngFor="let doctor of selectedDoctors">
                 <li>
                     {{doctor}}
                 </li>
-            </ol>
+            </ul>
         </div>
-        <div *ngIf="!isClicked">
-            <ol *ngFor="let spec of listOfSpecialities">
-                <li>
-                    {{spec}}
-                </li>
-            </ol>
-        </div>
+        
     </div>
     <div cellspacing="0">
-        <table *ngIf="isClicked">
+        <table *ngIf="isClicked" class="listed">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -101,7 +96,7 @@
         <button type="submit" id="findAppointments" name="button" (click)="findAppointments()" (click)="showAppointments = true">Find appointments</button>
     </div>
     <div>
-        <table *ngIf="showAppointments">
+        <table *ngIf="showAppointments" class="listed">
             <tr>
                 <th>Start Time</th>
                 <th>Room</th>
@@ -112,7 +107,7 @@
                 <td><button class="select-appointment" name="button3" id="selectedAppointment" (click)="selectedAppointment(app)">Select</button></td>
             </tr>
         </table>
-        <button id="create" (click)="createConsilium()">Create</button>
+        <button *ngIf="showAppointments" id="create" (click)="createConsilium()">Create</button>
     </div>
 </div>
 

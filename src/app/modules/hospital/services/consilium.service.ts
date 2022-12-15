@@ -24,11 +24,11 @@ export class ConsiliumService {
     }
     
     createConsilium(appointment: any): Observable<PotentialAppointmentDTO>{
-      return this.http.post<PotentialAppointmentDTO>(this.apiHost+'CreateConsiliumWithDoctors', appointment, {headers: this.headers})
+      return this.http.post<PotentialAppointmentDTO>(this.apiHost+'Create', appointment, {headers: this.headers})
     }
 
     getAll() : Observable<ShowConsiliumsDTO[]>{
-      return this.http.get<ShowConsiliumsDTO[]>(this.apiHost+'GetAll' ,{headers: this.headers} )
+      return this.http.get<ShowConsiliumsDTO[]>(this.apiHost+'GetAll', {headers: this.headers} )
     }
-  
+
 }
