@@ -1,17 +1,17 @@
 export class ShowConsiliumsDTO{
-    Start : string = ""
-    Duration : number = 0
-    DoctorNames : Array<string> = []
-    Room : string = ""
-    Topic : string = ""
+    start : string = ""
+    duration : number = 0
+    doctorNames : Array<string> = []
+    room : string = ""
+    topic : string = ""
   
     public constructor(obj?: any){
       if(obj){
-        this.Start = obj.Start
-        this.Duration = obj.Duration
-        this.DoctorNames = obj.DoctorNames
-        this.Room = obj.Room
-        this.Topic = obj.Topic
+        this.start = obj.start
+        this.duration = obj.duration
+        this.doctorNames = obj.doctorNames
+        this.room = obj.room
+        this.topic = obj.topic
       }
     }
   }

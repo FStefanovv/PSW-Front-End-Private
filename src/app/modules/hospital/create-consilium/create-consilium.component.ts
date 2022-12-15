@@ -72,7 +72,6 @@ export class CreateConsiliumComponent implements OnInit {
     let specialities = this.specialities;
     listOfSpecialities = specialities.filter(item => item.isChecked).map(item=>item.id);
     this.listOfSpecialities = listOfSpecialities;
-    console.log(this.listOfSpecialities)
     let specs = "";
     for(var s of this.listOfSpecialities){
       specs+=(s+",");
@@ -106,7 +105,6 @@ export class CreateConsiliumComponent implements OnInit {
     if(this.isClicked){
       this.consiliumService.sendInfoForFreeAppointments(this.freeAppointments).subscribe(res => {
         this.potentialAppointments = res;
-        console.log(this.potentialAppointments)
         this.showAppointments = true;
       },error =>{
         alert("Los zahtev")
@@ -115,7 +113,6 @@ export class CreateConsiliumComponent implements OnInit {
     else {
       this.consiliumService.sendInfoForFreeAppointmentsSpecialties(this.freeAppointments).subscribe(res => {
         this.potentialAppointments = res;
-        console.log(this.potentialAppointments)
         this.showAppointments = true;
       },error =>{
         alert("Los zahtev")

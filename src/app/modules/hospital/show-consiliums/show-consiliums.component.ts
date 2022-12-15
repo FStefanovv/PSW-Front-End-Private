@@ -32,12 +32,12 @@ export class ShowConsiliumsComponent implements OnInit {
   }
 
   sortByDateTime(): void {
-    this.consiliums = this.consiliums.sort((a, b) => Date.parse(a.Start) > Date.parse(b.Start)? 1 : -1);
+    this.consiliums = this.consiliums.sort((a, b) => Date.parse(a.start) > Date.parse(b.start)? 1 : -1);
   }
 
   onSearchTextEntered(searchValue : string){
     if(searchValue != ''){
-      this.consiliumsToShow = this.consiliums.filter(consilium => searchValue === '' || consilium.Topic.toLowerCase().includes(searchValue));
+      this.consiliumsToShow = this.consiliums.filter(consilium => searchValue === '' || consilium.topic.toLowerCase().includes(searchValue));
       console.log('currently shown appointments ',this.consiliumsToShow);
     }
     else
@@ -46,7 +46,7 @@ export class ShowConsiliumsComponent implements OnInit {
 
   showDoctors(consilium : ShowConsiliumsDTO){
     this.doctorsNames = [];
-    this.doctorsNames = consilium.DoctorNames;
+    this.doctorsNames = consilium.doctorNames;
   }
 
 }

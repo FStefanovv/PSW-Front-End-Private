@@ -12,11 +12,11 @@
         <th>Topic</th>
     </tr>
     <tr *ngFor="let consilium of consiliumsToShow">
-        <td>{{consilium.Start}}</td>
-        <td>{{consilium.Duration}}</td>
+        <td>{{consilium.start}}</td>
+        <td>{{consilium.duration}}</td>
         <td><button type="button" (click)="showDoctors(consilium)" (click)="show = true">See doctors</button></td>
-        <td>{{consilium.Room}}</td>
-        <td>{{consilium.Topic}}</td>
+        <td>{{consilium.room}}</td>
+        <td>{{consilium.topic}}</td>
     </tr>
 </table>
 <div *ngIf="show">
