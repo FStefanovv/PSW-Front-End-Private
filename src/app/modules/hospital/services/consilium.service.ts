@@ -28,7 +28,7 @@ export class ConsiliumService {
     }
 
     getAll() : Observable<ShowConsiliumsDTO[]>{
-      return this.http.get<ShowConsiliumsDTO[]>(this.apiHost ,{headers: this.headers} )
+      return this.http.get<ShowConsiliumsDTO[]>(this.apiHost+'GetAll' ,{headers: this.headers} )
     }
   
 }
