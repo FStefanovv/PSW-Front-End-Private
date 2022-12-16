@@ -30,7 +30,9 @@ export class CreateUrgentVacationComponent {
     if(this.startNull == true || this.endNull == true || this.descriptionNull == true) return
     this.urgentVacationService.sendRequest(this.request).subscribe(
       res => {
+        
         alert("Zahtev poslat.")
+        
       },
       error => {
         //err: String
@@ -51,10 +53,13 @@ export class CreateUrgentVacationComponent {
         this.urgentVacationService.getAppointmentsForDoctor("DOC1",this.request.start,this.request.end).subscribe(
           res => {
             this.appsList = res
+           
           }
         )
         }
         //this.router.navigate(['/vacations/seeAppointments/'+"DOC1"])//ovde ce ici redovan id
+        this.router.navigate(['vacations-by-doctor']);
+        
       }
     )
   }

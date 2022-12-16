@@ -18,7 +18,7 @@
         <td>{{treatment.roomId}}</td>
         <td>{{treatment.bedId}}</td>
         <!-- <td>{{treatment.therapy}}</td>
-        <td>{{treatment.startDate}}</td> -->
+        <td>{{treatment.startDate}}</td>  -->
         <td>
             <button  class="discharge-button" (click)="discharge(treatment.id)">
                 Discharge
@@ -32,6 +32,7 @@
         
     </tr> 
  </table>
- <button id="goToCreate" (click)="goToCreate()">Create new treatment</button>
+ <button id="goToCreate" (click)="goToCreate()" mat-button href='/'>Create new treatment</button>
+ <a mat-button href='/doctor-home'>Home</a>
 </div>
 

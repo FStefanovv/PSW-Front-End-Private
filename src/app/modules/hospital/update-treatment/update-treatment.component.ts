@@ -47,7 +47,7 @@ export class UpdateTreatmentComponent implements OnInit {
   console.log(patientUpdateDTO.therapy)
   //patientUpdateDTO.startDate=treatment.startDate
   this.treatmentService.updateTherapy(patientUpdateDTO.therapy,this.treatment.id).subscribe(res=>{alert("Succesfully updated therapy!")})
-  //this.router.navigate(['patients/treatments'])
+  this.router.navigate(['patients/treatments'])
 
 
   }

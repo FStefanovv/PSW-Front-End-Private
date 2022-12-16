@@ -27,6 +27,7 @@ export class BloodRequestComponent{
     },error =>{
       alert("Los zahtev")
     })
+    this.router.navigate(['doctor-home']);
   }
 
   private isValidInputType(): boolean{
