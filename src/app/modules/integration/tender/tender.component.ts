@@ -12,7 +12,6 @@ import { TenderService } from 'src/app/modules/integration/services/tender.servi
 export class TenderComponent implements OnInit {
 
   public tenders: Tender[] = [];
-
   constructor(private tenderService: TenderService, private router: Router) { }
 
   ngOnInit(): void {
@@ -20,9 +19,8 @@ export class TenderComponent implements OnInit {
       this.tenders = res;     
     })
   }
-  seeOffers() {
-    this.router.navigate(['/tender/{id}', { id: 1}]);
-  }
+  seeOffers(tender:Tender) {
+      this.router.navigate(['/tender/{id}', { id: tender.id}]);
 
   }
-
+}

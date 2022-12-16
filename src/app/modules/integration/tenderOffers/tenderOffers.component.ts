@@ -21,6 +21,8 @@ export class TenderOffersComponent implements OnInit {
       this.tenderOffers = res;     
     })
   }
-
+  pick(tndrOf:TenderOffer):void{
+    this.tenderOfferService.notifyWin(tndrOf).subscribe();
+  }
   }
 

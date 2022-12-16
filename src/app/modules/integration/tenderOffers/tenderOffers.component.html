@@ -3,7 +3,7 @@
   <div class="card" *ngFor="let tenderOffer of tenderOffers">
     <p>Price($)  {{tenderOffer.price}}</p>
     <p>Blood bank  {{tenderOffer.bloodBankId}}</p>
-    <button> Accept offer</button>
+    <button (click)="pick(tenderOffer)"> Accept offer</button>
   </div>
 </div>
 </div>
