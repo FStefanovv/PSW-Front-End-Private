@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .mat-toolbar {
   background-color: cornflowerblue;
   color: white;
@@ -11,3 +12,9 @@
   flex: 1 1 auto;
 }
 
+=======
+p {
+  font: bold 40px verdana;
+  padding: 10px 10px 10px 10px;
+}
+>>>>>>> 92df68d7e5a65e5ec49be26c2214b7dbcc5fa1a6

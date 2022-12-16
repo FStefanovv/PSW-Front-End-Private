@@ -2,26 +2,23 @@
   width: 50%;
   margin: auto;
   margin-top: 50px;
-<<<<<<< HEAD
+
   border-style: ridge;
   border-width: 5px;
   border-color: gray;
   background-color: mistyrose;
-=======
   border-radius: 3px;
   border: #DCD6CC 1px solid;
   background-color: lightgray;
->>>>>>> doctor_development
+
 }
 
 
 table {
   width: 100%;
-<<<<<<< HEAD
+
   background-color: mistyrose;
-=======
-  background-color: lightgray;
->>>>>>> doctor_development
+
 }
 
 .table-title {
@@ -29,7 +26,6 @@ table {
   padding-top: 30px;
   padding-left: 20px;
   font-size: 30px;
-<<<<<<< HEAD
   font-family: Verdana;
   font-weight: bold;
 }
@@ -46,25 +42,27 @@ table {
   text-align: left;
   font-family: Verdana;
   font-size: 22px;
-=======
   font-weight:bold;
 }
 
 .cell-center {
   text-align: center;
   font-size: 22 px;
->>>>>>> doctor_development
+
 }
 
 .table-header {
   display: flex;
-<<<<<<< HEAD
+
   text-align: center;
   color: dimgray;
-=======
+
   color: forestgreen;
   border-color:dimgray;
->>>>>>> doctor_development
+
+  text-align: center;
+  color: dimgray;
+
 }
 
 p {
@@ -73,7 +71,7 @@ p {
 }
 
 th {
-<<<<<<< HEAD
+
   color: dimgray;
   font-family:Verdana;
   font-weight: bold;
@@ -96,7 +94,6 @@ th.mat-header-cell{
 
 .approval-button {
   background-color: dimgray;
-=======
   text-decoration: underline;
   text-decoration-color: lightgreen;
   font-weight: bold;
@@ -104,14 +101,14 @@ th.mat-header-cell{
 
 .approval-button {
   background-color: forestgreen;
->>>>>>> doctor_development
+
   padding: 10px 10px 10px 10px;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   border: 20px;
-<<<<<<< HEAD
+
   font-size: 20px;
   font-family: Verdana;
   border-radius: 8px;
@@ -134,7 +131,6 @@ th.mat-header-cell{
 
 .approval-button:hover {
   background-color: darkgray;
-=======
   font-size: 23px;
   border-radius: 8px;
   color: cornsilk;
@@ -155,16 +151,15 @@ th.mat-header-cell{
 
 .approval-button:hover {
   background-color: white;
->>>>>>> doctor_development
+
   color: black;
 }
 
 .hide-button:hover {
-<<<<<<< HEAD
+
   background-color: darkgray;
-=======
-  background-color: white;
->>>>>>> doctor_development
+
+
   color: black;
 }
 

@@ -24,8 +24,6 @@ import { AuthGuardService } from "./auth/auth-guard.service";
 import { ErrorIntercept } from "./modules/hospital/services/error.interceptor"; 
 import { CommonModule } from '@angular/common';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,8 +31,6 @@ import { CommonModule } from '@angular/common';
     DoctorMenuComponent,
     ManagerMenuComponent,
     PopUpComponent
-
-
   ],
   imports: [
     FormsModule,
@@ -46,6 +42,10 @@ import { CommonModule } from '@angular/common';
     PagesModule,
     MatRadioModule,
     CommonModule,
+    HospitalManagerModule,
+    HospitalDoctorModule,
+    MatRadioModule,
+    FormsModule,
     ReactiveFormsModule,
     IntegrationModule,
     MatDialogModule,
