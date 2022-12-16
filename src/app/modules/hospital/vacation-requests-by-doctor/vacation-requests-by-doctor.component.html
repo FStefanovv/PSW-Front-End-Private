@@ -16,9 +16,10 @@
         <td>{{req.status}}</td>
         <td>{{req.rejectionReason}}</td>
         <td>
-            <button  class="cancel-button" *ngIf="req.status=='Waiting For Approval'" (click)="cancel(req.id)">
+            <button  class="cancel-button" *ngIf="req.status=='Waiting For Approval'" (click)="cancel(req.id)" (click)="goToCancel(req.id)">
                 Cancel
             </button>
         </td>
     </tr>
 </table>
+<button id="createNewRequest" (click)="goToCreateNewRequest()">Create new request</button>
