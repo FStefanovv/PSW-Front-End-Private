@@ -1,4 +1,13 @@
-p {
-  font: bold 40px verdana;
-  padding: 10px 10px 10px 10px;
+.mat-toolbar {
+  background-color: cornflowerblue;
+  color: white;
 }
+
+.mat-button {
+  color: white;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+

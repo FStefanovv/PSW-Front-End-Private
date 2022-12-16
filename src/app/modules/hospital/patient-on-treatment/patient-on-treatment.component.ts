@@ -39,4 +39,8 @@ treatmentStatus: string="TREATMENT";
     
   }
 
+  goToCreate(){
+    this.router.navigate(['patients/treatments/create']);
+  }
+
 }

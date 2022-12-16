@@ -18,33 +18,41 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthInterceptor } from "./auth/auth.interceptor";
 import { RoleGuardService } from "./auth/role-guard.service";
-import { ErrorIntercept } from "./modules/hospital/services/error.interceptor";
 import { DoctorMenuComponent } from "./modules/pages/doctor-menu/doctor-menu.component";
 import { ManagerMenuComponent } from "./modules/pages/manager-menu/manager-menu.component";
+import { AuthGuardService } from "./auth/auth-guard.service";
+import { ErrorIntercept } from "./modules/hospital/services/error.interceptor"; 
+import { CommonModule } from '@angular/common';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     PopUpComponent,
     DoctorMenuComponent,
-    ManagerMenuComponent
+    ManagerMenuComponent,
+    PopUpComponent
+
+
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
     PagesModule,
-    HospitalManagerModule,
-    HospitalDoctorModule,
     MatRadioModule,
-    FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     IntegrationModule,
     MatDialogModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    HospitalManagerModule,
+    HospitalDoctorModule
   ],
   providers: [
     {
@@ -52,7 +60,8 @@ import { ManagerMenuComponent } from "./modules/pages/manager-menu/manager-menu.
       useClass: AuthInterceptor,
       multi: true
     },
-    RoleGuardService
+    RoleGuardService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent],
   entryComponents: [MyDialogComponent]

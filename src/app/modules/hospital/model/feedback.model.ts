@@ -20,5 +20,4 @@ export class Feedback {
       this.anonymous = obj.anonymous;
     }
   }
-
 }

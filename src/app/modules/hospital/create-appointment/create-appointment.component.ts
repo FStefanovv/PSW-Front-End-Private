@@ -1,3 +1,5 @@
+import { PatientService } from './../services/patient.service';
+import { Patient } from './../model/patient.model';
 import { Component, OnInit } from '@angular/core';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { CreateAppointmentDTO } from 'src/app/modules/hospital/model/createAppointmentDTO.model';
@@ -5,6 +7,7 @@ import { Doctor } from 'src/app/modules/hospital/model/doctor.model';
 import { AppointmentService } from 'src/app/modules/hospital/services/appointment.service';
 import { DoctorService } from '../services/doctor.service';
 import { DoctorShiftDTO } from '../model/doctorsShiftDTO.model';
+import { PatientForApp } from '../model/patientForApp.model';
 
 @Component({
     selector: 'app-create-appointments',
@@ -21,7 +24,8 @@ export class CreateAppointmentComponent implements OnInit {
     public errorMsg: string = ""
     public doctor: DoctorShiftDTO | undefined = undefined
     public arrayForShift: Array<string> = []
-    constructor(private appointmentService: AppointmentService,private doctorService: DoctorService, 
+    public patientsForDoctor: Array<PatientForApp> = []
+    constructor(private appointmentService: AppointmentService,private doctorService: DoctorService, private patientService: PatientService,
         private router: Router, private route: ActivatedRoute) { }
 
 
@@ -36,6 +40,11 @@ export class CreateAppointmentComponent implements OnInit {
                 }
             })
         })
+        this.patientService.getPatientForDoctor("DOC1").subscribe(
+            res => {
+                this.patientsForDoctor = res
+            }
+        )
     }
 
     public createAppointment(){

@@ -6,7 +6,7 @@
                     <label>Amount of blood needed</label>
                 </td>
                 <td>
-                    <input type="number" matInput [(ngModel)]="createBloodRecordDTO.amount"/>
+                    <input type="number" id="amount"tInput [(ngModel)]="createBloodRecordDTO.amount"/>
                 </td>
                 <td *ngIf="amountNull">
                     Amount cannot be zero or minus
@@ -16,7 +16,7 @@
                     <label>Blood type</label>
                 </td>
                 <td>
-                    <select matNativeControl [(ngModel)]="createBloodRecordDTO.type">
+                    <select matNativeControl id="type" name="type"[(ngModel)]="createBloodRecordDTO.type">
                         <option>A</option>
                         <option>B</option>
                         <option>AB</option>
@@ -32,7 +32,7 @@
                     Reason
                 </td>
                 <td >
-                    <input class="reason" type="text" matInput [(ngModel)]="createBloodRecordDTO.reason"/>
+                    <input class="reason" id="reason" type="text" matInput [(ngModel)]="createBloodRecordDTO.reason"/>
                 </td>
                 <td *ngIf="reasonNull">
                     Write reason
@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><button mat-stroked-button (click)="createBloodRecord()">
+                <td><button id="button" mat-stroked-button (click)="createBloodRecord()">
                     Submit
                 </button></td>
             </tr>
