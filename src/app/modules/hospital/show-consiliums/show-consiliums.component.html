@@ -1,0 +1,30 @@
+<div>
+    <label>Consiliums to show: </label>
+    <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+</div>
+
+<table cellspacing="10">
+    <tr>
+        <th>Start</th>
+        <th>Duration</th>
+        <th>Doctor names</th>
+        <th>Room</th>
+        <th>Topic</th>
+    </tr>
+    <tr *ngFor="let consilium of consiliumsToShow">
+        <td>{{consilium.start}}</td>
+        <td>{{consilium.duration}}</td>
+        <td><button type="button" (click)="showDoctors(consilium)" (click)="show = true">See doctors</button></td>
+        <td>{{consilium.room}}</td>
+        <td>{{consilium.topic}}</td>
+    </tr>
+</table>
+<div *ngIf="show">
+    <p>Doctors:</p>
+    <ol *ngFor="let names of doctorsNames">
+        <li>
+            {{names}}
+        </li>
+    </ol>
+</div>
+<button id="goToCreate" (click)="goToCreate()">Create new consilium</button>
