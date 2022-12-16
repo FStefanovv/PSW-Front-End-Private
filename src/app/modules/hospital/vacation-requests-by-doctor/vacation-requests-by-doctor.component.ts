@@ -10,7 +10,7 @@ import { VacationService } from '../services/vacation-service.service';
   styleUrls: ['./vacation-requests-by-doctor.component.css']
 })
 export class VacationRequestsByDoctorComponent implements OnInit {
-
+  
   constructor(private vacationService: VacationService) { }
 
   requests: VacationRequest[] = [];
