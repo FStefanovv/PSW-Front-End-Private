@@ -1,0 +1,112 @@
+.container {
+  width: 50%;
+  margin: auto;
+  margin-top: 50px;
+  border-style: ridge;
+  border-width: 5px;
+  border-color: gray;
+  background-color: mistyrose;
+}
+
+
+table {
+  width: 100%;
+  background-color: mistyrose;
+}
+
+.table-title {
+  padding-bottom: 20px;
+  padding-top: 30px;
+  padding-left: 20px;
+  font-size: 30px;
+  font-family: Verdana;
+  font-weight: bold;
+}
+
+.cell-style {
+  text-align: left;
+  font-family: Verdana;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.column-header {
+  text-align: left;
+  font-family: Verdana;
+  font-size: 22px;
+}
+
+.table-header {
+  display: flex;
+  text-align: center;
+  color: dimgray;
+}
+
+p {
+  float: left;
+  margin-right: auto;
+}
+
+th {
+  color: dimgray;
+  font-family:Verdana;
+  font-weight: bold;
+  border-style:none;
+}
+
+tr.mat-row:hover{
+    background-color: lightgrey;
+}
+
+td.mat-cell {
+    border-bottom-style: none;
+    border-top: 1px ridge darkgray;
+
+}
+
+th.mat-header-cell{
+    border-bottom-style: none;
+}
+
+.approval-button {
+  background-color: dimgray;
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  border: 20px;
+  font-size: 20px;
+  font-family: Verdana;
+  border-radius: 8px;
+  color: floralwhite;
+}
+
+.hide-button {
+  background-color: dimgray;
+  padding: 10px 10px 10px 10px;
+  margin-top: 20px;
+  margin-left: auto;
+  font-family: Verdana;
+  margin-right: auto;
+  display: flex;
+  border: 20px;
+  font-size: 20px;
+  border-radius: 8px;
+  color: floralwhite;
+}
+
+.approval-button:hover {
+  background-color: darkgray;
+  color: black;
+}
+
+.hide-button:hover {
+  background-color: darkgray;
+  color: black;
+}
+
+
+
+

@@ -1,0 +1,12 @@
+<div>
+  <table>
+    <tr><td>Start</td><td><input type="date" matInput [(ngModel)]="request.start"/></td><td *ngIf="startNull">Input date</td></tr>
+    <tr><td>End</td><td><input type="date" matInput [(ngModel)]="request.end"/></td><td *ngIf="endNull">Input date</td></tr>
+    <tr><td>Description</td><td><input type="text" matInput [(ngModel)]="request.description"/></td><td *ngIf="descriptionNull">Write reason</td></tr>
+    <tr><td></td><td><button mat-stroked-button (click)="createRequest()">Send</button></td></tr>
+  </table>
+
+  <show-appointments-urgent-vacation *ngIf="showAppsNull" [prika]="prika" 
+  [appsList]="appsList"
+  ></show-appointments-urgent-vacation>
+</div>
