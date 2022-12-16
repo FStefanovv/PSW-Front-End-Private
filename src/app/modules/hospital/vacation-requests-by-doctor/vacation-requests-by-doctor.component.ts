@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { VacationRequest } from '../model/vacationRequest';
 import { VacationService } from '../services/vacation-service.service';
 
@@ -11,7 +12,7 @@ import { VacationService } from '../services/vacation-service.service';
 })
 export class VacationRequestsByDoctorComponent implements OnInit {
 
-  constructor(private vacationService: VacationService) { }
+  constructor(private vacationService: VacationService,private router : Router) { }
 
   requests: VacationRequest[] = [];
   requestsForPresentation: VacationRequest[] = [];
@@ -24,6 +25,14 @@ export class VacationRequestsByDoctorComponent implements OnInit {
 
   cancel(id: number): void {
     this.vacationService.cancel(id);
+  }
+
+  goToCreateNewRequest(){
+    this.router.navigate(['/vacations/urgent']);
+  }
+
+  goToCancel(id : number){
+    this.router.navigate(['/vacations/cancel', id]);
   }
 
   /*

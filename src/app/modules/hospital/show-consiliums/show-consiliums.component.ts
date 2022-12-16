@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ShowConsiliumsDTO } from '../model/showConsiliumsDTO';
 import { ConsiliumService } from '../services/consilium.service';
 
@@ -18,7 +19,7 @@ export class ShowConsiliumsComponent implements OnInit {
   public show : boolean = false;
 
 
-  constructor(public consiliumService : ConsiliumService) { }
+  constructor(public consiliumService : ConsiliumService, private router : Router) { }
 
   ngOnInit(): void {
     this.consiliumService.getAll().subscribe(res => {
@@ -49,4 +50,7 @@ export class ShowConsiliumsComponent implements OnInit {
     this.doctorsNames = consilium.doctorNames;
   }
 
+  goToCreate(){
+    this.router.navigate(['/consilium/create']);
+  }
 }
