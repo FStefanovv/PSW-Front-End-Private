@@ -1,6 +1,6 @@
 export class Appointment {
     id: string = "";
-
+    doctorId: string = "";
     patientId: string = "";
     roomNumber: string = "";
     start: string = "";
@@ -14,6 +14,7 @@ export class Appointment {
     public constructor(obj: any){
         if(obj){
             this.id = obj.Id;
+            this.doctorId = obj.DoctorId;
             this.patientId = obj.PatientId;
             this.roomNumber = obj.RoomNumber;
             this.start = obj.Start;

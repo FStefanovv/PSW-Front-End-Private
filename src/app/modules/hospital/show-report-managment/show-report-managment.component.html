@@ -1,0 +1,61 @@
+
+<div class="container">
+  <div class="flex " >
+    <label>Pacijent info</label>
+    <input type="checkbox" [(ngModel)]="patientBool"/>
+    <label>Simptomi</label>
+    <input type="checkbox" [(ngModel)]="symptomBool"/>
+    <label>Opis</label>
+    <input type="checkbox" [(ngModel)]="descBool"/>
+    <label>Lekovi</label>
+    <input type="checkbox" [(ngModel)]="drugBool"/>
+    
+
+  </div>
+  <div id="content" #content>
+    <div *ngIf="patientBool">
+      <div>Ime i prezime:{{patient.name}} {{patient.surname}}</div>
+      <div>Godine:{{patient.age}}</div>
+      <div>Krvna grupa:{{patient.bloodType}}</div>
+    </div>
+
+    <div *ngIf="symptomBool" >
+     <div *ngFor="let symptoms of symptomList"  >
+       <label>Symptoms: </label> <label>{{symptoms.name}}</label>
+     </div>
+    </div>
+    
+    <div *ngIf="drugBool">
+     <div *ngFor="let drugs of drugList"> 
+        <label>Report ID: </label> {{drugPrescription.reportId}}
+        <label>Drugs: </label>{{drugs.name}} {{drugs.companyName}}
+     </div>
+    </div>
+    
+
+    <!-- <div *ngIf="patientBool">
+      <div>Ime i prezime:{{patient.name}} {{patient.surname}}</div>
+      <div>Godine:{{patient.age}}</div>
+      <div>Krvna grupa:{{patient.bloodType}}</div>
+    </div>
+
+    <div *ngIf="symptomBool">
+    <div *ngFor="let symptoms of symptomList"  >
+      <label>Symptoms: </label> <label>{{symptoms.name}}</label>
+    </div>
+    </div>
+    
+    <div *ngIf="descBool">Opis pregleda:{{report.description}}</div>
+
+    <div *ngIf="drugBool">
+    <div *ngFor="let drugs of drugList"> 
+        <label>Report ID: </label> {{drugPrescription.reportId}}
+        <label>Drugs: </label>{{drugs.name}} {{drugs.companyName}}
+    </div>
+    </div> -->
+    <div *ngIf="descBool">Opis pregleda:{{report.description}}</div>
+  </div>
+<div>
+  <button class="border" (click)="radi()"> Generate PDF </button>
+</div>
+</div>

@@ -1,0 +1,17 @@
+<div>
+  <report-nav-page [recieveFlag]="navBarFlag"></report-nav-page>
+  <report-step-one   (symptomsToReturn)="onSymptomsChoosen($event)" *ngIf="stepOne"></report-step-one>
+  <report-step-two   (backEmit2)="backFromStep2($event)"(descriptionEmit)="descriptionWritten($event)" *ngIf="stepTwo"></report-step-two>
+  <report-step-three (backEmit3)="backFromStep3($event)"  (drugsToReturn)="onDrugsChoosen($event)"       *ngIf="stepThree"></report-step-three>
+  <report-step-four  (backEmit4)="backFromStep4($event)"            *ngIf="stepFour" [description]="description" [symptoms]="symptomsArray" [drugs]="drugsArray"></report-step-four>
+  <div>{{appointmentId}}</div>
+  <div *ngFor="let sym of symptomsArray">
+    {{sym.name}}
+  </div>
+  <div *ngFor="let drug of drugsArray">
+    {{drug.name}}
+  </div>
+  <div>
+    {{description}}
+  </div>
+</div>
