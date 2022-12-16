@@ -3,6 +3,7 @@ import { TreatmentService } from '../services/treatment.service';
 import {CreateTreatmentDTO} from '../model/createTreatmentDTO.model' 
 import { FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormsModule } from "@angular/forms"      
 
 @Component({
   selector: 'app-create-treatment',
