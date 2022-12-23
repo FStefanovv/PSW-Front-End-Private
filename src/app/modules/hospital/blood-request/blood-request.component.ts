@@ -14,7 +14,20 @@ export class BloodRequestComponent{
   amountNull: boolean = false
   reasonNull: boolean = false
   dateNull: boolean = false
+  groupA: number = 0
+  groupB: number = 0
+  groupAB: number = 0
+  groupO: number = 0
   constructor(private bloodService: BloodService,private router: Router) { }
+
+  ngOnInit(): void {
+   this.bloodService.getByGroupA().subscribe(res=>{this.groupA=res})
+   this.bloodService.getByGroupB().subscribe(res=>{this.groupB=res})
+   this.bloodService.getByGroupAB().subscribe(res=>{this.groupAB=res})
+   this.bloodService.getByGroupO().subscribe(res=>{this.groupO=res})
+  
+
+  }
 
   public bloodRequest(){
     if(!this.isValidInputType()) this.typeNull = true
