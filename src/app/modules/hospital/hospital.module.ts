@@ -35,6 +35,7 @@ import { ShowConsiliumsComponent } from './show-consiliums/show-consiliums.compo
 import { AppForOtherDocComponent } from './app-for-other-doc/app-for-other-doc.component';
 import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
 import { SearchComponent2 } from "./search2/search2.component";
+import { HospitalDoctorModule } from "./hospital-doctor.module";
 
 
 const routes: Routes = [
@@ -56,7 +57,7 @@ const routes: Routes = [
   {path: 'patients/treatments/create', component: CreateTreatmentComponent},
   {path: 'consilium/create', component:CreateConsiliumComponent},
   {path: 'vacations-by-doctor', component: VacationRequestsByDoctorComponent},
-  {path: 'app-for-other-doc', component:AppForOtherDocComponent}
+  {path: 'app-for-other-doc', component:AppForOtherDocComponent},
  ];
  
  

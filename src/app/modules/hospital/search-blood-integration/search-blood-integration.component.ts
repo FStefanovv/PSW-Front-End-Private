@@ -5,5 +5,5 @@ import { Component } from "@angular/core";
   templateUrl: './search-blood-integration.component.html',
 })
 export class SearchBloodIntegration{
-  
+  constructor() {}
 }

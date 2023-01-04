@@ -21,7 +21,9 @@ import { CreateTreatmentComponent } from './create-treatment/create-treatment.co
 import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
 import { RoleGuardService } from "../../auth/role-guard.service";
 import { SearchBloodIntegration } from "./search-blood-integration/search-blood-integration.component";
-
+import { SearchReportsAndPrescriptionsComponent } from "./search-reps-and-prescs/search-reps-and-prescs.component";
+import { SidebarComponent } from "./sidebar/sidebar.component";
+import { NavbarComponent } from "./navbar/navbar.component";
 
 const routes: Routes = [
   {
@@ -65,8 +67,8 @@ const routes: Routes = [
   {
     path: 'vacation-requests-by-doctor', component: VacationRequestsByDoctorComponent,
     canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
-  {  path: 'search-blood-integration', component: SearchBloodIntegration,
-    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  }
+  {  path: 'search-blood-integration', component: SearchBloodIntegration  },
+  {  path: 'search-reports', component: SearchReportsAndPrescriptionsComponent  }
 
 ];
 
@@ -89,7 +91,10 @@ const routes: Routes = [
     ShowDoctorsForChange,
     CancelVacationComponent,
     CreateTreatmentComponent,
-    SearchBloodIntegration
+    SearchBloodIntegration,
+    SearchReportsAndPrescriptionsComponent,
+    SidebarComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
