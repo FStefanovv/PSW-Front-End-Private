@@ -87,7 +87,7 @@
           <tr>
             <th>Specialities</th>
           </tr>
-          <tr *ngFor="let item of specialities">
+          <tr *ngFor="let item of specialities" id="specialities">
             <td><input type="checkbox" name="selectedSpec" id="selectedSpec" [(ngModel)]="item.isChecked" (change)="specialitiesIDs()">{{item.name}}</td>
           </tr>
         </table>
@@ -101,7 +101,7 @@
                 <th>Start Time</th>
                 <th>Room</th>
             </tr>
-            <tr *ngFor="let app of potentialAppointments">
+            <tr *ngFor="let app of potentialAppointments" id="potentialAppointments">
                 <td>{{app.start}}</td>
                 <td>Consilium Room</td>
                 <td><button class="select-appointment" name="button3" id="selectedAppointment" (click)="selectedAppointment(app)">Select</button></td>

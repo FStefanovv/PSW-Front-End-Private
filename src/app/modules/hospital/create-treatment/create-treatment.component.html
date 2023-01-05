@@ -38,20 +38,21 @@
         <table>
             <tr>
                 <td>DoctorId</td>
-                <td><input matInput [(ngModel)]="treatment.doctorId"> </td>             
+                <td><input matInput [(ngModel)]="treatment.doctorId" id="doctorID"> </td>             
                 <!-- <td *ngIf="patNull">Choose patient</td> -->
                 
             </tr>
             <tr>
                 <td>PatientId</td>
-                <td><input  matInput [(ngModel)]="treatment.patientId"></td>
+                <td><input  matInput [(ngModel)]="treatment.patientId" id="patientID"></td>
                 <td *ngIf="patientIdNull">Choose patient</td>
                 
             </tr>
             <tr>
                 <td>RoomId</td>
-                <td><select matNativeControl [(ngModel)]="treatment.roomId" (change)="freeBed($event)">
-                         <option>null</option> 
+                <td>
+                    <select matNativeControl [(ngModel)]="treatment.roomId" (change)="freeBed($event)" id="roomID">
+                        <option>null</option> 
                         <option *ngFor="let item of listOfRooms">{{item}}</option>
                     </select>
                 </td>
@@ -59,8 +60,8 @@
             </tr>
             <tr>
                 <td>BedId</td>
-                <td><select matNativeControl [(ngModel)]="treatment.bedId">
-                         <option>null</option> 
+                <td><select matNativeControl [(ngModel)]="treatment.bedId" id="bedID">
+                        <option>null</option> 
                         <option *ngFor="let item1 of listOfBeds">{{item1}}</option>
                     </select>
                 </td>
@@ -68,20 +69,20 @@
             </tr>
             <tr>
                 <td>Reason</td>
-                <td><input matInput [(ngModel)]="treatment.AdmissionReason"> </td>
+                <td><input matInput [(ngModel)]="treatment.AdmissionReason" id="reason"> </td>
                 <td *ngIf="reasonNull">Choose reason</td>
                 
             </tr>
             <tr>
                 <td>Therapy</td>
-                <td><input matInput [(ngModel)]="treatment.Therapy"> </td>
+                <td><input matInput [(ngModel)]="treatment.Therapy" id="therapy"> </td>
                 <td *ngIf="therapyNull">Choose therapy</td> 
                 
             </tr>
 
             <tr>
                 <td></td>
-                <td><button mat-stroked-button (click)="createTreatment()">
+                <td><button mat-stroked-button (click)="createTreatment()" id="submit">
                     Submit
                 </button></td>
             </tr>
