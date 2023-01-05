@@ -35,7 +35,9 @@ import { ShowConsiliumsComponent } from './show-consiliums/show-consiliums.compo
 import { AppForOtherDocComponent } from './app-for-other-doc/app-for-other-doc.component';
 import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
 import { SearchComponent2 } from "./search2/search2.component";
+import { SearchReportsAndPrescriptionsComponent } from "./search-reps-and-prescs/search-reps-and-prescs.component";
 import { HospitalDoctorModule } from "./hospital-doctor.module";
+import { PagesModule } from "../pages/pages.module";
 
 
 const routes: Routes = [
@@ -44,17 +46,13 @@ const routes: Routes = [
   { path: 'rooms/:id', component: RoomDetailComponent },  
   { path: 'rooms/:id/update', component: UpdateRoomComponent },
   { path: 'appointments/add', component: CreateAppointmentComponent},
-  { path: 'bloodRecord/add', component: CreateBloodRecordComponent},
   { path: 'appointments/reschedule', component: RescheduleAppointmentComponent},
-  { path: 'bloodRequest', component: BloodRequestComponent},
   { path: 'patients/discharge', component: DischargePatientComponent},
   { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
   { path: 'vacations/urgent', component: CreateUrgentVacationComponent},
   { path: 'vacations/cancel', component: CancelVacationComponent},
-  { path: 'patients/treatments/create', component: CreateTreatmentComponent},
   { path: 'reportdev',component: ReportMain},
   { path: 'showreportdev', component: ShowReportManagment},
-  {path: 'patients/treatments/create', component: CreateTreatmentComponent},
   {path: 'consilium/create', component:CreateConsiliumComponent},
   {path: 'vacations-by-doctor', component: VacationRequestsByDoctorComponent},
   {path: 'app-for-other-doc', component:AppForOtherDocComponent},
@@ -64,23 +62,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    
-    RoomsComponent,
-    RoomDetailComponent,
-    CreateRoomComponent,
-    UpdateRoomComponent,
-    MyDialogComponent,
-    CreateAppointmentComponent,
-    MyDialogComponent,
-    CreateBloodRecordComponent,
-    RescheduleAppointmentComponent,
-    BloodRequestComponent,
     VacationRequestsByDoctorComponent,
-    DischargePatientComponent,
     UpdateTreatmentComponent,
-    CreateUrgentVacationComponent,
-    ShowAppointmentsUrgentVacationComponent,
-    ShowDoctorsForChange,
     VacationRequestsByDoctorComponent,
     CancelVacationComponent,
     ReportMain,
@@ -99,15 +82,15 @@ const routes: Routes = [
     ShowConsiliumsComponent,
     AppForOtherDocComponent,
     SearchComponent2,
+    
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   exports: [ RouterModule,
-    CreateBloodRecordComponent
   ]
 })
 export class HospitalModule { }

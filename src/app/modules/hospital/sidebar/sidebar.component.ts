@@ -29,25 +29,25 @@ export class SidebarComponent{
     this.router.navigate(['bloodRequest'])
   }
   bloodRecord(){
-    this.router.navigate(['/vacations-by-doctor'])
+    this.router.navigate(['bloodRecord/add'])
   }
   vacations(){
-    this.router.navigate(['/vacations-by-doctor'])
+    this.router.navigate(['vacation-requests-by-doctor'])
   }
   patientTreatment(){
-    this.router.navigate(['/doctor-home'])
+    this.router.navigate(['/patients/treatments'])
   }
   patientStatistics(){
     this.router.navigate(['/doctor-home'])
   }
   appointments(){
-    this.router.navigate(['/doctor-home'])
+    this.router.navigate(['/appointments-by-doctor'])
   }
   searchBloodBank(){
-    this.router.navigate(['/doctor-home'])
+    this.router.navigate(['search-blood-integration'])
   }
   searchReports(){
-    this.router.navigate(['/doctor-home'])
+    this.router.navigate(['search-reports'])
   }
   logOut(){
     this.router.navigate(['/doctor-home'])

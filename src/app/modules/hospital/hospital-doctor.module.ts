@@ -1,3 +1,4 @@
+import { PagesModule } from './../pages/pages.module';
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -22,8 +23,7 @@ import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor
 import { RoleGuardService } from "../../auth/role-guard.service";
 import { SearchBloodIntegration } from "./search-blood-integration/search-blood-integration.component";
 import { SearchReportsAndPrescriptionsComponent } from "./search-reps-and-prescs/search-reps-and-prescs.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
-import { NavbarComponent } from "./navbar/navbar.component";
+import { HospitalModule } from "./hospital.module";
 
 const routes: Routes = [
   {
@@ -49,9 +49,8 @@ const routes: Routes = [
   {
     path: 'patients/discharge', component: DischargePatientComponent,
     canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
-  {
-    path: 'patients/treatments/update', component: UpdateTreatmentComponent,
-    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
+  
+    
   {
     path: 'vacations/urgent', component: CreateUrgentVacationComponent,
     canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
@@ -67,8 +66,11 @@ const routes: Routes = [
   {
     path: 'vacation-requests-by-doctor', component: VacationRequestsByDoctorComponent,
     canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
-  {  path: 'search-blood-integration', component: SearchBloodIntegration  },
-  {  path: 'search-reports', component: SearchReportsAndPrescriptionsComponent  }
+  {  path: 'search-blood-integration', component: SearchBloodIntegration,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }   },
+  {  path: 'search-reports', component: SearchReportsAndPrescriptionsComponent,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }   },
+  
 
 ];
 
@@ -85,23 +87,20 @@ const routes: Routes = [
     BloodRequestComponent,
     PatientOnTreatmentComponent,
     DischargePatientComponent,
-    UpdateTreatmentComponent,
     CreateUrgentVacationComponent,
-    ShowAppointmentsUrgentVacationComponent,
-    ShowDoctorsForChange,
-    CancelVacationComponent,
     CreateTreatmentComponent,
     SearchBloodIntegration,
     SearchReportsAndPrescriptionsComponent,
-    SidebarComponent,
-    NavbarComponent
+    ShowAppointmentsUrgentVacationComponent,
+    ShowDoctorsForChange
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    PagesModule
   ],
   exports: [RouterModule, CreateBloodRecordComponent]
 })

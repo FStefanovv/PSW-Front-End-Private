@@ -52,7 +52,6 @@ import { CommonModule } from '@angular/common';
     MatToolbarModule,
     MatButtonModule,
     HospitalManagerModule,
-    HospitalDoctorModule
   ],
   providers: [
     {

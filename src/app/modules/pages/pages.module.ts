@@ -1,3 +1,4 @@
+import { HospitalDoctorModule } from './../hospital/hospital-doctor.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from 'src/app/app-routing.module'; 
@@ -9,7 +10,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
 import { RoleGuardService } from '../../auth/role-guard.service';
-
+import { SidebarComponent } from '../hospital/sidebar/sidebar.component'; 
+import { NavbarComponent } from '../hospital/navbar/navbar.component'; 
 
 const routes: Routes = [
 
@@ -27,7 +29,8 @@ const routes: Routes = [
     DoctorHomeComponent,
     ManagerHomeComponent,
     LoginComponent,
-    
+    SidebarComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,11 @@ const routes: Routes = [
     FormsModule,
     MatToolbarModule,
     MatButtonModule,
-    RouterModule.forChild(routes)
-  ]
+    RouterModule.forChild(routes),
+  ],
+    exports:[
+      SidebarComponent,
+    NavbarComponent
+    ]
 })
 export class PagesModule { }
