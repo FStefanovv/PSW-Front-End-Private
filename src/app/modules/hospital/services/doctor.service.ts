@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CheckDateSpecialtyDTO } from '../model/checkDateSpecialtyDTO.model';
 import { Doctor } from '../model/doctor.model';
 import { DoctorShiftDTO } from '../model/doctorsShiftDTO.model';
+import { PatientHealthMeasurements } from '../model/patientHealthMeasurements.model';
 
 @Injectable({
     providedIn: 'root'
@@ -30,5 +31,9 @@ export class DoctorService{
     getSpecialtyDoctors(specialty: number): Observable<string[]>{
         console.log(specialty);
         return this.http.get<string[]>(this.apiHost + 'api/doctor/getSpecialtyDoctors/' + specialty, {headers: this.headers});
+    }
+
+    getPatientHealthMeasurements(dto: any): Observable<PatientHealthMeasurements[]>{
+        return this.http.post<PatientHealthMeasurements[]>(this.apiHost + 'api/PatientHealthMeasurements/getPatientsHealthMeasurements', dto, { headers: this.headers });
     }
 }

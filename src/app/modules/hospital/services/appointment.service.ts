@@ -63,4 +63,8 @@ export class AppointmentService {
     return this.http.get<any>(this.apiHost, { headers: this.headers});
   }
 
+  getDoctorsPatients(id: any): Observable<string[]>{
+    return this.http.get<any>(this.apiHost + '/GetDoctorsPatients/' + id, { headers : this.headers });
+  }
+
 }

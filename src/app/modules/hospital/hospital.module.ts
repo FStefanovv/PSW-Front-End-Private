@@ -39,6 +39,7 @@ import { PatientStatisticsComponent } from './patient-statistics/patient-statist
 import { ShowConsiliumsComponent } from './show-consiliums/show-consiliums.component';
 import { AppForOtherDocComponent } from './app-for-other-doc/app-for-other-doc.component';
 import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor/vacation-requests-by-doctor.component";
+import { ViewPatientDataComponent } from './view-patient-data/view-patient-data.component';
 
 
 
@@ -64,7 +65,8 @@ const routes: Routes = [
   {path: 'patients/treatments/create', component: CreateTreatmentComponent},
   {path: 'consilium/create', component:CreateConsiliumComponent},
   {path: 'vacations-by-doctor', component: VacationRequestsByDoctorComponent},
-  {path: 'app-for-other-doc', component:AppForOtherDocComponent}
+  {path: 'app-for-other-doc', component:AppForOtherDocComponent},
+  {path: 'view-patient-data', component:ViewPatientDataComponent}
  ];
  
  
@@ -108,7 +110,8 @@ const routes: Routes = [
     CreateConsiliumComponent,
     PatientStatisticsComponent,
     ShowConsiliumsComponent,
-    AppForOtherDocComponent
+    AppForOtherDocComponent,
+    ViewPatientDataComponent
   ],
   imports: [
     CommonModule,
