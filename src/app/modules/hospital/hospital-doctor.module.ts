@@ -1,3 +1,5 @@
+import { PatientStatisticsComponent } from './patient-statistics/patient-statistics.component';
+import { ShowConsiliumsComponent } from './show-consiliums/show-consiliums.component';
 import { PagesModule } from './../pages/pages.module';
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
@@ -70,6 +72,12 @@ const routes: Routes = [
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }   },
   {  path: 'search-reports', component: SearchReportsAndPrescriptionsComponent,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }   },
+  {  path: 'show-consiliums', component: ShowConsiliumsComponent,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }   },
+  {path: 'vacations-by-doctor', component: VacationRequestsByDoctorComponent,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
+  { path: 'patient-statistics', component: PatientStatisticsComponent,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
   
 
 ];
@@ -92,7 +100,10 @@ const routes: Routes = [
     SearchBloodIntegration,
     SearchReportsAndPrescriptionsComponent,
     ShowAppointmentsUrgentVacationComponent,
-    ShowDoctorsForChange
+    ShowDoctorsForChange,
+    ShowConsiliumsComponent,
+    VacationRequestsByDoctorComponent,
+    PatientStatisticsComponent
   ],
   imports: [
     CommonModule,

@@ -38,7 +38,7 @@ export class SidebarComponent{
     this.router.navigate(['/patients/treatments'])
   }
   patientStatistics(){
-    this.router.navigate(['/doctor-home'])
+    this.router.navigate(['patient-statistics'])
   }
   appointments(){
     this.router.navigate(['/appointments-by-doctor'])

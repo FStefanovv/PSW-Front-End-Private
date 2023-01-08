@@ -1,79 +1,85 @@
-<div class="flexbox-container">
-    <h1>Помаже Бог!</h1>
-    <div class="patients-by-age flexbox-item">
-        <h3>Pacijenti po starosnom dobu</h3>
-        <table>
-            <thead>
-                <th>0-18</th>
-                <th>18-35</th>
-                <th>35-45</th>
-                <th>45-55</th>
-                <th>55-65</th>
-                <th>65+</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ageGroups[0]}}</td>
-                    <td>{{ageGroups[1]}}</td>
-                    <td>{{ageGroups[2]}}</td>
-                    <td>{{ageGroups[3]}}</td>
-                    <td>{{ageGroups[4]}}</td>
-                    <td>{{ageGroups[5]}}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-            </tfoot>
-        </table>
-        <canvas id="patientsByAgeChart"></canvas>
+<div>
+    <div>
+        <navbar></navbar>
+        <sidebar [patientStatisticsBool]="true"></sidebar>
     </div>
-    <div class="patients-by-gender flexbox-item">
-        <h3>Pacijenti po polu</h3>
-        <table>
-            <thead>
-                <th>Musko</th>
-                <th>Zensko</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{male}}</td>
-                    <td>{{female}}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-            </tfoot>
-        </table>
-        <canvas id="patientsByGenderChart"></canvas>
-    </div>
-    <div class="doctors-patients-by-age flexbox-item">
-        <h3>Pacijenti po starosnim grupama doktora: </h3>
-        <p style="display: inline-block">Izaberite doktora: </p>
-        <select matNativeControl  (change)="changeDoctor($event)">
-            <option value=""></option>
-            <option *ngFor="let doctor of doctors">{{doctor.id}}</option>
-        </select>
-        <br/>
-        <table>
-            <thead>
-                <th>0-18</th>
-                <th>18-35</th>
-                <th>35-45</th>
-                <th>45-55</th>
-                <th>55-65</th>
-                <th>65+</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ageGroupsByDoctor[0]}}</td>
-                    <td>{{ageGroupsByDoctor[1]}}</td>
-                    <td>{{ageGroupsByDoctor[2]}}</td>
-                    <td>{{ageGroupsByDoctor[3]}}</td>
-                    <td>{{ageGroupsByDoctor[4]}}</td>
-                    <td>{{ageGroupsByDoctor[5]}}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-            </tfoot>
-        </table>
-        <canvas id="doctorPatientsByAgeChart"></canvas>
+    <div class="ml-[310px] mt-[84px]">
+        <h1>Помаже Бог!</h1>
+        <div class="patients-by-age flexbox-item">
+            <h3>Pacijenti po starosnom dobu</h3>
+            <table>
+                <thead>
+                    <th>0-18</th>
+                    <th>18-35</th>
+                    <th>35-45</th>
+                    <th>45-55</th>
+                    <th>55-65</th>
+                    <th>65+</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ageGroups[0]}}</td>
+                        <td>{{ageGroups[1]}}</td>
+                        <td>{{ageGroups[2]}}</td>
+                        <td>{{ageGroups[3]}}</td>
+                        <td>{{ageGroups[4]}}</td>
+                        <td>{{ageGroups[5]}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+            <canvas id="patientsByAgeChart"></canvas>
+        </div>
+        <div class="patients-by-gender flexbox-item">
+            <h3>Pacijenti po polu</h3>
+            <table>
+                <thead>
+                    <th>Musko</th>
+                    <th>Zensko</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{male}}</td>
+                        <td>{{female}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+            <canvas id="patientsByGenderChart"></canvas>
+        </div>
+        <div class="doctors-patients-by-age flexbox-item">
+            <h3>Pacijenti po starosnim grupama doktora: </h3>
+            <p style="display: inline-block">Izaberite doktora: </p>
+            <select matNativeControl  (change)="changeDoctor($event)">
+                <option value=""></option>
+                <option *ngFor="let doctor of doctors">{{doctor.id}}</option>
+            </select>
+            <br/>
+            <table>
+                <thead>
+                    <th>0-18</th>
+                    <th>18-35</th>
+                    <th>35-45</th>
+                    <th>45-55</th>
+                    <th>55-65</th>
+                    <th>65+</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ageGroupsByDoctor[0]}}</td>
+                        <td>{{ageGroupsByDoctor[1]}}</td>
+                        <td>{{ageGroupsByDoctor[2]}}</td>
+                        <td>{{ageGroupsByDoctor[3]}}</td>
+                        <td>{{ageGroupsByDoctor[4]}}</td>
+                        <td>{{ageGroupsByDoctor[5]}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+            <canvas id="doctorPatientsByAgeChart"></canvas>
+        </div>
     </div>
 </div>

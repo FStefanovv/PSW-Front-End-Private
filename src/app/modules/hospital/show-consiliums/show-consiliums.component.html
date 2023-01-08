@@ -1,27 +1,28 @@
 <div>
     <div>
-        
+        <navbar></navbar>
+        <sidebar [consiliumsBool]="true"></sidebar>
     </div>
-    <div class="ml-[290px] mt-[84px]">
+    <div class="ml-[310px] mt-[84px]">
         <div>
             <label>Consiliums to show: </label>
             <!-- <app-search-2 (searchTextChanged)="onSearchTextEntered($event)"></app-search-2> -->
         </div>
         
-        <table cellspacing="10">
-            <tr>
-                <th>Start</th>
-                <th>Duration</th>
-                <th>Doctor names</th>
-                <th>Room</th>
-                <th>Topic</th>
+        <table class="border-black border-2 mt-4">
+            <tr class="border-black border-2 w-10">
+                <th class="border-black border-2 w-28">Start</th>
+                <th class="border-black border-2 w-28">Duration</th>
+                <th class="border-black border-2 w-28">Doctor names</th>
+                <th class="border-black border-2 w-28">Room</th>
+                <th class="border-black border-2 w-28">Topic</th>
             </tr>
-            <tr *ngFor="let consilium of consiliumsToShow">
-                <td>{{consilium.start}}</td>
-                <td>{{consilium.duration}}</td>
-                <td><button type="button" (click)="showDoctors(consilium)" (click)="show = true">See doctors</button></td>
-                <td>{{consilium.room}}</td>
-                <td>{{consilium.topic}}</td>
+            <tr *ngFor="let consilium of consiliumsToShow" class="border-black border-2 w-10">
+                <td class="border-black border-2 w-28">{{consilium.start}}</td>
+                <td class="border-black border-2 w-28">{{consilium.duration}}</td>
+                <td class="border-black border-2 w-28"><button type="button" (click)="showDoctors(consilium)" (click)="show = true">See doctors</button></td>
+                <td class="border-black border-2 w-28">{{consilium.room}}</td>
+                <td class="border-black border-2 w-28">{{consilium.topic}}</td>
             </tr>
         </table>
         <div *ngIf="show">
@@ -32,7 +33,7 @@
                 </li>
             </ol>
         </div>
-        <button id="goToCreate" (click)="goToCreate()">Create new consilium</button>
+        <button class="border-gray-400 bg-[#38A3A5] w-44 h-16 rounded-xl mt-8" id="goToCreate" (click)="goToCreate()">Create new consilium</button>
     </div>
 </div>
 

@@ -62,9 +62,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    VacationRequestsByDoctorComponent,
     UpdateTreatmentComponent,
-    VacationRequestsByDoctorComponent,
     CancelVacationComponent,
     ReportMain,
     ReportStepOne,
@@ -78,8 +76,6 @@ const routes: Routes = [
     ShowReportPatient,
     ShowReportSymptoms,
     CreateConsiliumComponent,
-    PatientStatisticsComponent,
-    ShowConsiliumsComponent,
     AppForOtherDocComponent,
     SearchComponent2,
     
