@@ -10,6 +10,7 @@ import { UpdateRoomComponent } from "./update-room/update-room.component";;
 import { FeedbackComponent } from './feedback/feedback.component';
 import { PatientStatisticsComponent } from "./patient-statistics/patient-statistics.component";
 import { RoleGuardService } from "src/app/auth/role-guard.service";
+import { ManagerStatisticsComponent } from "./manager-statistics/manager-statistics.component";
 
 const routes: Routes = [
   {
@@ -32,7 +33,13 @@ const routes: Routes = [
   },
   {
     path: 'patient-statistics', component: PatientStatisticsComponent,
-    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' } },
+    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' }
+  },
+
+  {
+    path: 'manager-statistics', component: ManagerStatisticsComponent,
+    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' }
+  },
  ];
  
  

@@ -25,6 +25,10 @@ export class ManagerMenuComponent implements OnInit {
     this.router.navigate(['/patient-statistics']);
   }
 
+  ManagerStatisticsClick() {
+    this.router.navigate(['/manager-statistics']);
+  }
+
   BloodBankClick() {
     this.router.navigate(['/register-blood-bank']);
   }
