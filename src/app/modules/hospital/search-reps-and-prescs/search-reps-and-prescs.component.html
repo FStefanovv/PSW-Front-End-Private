@@ -5,13 +5,16 @@
   </div>
   <div class="ml-[290px] mt-[84px]">
     <div class="px-5 ">
-      Pretrazi: <input type="text" class="ml-5 mb-5 border-2 border-[#22577A] rounded-lg text-center"/>
+      Pretrazi: <input [(ngModel)]="searchedContent" type="text" class="ml-5 mb-5 border-2 border-[#22577A] rounded-lg text-center"/>
     </div>
     <div class="flex mb-5 ml-5">Izaberi filter:
-      <select class="bg-[#38A3A5] ml-5">
+      <select [(ngModel)]="filter" class="bg-[#38A3A5] ml-5">
         <option>Report</option>
         <option>Prescription</option>
       </select>
+    </div>
+    <div>
+      <button (click)="search()" class="ml-5 bg-[#57CC99] hover:bg-[#429b75] w-20 h-10">Pretrazi</button>
     </div>
     <div class="p-5">Rezultat pretrage:</div>
     <table class="table ml-5">

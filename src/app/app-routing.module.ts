@@ -59,7 +59,9 @@ const routes: Routes = [
   {path: 'vacations/urgent', component: CreateUrgentVacationComponent},
   {path: 'rooms/add', component: CreateRoomComponent},
   {path: 'bloodRecord/add', component: CreateBloodRecordComponent},
-  {path: 'appointments/add', component: CreateAppointmentComponent}
+  {path: 'appointments/add', component: CreateAppointmentComponent},
+  { path: 'reportdev',component: ReportMain},
+  { path: 'showreportdev', component: ShowReportManagment},
 ]
 
 
