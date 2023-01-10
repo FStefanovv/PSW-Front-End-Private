@@ -1,12 +1,11 @@
-import { Drug } from "./drug.model";
-import { Symptom } from "./symptom.model";
-
-export class SearchReportDTO{
-  symptoms: Array<Symptom> = []
+export class SearchReportToShow{
+  symptoms: string = ""
   dayAndTimeOfMaking: string  = ""
   description: string = ""
-  prescriptions : Array<Drug> = []
+  prescriptions : string = ""
   patientId: string = ""
+  name: string = ""
+  surname: string = ""
   appointmentId: string = ""
 
   public constructor(obj?: any){
@@ -16,6 +15,8 @@ export class SearchReportDTO{
       this.description = obj.description
       this.prescriptions = obj.prescriptions
       this.patientId = obj.patientId
+      this.name = obj.name
+      this.surname = obj.surname
       this.appointmentId = obj.appointmentId
     }
   }

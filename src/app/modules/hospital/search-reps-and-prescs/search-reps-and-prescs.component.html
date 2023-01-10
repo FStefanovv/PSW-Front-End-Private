@@ -8,7 +8,8 @@
       Pretrazi: <input [(ngModel)]="searchedContent" type="text" class="ml-5 mb-5 border-2 border-[#22577A] rounded-lg text-center"/>
     </div>
     <div class="flex mb-5 ml-5">Izaberi filter:
-      <select [(ngModel)]="filter" class="bg-[#38A3A5] ml-5">
+      <select (change)="filterList()" [(ngModel)]="filter" class="bg-[#38A3A5] ml-5">
+        <option>Nista</option>
         <option>Report</option>
         <option>Prescription</option>
       </select>
@@ -17,18 +18,48 @@
       <button (click)="search()" class="ml-5 bg-[#57CC99] hover:bg-[#429b75] w-20 h-10">Pretrazi</button>
     </div>
     <div class="p-5">Rezultat pretrage:</div>
-    <table class="table ml-5">
+    <table *ngIf="allBool" class="table ml-5">
       <tr class="border-2 border-gray-300 ">
-        <td class=" w-40 text-center">Ime</td>
-        <td class=" w-40 text-center">Dodatni info</td>
+        <td class=" w-40 text-center">AppId</td>
+        <td class=" w-40 text-center">Opis</td>
+        <td class=" w-40 text-center">Patient</td>
+        <td class=" w-40 text-center">Simptomi</td>
+        <td class=" w-40 text-center">Lekovi</td>
       </tr>
-      <tr>
-        <td class=" w-40 ">proba</td>
-        <td class=" w-40">proba info</td>
+      <tr *ngFor="let report of listToShow">
+        <td class="w-40 ">{{report.appointmentId}}</td>
+        <td class="w-40">{{report.description}}</td>
+        <td class="w-40">{{report.name + " " + report.surname}}</td>
+        <td class="w-40">{{report.symptoms}}</td>
+        <td class="w-40">{{report.prescriptions}}</td>
       </tr>
-      <tr>
-        <td class=" w-40 ">proba</td>
-        <td class=" w-40">proba info</td>
+    </table>
+    <table *ngIf="sympotmsBool" class="table ml-5">
+      <tr class="border-2 border-gray-300 ">
+        <td class=" w-40 text-center">AppId</td>
+        <td class=" w-40 text-center">Opis</td>
+        <td class=" w-40 text-center">Patient</td>
+        <td class=" w-40 text-center">Simptomi</td>
+      </tr>
+      <tr *ngFor="let report of listToShow">
+        <td class="w-40 ">{{report.appointmentId}}</td>
+        <td class="w-40">{{report.description}}</td>
+        <td class="w-40">{{report.name + " " + report.surname}}</td>
+        <td class="w-40">{{report.symptoms}}</td>
+      </tr>
+    </table>
+    <table *ngIf="drugsBool" class="table ml-5">
+      <tr class="border-2 border-gray-300 ">
+        <td class=" w-40 text-center">AppId</td>
+        <td class=" w-40 text-center">Opis</td>
+        <td class=" w-40 text-center">Patient</td>
+        <td class=" w-40 text-center">Lekovi</td>
+      </tr>
+      <tr *ngFor="let report of listToShow">
+        <td class="w-40 ">{{report.appointmentId}}</td>
+        <td class="w-40">{{report.description}}</td>
+        <td class="w-40">{{report.name + " " + report.surname}}</td>
+        <td class="w-40">{{report.prescriptions}}</td>
       </tr>
     </table>
   </div>
