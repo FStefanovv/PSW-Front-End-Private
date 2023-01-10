@@ -11,6 +11,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { PatientStatisticsComponent } from "./patient-statistics/patient-statistics.component";
 import { RoleGuardService } from "src/app/auth/role-guard.service";
 import { ManagerStatisticsComponent } from "./manager-statistics/manager-statistics.component";
+import * as CanvasJSAngularChart from "../../../assets/canvasjs.angular.component";
 
 const routes: Routes = [
   {
@@ -50,7 +51,9 @@ const routes: Routes = [
     RoomDetailComponent,
     CreateRoomComponent,
     UpdateRoomComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    ManagerStatisticsComponent,
+    CanvasJSAngularChart.CanvasJSChart
   ],
   imports: [
     CommonModule,

@@ -21,7 +21,7 @@ import { RoleGuardService } from "./auth/role-guard.service";
 import { ErrorIntercept } from "./modules/hospital/services/error.interceptor";
 import { DoctorMenuComponent } from "./modules/pages/doctor-menu/doctor-menu.component";
 import { ManagerMenuComponent } from "./modules/pages/manager-menu/manager-menu.component";
-import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+
 
 
 @NgModule({
@@ -30,7 +30,7 @@ import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
     PopUpComponent,
     DoctorMenuComponent,
     ManagerMenuComponent,
-    CanvasJSAngularChart.CanvasJSChart
+   
   ],
   imports: [
     BrowserModule,
@@ -47,7 +47,8 @@ import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
     IntegrationModule,
     MatDialogModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+   
   ],
   providers: [
     {
