@@ -60,32 +60,32 @@ export class AppointmentsByDoctorComponent implements OnInit {
     this.appointmentsToShow = this.appointments;
   }
 
-  onSearch(e: any){
-    if(this.filterAppointmentStatus != -1 && this.searchValue != "" && this.filterDate != ""){
-      this.appointmentsToShow = this.filterAppointmentsByStatus(this.filterAppointmentsByPatientId(this.filterAppointmentsByDate(this.appointments, this.filterDate), this.searchValue), this.filterAppointmentStatus);
-    }
-    else if(this.filterAppointmentStatus != -1 && this.searchValue != "" && this.filterDate == ""){
-      this.appointmentsToShow = this.filterAppointmentsByStatus(this.filterAppointmentsByPatientId(this.appointments, this.searchValue), this.filterAppointmentStatus);
-    }
-    else if(this.filterAppointmentStatus != -1 && this.searchValue == "" && this.filterDate != ""){
-      this.appointmentsToShow = this.filterAppointmentsByStatus(this.filterAppointmentsByDate(this.appointments, this.filterDate), this.filterAppointmentStatus);
-    }
-    else if(this.filterAppointmentStatus == -1 && this.searchValue != "" && this.filterDate != ""){
-      this.appointmentsToShow = this.filterAppointmentsByPatientId(this.filterAppointmentsByDate(this.appointments, this.filterDate), this.searchValue);
-    }
-    else if(this.filterAppointmentStatus != -1 && this.searchValue == "" && this.filterDate == ""){
-      this.appointmentsToShow = this.filterAppointmentsByStatus(this.appointments, this.filterAppointmentStatus);
-    }
-    else if(this.filterAppointmentStatus == -1 && this.searchValue != "" && this.filterDate == ""){
-      this.appointmentsToShow = this.filterAppointmentsByPatientId(this.appointments, this.searchValue);
-    }
-    else if(this.filterAppointmentStatus == -1 && this.searchValue == "" && this.filterDate != ""){
-      this.appointmentsToShow = this.filterAppointmentsByDate(this.appointments, this.filterDate);
-    }
-    else{
-      this.appointmentsToShow = this.appointments;
-    }
-  }
+  // onSearch(e: any){
+  //   if(this.filterAppointmentStatus != -1 && this.searchValue != "" && this.filterDate != ""){
+  //     this.appointmentsToShow = this.filterAppointmentsByStatus(this.filterAppointmentsByPatientId(this.filterAppointmentsByDate(this.appointments, this.filterDate), this.searchValue), this.filterAppointmentStatus);
+  //   }
+  //   else if(this.filterAppointmentStatus != -1 && this.searchValue != "" && this.filterDate == ""){
+  //     this.appointmentsToShow = this.filterAppointmentsByStatus(this.filterAppointmentsByPatientId(this.appointments, this.searchValue), this.filterAppointmentStatus);
+  //   }
+  //   else if(this.filterAppointmentStatus != -1 && this.searchValue == "" && this.filterDate != ""){
+  //     this.appointmentsToShow = this.filterAppointmentsByStatus(this.filterAppointmentsByDate(this.appointments, this.filterDate), this.filterAppointmentStatus);
+  //   }
+  //   else if(this.filterAppointmentStatus == -1 && this.searchValue != "" && this.filterDate != ""){
+  //     this.appointmentsToShow = this.filterAppointmentsByPatientId(this.filterAppointmentsByDate(this.appointments, this.filterDate), this.searchValue);
+  //   }
+  //   else if(this.filterAppointmentStatus != -1 && this.searchValue == "" && this.filterDate == ""){
+  //     this.appointmentsToShow = this.filterAppointmentsByStatus(this.appointments, this.filterAppointmentStatus);
+  //   }
+  //   else if(this.filterAppointmentStatus == -1 && this.searchValue != "" && this.filterDate == ""){
+  //     this.appointmentsToShow = this.filterAppointmentsByPatientId(this.appointments, this.searchValue);
+  //   }
+  //   else if(this.filterAppointmentStatus == -1 && this.searchValue == "" && this.filterDate != ""){
+  //     this.appointmentsToShow = this.filterAppointmentsByDate(this.appointments, this.filterDate);
+  //   }
+  //   else{
+  //     this.appointmentsToShow = this.appointments;
+  //   }
+  // }
 
   filterAppointmentsByStatus(arrayToFilter: Appointment[], filterStatus: number){
     return arrayToFilter.filter(app => app.status == filterStatus);
@@ -95,26 +95,26 @@ export class AppointmentsByDoctorComponent implements OnInit {
     return arrayToFilter.filter(app => filterId === "" || app.patientId.toString().includes(filterId));
   }
 
-  filterAppointmentsByDate(arrayToFilter: Appointment[], filterDate: string){
-    let flagString = filterDate.split("-");
-    let fullDate = flagString[0] + '.' + flagString[1] + '.' + flagString[2];
-      if(filterDate === ''){
-        return this.appointments;
-      }
-      else if(this.typeDate==='day'){
-        return this.appointmentsToShow.filter(app => app.date === fullDate);
-      }
-      else if(this.typeDate==='week'){
-        const firstfulldate = new Date(fullDate); // ceo datum 14.11.2000
-        const lastday = firstfulldate.getDate() + 7;
-        const lastfulldate = new Date(fullDate);
-        lastfulldate.setDate(lastday);
-        return this.appointmentsToShow.filter(app => new Date(app.date) >= firstfulldate && new Date(app.date)  <= lastfulldate)
-      }
-      else{
-        return this.appointments;
-      }
-  }
+  // filterAppointmentsByDate(arrayToFilter: Appointment[], filterDate: string){
+  //   let flagString = filterDate.split("-");
+  //   let fullDate = flagString[0] + '.' + flagString[1] + '.' + flagString[2];
+  //     if(filterDate === ''){
+  //       return this.appointments;
+  //     }
+  //     else if(this.typeDate==='day'){
+  //       return this.appointmentsToShow.filter(app => app.date === fullDate);
+  //     }
+  //     else if(this.typeDate==='week'){
+  //       const firstfulldate = new Date(fullDate); // ceo datum 14.11.2000
+  //       const lastday = firstfulldate.getDate() + 7;
+  //       const lastfulldate = new Date(fullDate);
+  //       lastfulldate.setDate(lastday);
+  //       return this.appointmentsToShow.filter(app => new Date(app.date) >= firstfulldate && new Date(app.date)  <= lastfulldate)
+  //     }
+  //     else{
+  //       return this.appointments;
+  //     }
+  // }
 
   sortByDateTime(): void {
     this.appointments = this.appointments.sort((a, b) => Date.parse(a.start) > Date.parse(b.start)? 1 : -1);
@@ -150,42 +150,42 @@ export class AppointmentsByDoctorComponent implements OnInit {
     }
   }
 
-  // filterAppointments(e: any){
-  //   if(this.filterAppointmentStatus == -1){
-  //     this.appointmentsToShow = this.appointments;
-  //   }
-  //   else{
-  //     this.appointmentsToShow = this.appointments.filter(app => app.status == this.filterAppointmentStatus);
-  //   }
-  // }
+  filterAppointments(e: any){
+    if(this.filterAppointmentStatus == -1){
+      this.appointmentsToShow = this.appointments;
+    }
+    else{
+      this.appointmentsToShow = this.appointments.filter(app => app.status == this.filterAppointmentStatus);
+    }
+  }
 
-  // onSearchTextEntered(searchValue : string){
-  //   if(searchValue != ''){
-  //     this.appointmentsToShow = this.appointments.filter(app => searchValue === '' || app.patientId.toString().includes(searchValue));
-  //     console.log('currently shown appointments ',this.appointmentsToShow);
-  //   }
-  //   else
-  //       this.appointmentsToShow = this.appointments;
-  // }
+  onSearchTextEntered(searchValue : string){
+    if(searchValue != ''){
+      this.appointmentsToShow = this.appointments.filter(app => searchValue === '' || app.patientId.toString().includes(searchValue));
+      console.log('currently shown appointments ',this.appointmentsToShow);
+    }
+    else
+        this.appointmentsToShow = this.appointments;
+  }
 
-  // filterAppointmentsByDate(e: any): void{
-  //   let flagString = this.filterDate.split("-");
-  //   let fullDate = flagString[0] + '.' + flagString[1] + '.' + flagString[2];
-  //     if(this.filterDate === ''){
-  //       this.appointmentsToShow = this.appointments;
-  //     }
-  //     else if(this.typeDate==='day'){
-  //       this.appointmentsToShow = this.appointmentsToShow.filter(app => app.date === fullDate);
-  //     }
+  filterAppointmentsByDate(e: any): void{
+    let flagString = this.filterDate.split("-");
+    let fullDate = flagString[0] + '.' + flagString[1] + '.' + flagString[2];
+      if(this.filterDate === ''){
+        this.appointmentsToShow = this.appointments;
+      }
+      else if(this.typeDate==='day'){
+        this.appointmentsToShow = this.appointmentsToShow.filter(app => app.date === fullDate);
+      }
         
-  //     else if(this.typeDate==='week'){
-  //       const firstfulldate = new Date(fullDate); // ceo datum 14.11.2000
-  //       const lastday = firstfulldate.getDate() + 7;
-  //       const lastfulldate = new Date(fullDate);
-  //       lastfulldate.setDate(lastday);
-  //       this.appointmentsToShow = this.appointmentsToShow.filter(app => new Date(app.date) >= firstfulldate && new Date(app.date)  <= lastfulldate)
-  //     }
-  //   }
+      else if(this.typeDate==='week'){
+        const firstfulldate = new Date(fullDate); // ceo datum 14.11.2000
+        const lastday = firstfulldate.getDate() + 7;
+        const lastfulldate = new Date(fullDate);
+        lastfulldate.setDate(lastday);
+        this.appointmentsToShow = this.appointmentsToShow.filter(app => new Date(app.date) >= firstfulldate && new Date(app.date)  <= lastfulldate)
+      }
+    }
 
   onRescheduleClicked(id : string){
     const rescheduledApp = this.appointments.find((a) => {return a.id === id});
