@@ -5,7 +5,7 @@ export class Feedback {
   text: string = '';
   visibleToPublic: Boolean = false;
   approved: Boolean = false;
-  date: Date = new Date();
+  date: string = '';
   anonymous: Boolean = false;
 
   public constructor(obj?: any) {
@@ -20,4 +20,5 @@ export class Feedback {
       this.anonymous = obj.anonymous;
     }
   }
+
 }

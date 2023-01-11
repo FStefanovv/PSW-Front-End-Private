@@ -1,15 +1,9 @@
-
-<mat-toolbar color="primary">
-  <span>Welcome, Doctor!</span>
-  <div class="spacer"></div>
-  <a mat-button href='/doctor-home'>Home</a>
-  <a mat-button href='/show-consiliums'>Consiliums</a>
-  <a mat-button href='/bloodRequest'>Blood requests</a>
-  <a mat-button href='/bloodRecord/add'>Blood record</a>
-  <a mat-button href='/vacations-by-doctor'>Vacations</a>
-  <a mat-button href='/patients/treatments'>Patient treatments</a>
-  <a mat-button href='/patient-statistics'>Patient statistics</a>
-  <a mat-button href='/appointments' id="appointments">Appointments</a>
-  <a mat-button href='/app-for-other-doc' id="appointments">Refferal</a>
-  <a mat-button href='/'>Log Out</a>
-</mat-toolbar>
+<div>
+  <div>
+    <sidebar [homeBool]="true"></sidebar>
+    <navbar ></navbar>
+  </div>
+  <div class="ml-[290px] mt-[84px]">
+    Dobro dosli!
+  </div> 
+</div>

@@ -1,0 +1,25 @@
+<div class="h-full w-fullvw w-[290px] bg-[#22577A] fixed top-0 left-0 z-sidebar pt-24 ">
+  <div class="ml-16 mr-16">
+    <div (click)="home()" *ngIf="homeBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Home</div>
+    <div *ngIf="homeBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Home</div>
+    <div (click)="consilium()" *ngIf="consiliumsBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Consiliums</div>
+    <div *ngIf="consiliumsBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Consiliums</div>
+    <div (click)="bloodRequest()"  *ngIf="bloodRequestsBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Blood requests</div>
+    <div *ngIf="bloodRequestsBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Blood requests</div>
+    <div (click)="bloodRecord()"  *ngIf="bloodRecordBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Blood record</div>
+    <div *ngIf="bloodRecordBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Blood record</div>
+    <div (click)="vacations()"  *ngIf="vacationsBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Vacations</div>
+    <div *ngIf="vacationsBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Vacations</div>
+    <div (click)="patientTreatment()"  *ngIf="patientTreatmentsBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Patient treatments</div>
+    <div *ngIf="patientTreatmentsBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Patient treatments</div>
+    <div (click)="patientStatistics()"  *ngIf="patientStatisticsBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Patient statistics</div>
+    <div *ngIf="patientStatisticsBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Patient statistics</div>
+    <div (click)="appointments()"  *ngIf="appointmentsBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Appointments</div>
+    <div *ngIf="appointmentsBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Appointments</div>
+    <div (click)="searchBloodBank()"  *ngIf="searchBloodBanksBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Search blood banks</div>
+    <div *ngIf="searchBloodBanksBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Search blood banks</div>
+    <div (click)="searchReports()"  *ngIf="searchReportsAndPrescriptionsBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Search reports and prescriptions</div>
+    <div *ngIf="searchReportsAndPrescriptionsBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Search reports and prescriptions</div>
+    <div (click)="logOut()"  class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Log Out</div>
+  </div>
+</div>

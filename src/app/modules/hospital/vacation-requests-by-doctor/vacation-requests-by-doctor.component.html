@@ -1,28 +1,37 @@
-<table cellspacing="0">
-    <tr>
-        <th>Start</th>
-        <th>End</th>
-        <th>Description</th>
-        <th>Urgency</th>
-        <th>Status</th>
-        <th>Rejection Reason</th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let req of requests">
-        <td>{{req.start}}</td>
-        <td>{{req.end}}</td>
-        <td>{{req.description}}</td>
-        <td>{{req.urgency}}</td>
-        <td>{{req.status}}</td>
-        <td>{{req.rejectionReason}}</td>
-        <td>
-            <button  class="cancel-button" *ngIf="req.status=='Waiting For Approval'" (click)="cancel(req.id)" (click)="goToCancel(req.id)">
-                Cancel
-            </button>
-        </td>
-    </tr>
-</table>
-<button id="createNewRequest" (click)="goToCreateNewRequest()">Create new request</button>
-<a mat-button href='/doctor-home'>Home</a>
 
-
+<div>
+    <div>
+        <navbar></navbar>
+        <sidebar [vacationsBool]="true"></sidebar>
+    </div>
+    <div class="ml-[310px] mt-[84px]">
+        <table cellspacing="0">
+            <tr>
+                <th>Start</th>
+                <th>End</th>
+                <th>Description</th>
+                <th>Urgency</th>
+                <th>Status</th>
+                <th>Rejection Reason</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let req of requests">
+                <td>{{req.start}}</td>
+                <td>{{req.end}}</td>
+                <td>{{req.description}}</td>
+                <td>{{req.urgency}}</td>
+                <td>{{req.status}}</td>
+                <td>{{req.rejectionReason}}</td>
+                <td>
+                    <button  class="cancel-button" *ngIf="req.status=='Waiting For Approval'" (click)="cancel(req.id)" (click)="goToCancel(req.id)">
+                        Cancel
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <button id="createNewRequest" (click)="goToCreateNewRequest()">Create new request</button>
+        </div>
+    </div>
+    
+</div>

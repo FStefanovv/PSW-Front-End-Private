@@ -9,6 +9,7 @@ import * as moment from "moment";
 })
 export class AuthService {
   
+  //apiHost: string = 'http://localhost:16177/';
   apiHost: string = 'http://localhost:5000/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -62,5 +63,9 @@ export class AuthService {
 
   getUserId() {
     return localStorage.getItem("userId");
+  }
+
+  getName() {
+    return localStorage.getItem("fullName");
   }
 }

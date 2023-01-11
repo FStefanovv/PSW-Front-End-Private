@@ -33,4 +33,8 @@ export class ReportService{
   getDrugPrescription(id: string): Observable<DrugPrescriptionToShow>{
     return this.http.get<DrugPrescriptionToShow>(this.apiHost + 'api/Report/GetDrugFromReport/' + id,{headers: this.headers})
   }
+
+  searchReports(words: any) :Observable<any>{
+    return this.http.post<any>(this.apiHost + 'api/Report/SearchReports',words,{headers: this.headers})
+  }
 }

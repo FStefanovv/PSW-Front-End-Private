@@ -16,8 +16,10 @@ export class FeedbackComponent implements OnInit {
 
   public dataSourceApproved = new MatTableDataSource<Feedback>();
   public approvedFeedback: Feedback[] = [];
+
   public dataSourcePending = new MatTableDataSource<Feedback>();
   public pendingFeedback: Feedback[] = [];
+
   public displayedColumns = ['username', 'text', 'date'];
   public feedback: Feedback[] = [];
 
@@ -25,17 +27,22 @@ export class FeedbackComponent implements OnInit {
   public selectedRowApproved = new SelectionModel<Feedback>(false, []);
   public selectedIndex = 0;
   
-  constructor(private feedbackService: FeedbackService, private router: Router) { }
+  constructor(private feedbackService: FeedbackService, private router: Router) {}
 
   ngOnInit(): void {
-    this.feedbackService.getAllFeedback().subscribe( res => {
+    this.feedbackService.getAllFeedback().subscribe(res => {
       this.feedback = res;
+
+      this.feedback.forEach(obj => {
+        obj.date = this.formatDate(obj.date);
+      });
+
       this.approvedFeedback = this.feedback.filter(f => f.approved === true);
       this.pendingFeedback = this.feedback.filter(f => f.approved === false);
       this.dataSourcePending.data = this.pendingFeedback;
       this.dataSourceApproved.data = this.approvedFeedback;
-     
-    })
+    });
+      
   }
 
   public changeToApproved(): void {
@@ -46,7 +53,8 @@ export class FeedbackComponent implements OnInit {
 
       if (feedback.approved == false) {
 
-        this.feedbackService.changeApproval(feedback).subscribe();
+        this.feedbackService.changeApproval(feedback.id).subscribe();
+        feedback.approved = true;
         this.approvedFeedback.push(feedback);
         this.pendingFeedback.splice(this.selectedIndex, 1);
 
@@ -64,8 +72,10 @@ export class FeedbackComponent implements OnInit {
     if (this.selectedRowApproved.selected.length != 0) {
       var feedback = this.selectedRowApproved.selected[0];
       this.selectedIndex = this.approvedFeedback.findIndex((d: Feedback) => d === feedback);
+
       if (feedback.approved == true) {
-        this.feedbackService.changeApproval(feedback).subscribe();
+        this.feedbackService.changeApproval(feedback.id).subscribe();
+        feedback.approved = false;
         this.pendingFeedback.push(feedback);
         this.approvedFeedback.splice(this.selectedIndex, 1);
 
@@ -76,12 +86,15 @@ export class FeedbackComponent implements OnInit {
 
     }
 
-
-
-
+  }
+    private formatDate(d: string): string {
+      let array = d.split("-");
+      let array2 = array[2].split("T");
+      return array2[0] + "." + array[1] + "." + array[0]+ ".";
+     }
 
   }
 
 
-  }
+
 

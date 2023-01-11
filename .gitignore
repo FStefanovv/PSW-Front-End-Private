@@ -48,3 +48,4 @@ Thumbs.db
 .vs/PSW-Front-End-Private/FileContentIndex/read.lock
 *.testlog
 *.manifest
+.vs/slnx.sqlite-journal
