@@ -37,4 +37,16 @@ export class ReportService{
   searchReports(words: any) :Observable<any>{
     return this.http.post<any>(this.apiHost + 'api/Report/SearchReports',words,{headers: this.headers})
   }
+
+  instantiateReport(): Observable<any>{
+    return this.http.post<any>(this.apiHost + "api/Report/InstantiateReport",{headers: this.headers})
+  }
+
+  eventHappened(id:string,eventCode: number): Observable<any>{
+    return this.http.post<any>(this.apiHost + "api/Report/EventHappened/" + id + "/" + eventCode,{headers: this.headers})
+  }
+
+  setFields(id:string,dto:ReportDTO): Observable<any>{
+    return this.http.put<any>(this.apiHost + "api/Report/SetFields/" + id, dto,{headers: this.headers})
+  }
 }

@@ -15,6 +15,7 @@ export class ReportStepFour{
   @Input() symptoms: Symptom[]
   @Input() drugs: Drug[]
   @Input() description: string = ""
+  @Input() reportId: string = ""
   public appointmentId: string = ""
   
   constructor(private reportService: ReportService,private route: ActivatedRoute,private router: Router){
@@ -27,6 +28,9 @@ export class ReportStepFour{
 
   }
   public submit(){
+    this.reportService.eventHappened(this.reportId,500).subscribe(res=>{
+      
+    })
     let reportDTO: ReportDTO = new ReportDTO()
     reportDTO.appointmentId = this.appointmentId
     reportDTO.doctorId = "DOC1"
@@ -34,13 +38,17 @@ export class ReportStepFour{
     reportDTO.description = this.description
     reportDTO.symptoms = this.symptoms
     reportDTO.drugs = this.drugs
-    this.reportService.createReport(reportDTO).subscribe(res=>{
+    this.reportService.setFields(this.reportId,reportDTO).subscribe(res=>{
       alert("Poslato")
     })
     this.router.navigate(['/appointments-by-doctor'])
   }
   public back(){
+    this.reportService.eventHappened(this.reportId,-1).subscribe(
+      res => {
 
+      }
+    )
     this.backEmit4.emit({backString4: this.backString})
 
 

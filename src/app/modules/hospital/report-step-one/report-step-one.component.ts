@@ -1,7 +1,7 @@
 import { Symptom } from './../model/symptom.model';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { ReportService } from './../services/report.service';
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Output, Input } from "@angular/core";
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,8 +10,10 @@ import { Router } from '@angular/router';
 })
 export class ReportStepOne{
   @Output() symptomsToReturn = new EventEmitter<Symptom[]>()
+  @Input() reportId: string = ""
   form: FormGroup
   public symptomsList: Array<Symptom>
+
 
   constructor(private reportService: ReportService,private router:Router) {
     
@@ -26,6 +28,11 @@ export class ReportStepOne{
   }
 
   submit(){
+    this.reportService.eventHappened(this.reportId,1).subscribe(
+      res => {
+
+      }
+    )
     const returnArray: Symptom[] = []
     this.symptomsList.map(x => {
       if(x.isChecked === true){
@@ -36,6 +43,11 @@ export class ReportStepOne{
     console.log(returnArray)
   }
   back(){
+    this.reportService.eventHappened(this.reportId,-1).subscribe(
+      res => {
+
+      }
+    )
     this.router.navigate(['appointments-by-doctor'])
   }
 }

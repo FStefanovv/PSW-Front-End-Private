@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { ReportService } from "../services/report.service";
 
 @Component({
   selector: 'report-step-two',
@@ -9,15 +10,26 @@ export class ReportStepTwo{
   @Output() descriptionEmit = new EventEmitter<{description: string}>()
   public backString: string = ""
   @Output() backEmit2 = new EventEmitter<{backString2: string}>()
+  @Input() reportId: string = ""
 
-  constructor(){
+  constructor(private reportService: ReportService){
 
   }
 
   submit(){
+    this.reportService.eventHappened(this.reportId,1).subscribe(
+      res => {
+
+      }
+    )
     this.descriptionEmit.emit({description: this.description})
   }
   back(){
+    this.reportService.eventHappened(this.reportId,-1).subscribe(
+      res => {
+
+      }
+    )
     this.backEmit2.emit({backString2: this.backString})
   }
 

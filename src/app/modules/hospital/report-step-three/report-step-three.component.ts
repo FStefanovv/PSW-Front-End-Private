@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { Drug } from "../model/drug.model";
 import { ReportService } from "../services/report.service";
@@ -8,6 +8,7 @@ import { ReportService } from "../services/report.service";
   templateUrl: './report-step-three.component.html'
 })
 export class ReportStepThree{
+  @Input() reportId: string = ""
   @Output() drugsToReturn = new EventEmitter<Drug[]>()
   public backString: string = ""
   @Output() backEmit3 = new EventEmitter<{backString3: string}>()
@@ -28,6 +29,11 @@ export class ReportStepThree{
   
   
   submit(){
+    this.reportService.eventHappened(this.reportId,1).subscribe(
+      res => {
+
+      }
+    )
     const returnArray: Drug[] = []
     this.listOfDrugs.map(x => {
       if(x.isChecked === true){
@@ -39,7 +45,11 @@ export class ReportStepThree{
     
   }
   public back(){
+    this.reportService.eventHappened(this.reportId,-1).subscribe(
+      res => {
 
+      }
+    )
     this.backEmit3.emit({backString3: this.backString})
   }
 }
