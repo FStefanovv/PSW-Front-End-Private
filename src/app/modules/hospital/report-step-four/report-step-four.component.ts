@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Drug } from "../model/drug.model";
 import { Symptom } from "../model/symptom.model";
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'report-step-four',
@@ -17,15 +18,16 @@ export class ReportStepFour{
   @Input() description: string = ""
   @Input() reportId: string = ""
   public appointmentId: string = ""
+  public loggedDoctorId: string;
   
-  constructor(private reportService: ReportService,private route: ActivatedRoute,private router: Router){
+  constructor(private reportService: ReportService, private route: ActivatedRoute, private authService: AuthService, private router: Router){
     this.route.queryParams.subscribe(params =>{
       this.appointmentId = params.appointmentId
     })
   }
 
   ngOnInit():void{
-
+    this.loggedDoctorId = this.authService.getIdByRole();
   }
   public submit(){
     this.reportService.eventHappened(this.reportId,500).subscribe(res=>{
@@ -33,7 +35,7 @@ export class ReportStepFour{
     })
     let reportDTO: ReportDTO = new ReportDTO()
     reportDTO.appointmentId = this.appointmentId
-    reportDTO.doctorId = "DOC1"
+    reportDTO.doctorId = this.loggedDoctorId;
     reportDTO.patientId = "stojane"
     reportDTO.description = this.description
     reportDTO.symptoms = this.symptoms

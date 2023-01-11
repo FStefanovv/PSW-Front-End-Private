@@ -2,7 +2,7 @@ import { Room } from 'src/app/modules/hospital/model/room.model';
 import { CreateAppointmentDTO } from 'src/app/modules/hospital/model/createAppointmentDTO.model';
 
 export class Doctor{
-    id: string =""
+    id: number;
     name: string=""
     surname: string=""
     email: string=""

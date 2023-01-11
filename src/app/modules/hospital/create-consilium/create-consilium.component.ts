@@ -45,10 +45,10 @@ export class CreateConsiliumComponent implements OnInit {
 
   selectedDoctor(id : any) : void{
     let doctor = this.allDoctors.find((d) => { return d.id === id })
-    if(this.selectedDoctors.some(drId=>drId==doctor.id)){
+    if(this.selectedDoctors.some(drId=>drId==doctor.id.toString())){
       return;
     }
-    this.selectedDoctors.push(doctor.id);
+    this.selectedDoctors.push(doctor.id.toString());
     let doctorIds = "";
     for(var doc of this.selectedDoctors){
       doctorIds+=(doc+",");

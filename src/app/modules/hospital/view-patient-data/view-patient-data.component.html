@@ -1,0 +1,35 @@
+<body>
+    <h1>Patient's monthly health statistics</h1>
+    <p>Select a month:</p>
+    <select name="month" id="month" [(ngModel)]="selectedMonth" (change)="onMonthOrPatientChange($event)">
+        <option value=""></option>
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
+    <p>Select a patient:</p>
+    <select name="patientId" id="patientId" [(ngModel)]="selectedPatient" (change)="onMonthOrPatientChange($event)">
+        <option value=""></option>
+        <option *ngFor="let patient of doctorsPatients" value="">{{patient}}</option>
+    </select>
+    <h2>Patient's monthly weight</h2>
+    <canvas id="patientMonthlyWeight"></canvas>
+    <h2>Patient's monthly blood pressure</h2>
+    <canvas id="patientMonthlyBloodPressure"></canvas>
+    <h2>Patient's monthly heartbeats</h2>
+    <canvas id="patientMonthlyHeartbeat"></canvas>
+    <h2>Patient's monthly temperature</h2>
+    <canvas id="patientMonthlyTemperature"></canvas>
+    <h2>Patient's monthly blood sugar levels</h2>
+    <canvas id="patientMonthlyBloodSugarLevel"></canvas>s>
+</body>
+
