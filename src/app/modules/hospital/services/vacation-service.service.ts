@@ -9,21 +9,15 @@ import { VacationRequest } from '../model/vacationRequest';
 export class VacationService {
 
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //srediti
   apiHost: string = 'http://localhost:5000/api/Vacation';
-
-
   constructor(private http: HttpClient) { }
 
-  getByDoctor(id: string): Observable<VacationRequest[]> {
-    const url = this.apiHost + '/GetAllByDoctor/' + id;
-
-    return this.http.get<VacationRequest[]>(url, {headers: this.headers});
+  getByDoctor(id: number): Observable<VacationRequest[]> {
+    console.log(id);
+    return this.http.get<VacationRequest[]>(this.apiHost + "/GetAllByDoctor/" + id, {headers: this.headers});
   }
 
   cancel(id: number): void {
-    const url = this.apiHost + '/Cancel/' + id;
-
-    this.http.put<any>(url, {headers: this.headers}).subscribe();
+    this.http.put<any>(this.apiHost + "/Cancel/" + id, {headers: this.headers}).subscribe();
   }
 }

@@ -1,10 +1,10 @@
 export class CreateAppointmentDTO{
-    doctorId: string = ""
-    patientId: string = ""
+    doctorId: number;
+    patientId: number;
     startDate: string = ""
     startTime: string = ""
-    roomId: number = 0
-    status: string = ""
+    roomId: number;
+    status: string= "";
     appointmentDuration: number = 20
 
     public constructor(obj?: any) {

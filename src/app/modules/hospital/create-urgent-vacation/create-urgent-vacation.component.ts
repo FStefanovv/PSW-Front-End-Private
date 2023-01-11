@@ -4,6 +4,7 @@ import { UrgentVacationService } from './../services/urgent-vacation.service';
 import { Component } from "@angular/core";
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError,catchError } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: "create-urgent-vacation",
@@ -17,10 +18,12 @@ export class CreateUrgentVacationComponent {
   public startNull: boolean = false
   public endNull: boolean = false
   public descriptionNull: boolean = false
-  constructor(private urgentVacationService: UrgentVacationService,private router: Router){}
+  public loggedDoctorId: string;
+  constructor(private urgentVacationService: UrgentVacationService, private authService: AuthService, private router: Router){}
 
   ngOnInit(){
     this.prika = "Prika moj problem je tvoj"
+    this.loggedDoctorId = this.authService.getIdByRole();
   }
 
   public createRequest(){
@@ -50,7 +53,7 @@ export class CreateUrgentVacationComponent {
         
         if(ispis1Array[0] === " You have appointment(s) in choosen time span!"){
           this.showAppsNull = true
-        this.urgentVacationService.getAppointmentsForDoctor("DOC1",this.request.start,this.request.end).subscribe(
+        this.urgentVacationService.getAppointmentsForDoctor(parseInt(this.loggedDoctorId), this.request.start, this.request.end).subscribe(
           res => {
             this.appsList = res
            

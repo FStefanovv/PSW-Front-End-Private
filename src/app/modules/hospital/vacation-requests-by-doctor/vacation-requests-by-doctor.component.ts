@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VacationRequest } from '../model/vacationRequest';
+import { AuthService } from '../services/auth.service';
 import { VacationService } from '../services/vacation-service.service';
 
 
@@ -12,13 +13,16 @@ import { VacationService } from '../services/vacation-service.service';
 })
 export class VacationRequestsByDoctorComponent implements OnInit {
 
-  constructor(private vacationService: VacationService,private router : Router) { }
+  public loggedDoctorId: string;
+
+  constructor(private vacationService: VacationService, private authService: AuthService, private router : Router) { }
 
   requests: VacationRequest[] = [];
   requestsForPresentation: VacationRequest[] = [];
 
   ngOnInit(): void {
-    this.vacationService.getByDoctor('DOC1').subscribe( res => {
+    this.loggedDoctorId = this.authService.getIdByRole();
+    this.vacationService.getByDoctor(parseInt(this.loggedDoctorId)).subscribe( res => {
       this.requests = res;
     });
   }

@@ -1,7 +1,7 @@
 export class Appointment {
     id: string = "";
-    doctorId: string = "";
-    patientId: string = "";
+    doctorId: number;
+    patientId: number;
     roomNumber: string = "";
     start: string = "";
     status?: number;

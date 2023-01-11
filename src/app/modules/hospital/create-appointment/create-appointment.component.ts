@@ -8,6 +8,7 @@ import { AppointmentService } from 'src/app/modules/hospital/services/appointmen
 import { DoctorService } from '../services/doctor.service';
 import { DoctorShiftDTO } from '../model/doctorsShiftDTO.model';
 import { PatientForApp } from '../model/patientForApp.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'app-create-appointments',
@@ -25,13 +26,16 @@ export class CreateAppointmentComponent implements OnInit {
     public doctor: DoctorShiftDTO | undefined = undefined
     public arrayForShift: Array<string> = []
     public patientsForDoctor: Array<PatientForApp> = []
+    public loggedDoctorId: string;
+    public loggedDoctorObj: Doctor;
     constructor(private appointmentService: AppointmentService,private doctorService: DoctorService, private patientService: PatientService,
-        private router: Router, private route: ActivatedRoute) { }
+        private router: Router, private route: ActivatedRoute, private authService: AuthService) { }
 
 
     ngOnInit(): void {
+        this.loggedDoctorId = this.authService.getIdByRole();
         this.route.params.subscribe(() => {
-            this.doctorService.getDoctor("DOC1").subscribe(res => {
+            this.doctorService.getDoctor(parseInt(this.loggedDoctorId)).subscribe(res => {
                 this.doctor = res
                 for (let index = this.doctor?.startWorkTime; index < this.doctor?.endWorkTime; index++) {
                     this.arrayForShift.push(index.toString() + ":00")
@@ -39,17 +43,22 @@ export class CreateAppointmentComponent implements OnInit {
                     this.arrayForShift.push(index.toString() + ":40")
                 }
             })
-        })
-        this.patientService.getPatientForDoctor("DOC1").subscribe(
+        });
+        this.patientService.getPatientForDoctor(parseInt(this.loggedDoctorId)).subscribe(
             res => {
                 this.patientsForDoctor = res
             }
-        )
+        );
+        this.doctorService.getDoctorById(parseInt(this.loggedDoctorId)).subscribe(
+            res => {
+                this.loggedDoctorObj = res;
+            }
+        );
     }
 
     public createAppointment(){
-        this.appointment.doctorId = "DOC1"
-        this.appointment.roomId = 1
+        this.appointment.doctorId = this.loggedDoctorObj.id;
+        this.appointment.roomId = this.loggedDoctorObj.room.id;
         if (!this.isValidInputPatient()) this.patNull = true
         if (!this.isValidInputDate()) this.dateNull = true
         if (!this.isValidInputTime()) this.timeNull = true
@@ -67,7 +76,7 @@ export class CreateAppointmentComponent implements OnInit {
 
     private isValidInputPatient(): boolean {
         this.patNull = false
-        return this.appointment?.patientId != '';
+        return this.appointment.patientId != 0;
     }
     private isValidInputDate(): boolean {
         this.dateNull = false

@@ -43,7 +43,7 @@ export class ShowReportManagment{
         this.appointment = res
       }
     )
-    this.patientService.getPatientForReport(this.patientId).subscribe(
+    this.patientService.getPatientForReport(parseInt(this.patientId)).subscribe(
       res => {
        
         this.patient = res

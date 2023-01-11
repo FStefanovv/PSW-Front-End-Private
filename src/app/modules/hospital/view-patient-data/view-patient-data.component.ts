@@ -23,8 +23,8 @@ export class ViewPatientDataComponent implements OnInit {
   public patientMonthlyHeartbeat: Chart;
   public patientMonthlyTemperature: Chart;
   public patientMonthlyBloodSugarLevel: Chart;
-  public loggedDoctor: string;
-  public doctorsPatients: string[] = [];
+  public loggedDoctorId: string;
+  public doctorsPatients: Patient[] = [];
   public selectedMonth: string;
   public selectedPatient: string;
   public measurements: PatientHealthMeasurements[] = [];
@@ -40,8 +40,8 @@ export class ViewPatientDataComponent implements OnInit {
   constructor(private appointmentService: AppointmentService, private patientService: PatientService, private authService: AuthService, private doctorService: DoctorService) { }
 
   ngOnInit(): void {
-    this.loggedDoctor = this.authService.getIdByRole();
-    this.appointmentService.getDoctorsPatients(this.loggedDoctor).subscribe( res => {
+    this.loggedDoctorId = this.authService.getIdByRole();
+    this.appointmentService.getDoctorsPatients(parseInt(this.loggedDoctorId)).subscribe( res => {
       this.doctorsPatients = res;  
     });
     

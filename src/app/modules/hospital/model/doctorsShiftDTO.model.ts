@@ -1,5 +1,5 @@
 export class DoctorShiftDTO{
-    id: string = ""
+    id: number;
     startWorkTime: number = 0
     endWorkTime: number = 0
 

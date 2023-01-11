@@ -29,12 +29,15 @@ export class BloodService {
     getByGroupA(): Observable<any>{
         return this.http.get<any>(this.apiHost+'api/Blood/GetByGroupA',{headers:this.headers})
     }
+
     getByGroupB(): Observable<any>{
         return this.http.get<any>(this.apiHost+'api/Blood/GetByGroupB',{headers:this.headers})
     }
+
     getByGroupAB(): Observable<any>{
         return this.http.get<any>(this.apiHost+'api/Blood/GetByGroupAB',{headers:this.headers})
     }
+    
     getByGroupO(): Observable<any>{
         return this.http.get<any>(this.apiHost+'api/Blood/GetByGroupO',{headers:this.headers})
     }

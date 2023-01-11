@@ -1,17 +1,39 @@
 <div style='margin-left:10%;margin-bottom:5%;margin-top:3%'>
-    <label>Appointments to show: </label>
-    <select [(ngModel)]="appointmentType" (change)="filterAppointments($event)">
+    <!-- <label>Appointments to show: </label>
+    <select [(ngModel)]="filterAppointmentStatus" (change)="filterAppointments($event)">
         <option value="-1">All</option>
         <option value="0">Scheduled</option>
         <option value="1">Finished</option>
     </select>
+    <br/>
+    <label for="">Patient id:</label>
     <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+    <input type="text" [(ngModel)]="searchValue" (change)="onFilterParametersChange($event)">
+    <br/>
     Filter: <input type="date" [(ngModel)]="filterDate" (change)="filterAppointmentsByDate($event)">
     <select name="filter" id="filter"[(ngModel)]="typeDate">
         <option value="day">Day</option>
         <option value="week">Week</option>
+    </select> -->
+    <label>Appointments to show: </label>
+    <select [(ngModel)]="filterAppointmentStatus">
+        <option value="-1">All</option>
+        <option value="0">Scheduled</option>
+        <option value="1">Finished</option>
     </select>
-    
+    <br/>
+    <label for="">Patient id:</label>
+    <!-- <app-search (searchTextChanged)="onFilterParametersChange($event)"></app-search> -->
+    <input type="text" [(ngModel)]="searchValue">
+    <br/>
+    Filter: <input type="date" [(ngModel)]="filterDate">
+    <select name="filter" id="filter"[(ngModel)]="typeDate">
+        <option value="day">Day</option>
+        <option value="week">Week</option>
+    </select>
+    <br/>
+    <button (click)="onSearch($event)">Search</button>
+    <button (click)="clearSearch($event)">Clear</button>
 </div>
 
 

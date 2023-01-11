@@ -21,19 +21,19 @@ export class PatientService {
   constructor(private http: HttpClient) { }
 
   getAllPatients(): Observable<Patient[]>{
-    const url = `${this.apiHost}`;
-    return this.http.get<Patient[]>(url, {headers: this.headers});
+    return this.http.get<Patient[]>(this.apiHost, {headers: this.headers});
   }
-  getPatient(id: any): Observable<Patient>{
+  
+  getPatient(id: number): Observable<Patient>{
     return this.http.get<Patient>(this.apiHost + "/" + id, {headers: this.headers});
   }
 
-  getPatientForDoctor(id: string): Observable<PatientForApp[]>{
-    return this.http.get<PatientForApp[]>(this.apiHost+"/GetPatientsForSpecificDoctor/"+ id,{headers : this.headers})
+  getPatientForDoctor(id: number): Observable<PatientForApp[]>{
+    return this.http.get<PatientForApp[]>(this.apiHost + "/GetPatientsForSpecificDoctor/" + id, {headers : this.headers})
   }
 
-  getPatientForReport(id: string): Observable<PatientForReport>{
-    return this.http.get<PatientForReport>(this.apiHost+"/GetPatientForReport/"+id,{headers: this.headers})
+  getPatientForReport(id: number): Observable<PatientForReport>{
+    return this.http.get<PatientForReport>(this.apiHost + "/GetPatientForReport/" + id, {headers: this.headers})
   }
   
   errorHandler(error: HttpErrorResponse){
