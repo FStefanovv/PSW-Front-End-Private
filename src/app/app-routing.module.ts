@@ -31,6 +31,7 @@ import { CancelVacationComponent } from './modules/hospital/cancel-vacation/canc
 import { ReportMain } from './modules/hospital/report-main/report-main.component';
 import { ShowReportManagment } from './modules/hospital/show-report-managment/show-report-managment.component';
 import { CreateConsiliumComponent } from './modules/hospital/create-consilium/create-consilium.component';
+import { ViewPatientDataComponent } from './modules/hospital/view-patient-data/view-patient-data.component';
 
 
 const routes: Routes = [
@@ -62,6 +63,7 @@ const routes: Routes = [
   {path: 'appointments/add', component: CreateAppointmentComponent},
   { path: 'reportdev',component: ReportMain},
   { path: 'showreportdev', component: ShowReportManagment},
+  {path: 'view-patient-data', component: ViewPatientDataComponent},
 ]
 
 

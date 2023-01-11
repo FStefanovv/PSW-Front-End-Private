@@ -12,7 +12,7 @@ export class SidebarComponent{
   @Input() bloodRecordBool:boolean=false
   @Input() vacationsBool:boolean=false
   @Input() patientTreatmentsBool:boolean=false
-  @Input() patientStatisticsBool:boolean=false
+  @Input() patientHealthMeasurementsBool:boolean=false
   @Input() appointmentsBool:boolean=false
   @Input() searchBloodBanksBool:boolean=false
   @Input() searchReportsAndPrescriptionsBool:boolean=false
@@ -37,8 +37,8 @@ export class SidebarComponent{
   patientTreatment(){
     this.router.navigate(['/patients/treatments'])
   }
-  patientStatistics(){
-    this.router.navigate(['patient-statistics'])
+  viewPatientHealthMeasurements(){
+    this.router.navigate(['view-patient-data'])
   }
   appointments(){
     this.router.navigate(['/appointments-by-doctor'])
