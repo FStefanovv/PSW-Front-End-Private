@@ -26,6 +26,7 @@ export class CreateBloodRecordComponent {
         },error => {
             alert("Los zahtev")
         })
+        this.router.navigate(['doctor-home']);
     }
 
     private isValidInputAmount(): boolean{

@@ -4,6 +4,7 @@ import {CreateTreatmentDTO} from '../model/createTreatmentDTO.model'
 import { FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormsModule } from "@angular/forms"      
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-create-treatment',
@@ -14,23 +15,24 @@ export class CreateTreatmentComponent implements OnInit {
   //@ViewChild('dischargeForm')
   //form: FormBuilder;
 
-treatment: CreateTreatmentDTO=new CreateTreatmentDTO()
- listOfRooms: string[]=[]
- listOfBeds:  string[]=[]
- patientIdNull: boolean
- roomIdNull: boolean
- roomIdNull1: boolean
- bedIdNull: boolean
- bedIdNull1: boolean
- reasonNull: boolean
- therapyNull:boolean
+  treatment: CreateTreatmentDTO=new CreateTreatmentDTO()
+  listOfRooms: string[]=[]
+  listOfBeds:  string[]=[]
+  patientIdNull: boolean
+  roomIdNull: boolean
+  roomIdNull1: boolean
+  bedIdNull: boolean
+  bedIdNull1: boolean
+  reasonNull: boolean
+  therapyNull:boolean
+  public loggedDoctorId: string;
  
-  constructor(private treatmentService: TreatmentService, private router:Router) { }
+  constructor(private treatmentService: TreatmentService, private authService: AuthService, private router:Router) { }
  
   ngOnInit(): void {
 
-  this.treatmentService.getRoomsWithFreeBeds().subscribe(res=>{this.listOfRooms=res})
-
+    this.treatmentService.getRoomsWithFreeBeds().subscribe(res=>{this.listOfRooms=res})
+    this.loggedDoctorId = this.authService.getIdByRole();
   }
 
   freeBed(e:any){
@@ -38,7 +40,7 @@ treatment: CreateTreatmentDTO=new CreateTreatmentDTO()
   }
 
   createTreatment(){
-    this.treatment.doctorId = "DOC1"
+    this.treatment.doctorId = this.loggedDoctorId
     console.log(this.treatment.bedId)
     if(!this.isValidInputPatient()) this.patientIdNull=true
     if(!this.isValidInputRoom()) this.roomIdNull=true

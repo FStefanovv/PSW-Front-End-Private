@@ -21,7 +21,7 @@ export class DischargePatientComponent implements OnInit {
   ngOnInit(): void {
     const queryString= window.location.search
     const urlParams=new URLSearchParams(queryString)
-    this.treatmentService.getPatientToDischarged(urlParams.get('id')).subscribe(res =>
+    this.treatmentService.getPatientToDischarged(parseInt(urlParams.get('id'))).subscribe(res =>
       {
         this.treatments=res;
       this.form.setValue({

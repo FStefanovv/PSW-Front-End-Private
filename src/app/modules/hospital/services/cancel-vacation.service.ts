@@ -11,7 +11,7 @@ export class CancelVacationService{
 
   constructor(private http: HttpClient) { }
 
-  getVacations(id:string): Observable<ShowVacation[]>{
+  getVacations(id: number): Observable<ShowVacation[]>{
     return this.http.get<ShowVacation[]>(this.apiHost + 'api/Vacation/GetAllByDoctor/' + id,{headers: this.headers})
   }
 

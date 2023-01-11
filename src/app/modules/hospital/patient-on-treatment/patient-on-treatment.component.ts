@@ -10,37 +10,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./patient-on-treatment.component.css']
 })
 export class PatientOnTreatmentComponent implements OnInit {
-treatments: PatientTreatmentDTO[]=[]
-treatmentsToShow: PatientTreatmentDTO[]=[]
-treatmentStatus: string="TREATMENT";
+  treatments: PatientTreatmentDTO[]=[]
+  treatmentsToShow: PatientTreatmentDTO[]=[]
+  treatmentStatus: string="TREATMENT";
+  public loggedDoctorId: string;
 
-
- 
   constructor(private treatmentService:TreatmentService, private router:Router) { }
 
   ngOnInit(): void {
     //this.treatmentsToShow = this.treatments.filter(treatment => treatment.status == "TREATMENT");
-    this.treatmentService.getAllPatientOnTreatment().subscribe(res=>{
-        this.treatments=res
-        
-    })
+    this.loggedDoctorId = localStorage.getItem("idByRole");
+    this.treatmentService.getAllPatientOnTreatment(parseInt(this.loggedDoctorId)).subscribe(res=>{
+        this.treatments = res;
+    });
   }
-
 
   discharge(id: any){
     const dischargePatient = this.treatments.find((a) => {return a.id === id});
     this.router.navigate(['patients/discharge'],{queryParams:{id:dischargePatient?.id}})
 
   }
+
   update(id:any){
     const updateTherapy = this.treatments.find((a) => {return a.id === id});
-    this.router.navigate(['patients/treatments/update'],{queryParams:{id:updateTherapy?.id}})
-
-    
+    this.router.navigate(['patients/treatments/update'],{queryParams:{id:updateTherapy?.id}});  
   }
 
   goToCreate(){
     this.router.navigate(['patients/treatments/create']);
   }
-
 }

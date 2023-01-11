@@ -1,16 +1,20 @@
-<div>
+<body>
     <h1>Schedule appointment for another doctor</h1>
     <table>
         <tr>
-            <td>Date:</td>
+            <td>Choose date:</td>
             <td>
-                <input type="date" matInput [(ngModel)]="appointmentDate" (change)="dateOrSpecialtyChange($event)">
+                <input
+                type="date"
+                [(ngModel)]="appointmentDate"
+                required
+                (change)="onDateOrSpecialtyChange($event)">
             </td>
         </tr>
         <tr>
-            <td>Doctor specialty:</td>
+            <td>Choose doctor specialty:</td>
             <td>
-                <select matNativeControl [(ngModel)]="specialty" (change)="dateOrSpecialtyChange($event)">
+                <select [(ngModel)]="chosenSpecialty"  (change)="onDateOrSpecialtyChange($event)">
                     <option value=-1></option>
                     <option value=0>Cardiologist</option>
                     <option value=1>Anesthesiologist</option>
@@ -19,43 +23,52 @@
             </td>
         </tr>
         <tr>
-            <td>Current Doctor(testiranje):</td>
-            <td>
-                <select matNativeControl [(ngModel)]="currentDoctor" (change)="currentDoctorChange($event)">
-                    <option value=""></option>
-                    <option *ngFor="let doctor of doctors">{{doctor.id}}</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
             <td>Choose doctor:</td>
             <td>
-                <select matNativeControl [(ngModel)]="chosenDoctor" (change)="chosenDoctorChange($event)">
-                    <option value=""></option>
-                    <option *ngFor="let doctor of specialtyDoctors">{{doctor}}</option>
+                <select [(ngModel)]="chosenDoctorId" (change)="onChosenDoctorChange($event)">
+                    <option value=-1></option>
+                    <option *ngFor="let doctor of chosenSpecialtyDoctors" [value]="doctor.id">
+                        {{doctor.id + " - " + doctor.name + " " + doctor.surname}}
+                    </option>
                 </select>
             </td>
-        </tr>
-        <tr>
-            <td>Choose free appointment:</td>
-            <td>
-                <select matNativeControl [(ngModel)]="appointmentStart">
-                    <option value=""></option>
-                    <option *ngFor="let appointment of arrayForShift">{{appointment}}</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Patient:</td>
-            <td>
-                <select matNativeControl [(ngModel)]="patient">
-                    <option value=""></option>
-                    <option *ngFor="let patient of doctorsPatients">{{patient}}</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <button (click)="scheduleAppointment()">Schedule appointment</button>
         </tr>
     </table>
-</div>
+    <form (ngSubmit)="onSchedule(scheduleAppointmentForm)" #scheduleAppointmentForm="ngForm">
+        <table>
+            <tr>
+                <td>Choose free appointment:</td>
+                <td>
+                    <select name="appointmentTime" id="appointmentTime" ngModel #appointmentTime="ngModel">
+                        <option value="-1"></option>
+                        <option *ngFor="let appointment of arrayForShift">
+                            {{appointment}}
+                        </option>
+                    </select>
+                    <span *ngIf="appointmentTime.value == '-1' && appointmentTime.touched">You must select appointment time.</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Patient:</td>
+                <td>
+                    <select name="patientId" id="patientId" ngModel #patientId="ngModel">
+                        <option value=-1></option>
+                        <option *ngFor="let patient of patients" [value]="patient.id">
+                            {{patient.id + " - " + patient.name + " " + patient.surname}}
+                        </option>
+                    </select>
+                    <span *ngIf="patientId.value === -1 && patientId.touched">You must select a patient.</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="button-row">
+                    <button
+                    type="submit"
+                    [disabled]="patientId.value === -1 || appointmentTime.value =='-1'">
+                        Schedule appointment
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
