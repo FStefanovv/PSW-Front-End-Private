@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Statistics } from '../model/statistics.model';
+import { TableEntry } from '../model/tableEntry.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,11 @@ export class ManagerStatisticsService{
 
   constructor(private http: HttpClient) {}
 
-  getStats(): Observable<Statistics[]> {
-    return this.http.get<Statistics[]>(this.apiHost + 'api/Statistics/schedule', { headers: this.headers });
+  getStats(): Observable<any> {
+    return this.http.get<any>(this.apiHost + 'api/Statistics/schedule/graphs', { headers: this.headers });
+  }
+
+  getTableStats(): Observable<TableEntry[]> {
+    return this.http.get<TableEntry[]>(this.apiHost + 'api/Statistics/schedule/table', { headers: this.headers });
   }
 }
