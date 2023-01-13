@@ -41,7 +41,7 @@
                 <td>{{app.roomNumber}}</td>
                 <td>20 minutes</td>
                 <td>
-                    <button ng-disabled="!app.cancellable" class="reschedule-button" (click)="onRescheduleClicked(app.id)">
+                    <button name="rescheduleAppointmentButton" ng-disabled="!app.cancellable" class="reschedule-button" (click)="onRescheduleClicked(app.id)">
                         Reschedule
                     </button>
                 </td>

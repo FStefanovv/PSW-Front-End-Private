@@ -50,5 +50,4 @@ export class ReportService{
     return this.http.put<any>(this.apiHost + "api/Report/SetFields/" + id, dto,{headers: this.headers})
   }
   //uh prika
-  
 }

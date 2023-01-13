@@ -1,6 +1,6 @@
 export class RescheduleAppointmentDTO {
-    id: string | null;
-    patientId : string;
+    id: string= "";
+    patientId : number;
     date: string = "";
     time: string = "";
     

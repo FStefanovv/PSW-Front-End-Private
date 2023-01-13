@@ -52,13 +52,13 @@ export class AppointmentsByDoctorComponent implements OnInit {
     });
   }
 
-  clearSearch(e: any){
-    this.filterAppointmentStatus = -1;
-    this.filterDate = "";
-    this.searchValue = "";
-    this.typeDate = "day";
-    this.appointmentsToShow = this.appointments;
-  }
+  // clearSearch(e: any){
+  //   this.filterAppointmentStatus = -1;
+  //   this.filterDate = "";
+  //   this.searchValue = "";
+  //   this.typeDate = "day";
+  //   this.appointmentsToShow = this.appointments;
+  // }
 
   // onSearch(e: any){
   //   if(this.filterAppointmentStatus != -1 && this.searchValue != "" && this.filterDate != ""){
@@ -87,13 +87,13 @@ export class AppointmentsByDoctorComponent implements OnInit {
   //   }
   // }
 
-  filterAppointmentsByStatus(arrayToFilter: Appointment[], filterStatus: number){
-    return arrayToFilter.filter(app => app.status == filterStatus);
-  }
+  // filterAppointmentsByStatus(arrayToFilter: Appointment[], filterStatus: number){
+  //   return arrayToFilter.filter(app => app.status == filterStatus);
+  // }
 
-  filterAppointmentsByPatientId(arrayToFilter: Appointment[], filterId: string){
-    return arrayToFilter.filter(app => filterId === "" || app.patientId.toString().includes(filterId));
-  }
+  // filterAppointmentsByPatientId(arrayToFilter: Appointment[], filterId: string){
+  //   return arrayToFilter.filter(app => filterId === "" || app.patientId.toString().includes(filterId));
+  // }
 
   // filterAppointmentsByDate(arrayToFilter: Appointment[], filterDate: string){
   //   let flagString = filterDate.split("-");
@@ -189,7 +189,7 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   onRescheduleClicked(id : string){
     const rescheduledApp = this.appointments.find((a) => {return a.id === id});
-    this.router.navigate(['appointments/reschedule'],{queryParams:{id:rescheduledApp?.id}})
+    this.router.navigate(['appointments/reschedule:id'],{queryParams:{id:rescheduledApp?.id}})
   }
 
   writeReport(appId: string){

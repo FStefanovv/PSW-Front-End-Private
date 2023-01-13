@@ -38,7 +38,6 @@ import { SearchComponent2 } from "./search2/search2.component";
 import { SearchReportsAndPrescriptionsComponent } from "./search-reps-and-prescs/search-reps-and-prescs.component";
 import { HospitalDoctorModule } from "./hospital-doctor.module";
 import { PagesModule } from "../pages/pages.module";
-import { ViewPatientDataComponent } from './view-patient-data/view-patient-data.component';
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -53,10 +52,9 @@ const routes: Routes = [
   { path: 'vacations/cancel', component: CancelVacationComponent},
   { path: 'reportdev',component: ReportMain},
   { path: 'showreportdev', component: ShowReportManagment},
-  {path: 'consilium/create', component:CreateConsiliumComponent},
+
   {path: 'vacations-by-doctor', component: VacationRequestsByDoctorComponent},
-  {path: 'app-for-other-doc', component:AppForOtherDocComponent},
-  {path: 'view-patient-data', component:ViewPatientDataComponent}
+  {path: 'app-for-other-doc', component:AppForOtherDocComponent}
  ];
  
  
@@ -76,10 +74,8 @@ const routes: Routes = [
     ShowReportDrugs,
     ShowReportPatient,
     ShowReportSymptoms,
-    CreateConsiliumComponent,
     AppForOtherDocComponent,
-    SearchComponent2,
-    ViewPatientDataComponent
+    SearchComponent2
   ],
   imports: [
     CommonModule,

@@ -26,7 +26,9 @@ import { VacationRequestsByDoctorComponent } from "./vacation-requests-by-doctor
 import { RoleGuardService } from "../../auth/role-guard.service";
 import { SearchBloodIntegration } from "./search-blood-integration/search-blood-integration.component";
 import { SearchReportsAndPrescriptionsComponent } from "./search-reps-and-prescs/search-reps-and-prescs.component";
+import { ViewPatientDataComponent } from './view-patient-data/view-patient-data.component';
 import { HospitalModule } from "./hospital.module";
+import { CreateConsiliumComponent } from './create-consilium/create-consilium.component';
 
 const routes: Routes = [
   {
@@ -41,7 +43,7 @@ const routes: Routes = [
     canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }
   },
   {
-    path: 'appointments/reschedule', component: RescheduleAppointmentComponent,
+    path: 'appointments/reschedule:id', component: RescheduleAppointmentComponent,
     canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
   {
     path: 'bloodRequest', component: BloodRequestComponent,
@@ -77,14 +79,15 @@ const routes: Routes = [
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }   },
   {path: 'vacations-by-doctor', component: VacationRequestsByDoctorComponent,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
-  { path: 'patient-statistics', component: PatientStatisticsComponent,
+  { path: 'view-patient-data', component: ViewPatientDataComponent,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
   { path: 'report-statistics', component: ReportStatistics,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
-
+  {path: 'consilium/create', component: CreateConsiliumComponent,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR'} },
+  {path: 'patients/treatments/create', component: CreateTreatmentComponent,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR'} },
 ];
-
-
 
 @NgModule({
   declarations: [
@@ -106,7 +109,10 @@ const routes: Routes = [
     ShowConsiliumsComponent,
     VacationRequestsByDoctorComponent,
     PatientStatisticsComponent,
-    ReportStatistics
+    ReportStatistics,
+    ViewPatientDataComponent,
+    CreateConsiliumComponent,
+    CreateTreatmentComponent
   ],
   imports: [
     CommonModule,

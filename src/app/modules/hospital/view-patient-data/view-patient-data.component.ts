@@ -25,10 +25,10 @@ export class ViewPatientDataComponent implements OnInit {
   public patientMonthlyBloodSugarLevel: Chart;
   public loggedDoctorId: string;
   public doctorsPatients: Patient[] = [];
-  public selectedMonth: string;
-  public selectedPatient: string;
+  public selectedMonth: string = "";
+  public selectedPatient: string = "";
   public measurements: PatientHealthMeasurements[] = [];
-  public getDTO: getPatientHealthMeasurementsDTO;
+  public getDTO: getPatientHealthMeasurementsDTO = new getPatientHealthMeasurementsDTO();
   public chartLabels: string[] = [];
   public weightData: number[] = [];
   public bloodPressureUpperData: number[] = [];
@@ -37,7 +37,10 @@ export class ViewPatientDataComponent implements OnInit {
   public temperatureData: number[] = [];
   public bloodSugarLevelData: number[] = [];
 
-  constructor(private appointmentService: AppointmentService, private patientService: PatientService, private authService: AuthService, private doctorService: DoctorService) { }
+  constructor(private appointmentService: AppointmentService, 
+              private patientService: PatientService, 
+              private authService: AuthService, 
+              private doctorService: DoctorService) { }
 
   ngOnInit(): void {
     this.loggedDoctorId = this.authService.getIdByRole();
@@ -54,25 +57,30 @@ export class ViewPatientDataComponent implements OnInit {
   }
 
   onMonthOrPatientChange(e: any){
-    if(this.selectedMonth == "" || this.selectedPatient == ""){
-      return;
-    }
-    else{
+    if(this.selectedMonth != "" && this.selectedPatient != ""){
       this.getDTO.month = this.selectedMonth;
       this.getDTO.patientId = this.selectedPatient;
+      this.chartLabels = [];
+      this.weightData = [];
+      this.bloodPressureUpperData = [];
+      this.bloodPressureLowerData = [];
+      this.heartbeatData = [];
+      this.temperatureData = [];
+      this.bloodSugarLevelData = [];
       this.doctorService.getPatientHealthMeasurements(this.getDTO).subscribe( res => {
 
         this.measurements = res;
-
+        
         for(let measurement of this.measurements){
-          this.chartLabels.push(measurement.measurementTime);
+          this.chartLabels.push(measurement.measurementTime.slice(0, 10));
           this.weightData.push(measurement.weight);
           this.bloodPressureUpperData.push(measurement.bloodPressureUpper);
           this.bloodPressureLowerData.push(measurement.bloodPressureLower);
+          this.heartbeatData.push(measurement.heartbeat);
           this.temperatureData.push(measurement.temperature);
           this.bloodSugarLevelData.push(measurement.bloodSugarLevel);
         }
-
+        console.log(this.measurements);
         this.updateChartData(this.patientMonthlyWeight, this.chartLabels, this.weightData);
         this.updateChartData(this.patientMonthlyUpperBloodPressure, this.chartLabels, this.bloodPressureUpperData);
         this.updateChartData(this.patientMonthlyLowerBloodPressure, this.chartLabels, this.bloodPressureLowerData);
@@ -80,6 +88,37 @@ export class ViewPatientDataComponent implements OnInit {
         this.updateChartData(this.patientMonthlyTemperature, this.chartLabels, this.temperatureData);
         this.updateChartData(this.patientMonthlyBloodSugarLevel, this.chartLabels, this.bloodSugarLevelData);
       });
+
+      // this.patientMonthlyWeight.data.datasets[0].data = this.weightData;
+      // this.patientMonthlyWeight.data.labels = this.chartLabels;
+      // this.patientMonthlyWeight.update();
+      // this.patientMonthlyUpperBloodPressure.data.datasets[0].data = this.bloodPressureUpperData;
+      // this.patientMonthlyUpperBloodPressure.data.labels = this.chartLabels;
+      // this.patientMonthlyUpperBloodPressure.update();
+      // this.patientMonthlyLowerBloodPressure.data.datasets[0].data = this.bloodPressureLowerData;
+      // this.patientMonthlyLowerBloodPressure.update();
+      // this.patientMonthlyHeartbeat.data.datasets[0].data = this.heartbeatData;
+      // this.patientMonthlyHeartbeat.update();
+      // this.patientMonthlyTemperature.data.datasets[0].data = this.temperatureData;
+      // this.patientMonthlyTemperature.update();
+      // this.patientMonthlyBloodSugarLevel.data.datasets[0].data = this.bloodSugarLevelData;
+      // this.patientMonthlyBloodSugarLevel.update();
+    }
+    else{
+      this.chartLabels = [];
+      this.weightData = [];
+      this.bloodPressureUpperData = [];
+      this.bloodPressureLowerData = [];
+      this.heartbeatData = [];
+      this.temperatureData = [];
+      this.bloodSugarLevelData = [];
+      this.updateChartData(this.patientMonthlyWeight, this.chartLabels, this.weightData);
+      this.updateChartData(this.patientMonthlyUpperBloodPressure, this.chartLabels, this.bloodPressureUpperData);
+      this.updateChartData(this.patientMonthlyLowerBloodPressure, this.chartLabels, this.bloodPressureLowerData);
+      this.updateChartData(this.patientMonthlyHeartbeat, this.chartLabels, this.heartbeatData);
+      this.updateChartData(this.patientMonthlyTemperature, this.chartLabels, this.temperatureData);
+      this.updateChartData(this.patientMonthlyBloodSugarLevel, this.chartLabels, this.bloodSugarLevelData);
+      return;
     }
   }
 
@@ -96,15 +135,8 @@ export class ViewPatientDataComponent implements OnInit {
         labels: [],
         datasets: [{
           data: [],
-          backgroundColor: [
-            '#86eba1',
-            '#86ebc6',
-            '#86cbeb',
-            '#8886eb',
-            '#9f86eb',
-            '#bf86eb',
-          ],
           borderWidth: 1,
+          backgroundColor: "#38A3A5",
           borderColor: '#777',
           hoverBorderWidth: 2.5,
           hoverBorderColor: '#000',
@@ -124,7 +156,6 @@ export class ViewPatientDataComponent implements OnInit {
       }
     });
   }
-
   constructPatientMonthlyUpperBloodPressureChart(){
     return new Chart("patientMonthlyUpperBloodPressure", {
       type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
@@ -132,15 +163,8 @@ export class ViewPatientDataComponent implements OnInit {
         labels: [],
         datasets: [{
           data: [],
-          backgroundColor: [
-            '#86eba1',
-            '#86ebc6',
-            '#86cbeb',
-            '#8886eb',
-            '#9f86eb',
-            '#bf86eb',
-          ],
           borderWidth: 1,
+          backgroundColor: "#38A3A5",
           borderColor: '#777',
           hoverBorderWidth: 2.5,
           hoverBorderColor: '#000',
@@ -167,15 +191,8 @@ export class ViewPatientDataComponent implements OnInit {
         labels: [],
         datasets: [{
           data: [],
-          backgroundColor: [
-            '#86eba1',
-            '#86ebc6',
-            '#86cbeb',
-            '#8886eb',
-            '#9f86eb',
-            '#bf86eb',
-          ],
           borderWidth: 1,
+          backgroundColor: "#38A3A5",
           borderColor: '#777',
           hoverBorderWidth: 2.5,
           hoverBorderColor: '#000',
@@ -202,15 +219,8 @@ export class ViewPatientDataComponent implements OnInit {
         labels: [],
         datasets: [{
           data: [],
-          backgroundColor: [
-            '#86eba1',
-            '#86ebc6',
-            '#86cbeb',
-            '#8886eb',
-            '#9f86eb',
-            '#bf86eb',
-          ],
           borderWidth: 1,
+          backgroundColor: "#38A3A5",
           borderColor: '#777',
           hoverBorderWidth: 2.5,
           hoverBorderColor: '#000',
@@ -237,15 +247,8 @@ export class ViewPatientDataComponent implements OnInit {
         labels: [],
         datasets: [{
           data: [],
-          backgroundColor: [
-            '#86eba1',
-            '#86ebc6',
-            '#86cbeb',
-            '#8886eb',
-            '#9f86eb',
-            '#bf86eb',
-          ],
           borderWidth: 1,
+          backgroundColor: "#38A3A5",
           borderColor: '#777',
           hoverBorderWidth: 2.5,
           hoverBorderColor: '#000',
@@ -272,15 +275,8 @@ export class ViewPatientDataComponent implements OnInit {
         labels: [],
         datasets: [{
           data: [],
-          backgroundColor: [
-            '#86eba1',
-            '#86ebc6',
-            '#86cbeb',
-            '#8886eb',
-            '#9f86eb',
-            '#bf86eb',
-          ],
           borderWidth: 1,
+          backgroundColor: "#38A3A5",
           borderColor: '#777',
           hoverBorderWidth: 2.5,
           hoverBorderColor: '#000',

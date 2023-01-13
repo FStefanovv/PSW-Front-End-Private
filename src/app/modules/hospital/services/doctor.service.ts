@@ -28,16 +28,14 @@ export class DoctorService{
     }
 
     getFreeSpecialtyDoctors(check: CheckDateSpecialtyDTO): Observable<Doctor[]>{
-        console.log(check);
         return this.http.post<Doctor[]>(this.apiHost + 'api/doctor/getFreeSpecialtyDoctors', check, {headers: this.headers});
     }
 
     getSpecialtyDoctors(specialty: number): Observable<string[]>{
-        console.log(specialty);
         return this.http.get<string[]>(this.apiHost + 'api/doctor/getSpecialtyDoctors/' + specialty, {headers: this.headers});
     }
 
     getPatientHealthMeasurements(dto: any): Observable<PatientHealthMeasurements[]>{
-        return this.http.post<PatientHealthMeasurements[]>(this.apiHost + 'api/PatientHealthMeasurements/getPatientsHealthMeasurements', dto, { headers: this.headers });
+        return this.http.post<PatientHealthMeasurements[]>(this.apiHost + 'api/PatientHealthMeasurements/getPatientHealthMeasurements', dto, { headers: this.headers });
     }
 }

@@ -4,6 +4,8 @@
         <sidebar [patientTreatmentsBool]="true"></sidebar>
     </div>
     <div id="content" #content class="ml-[310px] mt-[84px]">
+        <button id="goToCreate" (click)="goToCreate()">Create new treatment</button>
+        <br/>
         <table cellspacing="0">
            <tr>
                <th>Treatment</th>
@@ -37,7 +39,6 @@
                
            </tr> 
         </table>
-        <button id="goToCreate" (click)="goToCreate()">Create new treatment</button>
     </div>
 </div>
 
