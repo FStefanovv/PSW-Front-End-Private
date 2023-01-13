@@ -1,3 +1,4 @@
+import { ReportService } from './../services/report.service';
 import { ReportDTO } from './../model/reportDTO.model';
 import { ActivatedRoute } from '@angular/router';
 import { Component } from "@angular/core";
@@ -22,6 +23,7 @@ export class ReportMain{
   public backString4:string=""
   public backString3:string=""
   public backString2:string=""
+  public reportId: string = ""
 
   onSymptomsChoosen(eventData: Symptom[]){
     this.symptomsArray = eventData
@@ -64,13 +66,21 @@ export class ReportMain{
 
   }
 
-  constructor(private route: ActivatedRoute){
+  constructor(private route: ActivatedRoute,private reportService:ReportService){
     this.route.queryParams.subscribe(params =>{
       this.appointmentId = params.appointmentId
     })
   }
 
-
+  ngOnInit():void{
+      this.reportService.instantiateReport().subscribe(
+        res =>{
+          console.log(res)
+          this.reportId = res
+        }
+      )
+    
+  }
   
 
 }

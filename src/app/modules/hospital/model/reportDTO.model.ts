@@ -5,7 +5,7 @@ export class ReportDTO{
   public doctorId:string = ""
   public appointmentId: string = ""
   public description: string = ""
-  public DATOfMaking: string = ""
+  public datOfMaking: string = ""
   public symptoms: Symptom[] 
   public drugs: Drug[]
 
@@ -15,7 +15,7 @@ export class ReportDTO{
       this.doctorId = obj.doctorId
       this.appointmentId = obj.appointmentId
       this.description = obj.description
-      this.DATOfMaking = obj.DATOfMaking
+      this.datOfMaking = obj.datOfMaking
       this.symptoms = obj.symptoms
       this.drugs = obj.drugs
     }

@@ -22,6 +22,8 @@
     <div *ngIf="searchBloodBanksBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Search blood banks</div>
     <div (click)="searchReports()"  *ngIf="searchReportsAndPrescriptionsBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Search reports and prescriptions</div>
     <div *ngIf="searchReportsAndPrescriptionsBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Search reports and prescriptions</div>
+    <div (click)="reportStatistics()"  *ngIf="reportStatisticsBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Report statistics</div>
+    <div *ngIf="reportStatisticsBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Report statistics</div>
     <div (click)="logOut()"  class="mb-2 hover:bg-[#629bc1] text-white font-semibold">Log Out</div>
   </div>
 </div>

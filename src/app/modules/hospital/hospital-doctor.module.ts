@@ -1,3 +1,4 @@
+import { ReportStatistics } from './report-statistics/report-statistics.component';
 import { PatientStatisticsComponent } from './patient-statistics/patient-statistics.component';
 import { ShowConsiliumsComponent } from './show-consiliums/show-consiliums.component';
 import { PagesModule } from './../pages/pages.module';
@@ -80,14 +81,13 @@ const routes: Routes = [
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
   { path: 'view-patient-data', component: ViewPatientDataComponent,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
+  { path: 'report-statistics', component: ReportStatistics,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
   {path: 'consilium/create', component: CreateConsiliumComponent,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR'} },
   {path: 'patients/treatments/create', component: CreateTreatmentComponent,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR'} },
-
 ];
-
-
 
 @NgModule({
   declarations: [
@@ -109,10 +109,10 @@ const routes: Routes = [
     ShowConsiliumsComponent,
     VacationRequestsByDoctorComponent,
     PatientStatisticsComponent,
+    ReportStatistics,
     ViewPatientDataComponent,
     CreateConsiliumComponent,
     CreateTreatmentComponent
-
   ],
   imports: [
     CommonModule,
