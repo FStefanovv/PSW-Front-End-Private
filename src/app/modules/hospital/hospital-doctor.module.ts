@@ -1,3 +1,4 @@
+import { ReportStatistics } from './report-statistics/report-statistics.component';
 import { PatientStatisticsComponent } from './patient-statistics/patient-statistics.component';
 import { ShowConsiliumsComponent } from './show-consiliums/show-consiliums.component';
 import { PagesModule } from './../pages/pages.module';
@@ -78,7 +79,8 @@ const routes: Routes = [
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
   { path: 'patient-statistics', component: PatientStatisticsComponent,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
-  
+  { path: 'report-statistics', component: ReportStatistics,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
 
 ];
 
@@ -103,7 +105,8 @@ const routes: Routes = [
     ShowDoctorsForChange,
     ShowConsiliumsComponent,
     VacationRequestsByDoctorComponent,
-    PatientStatisticsComponent
+    PatientStatisticsComponent,
+    ReportStatistics
   ],
   imports: [
     CommonModule,

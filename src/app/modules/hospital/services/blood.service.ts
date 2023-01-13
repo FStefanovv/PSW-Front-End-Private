@@ -41,4 +41,8 @@ export class BloodService {
     getByGroupO(): Observable<any>{
         return this.http.get<any>(this.apiHost+'api/Blood/GetByGroupO',{headers:this.headers})
     }
+
+    getFromIntegrationApi(): Observable<any>{
+        return this.http.get<any>(this.apiHost + 'api/Blood/GetFromIntegrationApi',{headers :this.headers})
+    }
 }

@@ -1,0 +1,83 @@
+<div>
+  <div>
+    <navbar></navbar>
+    <sidebar [reportStatisticsBool]="true"></sidebar>
+  </div>
+  <div class="ml-[310px] mt-[84px]">
+    <table>
+      <tr>
+        <td>ReportId</td>
+        <td>Vreme trajanja</td>
+      </tr>
+      <tr *ngFor="let report of reportCreationDurationList">
+        <td>{{report.reportId}}</td>
+        <td>{{report.redurationStringportId}}</td>
+      </tr>
+    </table>
+    <div class="ml-[300px] mt-[50px]">
+      Average number of steps:{{avgNumOfSteps}}
+    </div>
+    <div class="ml-[310px] mt-[84px]">
+      <div class="patients-by-age flexbox-item">
+        <table>
+          <thead>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+          </thead>
+          <tbody>
+            <tr>
+                <td>{{stepOne}}</td>
+                <td>{{stepTwo}}</td>
+                <td>{{stepThree}}</td>
+                <td>{{stepFour}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+        </table>
+        <canvas id="numOfTimeOnEachStep"></canvas>
+      </div>
+      <div class="age-doctors flexbox-item">
+        <table>
+          <thead>
+            <th>20-40</th>
+            <th>40-60</th>
+            <th>preko 60</th>
+          </thead>
+          <tbody>
+            <tr>
+                <td>{{twentyToFourty}}</td>
+                <td>{{fourtyToSixty}}</td>
+                <td>{{overSixty}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+        </table>
+        <canvas id="getDurationAndNumOfStepsInCorellationWithDoctorAge"></canvas>
+      </div>
+      <div class="step-doctors flexbox-item">
+        <table>
+          <thead>
+            <th>4-8</th>
+            <th>8-12</th>
+            <th>12-16</th>
+          </thead>
+          <tbody>
+            <tr>
+                <td>{{fourToEight}}</td>
+                <td>{{eightToTwelve}}</td>
+                <td>{{twelweToSixteen}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+        </table>
+        <canvas id="getSteps"></canvas>
+      </div>
+    </div>
+  </div>
+  
+</div>

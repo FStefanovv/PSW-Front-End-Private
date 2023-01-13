@@ -1,3 +1,4 @@
+import { ReportStatistics } from './../report-statistics/report-statistics.component';
 import { Router } from '@angular/router';
 import { Input } from '@angular/core';
 import { Component } from '@angular/core';
@@ -16,6 +17,7 @@ export class SidebarComponent{
   @Input() appointmentsBool:boolean=false
   @Input() searchBloodBanksBool:boolean=false
   @Input() searchReportsAndPrescriptionsBool:boolean=false
+  @Input() reportStatisticsBool: boolean=false
   constructor(private router: Router){
 
   }
@@ -48,6 +50,9 @@ export class SidebarComponent{
   }
   searchReports(){
     this.router.navigate(['search-reports'])
+  }
+  reportStatistics(){
+    this.router.navigate(['report-statistics'])
   }
   logOut(){
     this.router.navigate(['/doctor-home'])

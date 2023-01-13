@@ -1,3 +1,4 @@
+import { ReportStatistics } from './modules/hospital/report-statistics/report-statistics.component';
 import { AppForOtherDocComponent } from './modules/hospital/app-for-other-doc/app-for-other-doc.component';
 import { CreateTreatmentComponent } from './modules/hospital/create-treatment/create-treatment.component';
 import { NgModule } from "@angular/core";
@@ -62,6 +63,7 @@ const routes: Routes = [
   {path: 'appointments/add', component: CreateAppointmentComponent},
   { path: 'reportdev',component: ReportMain},
   { path: 'showreportdev', component: ShowReportManagment},
+  { path: 'report-statistics', component: ReportStatistics}
 ]
 
 

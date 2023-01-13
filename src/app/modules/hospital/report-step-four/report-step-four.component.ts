@@ -30,9 +30,6 @@ export class ReportStepFour{
     this.loggedDoctorId = this.authService.getIdByRole();
   }
   public submit(){
-    this.reportService.eventHappened(this.reportId,500).subscribe(res=>{
-      
-    })
     let reportDTO: ReportDTO = new ReportDTO()
     reportDTO.appointmentId = this.appointmentId
     reportDTO.doctorId = this.loggedDoctorId;
