@@ -6,7 +6,7 @@
     <div class="ml-[310px] mt-[84px]">
         <div style='margin-left:10%;margin-bottom:5%;margin-top:3%'>
             <label>Appointments to show: </label>
-            <select [(ngModel)]="filterAppointmentStatus" (change)="filterAppointments($event)">
+            <select name="filterAppointmentStatus" [(ngModel)]="filterAppointmentStatus" (change)="filterAppointments($event)">
                 <option value="-1">All</option>
                 <option value="0">Scheduled</option>
                 <option value="1">Finished</option>
