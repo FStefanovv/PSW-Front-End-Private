@@ -24,6 +24,8 @@ import { AuthGuardService } from "./auth/auth-guard.service";
 import { ErrorIntercept } from "./modules/hospital/services/error.interceptor"; 
 import { CommonModule } from '@angular/common';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

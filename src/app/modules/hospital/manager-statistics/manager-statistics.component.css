@@ -2,15 +2,10 @@
   width: 50%;
   margin: auto;
   margin-top: 50px;
-
   border-style: ridge;
   border-width: 5px;
   border-color: rgb(11, 26, 62);
   background-color: rgb(230, 243, 255);
-}
-
-body {
-  background-color: rgb(11, 26, 62);
 }
 
 table {
@@ -28,7 +23,7 @@ table {
 }
 
 .cell-style {
-  text-align: left;
+  text-align: center;
   font-family: Calibri;
   font-size: 20px;
   padding-top: 10px;
@@ -36,23 +31,15 @@ table {
 }
 
 .column-header {
-  text-align: left;
+  text-align: center;
   font-family: Calibri;
   font-size: 22px;
-  font-weight:bold;
-}
-
-.cell-center {
-  text-align: center;
-  font-size: 22 px;
-
 }
 
 .table-header {
   display: flex;
-
   text-align: center;
-  color: rgb(11, 26, 62);
+  color: dimgray;
 }
 
 p {
@@ -61,49 +48,22 @@ p {
 }
 
 th {
-  color: rgb(11, 26, 62);
+  color: dimgray;
   font-family: Calibri;
   font-weight: bold;
   border-style: none;
 }
 
 tr.mat-row:hover {
-  background-color: rgb(11, 26, 62);
+  background-color: lightgrey;
 }
 
 td.mat-cell {
   border-bottom-style: none;
-  border-top: 1px ridge rgb(11, 26, 62);
+  border-top: 1px ridge darkgray;
 }
 
-th.mat-header-cell{
-    border-bottom-style: none;
+th.mat-header-cell {
+  border-bottom-style: none;
 }
-
-.buttons {
-  background-color: rgb(11, 26, 62);
-  padding: 10px 10px 10px 10px;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  border: 20px;
-
-  font-size: 20px;
-  font-family: Calibri;
-  border-radius: 8px;
-  color: rgb(230, 243, 255);
-}
-
-
-
-.buttons:hover {
-  background-color: lightblue;
-  color: black;
-  font-size: 20px;
-}
-
-
-
-
 

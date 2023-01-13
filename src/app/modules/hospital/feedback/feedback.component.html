@@ -2,7 +2,7 @@
   <div class="table-header">
     <p class="table-title">Approved feedback</p>
   </div>
-  <table mat-table [dataSource]="dataSourceApproved">
+  <table mat-table id="approved-table" [dataSource]="dataSourceApproved">
     <ng-container matColumnDef="username">
 
       <th mat-header-cell *matHeaderCellDef class="cell-center"> User </th>
@@ -35,19 +35,19 @@
       <td mat-cell *matCellDef="let feedback" class="cell-center">{{feedback.date}}</td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectedRowApproved.toggle(row);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="rows-approved" (click)="selectedRowApproved.toggle(row);"></tr>
   </table>
 </div>
 
-<button class="hide-button" mat-raised-button (click)="changeToPending()">
-  Hide
+<button class="buttons" mat-raised-button (click)="changeToPending()">
+ Hide
 </button>
 
 <div class="container">
   <div class="table-header">
     <p class="table-title">Pending feedback</p>
   </div>
-  <table mat-table [dataSource]="dataSourcePending">
+  <table mat-table id ="pending-table" [dataSource]="dataSourcePending">
     <ng-container matColumnDef="username">
 
       <th mat-header-cell *matHeaderCellDef class="column-header"> User </th>
@@ -84,12 +84,12 @@
 
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectedRowPending.toggle(row);"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="rows-pending" (click)="selectedRowPending.toggle(row);"></tr>
   </table>
 
 </div>
 
-<button class="approval-button" mat-raised-button (click)="changeToApproved()">
+<button id="approve-button" class="buttons" mat-raised-button (click)="changeToApproved()">
   Approve
 </button>
 
