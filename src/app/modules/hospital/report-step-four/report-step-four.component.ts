@@ -5,6 +5,8 @@ import { Drug } from "../model/drug.model";
 import { Symptom } from "../model/symptom.model";
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { AppointmentService } from '../services/appointment.service';
+import { Appointment } from '../model/appointment.model';
 
 @Component({
   selector: 'report-step-four',
@@ -19,8 +21,9 @@ export class ReportStepFour{
   @Input() reportId: string = ""
   public appointmentId: string = ""
   public loggedDoctorId: string;
+  public appointments: Appointment[] = [];
   
-  constructor(private reportService: ReportService, private route: ActivatedRoute, private authService: AuthService, private router: Router){
+  constructor(private appointmentService: AppointmentService, private reportService: ReportService, private route: ActivatedRoute, private authService: AuthService, private router: Router){
     this.route.queryParams.subscribe(params =>{
       this.appointmentId = params.appointmentId
     })
@@ -28,12 +31,15 @@ export class ReportStepFour{
 
   ngOnInit():void{
     this.loggedDoctorId = this.authService.getIdByRole();
+    this.appointmentService.getAllAppointments().subscribe( res => {
+      this.appointments = res;
+    });
   }
   public submit(){
     let reportDTO: ReportDTO = new ReportDTO()
     reportDTO.appointmentId = this.appointmentId
-    reportDTO.doctorId = this.loggedDoctorId;
-    reportDTO.patientId = "stojane"
+    reportDTO.doctorId = parseInt(this.loggedDoctorId);
+    reportDTO.patientId = (this.appointments.filter(app => app.id == this.appointmentId))[0].patientId;
     reportDTO.description = this.description
     reportDTO.symptoms = this.symptoms
     reportDTO.drugs = this.drugs

@@ -1,8 +1,8 @@
 import { Drug } from './drug.model';
 import { Symptom } from './symptom.model';
 export class ReportDTO{
-  public patientId:string = ""
-  public doctorId:string = ""
+  public patientId: number;
+  public doctorId: number;
   public appointmentId: string = ""
   public description: string = ""
   public datOfMaking: string = ""

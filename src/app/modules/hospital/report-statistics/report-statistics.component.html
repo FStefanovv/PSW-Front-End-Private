@@ -11,7 +11,7 @@
       </tr>
       <tr *ngFor="let report of reportCreationDurationList">
         <td>{{report.reportId}}</td>
-        <td>{{report.redurationStringportId}}</td>
+        <td>{{report.durationString}}</td>
       </tr>
     </table>
     <div class="ml-[300px] mt-[50px]">
@@ -37,6 +37,7 @@
         <tfoot>
         </tfoot>
         </table>
+        <h1>Amount of time on each step:</h1>
         <canvas id="numOfTimeOnEachStep"></canvas>
       </div>
       <div class="age-doctors flexbox-item">
@@ -56,6 +57,7 @@
         <tfoot>
         </tfoot>
         </table>
+        <h1>Duration and number of steps in corellation with doctor age:</h1>
         <canvas id="getDurationAndNumOfStepsInCorellationWithDoctorAge"></canvas>
       </div>
       <div class="step-doctors flexbox-item">
@@ -75,6 +77,7 @@
         <tfoot>
         </tfoot>
         </table>
+        <h1>Помаже Бог:</h1>
         <canvas id="getSteps"></canvas>
       </div>
     </div>

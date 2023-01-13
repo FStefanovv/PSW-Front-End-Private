@@ -1,13 +1,13 @@
 export class ReportCreationDuration{
-  reportId:string = ""
-  repodurationInSecondsrtId:number = 0
-  redurationStringportId:string = ""
+  reportId: string = "";
+  durationInSeconds: number = 0;
+  durationString: string = "";
 
   public constructor(obj?: any){
     if(obj){
       this.reportId = obj.reportId
-      this.repodurationInSecondsrtId = obj.repodurationInSecondsrtId
-      this.redurationStringportId = obj.redurationStringportId
+      this.durationInSeconds = obj.durationInSeconds
+      this.durationString = obj.durationString
     }
   }
 }

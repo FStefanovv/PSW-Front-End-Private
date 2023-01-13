@@ -77,7 +77,7 @@ export class ReportStatistics{
         if(report.age>20 && report.age<40){
           twentyToFourty= twentyToFourty + (report.numberOfSteps * report.duration)
         }else if(report.age>40 && report.age<60){
-          fourtyToSixty= twentyToFourty + (report.numberOfSteps * report.duration)
+          fourtyToSixty= fourtyToSixty + (report.numberOfSteps * report.duration)
         }else{
           overSixty= overSixty + (report.numberOfSteps * report.duration)
         }

@@ -37,8 +37,8 @@ export class SearchReportsAndPrescriptionsComponent{
   changeDTO(listToIterate: Array<SearchReportDTO>){
     listToIterate.forEach(item => {
       let report: SearchReportToShow = new SearchReportToShow()
-      let symptomString: string
-      let drugString: string
+      let symptomString: string = "";
+      let drugString: string = "";
       let name: string
       let surname: string
       let patient: Patient = new Patient()
@@ -53,19 +53,25 @@ export class SearchReportsAndPrescriptionsComponent{
       report.dayAndTimeOfMaking = item.dayAndTimeOfMaking
       report.description = item.description
       report.patientId = item.patientId
+      console.log(item);
       item.symptoms.forEach(symtpom => symptomString = symptomString + symtpom.name + " ")
-      let flag1 = symptomString.split("undefined")
-      report.symptoms = flag1[1]
+      // let flag1 = symptomString.split("undefined")
+      // report.symptoms = flag1[1]
+      report.symptoms = symptomString
       item.prescriptions.forEach(prescription => drugString = drugString + prescription.name + " ")
-      let flag2 = drugString.split("undefined")
-      report.prescriptions = flag2[1]
+      // let flag2 = drugString.split("undefined")
+      // report.prescriptions = flag2[1]
+      report.prescriptions = drugString
       this.listToShow.push(report)
-      console.log(report)
     })
+    console.log(this.listToShow);
+    let list = this.listToShow;
   }
 
   search(){
+    this.listToShow = [];
     const wordsToSend = this.separateWords(this.searchedContent)
+    console.log(wordsToSend)
     this.reportService.searchReports(wordsToSend).subscribe(
       res =>{
         console.log(res)

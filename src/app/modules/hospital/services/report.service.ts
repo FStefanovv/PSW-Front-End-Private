@@ -47,6 +47,7 @@ export class ReportService{
   }
 
   setFields(id:string,dto:ReportDTO): Observable<any>{
+    console.log(id, dto);
     return this.http.put<any>(this.apiHost + "api/Report/SetFields/" + id, dto,{headers: this.headers})
   }
   //uh prika
