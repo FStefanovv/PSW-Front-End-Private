@@ -4,7 +4,6 @@ import { ManagerStatisticsService } from '../services/manager-statistics.service
 import { MatTableDataSource } from '@angular/material/table';
 import { TableEntry } from '../model/tableEntry.model';
 import { StatisticEntry } from '../model/statisticEntry.model';
-import { DataPoint } from '../model/dataPoint.model';
 import { Chart} from 'chart.js';
 
 
@@ -34,12 +33,14 @@ export class ManagerStatisticsComponent implements OnInit {
       this.numOfSteps = res[0];
       this.x1 = [];
       this.y1 = [];
+      this.numOfSteps.sort((a, b) => a.dataPoint - b.dataPoint)
       this.numOfSteps.forEach(obj => {
         this.x1.push(obj.dataPoint);
         this.y1.push(obj.occurences);
       });
-
+      
       this.timeSpentOnSession = res[1];
+      this.timeSpentOnSession.sort((a, b) => a.dataPoint - b.dataPoint)
       this.x2 = [];
       this.y2 = [];
       this.timeSpentOnSession.forEach(obj => {
@@ -48,12 +49,14 @@ export class ManagerStatisticsComponent implements OnInit {
       });
 
       this.InitializeCharts();
+
+      this.statService.getTableStats().subscribe(res => {
+        this.dataSource.data = res;
+      });
+
     });
      
-     this.statService.getTableStats().subscribe(res => {   
-      this.dataSource.data = res;
-     });
-
+    
   }
 
   InitializeCharts() {
@@ -62,11 +65,34 @@ export class ManagerStatisticsComponent implements OnInit {
       data: {
         labels: this.x1,
         datasets: [{
-            borderColor: 'rgb(252, 126, 30)',
-            label: 'Rate of steps by session',
-            data: this.y1
+          borderColor: 'rgb(252, 126, 30)',
+          label: 'Rate of steps by session',
+          data: this.y1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            display: true,
+            ticks: {
+              suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+              beginAtZero: true,   // minimum value will be 0.
+              suggestedMax:20
+            }
+          }],
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Number of steps'
+            }
+
           }]
-      }
+        
+          }
+        }
+       
+        
     });
     chart1.render();
 
@@ -81,6 +107,26 @@ export class ManagerStatisticsComponent implements OnInit {
             data: this.y2
           }
           ]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            display: true,
+            ticks: {
+              suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+              beginAtZero: true,   // minimum value will be 0.
+              suggestedMax: 20
+            }
+          }],
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Time'
+            }
+
+          }]
+        }
       }
     });
     chart2.render();

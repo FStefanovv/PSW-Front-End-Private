@@ -1,4 +1,7 @@
-p {
-  font: bold 40px verdana;
+.welcome {
+  text-align: center;
+  font: bold 22px calibri;
   padding: 10px 10px 10px 10px;
+  position: center;
 }
+

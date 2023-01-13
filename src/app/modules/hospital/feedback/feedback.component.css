@@ -4,14 +4,17 @@
   margin-top: 50px;
   border-style: ridge;
   border-width: 5px;
-  border-color: gray;
-  background-color: mistyrose;
+  border-color: rgb(11, 26, 62);
+  background-color: rgb(230, 243, 255);
 }
 
+body {
+  background-color: rgb(11, 26, 62);
+}
 
 table {
   width: 100%;
-  background-color: mistyrose;
+  background-color: rgb(230, 243, 255);
 }
 
 .table-title {
@@ -19,13 +22,13 @@ table {
   padding-top: 30px;
   padding-left: 20px;
   font-size: 30px;
-  font-family: Verdana;
+  font-family: Calibri;
   font-weight: bold;
 }
 
 .cell-style {
   text-align: left;
-  font-family: Verdana;
+  font-family: Calibri;
   font-size: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -33,14 +36,14 @@ table {
 
 .column-header {
   text-align: left;
-  font-family: Verdana;
+  font-family: Calibri;
   font-size: 22px;
 }
 
 .table-header {
   display: flex;
   text-align: center;
-  color: dimgray;
+  color: rgb(11, 26, 62);
 }
 
 p {
@@ -49,28 +52,27 @@ p {
 }
 
 th {
-  color: dimgray;
-  font-family:Verdana;
+  color: rgb(11, 26, 62);
+  font-family: Calibri;
   font-weight: bold;
-  border-style:none;
+  border-style: none;
 }
 
-tr.mat-row:hover{
-    background-color: lightgrey;
+tr.mat-row:hover {
+  background-color: rgb(11, 26, 62);
 }
 
 td.mat-cell {
-    border-bottom-style: none;
-    border-top: 1px ridge darkgray;
-
+  border-bottom-style: none;
+  border-top: 1px ridge rgb(11, 26, 62);
 }
 
 th.mat-header-cell{
     border-bottom-style: none;
 }
 
-.approval-button {
-  background-color: dimgray;
+.buttons {
+  background-color: rgb(11, 26, 62);
   padding: 10px 10px 10px 10px;
   margin-top: 20px;
   margin-left: auto;
@@ -78,34 +80,19 @@ th.mat-header-cell{
   display: flex;
   border: 20px;
   font-size: 20px;
-  font-family: Verdana;
+  font-family: Calibri;
   border-radius: 8px;
-  color: floralwhite;
+  color: rgb(230, 243, 255);
 }
 
-.hide-button {
-  background-color: dimgray;
-  padding: 10px 10px 10px 10px;
-  margin-top: 20px;
-  margin-left: auto;
-  font-family: Verdana;
-  margin-right: auto;
-  display: flex;
-  border: 20px;
+
+
+.buttons:hover {
+  background-color: lightblue;
+  color: black;
   font-size: 20px;
-  border-radius: 8px;
-  color: floralwhite;
 }
 
-.approval-button:hover {
-  background-color: darkgray;
-  color: black;
-}
-
-.hide-button:hover {
-  background-color: darkgray;
-  color: black;
-}
 
 
 

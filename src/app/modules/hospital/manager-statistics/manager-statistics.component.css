@@ -1,10 +1,16 @@
 .container {
-    margin: 5%;
+  width: 50%;
+  margin: auto;
+  margin-top: 50px;
+  border-style: ridge;
+  border-width: 5px;
+  border-color: rgb(11, 26, 62);
+  background-color: rgb(230, 243, 255);
 }
 
 table {
   width: 100%;
-  background-color: mistyrose;
+  background-color: rgb(230, 243, 255);
 }
 
 .table-title {
@@ -12,21 +18,21 @@ table {
   padding-top: 30px;
   padding-left: 20px;
   font-size: 30px;
-  font-family: Verdana;
+  font-family: Calibri;
   font-weight: bold;
 }
 
 .cell-style {
-  text-align: left;
-  font-family: Verdana;
+  text-align: center;
+  font-family: Calibri;
   font-size: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
 .column-header {
-  text-align: left;
-  font-family: Verdana;
+  text-align: center;
+  font-family: Calibri;
   font-size: 22px;
 }
 
@@ -43,7 +49,7 @@ p {
 
 th {
   color: dimgray;
-  font-family: Verdana;
+  font-family: Calibri;
   font-weight: bold;
   border-style: none;
 }
