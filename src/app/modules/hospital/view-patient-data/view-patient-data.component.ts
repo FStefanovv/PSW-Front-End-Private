@@ -60,13 +60,13 @@ export class ViewPatientDataComponent implements OnInit {
     if(this.selectedMonth != "" && this.selectedPatient != ""){
       this.getDTO.month = this.selectedMonth;
       this.getDTO.patientId = this.selectedPatient;
-      // this.chartLabels = [];
-      // this.weightData = [];
-      // this.bloodPressureUpperData = [];
-      // this.bloodPressureLowerData = [];
-      // this.heartbeatData = [];
-      // this.temperatureData = [];
-      // this.bloodSugarLevelData = [];
+      this.chartLabels = [];
+      this.weightData = [];
+      this.bloodPressureUpperData = [];
+      this.bloodPressureLowerData = [];
+      this.heartbeatData = [];
+      this.temperatureData = [];
+      this.bloodSugarLevelData = [];
       this.doctorService.getPatientHealthMeasurements(this.getDTO).subscribe( res => {
 
         this.measurements = res;

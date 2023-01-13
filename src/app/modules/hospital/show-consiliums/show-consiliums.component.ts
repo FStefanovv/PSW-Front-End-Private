@@ -51,6 +51,6 @@ export class ShowConsiliumsComponent implements OnInit {
   }
 
   goToCreate(){
-    this.router.navigate(['/consilium/create']);
+    this.router.navigate(['consilium/create']);
   }
 }

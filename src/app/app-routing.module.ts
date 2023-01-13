@@ -55,7 +55,7 @@ const routes: Routes = [
   { path: 'rooms/:id/update', component: UpdateRoomComponent},
   {path: 'rooms', component: RoomsComponent},
   {path: 'rooms/:id', component: RoomDetailComponent},
-  {path: 'appointments/reschedule', component: RescheduleAppointmentComponent},
+  {path: 'appointments/reschedule:id', component: RescheduleAppointmentComponent},
   {path: 'patients/discharge', component: DischargePatientComponent},
   {path: 'vacations/urgent', component: CreateUrgentVacationComponent},
   {path: 'rooms/add', component: CreateRoomComponent},
@@ -64,6 +64,8 @@ const routes: Routes = [
   { path: 'reportdev',component: ReportMain},
   { path: 'showreportdev', component: ShowReportManagment},
   {path: 'view-patient-data', component: ViewPatientDataComponent},
+  {path: 'consilium/create', component:CreateConsiliumComponent},
+  { path: 'patients/treatments/create', component: CreateTreatmentComponent}
 ]
 
 

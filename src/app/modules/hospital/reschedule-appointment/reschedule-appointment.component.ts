@@ -1,8 +1,11 @@
 import { Component, ViewChild , Input,NgModule, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppointmentService } from '../services/appointment.service';
 import { RescheduleAppointmentDTO } from '../model/rescheduleAppointmentDTO.model';
+import { Appointment } from '../model/appointment.model';
+import { DoctorShiftDTO } from '../model/doctorsShiftDTO.model';
+import { DoctorService } from '../services/doctor.service';
 
 
 @Component({
@@ -12,36 +15,41 @@ import { RescheduleAppointmentDTO } from '../model/rescheduleAppointmentDTO.mode
 })
 
 export class RescheduleAppointmentComponent implements OnInit {
-  @ViewChild('rescheduleForm') form: NgForm;
-  public parsedDate: string[] | undefined;
 
-  constructor(private appointmentService: AppointmentService,public router: Router) { }
+  constructor(private appointmentService: AppointmentService, private doctorService: DoctorService, private route: ActivatedRoute, public router: Router) { }
+
+  public chosenAppointment: RescheduleAppointmentDTO = new RescheduleAppointmentDTO();
+  public doctor: DoctorShiftDTO | undefined = undefined;
+  public arrayForShift: Array<string> = [];
+  public appId: string;
+  public loggedDoctorId: string;
 
   ngOnInit(): void {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString)
-    this.appointmentService.getAppointmentToReschedule(urlParams.get('id')).subscribe(
-      res => {
-        //this.appointmentToChange = res
-        this.form.setValue({
-          appId: res.id,
-          patientId: res.patientId,
-          date: res.date,
-          time: res.time
-        })
+    this.route.queryParams.subscribe(params =>{
+      this.appId = params.id;
+    });
+    this.loggedDoctorId = localStorage.getItem("idByRole");
+    this.appointmentService.getAppointmentToReschedule(this.appId).subscribe( res => {
+      this.chosenAppointment = res;
+    });
+    this.doctorService.getDoctor(parseInt(this.loggedDoctorId)).subscribe(res => {
+      this.doctor = res;
+      for (let index = this.doctor?.startWorkTime; index < this.doctor?.endWorkTime; index++) {
+          this.arrayForShift.push(index.toString() + ":00");
+          this.arrayForShift.push(index.toString() + ":20");
+          this.arrayForShift.push(index.toString() + ":40");
       }
-    )
+    });
   }
 
-    onAppointmentRescheduled(appointment: any){
-        let rescheduledAppointment = new RescheduleAppointmentDTO()
-        rescheduledAppointment.id = appointment.appId;
-        rescheduledAppointment.date = appointment.date;
-        rescheduledAppointment.time = appointment.time
-        this.appointmentService.rescheduleAppointment(rescheduledAppointment).subscribe(
-          res => {
-            alert("radi")
-          }
-        );
+  onAppointmentRescheduled(){
+    this.appointmentService.rescheduleAppointment(this.chosenAppointment).subscribe(
+      res => {
+        alert("Appointment rescheduled.");
+      },
+      error => {
+        alert("There was an error with your request.");
       }
+    );
+  }
 }

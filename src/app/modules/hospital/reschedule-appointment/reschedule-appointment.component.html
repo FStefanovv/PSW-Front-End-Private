@@ -1,20 +1,39 @@
 <div class="container">
     <div>
-        <h2>Reschedule appointment form</h2>
-        <form #rescheduleForm="ngForm" (ngSubmit)="onAppointmentRescheduled(rescheduleForm.value)">
-            <label>Appointment id</label>
-            <input type="text" name="appId" ngModel>
-            <br>
-            <label>Patient id</label>
-            <input type="text" name="patientId" ngModel disabled>
-            <br>
-            <label>Date</label>
-            <input type="date" name="date" ngModel>
-            <br>
-            <label>Time</label>
-            <input type="text" name="time" ngModel>
-            <br>
-            <input type="submit" value="Reschedule">
+        <navbar></navbar>
+        <sidebar [appointmentsBool]="true"></sidebar>
+    </div>
+    <div class="ml-[310px] mt-[84px]">
+        <h2>Reschedule appointment</h2>
+        <form>
+            <table>
+                <tr>
+                    <td><label for="AppointmentId">Appointment ID:</label></td>
+                    <td>{{chosenAppointment.id}}</td>
+                </tr>
+                <tr>
+                    <td><label for="PatientId">Patient ID:</label></td>
+                    <td>{{chosenAppointment.patientId}}</td>
+                </tr>
+                <tr>
+                    <td><label for="AppointmentDate">Date:</label></td>
+                    <td>
+                        <input type="date" name="appointmentDate" [(ngModel)]="chosenAppointment.date">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="AppointmentTime">Start time:</label></td>
+                    <td>
+                        <select name="appointmentTime" [(ngModel)]="chosenAppointment.time">
+                            <option value=""></option>
+                            <option *ngFor="let time of arrayForShift">{{time}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <button name="submit" (click)="onAppointmentRescheduled()">Reschedule</button>
+                </tr>
+            </table>
         </form>
     </div>
 </div>

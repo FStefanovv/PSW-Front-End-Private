@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class SidebarComponent{
   @Input() homeBool:boolean=false
   @Input() consiliumsBool:boolean=false
+  @Input() createAppointmentBool:boolean=false
   @Input() bloodRequestsBool:boolean=false
   @Input() bloodRecordBool:boolean=false
   @Input() vacationsBool:boolean=false
@@ -24,6 +25,9 @@ export class SidebarComponent{
   }
   consilium(){
     this.router.navigate(['show-consiliums'])
+  }
+  createAppointment(){
+    this.router.navigate(['/appointments/add'])
   }
   bloodRequest(){
     this.router.navigate(['bloodRequest'])

@@ -37,6 +37,7 @@ export class AppointmentService {
   }
 
   rescheduleAppointment(value : any): Observable<any> {
+    console.log(value);
     return this.http.put<any>(this.apiHost + '/' + value.id, value, { headers: this.headers }).pipe(catchError(this.errorHandler));
   }
 

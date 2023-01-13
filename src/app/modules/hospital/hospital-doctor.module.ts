@@ -27,6 +27,7 @@ import { SearchBloodIntegration } from "./search-blood-integration/search-blood-
 import { SearchReportsAndPrescriptionsComponent } from "./search-reps-and-prescs/search-reps-and-prescs.component";
 import { ViewPatientDataComponent } from './view-patient-data/view-patient-data.component';
 import { HospitalModule } from "./hospital.module";
+import { CreateConsiliumComponent } from './create-consilium/create-consilium.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,7 @@ const routes: Routes = [
     canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }
   },
   {
-    path: 'appointments/reschedule', component: RescheduleAppointmentComponent,
+    path: 'appointments/reschedule:id', component: RescheduleAppointmentComponent,
     canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
   {
     path: 'bloodRequest', component: BloodRequestComponent,
@@ -79,7 +80,10 @@ const routes: Routes = [
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
   { path: 'view-patient-data', component: ViewPatientDataComponent,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
-  
+  {path: 'consilium/create', component: CreateConsiliumComponent,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR'} },
+  {path: 'patients/treatments/create', component: CreateTreatmentComponent,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR'} },
 
 ];
 
@@ -105,7 +109,9 @@ const routes: Routes = [
     ShowConsiliumsComponent,
     VacationRequestsByDoctorComponent,
     PatientStatisticsComponent,
-    ViewPatientDataComponent
+    ViewPatientDataComponent,
+    CreateConsiliumComponent,
+    CreateTreatmentComponent
 
   ],
   imports: [

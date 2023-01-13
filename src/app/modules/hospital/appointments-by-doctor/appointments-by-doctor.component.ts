@@ -189,7 +189,7 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   onRescheduleClicked(id : string){
     const rescheduledApp = this.appointments.find((a) => {return a.id === id});
-    this.router.navigate(['appointments/reschedule'],{queryParams:{id:rescheduledApp?.id}})
+    this.router.navigate(['appointments/reschedule:id'],{queryParams:{id:rescheduledApp?.id}})
   }
 
   writeReport(appId: string){

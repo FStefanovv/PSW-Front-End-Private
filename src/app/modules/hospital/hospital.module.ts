@@ -52,7 +52,7 @@ const routes: Routes = [
   { path: 'vacations/cancel', component: CancelVacationComponent},
   { path: 'reportdev',component: ReportMain},
   { path: 'showreportdev', component: ShowReportManagment},
-  {path: 'consilium/create', component:CreateConsiliumComponent},
+
   {path: 'vacations-by-doctor', component: VacationRequestsByDoctorComponent},
   {path: 'app-for-other-doc', component:AppForOtherDocComponent}
  ];
@@ -74,7 +74,6 @@ const routes: Routes = [
     ShowReportDrugs,
     ShowReportPatient,
     ShowReportSymptoms,
-    CreateConsiliumComponent,
     AppForOtherDocComponent,
     SearchComponent2
   ],

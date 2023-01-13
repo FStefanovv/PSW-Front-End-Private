@@ -34,24 +34,21 @@
 
 <div class="container">
     <div>
+        <navbar></navbar>
+        <sidebar [patientTreatmentsBool]="true"></sidebar>
+    </div>
+    <div class="ml-[310px] mt-[84px]">
         <h2>Create treatment</h2>
         <table>
             <tr>
-                <td>DoctorId</td>
-                <td><input matInput [(ngModel)]="treatment.doctorId"> </td>             
-                <!-- <td *ngIf="patNull">Choose patient</td> -->
-                
-            </tr>
-            <tr>
                 <td>PatientId</td>
                 <td><input  matInput [(ngModel)]="treatment.patientId"></td>
-                <td *ngIf="patientIdNull">Choose patient</td>
-                
+                <td *ngIf="patientIdNull">Choose patient</td> 
             </tr>
             <tr>
                 <td>RoomId</td>
                 <td><select matNativeControl [(ngModel)]="treatment.roomId" (change)="freeBed($event)">
-                         <option>null</option> 
+                        <option>null</option> 
                         <option *ngFor="let item of listOfRooms">{{item}}</option>
                     </select>
                 </td>
