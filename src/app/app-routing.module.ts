@@ -6,7 +6,6 @@ import { Routes, RouterModule } from "@angular/router";
 import { AppointmentsByDoctorComponent } from "./modules/hospital/appointments-by-doctor/appointments-by-doctor.component";
 import { FeedbackComponent } from "./modules/hospital/feedback/feedback.component"
 import{RegisterBloodBankComponent} from "./modules/integration/register-blood-bank/register-blood-bank.component";
-//import { ConfigurationComponent } from './modules/integration/configuration/configuration.component';
 import { VacationRequestsByDoctorComponent } from "./modules/hospital/vacation-requests-by-doctor/vacation-requests-by-doctor.component";
 import { PatientStatisticsComponent } from "./modules/hospital/patient-statistics/patient-statistics.component";
 import { DoctorHomeComponent } from "./modules/pages/doctor-home/doctor-home.component";

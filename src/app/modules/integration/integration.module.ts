@@ -1,31 +1,34 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterBloodBankComponent } from './register-blood-bank/register-blood-bank.component';
-import { ConfigurationComponent } from './Configuration/configuration.component';
-
+import { TenderComponent } from './tender/tender.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { TenderOffersComponent } from './tenderOffers/tenderOffers.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from "@angular/router";
-import { RoleGuardService } from '../../auth/role-guard.service';
+import { CreateTenderComponent } from './create-tender/create-tender.component';
 
 
 const routes: Routes = [
  
-  {
-    path: 'register-blood-bank', component: RegisterBloodBankComponent,
-    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' }  },
-  {
-    path: 'configuration', component: ConfigurationComponent }
+  { path: 'register-blood-bank', component: RegisterBloodBankComponent },
+  { path: 'tenders', component: TenderComponent},
+  { path: 'tender/:id', component: TenderOffersComponent},
+  { path: 'create-tender', component: CreateTenderComponent}
 ];
 
 @NgModule({
   declarations: [
     RegisterBloodBankComponent,
-    ConfigurationComponent
+    ConfigurationComponent,
+    TenderComponent,
+    TenderOffersComponent,
+    CreateTenderComponent
   ],
   imports: [
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ]
 })

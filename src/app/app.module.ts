@@ -9,7 +9,7 @@ import { HospitalDoctorModule } from "./modules/hospital/hospital-doctor.module"
 import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { IntegrationModule } from "./modules/integration/integration.module";
 import { MatDialogModule} from '@angular/material/dialog';
 import { PopUpComponent } from './pop-up/pop-up.component';
