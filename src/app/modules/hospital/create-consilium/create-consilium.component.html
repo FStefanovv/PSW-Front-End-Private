@@ -10,14 +10,14 @@
                     <label>Topic:</label>
                 </td>
                 <td>
-                    <input type="text" id="topic" matInput [(ngModel)]="freeAppointments.Topic">
+                    <input type="text" id="topic" matInput [(ngModel)]="freeAppointments.Topic" class="border-gray-300 border-2 rounded-md w-full">
                 </td>
             <tr>
                 <td>
                     <label>Start date:</label>
                 </td>
                 <td>
-                    <input type="datetime" id="start" matInput [(ngModel)]="freeAppointments.StartStr" placeholder="dd/mm/yyyy hh:mm">
+                    <input type="datetime-local" id="start" matInput [(ngModel)]="freeAppointments.StartStr" placeholder="dd/mm/yyyy hh:mm" class="border-gray-300 border-2 rounded-md w-full">
                 </td>
             </tr>
             <tr>
@@ -25,7 +25,7 @@
                     <label>End date:</label>
                 </td>
                 <td>
-                    <input type="datetime" id="end" matInput [(ngModel)]="freeAppointments.EndStr" placeholder="dd/mm/yyyy">
+                    <input type="date" id="end" matInput [(ngModel)]="freeAppointments.EndStr" placeholder="dd/mm/yyyy" class="border-gray-300 border-2 rounded-md w-full">
                 </td>
             </tr>
             <tr>
@@ -33,12 +33,12 @@
                     <label>Duration: </label>
                 </td>
                 <td>
-                    <input type="text" id="duration" matInput [(ngModel)]="freeAppointments.Duration">
+                    <input type="text" id="duration" matInput [(ngModel)]="freeAppointments.Duration" class="border-gray-300 border-2 rounded-md w-full">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="radioDoctors">Choose by all doctors</label>
+                    <label for="radioDoctors">Choose by all doctors </label>
                 </td>
                 <td>
                     <input type="radio" name="radio" id="radioDoctors" value="Doctors"  [(ngModel)]="freeAppointments.DoctorIds"  (change)="isClicked = true" checked>
@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td>
-                    <label for="radioSpecialities">Choose doctors by specialities: </label>
+                    <label for="radioSpecialities">Choose doctors by specialities </label>
                 </td>
                 <td>
                     <input type="radio" name="radio" id="radioSpecialities" value="Specialities" [(ngModel)]="freeAppointments.Specialties"  (change)="isClicked = false" >

@@ -9,7 +9,7 @@
             <tr>
                 <td>PatientId</td>
                 <td>
-                    <select [(ngModel)]="appointment.patientId" id="patientID">
+                    <select [(ngModel)]="appointment.patientId" id="patientID" class="border-gray-300 border-2 rounded-md w-full">
                         <option *ngFor="let patient of patientsForDoctor" value={{patient.id}}>{{patient.name}} {{patient.surname}}</option>
                     </select>
                 </td>
@@ -18,13 +18,13 @@
             </tr>
             <tr>
                 <td>Day</td>
-                <td><input type="date" matInput [(ngModel)]="appointment.startDate" id="startDate"></td>
+                <td><input type="date" matInput [(ngModel)]="appointment.startDate" id="startDate" class="border-gray-300 border-2 rounded-md w-full"></td>
                 <td *ngIf="dateNull">Choose date</td>
                 <td *ngIf="dateInPast">Pichadill</td>
             </tr>
             <tr>
                 <td>Start</td>
-                <td><select matNativeControl [(ngModel)]="appointment.startTime" id="startTime">
+                <td><select matNativeControl [(ngModel)]="appointment.startTime" id="startTime" class="border-gray-300 border-2 rounded-md w-full">
                         <option *ngFor="let item of arrayForShift">{{item}}</option>
                     </select>
                 </td>
