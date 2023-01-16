@@ -13,7 +13,7 @@
                 <td>
                     <select [(ngModel)]="appointment.patientId" id="patientID" (change)="patientChosen()">
                         <option value=-1></option>
-                        <option *ngFor="let patient of patientsForDoctor" value={{patient.id}}>{{patient.name + " " + patient.surname}}</option>
+                        <option *ngFor="let patient of patientsForDoctor" value={{patient.id}}>{{patient.id + " - " + patient.name + " " + patient.surname}}</option>
                     </select>
                 </td>
                 <td *ngIf="patientValid">Choose patient</td>

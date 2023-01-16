@@ -16,6 +16,7 @@ export class ConsiliumService {
     constructor(private http: HttpClient) { }
 
     sendInfoForFreeAppointments(freeAppointments: any): Observable<PotentialAppointmentDTO[]> {
+      console.log(freeAppointments);
       return this.http.post<PotentialAppointmentDTO[]>(this.apiHost+'GetPotentialConsiliumTimesDoctors', freeAppointments,{headers: this.headers})
     }
 
