@@ -1,14 +1,15 @@
 <div id="stepthree">
-  <form class="flex flex-start">
-    <!-- Ide neko ime,a vrv i ngFor zbog liste -->
-    <div *ngFor="let drug of listOfDrugs" class="">
-    <label class="mr-2 text-[15px] font-normal">{{drug.name}}</label>
-    <input class="h-5 w-5 mr-4" type="checkbox" id={{drug.name}} value={{drug.name}} [(ngModel)]="drug.isChecked" name="drugs">
-  </div>
-  </form>
   <div class="">
-    <button class="w-20 h-10 mr-20 border-4 border-solid border-red-500 bg-red-200" (click)="back()">BACK</button>
+    <div class="grid grid-cols-4 w-[1000px] mb-4 mt-4">
+      <div *ngFor="let drug of listOfDrugs" class="" class="min-w-[160px] max-w-[320px] h-[30px] flex items-center ">
+        <label class=" text-[20px] font-normal">{{drug.name}}</label>
+        <input class="h-5 w-5" type="checkbox" id={{drug.name}} value={{drug.name}} [(ngModel)]="drug.isChecked" >
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <button class="border-red-600 text-red-600 border-2 h-10 w-20 bg-white hover:bg-red-600 hover:text-white mr-20" (click)="back()">BACK</button>
   
-    <button class="w-20 h-10 border-4 border-solid border-green-500 bg-green-200" (click)="submit()">NEXT</button>
+    <button class="border-2 h-10 w-20 bg-[#57CC99] hover:bg-[#379c70]" (click)="submit()">NEXT</button>
   </div>
 </div>

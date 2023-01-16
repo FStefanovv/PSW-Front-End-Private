@@ -49,9 +49,7 @@ const routes: Routes = [
   { path: 'patients/discharge', component: DischargePatientComponent},
   { path: 'patients/treatments/update', component:UpdateTreatmentComponent},
   { path: 'vacations/cancel', component: CancelVacationComponent},
-  { path: 'reportdev',component: ReportMain},
   { path: 'showreportdev', component: ShowReportManagment},
-
   {path: 'vacations-by-doctor', component: VacationRequestsByDoctorComponent},
   {path: 'app-for-other-doc', component:AppForOtherDocComponent}
  ];
@@ -62,12 +60,6 @@ const routes: Routes = [
   declarations: [
     UpdateTreatmentComponent,
     CancelVacationComponent,
-    ReportMain,
-    ReportStepOne,
-    ReportNavigation,
-    ReportStepTwo,
-    ReportStepThree,
-    ReportStepFour,
     ShowReportManagment,
     ShowReportDesciption,
     ShowReportDrugs,

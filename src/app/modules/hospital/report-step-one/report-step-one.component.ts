@@ -11,18 +11,40 @@ import { Router } from '@angular/router';
 export class ReportStepOne{
   @Output() symptomsToReturn = new EventEmitter<Symptom[]>()
   @Input() reportId: string = ""
+  @Input() checkedSymtpoms: Array<Symptom> = []
   form: FormGroup
-  public symptomsList: Array<Symptom>
+  public symptomsList: Array<Symptom> = []
 
 
   constructor(private reportService: ReportService,private router:Router) {
     
   }
 
+  reutrnBool(symptom: Symptom){
+    let flag: boolean = false
+    this.checkedSymtpoms.forEach(checked =>{
+      if(checked.name == symptom.name){
+        flag = true
+      }
+    })
+    return flag
+  }
+
   ngOnInit(): void{
     this.reportService.getSymptoms().subscribe(
       res => {
-        this.symptomsList = res
+        if(this.checkedSymtpoms == null){
+          this.symptomsList = res
+        }else{
+          console.log(this.checkedSymtpoms)
+          res.forEach(symptom =>{
+            symptom.isChecked = this.reutrnBool(symptom)
+            console.log(symptom)
+            this.symptomsList.push(symptom)
+          })
+        }
+        // console.log(res)
+        // this.symptomsList = res
       }
     )
   }

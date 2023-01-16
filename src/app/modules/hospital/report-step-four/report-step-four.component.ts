@@ -19,6 +19,7 @@ export class ReportStepFour{
   @Input() drugs: Drug[]
   @Input() description: string = ""
   @Input() reportId: string = ""
+  public symptomsList:Array<Symptom>
   public appointmentId: string = ""
   public loggedDoctorId: string;
   public appointments: Appointment[] = [];
@@ -34,6 +35,11 @@ export class ReportStepFour{
     this.appointmentService.getAllAppointments().subscribe( res => {
       this.appointments = res;
     });
+    this.reportService.getSymptoms().subscribe(
+      res => {
+        this.symptomsList = res
+      }
+    )
   }
   public submit(){
     let reportDTO: ReportDTO = new ReportDTO()
