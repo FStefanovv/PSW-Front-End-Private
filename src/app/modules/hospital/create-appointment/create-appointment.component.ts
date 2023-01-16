@@ -12,42 +12,42 @@ import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'app-create-appointments',
-    templateUrl: './create-appointment.component.html'
+    templateUrl: './create-appointment.component.html',
+    styleUrls: ['./create-appointment.component.css']
   })
 
 export class CreateAppointmentComponent implements OnInit {
-    public appointment: CreateAppointmentDTO = new CreateAppointmentDTO();
-    public patNull: boolean = false
-    public dateNull: boolean = false
-    public timeNull: boolean = false
-    public dateInPast: boolean = false
-    public timeAlreadyAppointed: boolean = false
-    public errorMsg: string = ""
-    public doctor: DoctorShiftDTO | undefined = undefined
-    public arrayForShift: Array<string> = []
-    public patientsForDoctor: Array<PatientForApp> = []
+    
     public loggedDoctorId: string;
     public loggedDoctorObj: Doctor;
+    public doctorShift: DoctorShiftDTO | undefined = undefined;
+    public arrayForShift: string[] = [];
+    public patientsForDoctor: Patient[] = [];
+
+    public appointment: CreateAppointmentDTO = new CreateAppointmentDTO();
+    
+    public patientValid: boolean = false;
+    public dateValid: boolean = false;
+    public canSchedule: boolean = false;
+
     constructor(private appointmentService: AppointmentService,private doctorService: DoctorService, private patientService: PatientService,
         private router: Router, private route: ActivatedRoute, private authService: AuthService) { }
 
-
     ngOnInit(): void {
         this.loggedDoctorId = this.authService.getIdByRole();
-        console.log(this.loggedDoctorId)
         this.route.params.subscribe(() => {
             this.doctorService.getDoctor(parseInt(this.loggedDoctorId)).subscribe(res => {
-                this.doctor = res
-                for (let index = this.doctor?.startWorkTime; index < this.doctor?.endWorkTime; index++) {
-                    this.arrayForShift.push(index.toString() + ":00")
-                    this.arrayForShift.push(index.toString() + ":20")
-                    this.arrayForShift.push(index.toString() + ":40")
+                this.doctorShift = res;
+                for (let index = this.doctorShift?.startWorkTime; index < this.doctorShift?.endWorkTime; index++) {
+                    this.arrayForShift.push(index.toString() + ":00");
+                    this.arrayForShift.push(index.toString() + ":20");
+                    this.arrayForShift.push(index.toString() + ":40");
                 }
             })
         });
-        this.patientService.getPatientForDoctor(parseInt(this.loggedDoctorId)).subscribe(
+        this.patientService.getAllPatients().subscribe(
             res => {
-                this.patientsForDoctor = res
+                this.patientsForDoctor = res;
             }
         );
         this.doctorService.getDoctorById(parseInt(this.loggedDoctorId)).subscribe(
@@ -58,33 +58,44 @@ export class CreateAppointmentComponent implements OnInit {
     }
 
     public createAppointment(){
-        this.appointment.doctorId = this.loggedDoctorObj.id;
-        this.appointment.roomId = this.loggedDoctorObj.room.id;
-        if (!this.isValidInputPatient()) this.patNull = true
-        if (!this.isValidInputDate()) this.dateNull = true
-        if (!this.isValidInputTime()) this.timeNull = true
-        if(this.patNull == true || this.dateNull == true || this.timeNull == true) return
         this.appointmentService.createAppointment(this.appointment).subscribe(
             res => {
-                alert("Appointment napravljen")
-                return this.patNull = false, this.dateNull = false, this.timeNull = false
+                alert("Appointment successfully created.");
+                this.appointment.patientId = -1;
+                this.appointment.startDate = undefined;
+                this.appointment.startTime = this.arrayForShift[0];
             },
             error => {
-                alert("Appointment date and time is not valid")
+                alert("Unable to create appointment. Chosen time is already taken.");
             }
         )
     }
 
-    private isValidInputPatient(): boolean {
-        this.patNull = false
-        return this.appointment.patientId != 0;
+    public patientChosen(){
+        if(this.appointment.patientId != -1){
+            this.patientValid = true;
+            if(this.dateValid){
+                this.canSchedule = true;
+            }
+        }
+        else{
+            this.patientValid = false;
+            this.canSchedule = false;
+        }
     }
-    private isValidInputDate(): boolean {
-        this.dateNull = false
-        return this.appointment?.startDate != '';
-    }
-    private isValidInputTime(): boolean {
-        this.timeNull = false
-        return this.appointment?.startTime != '';
+
+    public dateInPast(checkDate: string){
+        var today = new Date();
+        var check = new Date(checkDate);
+        if(today.setHours(0, 0, 0, 0) >= check.setHours(0, 0, 0, 0)){
+            this.dateValid = true;
+            if(this.patientValid){
+                this.canSchedule = true;
+            }
+        }
+        else{
+            this.dateValid = false;
+            this.canSchedule = false;
+        }
     }
 }

@@ -4,39 +4,41 @@
         <sidebar [createAppointmentBool]="true"></sidebar>
     </div>
     <div class="ml-[310px] mt-[84px]">
-        <label>{{doctor?.id}}</label>
+        <h1>Schedule an appointment</h1>
+        <br>
+        <br>
         <table>
             <tr>
-                <td>PatientId</td>
+                <td>Choose a patient:</td>
                 <td>
-                    <select [(ngModel)]="appointment.patientId" id="patientID">
-                        <option *ngFor="let patient of patientsForDoctor" value={{patient.id}}>{{patient.name}} {{patient.surname}}</option>
+                    <select [(ngModel)]="appointment.patientId" id="patientID" (change)="patientChosen()">
+                        <option value=-1></option>
+                        <option *ngFor="let patient of patientsForDoctor" value={{patient.id}}>{{patient.name + " " + patient.surname}}</option>
                     </select>
                 </td>
-                <td *ngIf="patNull">Choose patient</td>
-                
+                <td *ngIf="patientValid">Choose patient</td>
             </tr>
+            <br>
             <tr>
                 <td>Day</td>
-                <td><input type="date" matInput [(ngModel)]="appointment.startDate" id="startDate"></td>
-                <td *ngIf="dateNull">Choose date</td>
-                <td *ngIf="dateInPast">Pichadill</td>
+                <td><input type="date" matInput [(ngModel)]="appointment.startDate" (change)="dateInPast(appointment.startDate)" id="startDate"></td>
+                <td *ngIf="dateValid">Date is in the past</td>
             </tr>
+            <br>
             <tr>
                 <td>Start</td>
                 <td><select matNativeControl [(ngModel)]="appointment.startTime" id="startTime">
                         <option *ngFor="let item of arrayForShift">{{item}}</option>
                     </select>
                 </td>
-                <td *ngIf="timeNull">Choose time</td>
             </tr>
+            <br>
             <tr>
                 <td></td>
-                <td><button mat-stroked-button (click)="createAppointment()" id="submit">
+                <td><button [disabled]="!canSchedule" mat-stroked-button (click)="createAppointment()" id="submit">
                     Submit
                 </button></td>
             </tr>
         </table>
-        <label>{{errorMsg}}</label>
     </div>
 </div>

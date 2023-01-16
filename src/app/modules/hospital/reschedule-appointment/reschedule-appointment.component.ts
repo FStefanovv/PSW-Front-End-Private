@@ -43,13 +43,19 @@ export class RescheduleAppointmentComponent implements OnInit {
   }
 
   onAppointmentRescheduled(){
+    console.log(this.chosenAppointment);
     this.appointmentService.rescheduleAppointment(this.chosenAppointment).subscribe(
       res => {
         alert("Appointment rescheduled.");
+        this.router.navigate(['/appointments-by-doctor']);    
       },
       error => {
         alert("There was an error with your request.");
       }
     );
+  }
+
+  navigateAppointments(){
+    this.router.navigate(['/appointments-by-doctor']);
   }
 }
