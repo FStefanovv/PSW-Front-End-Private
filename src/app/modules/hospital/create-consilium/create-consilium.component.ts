@@ -20,7 +20,7 @@ export class CreateConsiliumComponent implements OnInit {
   public allDoctors : Doctor[] = []
   public selectedDoctors : string[] = []
   public listOfSpecialities = []
-  public isClicked : boolean = true;
+  public isClicked : number = 0;
   public showAppointments : boolean = false;
   public selectedApp : PotentialAppointmentDTO;
   selectedItemsList = [];
@@ -102,7 +102,7 @@ export class CreateConsiliumComponent implements OnInit {
     if(!this.isValidInputEndDate()) this.endDateNull = true
     if(!this.isValidInputDuration()) this.durationNull = true
     if(this.topicNull === true || this.startDateNull === true || this.endDateNull === true || this.durationNull === true ) return
-    if(this.isClicked){
+    if(this.isClicked==1){
       this.consiliumService.sendInfoForFreeAppointments(this.freeAppointments).subscribe(res => {
         this.potentialAppointments = res;
         this.showAppointments = true;
