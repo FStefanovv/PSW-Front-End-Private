@@ -7,7 +7,7 @@
         <body>
             <h1>Patient's monthly health statistics</h1>
             <p>Select a month:</p>
-            <select name="month" id="month" [(ngModel)]="selectedMonth" (change)="onMonthOrPatientChange($event)">
+            <select name="month" id="month" [(ngModel)]="selectedMonth" (change)="onMonthOrPatientChange($event)" class="border-gray-300 border-2 rounded-md ">
                 <option value=""></option>
                 <option value="1">January</option>
                 <option value="2">February</option>
@@ -23,7 +23,7 @@
                 <option value="12">December</option>
             </select>
             <p>Select a patient:</p>
-            <select name="patientId" id="patientId" [(ngModel)]="selectedPatient" (change)="onMonthOrPatientChange($event)">
+            <select name="patientId" id="patientId" [(ngModel)]="selectedPatient" (change)="onMonthOrPatientChange($event)" class="border-gray-300 border-2 rounded-md">
                 <option value=""></option>
                 <option *ngFor="let patient of doctorsPatients" value={{patient.id}}>{{patient.id + " - " + patient.name + " " + patient.surname}}</option>
             </select>
