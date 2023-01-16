@@ -26,7 +26,7 @@ export class VacationRequestsByDoctorComponent implements OnInit {
       this.requests = res;
     });
   }
-
+  
   cancel(id: number): void {
     this.vacationService.cancel(id);
   }

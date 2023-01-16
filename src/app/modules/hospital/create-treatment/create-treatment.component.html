@@ -38,52 +38,79 @@
         <sidebar [patientTreatmentsBool]="true"></sidebar>
     </div>
     <div class="ml-[310px] mt-[84px]">
-        <h2>Create treatment</h2>
-        <table>
-            <tr>
-                <td>PatientId</td>
-                <td><input  matInput [(ngModel)]="treatment.patientId"></td>
-                <td *ngIf="patientIdNull">Choose patient</td> 
-            </tr>
-            <tr>
-                <td>RoomId</td>
-                <td><select matNativeControl [(ngModel)]="treatment.roomId" (change)="freeBed($event)">
+        <div class="w-1/2">
+            <div class="flex mb-2">
+                <div class="basis-1/3">
+                    PatientId:
+                </div>
+                <div class="basis-1/3">
+                    <input  matInput [(ngModel)]="treatment.patientId" class="w-full">
+                </div>
+                <div *ngIf="patientIdNull" class="basis-1/3 text-[#fb2930]">
+                    Choose patient
+                </div>
+            </div>
+            <div class="flex mb-2">
+                <div class="basis-1/3">
+                    RoomId:
+                </div>
+                <div class="basis-1/3">
+                    <select class="w-full" [(ngModel)]="treatment.roomId" (change)="freeBed($event)">
                         <option>null</option> 
                         <option *ngFor="let item of listOfRooms">{{item}}</option>
                     </select>
-                </td>
-                <td *ngIf="roomIdNull">Choose room</td> 
-            </tr>
-            <tr>
-                <td>BedId</td>
-                <td><select matNativeControl [(ngModel)]="treatment.bedId">
-                         <option>null</option> 
-                        <option *ngFor="let item1 of listOfBeds">{{item1}}</option>
-                    </select>
-                </td>
-                <td *ngIf="bedIdNull">Choose bed</td>
-            </tr>
-            <tr>
-                <td>Reason</td>
-                <td><input matInput [(ngModel)]="treatment.AdmissionReason"> </td>
-                <td *ngIf="reasonNull">Choose reason</td>
+                </div>
+                <div *ngIf="roomIdNull"  class="basis-1/3 text-[#fb2930]">
+                    Choose room
+                </div>
+            </div>
+            <div class="flex mb-2">
+                <div class="basis-1/3">
+                    BedId:
+                </div>
+                <div class="basis-1/3">
+                    <select class="w-full" [(ngModel)]="treatment.bedId">
+                        <option>null</option> 
+                       <option *ngFor="let item1 of listOfBeds">{{item1}}</option>
+                   </select>
+                </div>
+                <div *ngIf="bedIdNull" class="basis-1/3 text-[#fb2930]">
+                    Choose bed
+                </div>
+            </div>
+            <div class="flex mb-2">
+                <div class="basis-1/3">
+                    Reason:
+                </div>
+                <div class="basis-1/3">
+                    <input class="w-full" [(ngModel)]="treatment.AdmissionReason">
+                </div>
+                <div *ngIf="reasonNull" class="basis-1/3 text-[#fb2930]">
+                    Choose reason
+                </div>  
+            </div>
+            <div class="flex mb-2">
+                <div class="basis-1/3">
+                    Therapy:
+                </div>
+                <div class="basis-1/3">
+                    <input class="w-full" [(ngModel)]="treatment.Therapy"> 
+                </div>
+                <div *ngIf="therapyNull" class="basis-1/3 text-[#fb2930]">
+                    Choose therapy
+                </div>
+            </div>
+            <div class="grid place-content-end">
+                <div class="flexs">
+                    <button class="w-20 h-10 border-black border-2 rounded-md bg-white hover:bg-gray-300 mr-2" (click)="back()">
+                        Back
+                      </button>
+                    <button class="w-20 h-10 border-black border-2 rounded-md bg-[#57CC99] hover:bg-[#429b75]" (click)="createTreatment()">
+                      Submit
+                    </button>
+                </div>
                 
-            </tr>
-            <tr>
-                <td>Therapy</td>
-                <td><input matInput [(ngModel)]="treatment.Therapy"> </td>
-                <td *ngIf="therapyNull">Choose therapy</td> 
-                
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><button   mat-button href='/patients/treatments' mat-stroked-button (click)="createTreatment()">
-                    Submit
-                </button></td>
-            </tr>
-        </table>
-        <a mat-button href='/patients/treatments'>Treatments</a>
-        <!-- <label>{{errorMsg}}</label> -->
+            </div>
+        </div>
     </div>
 </div>

@@ -59,7 +59,9 @@ export class CreateTreatmentComponent implements OnInit {
     this.router.navigate(['patients/treatments'])
   }
 
-
+  back(){
+    this.router.navigate(['patients/treatments'])
+  }
   
 
 

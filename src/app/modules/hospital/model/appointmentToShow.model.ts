@@ -1,15 +1,14 @@
-export class Appointment {
-    id: string = ""
+export class AppointmentToShow{
+    id: string = "";
     doctorId: number;
     patientId: number;
-    patientName: string = ""
-    patientSurname: string = ""
-    patientNameAndSurname: string = ""
+    patientName: string = "";
+    patientSurname: string= ""
     roomNumber: string = "";
     start: string = "";
     status?: number;
     date: string = "";
-    startTime: string = "";
+    startTime: string="";
     cancellable?: boolean;
 
     appointmentDuration: number = 20;
@@ -18,7 +17,8 @@ export class Appointment {
         if(obj){
             this.id = obj.Id;
             this.doctorId = obj.DoctorId;
-            this.patientId = obj.PatientId;
+            this.patientName = obj.PatientName;
+            this.patientSurname = obj.patientSurname;
             this.roomNumber = obj.RoomNumber;
             this.start = obj.Start;
             this.status = obj.Status;

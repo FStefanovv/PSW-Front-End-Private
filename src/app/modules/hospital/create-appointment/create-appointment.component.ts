@@ -34,6 +34,7 @@ export class CreateAppointmentComponent implements OnInit {
 
     ngOnInit(): void {
         this.loggedDoctorId = this.authService.getIdByRole();
+        console.log(this.loggedDoctorId)
         this.route.params.subscribe(() => {
             this.doctorService.getDoctor(parseInt(this.loggedDoctorId)).subscribe(res => {
                 this.doctor = res

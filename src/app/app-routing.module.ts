@@ -66,7 +66,7 @@ const routes: Routes = [
   { path: 'report-statistics', component: ReportStatistics},
   {path: 'view-patient-data', component: ViewPatientDataComponent},
   {path: 'consilium/create', component:CreateConsiliumComponent},
-  { path: 'patients/treatments/create', component: CreateTreatmentComponent}
+  { path: 'patients/treatments/create', component: CreateTreatmentComponent},
 ]
 
 
