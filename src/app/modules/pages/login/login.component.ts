@@ -41,7 +41,7 @@ import { Router } from '@angular/router';
               this.router.navigate([('/manager-home')]);
            }
           else if (role === "DOCTOR") {
-              this.router.navigate(['/doctor-home']);
+              this.router.navigate(['/appointments-by-doctor']);
            } else{
           this.toast.error({ detail: 'There is no doctor or manager with this info!', summary: "Please try again.", duration: 5000 });
            }
