@@ -27,7 +27,6 @@ import { RoleGuardService } from "../../auth/role-guard.service";
 import { SearchBloodIntegration } from "./search-blood-integration/search-blood-integration.component";
 import { SearchReportsAndPrescriptionsComponent } from "./search-reps-and-prescs/search-reps-and-prescs.component";
 import { ViewPatientDataComponent } from './view-patient-data/view-patient-data.component';
-import { HospitalModule } from "./hospital.module";
 import { CreateConsiliumComponent } from './create-consilium/create-consilium.component';
 
 const routes: Routes = [
