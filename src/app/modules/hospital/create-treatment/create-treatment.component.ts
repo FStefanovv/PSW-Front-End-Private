@@ -1,3 +1,4 @@
+import { DoctorService } from './../services/doctor.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TreatmentService } from '../services/treatment.service';
 import {CreateTreatmentDTO} from '../model/createTreatmentDTO.model' 
@@ -5,6 +6,8 @@ import { FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormsModule } from "@angular/forms"      
 import { AuthService } from '../services/auth.service';
+import { PatientService } from '../services/patient.service';
+import { PatientForApp } from '../model/patientForApp.model';
 
 @Component({
   selector: 'app-create-treatment',
@@ -26,13 +29,20 @@ export class CreateTreatmentComponent implements OnInit {
   reasonNull: boolean
   therapyNull:boolean
   public loggedDoctorId: string;
+  public patientsList: Array<PatientForApp> = []
  
-  constructor(private treatmentService: TreatmentService, private authService: AuthService, private router:Router) { }
+  constructor(private treatmentService: TreatmentService, private authService: AuthService, private router:Router,private patientService: PatientService,
+    private doctorService:DoctorService) { }
  
   ngOnInit(): void {
-
     this.treatmentService.getRoomsWithFreeBeds().subscribe(res=>{this.listOfRooms=res})
     this.loggedDoctorId = this.authService.getIdByRole();
+    this.patientService.getPatientForDoctor(Number(this.authService.getIdByRole())).subscribe(
+      res => {
+        this.patientsList = res
+        console.log(this.patientsList)
+      }
+    )
   }
 
   freeBed(e:any){

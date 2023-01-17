@@ -45,6 +45,10 @@ export class AppointmentsByDoctorComponent implements OnInit {
     private authService: AuthService,
     private patientService: PatientService) { }
 
+  createApp(){
+    this.router.navigate(['appointments/add'])
+  }
+
   ngOnInit(): void {
     this.loggedDoctorId = this.authService.getIdByRole();
     console.log(this.loggedDoctorId)
@@ -183,7 +187,9 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   filterAppointmentsByDate(e: any): void{
     let flagString = this.filterDate.split("-");
-    let fullDate = flagString[0] + '.' + flagString[1] + '.' + flagString[2];
+    let fullDate = flagString[0] + '/' + flagString[1] + '/' + flagString[2];
+    console.log(flagString)
+    console.log(fullDate)
       if(this.filterDate === ''){
         this.appointmentsToShow = this.appointments;
       }

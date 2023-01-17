@@ -23,6 +23,7 @@ export class VacationRequestsByDoctorComponent implements OnInit {
   ngOnInit(): void {
     this.loggedDoctorId = this.authService.getIdByRole();
     this.vacationService.getByDoctor(parseInt(this.loggedDoctorId)).subscribe( res => {
+      console.log(res)
       this.requests = res;
     });
   }

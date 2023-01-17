@@ -34,6 +34,7 @@ export class CreateAppointmentComponent implements OnInit {
         private router: Router, private route: ActivatedRoute, private authService: AuthService) { }
 
     ngOnInit(): void {
+        console.log(this.appointment.patientId)
         this.loggedDoctorId = this.authService.getIdByRole();
         this.route.params.subscribe(() => {
             this.doctorService.getDoctor(parseInt(this.loggedDoctorId)).subscribe(res => {
@@ -58,30 +59,35 @@ export class CreateAppointmentComponent implements OnInit {
     }
 
     public createAppointment(){
+        this.appointment.doctorId = this.loggedDoctorObj.id;
+        this.appointment.roomId = this.loggedDoctorObj.room.id;
+        if (!this.isValidInputPatient()) this.patNull = true
+        if (!this.isValidInputDate()) this.dateNull = true
+        if (!this.isValidInputTime()) this.timeNull = true
+        if(this.patNull == true || this.dateNull == true || this.timeNull == true) return
         this.appointmentService.createAppointment(this.appointment).subscribe(
             res => {
-                alert("Appointment successfully created.");
-                this.appointment.patientId = -1;
-                this.appointment.startDate = undefined;
-                this.appointment.startTime = this.arrayForShift[0];
+                alert("Appointment created")
+                this.router.navigate(['appointments-by-doctor'])
+                return this.patNull = false, this.dateNull = false, this.timeNull = false
             },
             error => {
-                alert("Unable to create appointment. Chosen time is already taken.");
+                console.log(this.patNull)
+                console.log(this.dateNull)
+                console.log(this.timeNull)
+                alert("Appointment date and time is not valid")
             }
         )
     }
 
-    public patientChosen(){
-        if(this.appointment.patientId != -1){
-            this.patientValid = true;
-            if(this.dateValid){
-                this.canSchedule = true;
-            }
-        }
-        else{
-            this.patientValid = false;
-            this.canSchedule = false;
-        }
+    private isValidInputPatient(): boolean {
+        console.log(this.appointment.patientId)
+        this.patNull = false
+        return this.appointment.patientId != undefined;
+    }
+    private isValidInputDate(): boolean {
+        this.dateNull = false
+        return this.appointment?.startDate != '';
     }
 
     public dateInPast(checkDate: string){
@@ -97,5 +103,9 @@ export class CreateAppointmentComponent implements OnInit {
             this.dateValid = false;
             this.canSchedule = false;
         }
+    }
+
+    back(){
+        this.router.navigate(['appointments-by-doctor'])
     }
 }
