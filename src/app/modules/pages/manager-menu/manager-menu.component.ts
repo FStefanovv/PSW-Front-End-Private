@@ -46,4 +46,8 @@ export class ManagerMenuComponent implements OnInit {
     this.router.navigate(['/create-tender/']);
 
   }
+  ReportStats() {
+    this.router.navigate(['/report-statistics']);
+
+  }
 }

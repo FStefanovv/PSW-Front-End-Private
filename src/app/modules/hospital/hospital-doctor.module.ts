@@ -4,6 +4,7 @@ import { ShowConsiliumsComponent } from './show-consiliums/show-consiliums.compo
 import { PagesModule } from './../pages/pages.module';
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { HospitalModule } from "./hospital.module"
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { MaterialModule } from "src/app/material/material.module";
@@ -85,8 +86,6 @@ const routes: Routes = [
   {path: 'vacations-by-doctor', component: VacationRequestsByDoctorComponent,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
   { path: 'view-patient-data', component: ViewPatientDataComponent,
-  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
-  { path: 'report-statistics', component: ReportStatistics,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' } },
   {path: 'consilium/create', component: CreateConsiliumComponent,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR'} },

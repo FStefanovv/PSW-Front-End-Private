@@ -77,9 +77,9 @@
             </table>
             <div *ngIf="isClicked==1">
                 <p>Selected doctors:</p>
-                <ul *ngFor="let doctor of selectedDoctors">
+                <ul *ngFor="let doctor of selectedDoctorsToShow">
                     <li>
-                        {{doctor}}
+                        {{doctor.name}} {{doctor.surname}}
                     </li>
                 </ul>
             </div>

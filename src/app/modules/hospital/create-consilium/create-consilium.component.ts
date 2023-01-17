@@ -18,7 +18,8 @@ export class CreateConsiliumComponent implements OnInit {
   public freeAppointments : InfoForAppointmentsDTO = new InfoForAppointmentsDTO();
   public allFreeAppointments 
   public allDoctors : Doctor[] = []
-  public selectedDoctors : string[] = []
+  public selectedDoctors: string[] = []
+  public selectedDoctorsToShow: Doctor[]=[]
   public listOfSpecialities = []
   public isClicked : number = 0;
   public showAppointments : boolean = false;
@@ -48,6 +49,7 @@ export class CreateConsiliumComponent implements OnInit {
     if(this.selectedDoctors.some(drId=>drId==doctor.id.toString())){
       return;
     }
+    this.selectedDoctorsToShow.push(doctor);
     this.selectedDoctors.push(doctor.id.toString());
     let doctorIds = "";
     for(var doc of this.selectedDoctors){
