@@ -4,8 +4,6 @@
     <div *ngIf="homeBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Home</div>
     <div (click)="consilium()" *ngIf="consiliumsBool==false" name="consiliumButton" class="mb-2 hover:bg-[#629bc1] text-white font-semibold select-none">Consiliums</div>
     <div *ngIf="consiliumsBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Consiliums</div>
-    <div (click)="createAppointment()" *ngIf="createAppointmentBool==false" name="createAppointmentButton" class="mb-2 hover:bg-[#629bc1] text-white font-semibold select-none">Create appointment</div>
-    <div *ngIf="createAppointmentBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Create appointment</div>
     <div (click)="bloodRequest()"  *ngIf="bloodRequestsBool==false" class="mb-2 hover:bg-[#629bc1] text-white font-semibold select-none">Blood requests</div>
     <div *ngIf="bloodRequestsBool" class="mb-2 bg-[#629bc1] text-white font-semibold">Blood requests</div>
     <div (click)="bloodRecord()"  *ngIf="bloodRecordBool==false" name="bloodRecordButton" class="mb-2 hover:bg-[#629bc1] text-white font-semibold select-none">Blood record</div>

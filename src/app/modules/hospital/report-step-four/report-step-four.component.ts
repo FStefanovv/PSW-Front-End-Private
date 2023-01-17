@@ -24,7 +24,8 @@ export class ReportStepFour{
   public loggedDoctorId: string;
   public appointments: Appointment[] = [];
   
-  constructor(private appointmentService: AppointmentService, private reportService: ReportService, private route: ActivatedRoute, private authService: AuthService, private router: Router){
+  constructor(private appointmentService: AppointmentService, private reportService: ReportService, private route: ActivatedRoute, 
+    private authService: AuthService, private router: Router){
     this.route.queryParams.subscribe(params =>{
       this.appointmentId = params.appointmentId
     })
@@ -49,10 +50,11 @@ export class ReportStepFour{
     reportDTO.description = this.description
     reportDTO.symptoms = this.symptoms
     reportDTO.drugs = this.drugs
+    console.log("Apis me za kitu")
     this.reportService.setFields(this.reportId,reportDTO).subscribe(res=>{
       alert("Poslato")
-    })
-    this.router.navigate(['/appointments-by-doctor'])
+      this.router.navigate(['/appointments-by-doctor'])
+    }) 
   }
   public back(){
     this.reportService.eventHappened(this.reportId,-1).subscribe(

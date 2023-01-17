@@ -67,7 +67,8 @@ export class CreateAppointmentComponent implements OnInit {
         if(this.patNull == true || this.dateNull == true || this.timeNull == true) return
         this.appointmentService.createAppointment(this.appointment).subscribe(
             res => {
-                alert("Appointment napravljen")
+                alert("Appointment created")
+                this.router.navigate(['appointments-by-doctor'])
                 return this.patNull = false, this.dateNull = false, this.timeNull = false
             },
             error => {
