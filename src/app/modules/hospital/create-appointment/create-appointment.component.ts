@@ -33,6 +33,7 @@ export class CreateAppointmentComponent implements OnInit {
 
 
     ngOnInit(): void {
+        console.log(this.appointment.patientId)
         this.loggedDoctorId = this.authService.getIdByRole();
         console.log(this.loggedDoctorId)
         this.route.params.subscribe(() => {
@@ -70,14 +71,18 @@ export class CreateAppointmentComponent implements OnInit {
                 return this.patNull = false, this.dateNull = false, this.timeNull = false
             },
             error => {
+                console.log(this.patNull)
+                console.log(this.dateNull)
+                console.log(this.timeNull)
                 alert("Appointment date and time is not valid")
             }
         )
     }
 
     private isValidInputPatient(): boolean {
+        console.log(this.appointment.patientId)
         this.patNull = false
-        return this.appointment.patientId != 0;
+        return this.appointment.patientId != undefined;
     }
     private isValidInputDate(): boolean {
         this.dateNull = false
@@ -86,5 +91,9 @@ export class CreateAppointmentComponent implements OnInit {
     private isValidInputTime(): boolean {
         this.timeNull = false
         return this.appointment?.startTime != '';
+    }
+
+    back(){
+        this.router.navigate(['appointments-by-doctor'])
     }
 }

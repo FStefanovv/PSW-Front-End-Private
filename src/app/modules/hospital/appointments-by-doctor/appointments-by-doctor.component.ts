@@ -45,6 +45,10 @@ export class AppointmentsByDoctorComponent implements OnInit {
     private authService: AuthService,
     private patientService: PatientService) { }
 
+  createApp(){
+    this.router.navigate(['appointments/add'])
+  }
+
   ngOnInit(): void {
     this.loggedDoctorId = this.authService.getIdByRole();
     console.log(this.loggedDoctorId)
