@@ -23,7 +23,9 @@ export class CreateAppointmentComponent implements OnInit {
     public doctorShift: DoctorShiftDTO | undefined = undefined;
     public arrayForShift: string[] = [];
     public patientsForDoctor: Patient[] = [];
-
+    public patNull: boolean = false
+    public dateNull: boolean = false
+    public timeNull: boolean = false
     public appointment: CreateAppointmentDTO = new CreateAppointmentDTO();
     
     public patientValid: boolean = false;
@@ -89,6 +91,10 @@ export class CreateAppointmentComponent implements OnInit {
         this.dateNull = false
         return this.appointment?.startDate != '';
     }
+    private isValidInputTime(): boolean{
+        this.timeNull =false
+        return this.appointment.startTime != ''
+    }
 
     public dateInPast(checkDate: string){
         var today = new Date();
@@ -104,6 +110,7 @@ export class CreateAppointmentComponent implements OnInit {
             this.canSchedule = false;
         }
     }
+
 
     back(){
         this.router.navigate(['appointments-by-doctor'])
