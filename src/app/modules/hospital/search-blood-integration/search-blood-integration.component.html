@@ -3,15 +3,15 @@
     <navbar></navbar>
     <sidebar [searchBloodBanksBool]="true"></sidebar>
   </div>
-  <div class="ml-[290px] mt-16">
-    <table class="ml-5">
-      <tr class="border-2 border-gray-300 ">
-        <td class=" w-40 text-center">Id</td>
-        <td class=" w-40 text-center">Email</td>
+  <div class="ml-[290px] mt-[84px]">
+    <table class="ml-5  w-2/3">
+      <tr class="h-14">
+        <td class="select-none font-normal text-white bg-[#22577A] w-1/4 text-center">Id</td>
+        <td class="select-none font-normal text-white bg-[#22577A] w-1/4 text-center">Email</td>
       </tr>
-      <tr *ngFor="let bank of bloodBanks">
-        <td class=" w-40 ">{{bank.id}}</td>
-        <td class=" w-40">{{bank.email}}</td>
+      <tr *ngFor="let bank of bloodBanks" class="h-14">
+        <td class="border-black border-2 border-t-0 text-center">{{bank.id}}</td>
+        <td class="border-black border-2 border-t-0 text-center">{{bank.email}}</td>
       </tr>
     </table>
   </div>

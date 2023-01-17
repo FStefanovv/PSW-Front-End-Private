@@ -3,40 +3,41 @@
         <navbar></navbar>
         <sidebar [patientTreatmentsBool]="true"></sidebar>
     </div>
-    <div id="content" #content class="ml-[310px] mt-[84px]">
-        <button id="goToCreate" (click)="goToCreate()">Create new treatment</button>
+    <div id="content" #content class="ml-[310px] mt-[60px]">
+        <div class="fixed max-w-xs h-16 top-20 right-3 px-2 rounded-md bg-[#57CC99] hover:bg-[#379c70]" (click)="goToCreate()">
+            <div class="mt-4" id="goToCreate">Create new treatment</div>
+        </div>
         <br/>
-        <table cellspacing="0">
-           <tr>
-               <th>Treatment</th>
-               <th>Patient</th>
-               <th>Room</th>
-               <th>Bed</th>
+        <table class="w-2/3">
+           <tr tr class="h-14">
+               <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Treatment</th>
+               <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Patient</th>
+               <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Room</th>
+               <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Bed</th>
                <!-- <th>Therapy</th>
                <th>Start</th> -->
-               <th></th>
-               <th></th>
+               <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Discharge</th>
+               <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Update</th>
                
            </tr>
          
-           <tr *ngFor="let treatment of treatments">
-               <td>{{treatment.id}}</td>
-               <td>{{treatment.patientId}}</td>
-               <td>{{treatment.roomId}}</td>
-               <td>{{treatment.bedId}}</td>
+           <tr *ngFor="let treatment of treatments" class="h-14">
+               <td class="border-black border-2 border-t-0 text-center">{{treatment.id}}</td>
+               <td class="border-black border-2 border-t-0 text-center">{{treatment.patientId}}</td>
+               <td class="border-black border-2 border-t-0 text-center">{{treatment.roomId}}</td>
+               <td class="border-black border-2 border-t-0 text-center">{{treatment.bedId}}</td>
                <!-- <td>{{treatment.therapy}}</td>
                <td>{{treatment.startDate}}</td> -->
                <td>
-                   <button  class="discharge-button" (click)="discharge(treatment.id)">
+                   <button class="border-2 h-10 w-full bg-[#57CC99] hover:bg-[#379c70]" class="discharge-button" (click)="discharge(treatment.id)">
                        Discharge
                    </button>
                </td>
                <td>
-                   <button  class="update-button" (click)="update(treatment.id)">
+                   <button class="border-2 h-10 w-full bg-[#57CC99] hover:bg-[#379c70]"  class="update-button" (click)="update(treatment.id)">
                        Update
                    </button>
                </td>
-               
            </tr> 
         </table>
     </div>

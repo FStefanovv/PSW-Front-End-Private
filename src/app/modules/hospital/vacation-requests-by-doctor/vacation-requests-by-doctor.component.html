@@ -5,32 +5,32 @@
         <sidebar [vacationsBool]="true"></sidebar>
     </div>
     <div class="ml-[310px] mt-[84px]">
-        <table cellspacing="0">
-            <tr>
-                <th>Start</th>
-                <th>End</th>
-                <th>Description</th>
-                <th>Urgency</th>
-                <th>Status</th>
-                <th>Rejection Reason</th>
-                <th></th>
+        <table class="w-2/3">
+            <tr class="h-14">
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Start</th>
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">End</th>
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Description</th>
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Urgency</th>
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Status</th>
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Rejection Reason</th>
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Cancel</th>
             </tr>
             <tr *ngFor="let req of requests">
-                <td>{{req.start}}</td>
-                <td>{{req.end}}</td>
-                <td>{{req.description}}</td>
-                <td>{{req.urgency}}</td>
-                <td>{{req.status}}</td>
-                <td>{{req.rejectionReason}}</td>
-                <td>
-                    <button  class="cancel-button" *ngIf="req.status=='Waiting For Approval'" (click)="cancel(req.id)" (click)="goToCancel(req.id)">
+                <td class="border-black border-2 border-t-0 text-center">{{req.start}}</td>
+                <td class="border-black border-2 border-t-0 text-center">{{req.end}}</td>
+                <td class="border-black border-2 border-t-0 text-center">{{req.description}}</td>
+                <td class="border-black border-2 border-t-0 text-center">{{req.urgency}}</td>
+                <td class="border-black border-2 border-t-0 text-center">{{req.status}}</td>
+                <td class="border-black border-2 border-t-0 text-center">{{req.rejectionReason}}</td>
+                <td >
+                    <button class="border-red-600 text-red-600 border-2 h-10 w-full bg-white hover:bg-red-600 hover:text-white" *ngIf="req.status=='Waiting For Approval'" (click)="cancel(req.id)" (click)="goToCancel(req.id)">
                         Cancel
                     </button>
                 </td>
             </tr>
         </table>
-        <div>
-            <button id="createNewRequest" (click)="goToCreateNewRequest()">Create new request</button>
+        <div class="fixed max-w-xs h-16 top-20 right-3 px-2 rounded-md bg-[#57CC99] hover:bg-[#379c70] select-none" (click)="goToCreateNewRequest()">
+            <div class="mt-4" id="createNewRequest" >Create new request</div>
         </div>
     </div>
     

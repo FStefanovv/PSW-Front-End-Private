@@ -2,6 +2,7 @@ import { ReportStatistics } from './../report-statistics/report-statistics.compo
 import { Router } from '@angular/router';
 import { Input } from '@angular/core';
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'sidebar',
   templateUrl: './sidebar.component.html'
@@ -19,7 +20,7 @@ export class SidebarComponent{
   @Input() searchBloodBanksBool:boolean=false
   @Input() searchReportsAndPrescriptionsBool:boolean=false
   @Input() reportStatisticsBool: boolean=false
-  constructor(private router: Router){
+  constructor(private router: Router,private authService: AuthService){
 
   }
   home(){
@@ -59,6 +60,7 @@ export class SidebarComponent{
     this.router.navigate(['report-statistics'])
   }
   logOut(){
-    this.router.navigate(['/doctor-home'])
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 }

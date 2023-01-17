@@ -10,14 +10,14 @@
                     <label>Topic:</label>
                 </td>
                 <td>
-                    <input type="text" id="topic" matInput [(ngModel)]="freeAppointments.Topic">
+                    <input type="text" id="topic" matInput [(ngModel)]="freeAppointments.Topic" class="border-gray-300 border-2 rounded-md w-full">
                 </td>
             <tr>
                 <td>
                     <label>Start date:</label>
                 </td>
                 <td>
-                    <input type="datetime" id="start" matInput [(ngModel)]="freeAppointments.StartStr" placeholder="dd/mm/yyyy hh:mm">
+                    <input type="datetime-local" id="start" matInput [(ngModel)]="freeAppointments.StartStr" placeholder="dd/mm/yyyy hh:mm" class="border-gray-300 border-2 rounded-md w-full">
                 </td>
             </tr>
             <tr>
@@ -25,7 +25,7 @@
                     <label>End date:</label>
                 </td>
                 <td>
-                    <input type="datetime" id="end" matInput [(ngModel)]="freeAppointments.EndStr" placeholder="dd/mm/yyyy">
+                    <input type="date" id="end" matInput [(ngModel)]="freeAppointments.EndStr" placeholder="dd/mm/yyyy" class="border-gray-300 border-2 rounded-md w-full">
                 </td>
             </tr>
             <tr>
@@ -33,86 +33,84 @@
                     <label>Duration: </label>
                 </td>
                 <td>
-                    <input type="text" id="duration" matInput [(ngModel)]="freeAppointments.Duration">
+                    <input type="text" id="duration" matInput [(ngModel)]="freeAppointments.Duration" class="border-gray-300 border-2 rounded-md w-full">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="radioDoctors">Choose by all doctors</label>
+                    <label for="radioDoctors">Choose by all doctors </label>
                 </td>
                 <td>
-                    <input type="radio" name="radio" id="radioDoctors" value="Doctors"  [(ngModel)]="freeAppointments.DoctorIds"  (change)="isClicked = true" checked>
+                    <input type="radio" name="radio" id="radioDoctors" value="Doctors"  [(ngModel)]="freeAppointments.DoctorIds"  (change)="isClicked = 1" checked>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="radioSpecialities">Choose doctors by specialities: </label>
+                    <label for="radioSpecialities">Choose doctors by specialities </label>
                 </td>
                 <td>
-                    <input type="radio" name="radio" id="radioSpecialities" value="Specialities" [(ngModel)]="freeAppointments.Specialties"  (change)="isClicked = false" >
+                    <input type="radio" name="radio" id="radioSpecialities" value="Specialities" [(ngModel)]="freeAppointments.Specialties"  (change)="isClicked = 2" >
                 </td>
             </tr>
         </table>
-    </div>
-    <div>
-        <div *ngIf="isClicked">
-            <p>Selected doctors:</p>
-            <ul *ngFor="let doctor of selectedDoctors">
-                <li>
-                    {{doctor}}
-                </li>
-            </ul>
+        <div cellspacing="0">
+            <table *ngIf="isClicked==1" class="listed">
+                <tr class="h-14">   
+                    <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Id</th>
+                    <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Name</th>
+                    <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Surname</th>
+                    <th class="select-none font-normal text-white bg-[#22577A] w-1/12"></th>
+                    <th class="select-none font-normal text-white bg-[#22577A] w-1/12"></th>
+                </tr>
+                <tr ion-item *ngFor="let doc of allDoctors" class="h-14">
+                    <td class="border-black border-2 border-t-0 text-center">{{doc.id}}</td>
+                    <td class="border-black border-2 border-t-0 text-center">{{doc.name}}</td>
+                    <td class="border-black border-2 border-t-0 text-center">{{doc.surname}}</td>
+                    <td>
+                        <button class="border-2 h-10 w-full bg-[#57CC99] hover:bg-[#379c70]" name="button1" id="selectedDoctor"(click)="selectedDoctor(doc.id)">Select</button>
+                    </td>
+                    <td>
+                        <button class="border-red-600 text-red-600 border-2 h-10 w-full bg-white hover:bg-red-600 hover:text-white" name="button2" id="cancelledDoctor" (click)="cancelledDoctor(doc.id)">
+                            Cancel
+                        </button>
+                    </td>
+            </table>
+            <div *ngIf="isClicked==1">
+                <p>Selected doctors:</p>
+                <ul *ngFor="let doctor of selectedDoctors">
+                    <li>
+                        {{doctor}}
+                    </li>
+                </ul>
+            </div>
         </div>
-        
-    </div>
-    <div cellspacing="0">
-        <table *ngIf="isClicked" class="listed">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr ion-item *ngFor="let doc of allDoctors">
-                <td>{{doc.id}}</td>
-                <td>{{doc.name}}</td>
-                <td>{{doc.surname}}</td>
-                <td>
-                    <button class="select-button" name="button1" id="selectedDoctor"(click)="selectedDoctor(doc.id)">Select</button>
-                </td>
-                <td>
-                    <button  class="cancel-button" name="button2" id="cancelledDoctor" (click)="cancelledDoctor(doc.id)">
-                        Cancel
-                    </button>
-                </td>
-        </table>
-        <table *ngIf="!isClicked">
-          <tr>
-            <th>Specialities</th>
-          </tr>
-          <tr *ngFor="let item of specialities">
-            <td><input type="checkbox" name="selectedSpec" id="selectedSpec" [(ngModel)]="item.isChecked" (change)="specialitiesIDs()">{{item.name}}</td>
-          </tr>
-        </table>
-    </div>
-    <div>
-        <button type="submit" id="findAppointments" name="button" (click)="findAppointments()" (click)="showAppointments = true">Find appointments</button>
-    </div>
-    <div>
-        <table *ngIf="showAppointments" class="listed">
-            <tr>
-                <th>Start Time</th>
-                <th>Room</th>
-            </tr>
-            <tr *ngFor="let app of potentialAppointments">
-                <td>{{app.start}}</td>
-                <td>Consilium Room</td>
-                <td><button class="select-appointment" name="button3" id="selectedAppointment" (click)="selectedAppointment(app)">Select</button></td>
-            </tr>
-        </table>
-        <button *ngIf="showAppointments" id="create" (click)="createConsilium()">Create</button>
+        <div>
+            <table *ngIf="isClicked==2">
+                <tr>
+                  <th>Specialities</th>
+                </tr>
+                <tr *ngFor="let item of specialities">
+                  <td><input type="checkbox" name="selectedSpec" id="selectedSpec" [(ngModel)]="item.isChecked" (change)="specialitiesIDs()">{{item.name}}</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <button class="border-2 h-10 w-max bg-[#57CC99] hover:bg-[#379c70]" type="submit" id="findAppointments" name="button" (click)="findAppointments()" (click)="showAppointments = true">Find appointments</button>
+        </div>
+        <div>
+            <table *ngIf="showAppointments" class="listed">
+                <tr class="h-14">
+                    <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Start Time</th>
+                    <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Room</th>
+                    <th class="select-none font-normal text-white bg-[#22577A] w-1/12"></th>
+                </tr>
+                <tr *ngFor="let app of potentialAppointments" class="h-14">
+                    <td class="border-black border-2 border-t-0 text-center">{{app.start}}</td>
+                    <td class="border-black border-2 border-t-0 text-center">Consilium Room</td>
+                    <td><button class="border-2 h-10 w-full bg-[#57CC99] hover:bg-[#379c70]" name="button3" id="selectedAppointment" (click)="selectedAppointment(app)">Select</button></td>
+                </tr>
+            </table>
+            <button *ngIf="showAppointments" class="border-2 h-10 w-20 bg-[#57CC99] hover:bg-[#379c70]" id="create" (click)="createConsilium()">Create</button>
+        </div>
     </div>
 </div>
-
-

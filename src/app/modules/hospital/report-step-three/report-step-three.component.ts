@@ -9,11 +9,12 @@ import { ReportService } from "../services/report.service";
 })
 export class ReportStepThree{
   @Input() reportId: string = ""
+  @Input() checkedDrugs: Array<Drug> = []
   @Output() drugsToReturn = new EventEmitter<Drug[]>()
   public backString: string = ""
   @Output() backEmit3 = new EventEmitter<{backString3: string}>()
   form: FormGroup
-  public listOfDrugs: Array<Drug>
+  public listOfDrugs: Array<Drug> = []
 
  
   
@@ -21,11 +22,29 @@ export class ReportStepThree{
  
   ngOnInit(): void {
 
-  this.reportService.getDrugs().subscribe(res=>{this.listOfDrugs=res})
+  this.reportService.getDrugs().subscribe(res=>{
+    if(this.checkedDrugs == null){
+      this.listOfDrugs = res
+    }else{
+      res.forEach(drug =>{
+        drug.isChecked = this.reutrnBool(drug)
+        console.log(drug)
+        this.listOfDrugs.push(drug)
+      })
+    }
+  })
 
   }
 
-
+  reutrnBool(drug: Drug){
+    let flag: boolean = false
+    this.checkedDrugs.forEach(checked =>{
+      if(checked.name == drug.name){
+        flag = true
+      }
+    })
+    return flag
+  }
   
   
   submit(){

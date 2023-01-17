@@ -26,6 +26,10 @@ export class CreateUrgentVacationComponent {
     this.loggedDoctorId = this.authService.getIdByRole();
   }
 
+  back(){
+    this.router.navigate(['vacation-requests-by-doctor'])
+  }
+
   public createRequest(){
     if (!this.isValidInputStart()) this.startNull = true
     if (!this.isValidInputEnd()) this.endNull = true

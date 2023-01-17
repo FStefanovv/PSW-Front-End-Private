@@ -31,7 +31,6 @@ body {
   background-image: linear-gradient(to right, rgb(179, 218, 255), rgb(11, 26, 62));
   border: 3px solid;
   border-color: rgb(217, 214, 211);
-  color: rgb(255, 255, 255);
   line-height: 30px;
   font-size: 18px;
 }
@@ -57,7 +56,7 @@ body {
   display: inline-block;
   border-radius: 100px;
   transition: all .2s;
-  border: none;
+  border: 0.5px solid rgb(100, 100, 100);
   margin: 20px;
 }
 

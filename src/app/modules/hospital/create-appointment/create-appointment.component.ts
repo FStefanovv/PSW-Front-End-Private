@@ -12,41 +12,45 @@ import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'app-create-appointments',
-    templateUrl: './create-appointment.component.html'
+    templateUrl: './create-appointment.component.html',
+    styleUrls: ['./create-appointment.component.css']
   })
 
 export class CreateAppointmentComponent implements OnInit {
-    public appointment: CreateAppointmentDTO = new CreateAppointmentDTO();
+    
+    public loggedDoctorId: string;
+    public loggedDoctorObj: Doctor;
+    public doctorShift: DoctorShiftDTO | undefined = undefined;
+    public arrayForShift: string[] = [];
+    public patientsForDoctor: Patient[] = [];
     public patNull: boolean = false
     public dateNull: boolean = false
     public timeNull: boolean = false
-    public dateInPast: boolean = false
-    public timeAlreadyAppointed: boolean = false
-    public errorMsg: string = ""
-    public doctor: DoctorShiftDTO | undefined = undefined
-    public arrayForShift: Array<string> = []
-    public patientsForDoctor: Array<PatientForApp> = []
-    public loggedDoctorId: string;
-    public loggedDoctorObj: Doctor;
+    public appointment: CreateAppointmentDTO = new CreateAppointmentDTO();
+    
+    public patientValid: boolean = false;
+    public dateValid: boolean = false;
+    public canSchedule: boolean = false;
+
     constructor(private appointmentService: AppointmentService,private doctorService: DoctorService, private patientService: PatientService,
         private router: Router, private route: ActivatedRoute, private authService: AuthService) { }
 
-
     ngOnInit(): void {
+        console.log(this.appointment.patientId)
         this.loggedDoctorId = this.authService.getIdByRole();
         this.route.params.subscribe(() => {
             this.doctorService.getDoctor(parseInt(this.loggedDoctorId)).subscribe(res => {
-                this.doctor = res
-                for (let index = this.doctor?.startWorkTime; index < this.doctor?.endWorkTime; index++) {
-                    this.arrayForShift.push(index.toString() + ":00")
-                    this.arrayForShift.push(index.toString() + ":20")
-                    this.arrayForShift.push(index.toString() + ":40")
+                this.doctorShift = res;
+                for (let index = this.doctorShift?.startWorkTime; index < this.doctorShift?.endWorkTime; index++) {
+                    this.arrayForShift.push(index.toString() + ":00");
+                    this.arrayForShift.push(index.toString() + ":20");
+                    this.arrayForShift.push(index.toString() + ":40");
                 }
             })
         });
-        this.patientService.getPatientForDoctor(parseInt(this.loggedDoctorId)).subscribe(
+        this.patientService.getAllPatients().subscribe(
             res => {
-                this.patientsForDoctor = res
+                this.patientsForDoctor = res;
             }
         );
         this.doctorService.getDoctorById(parseInt(this.loggedDoctorId)).subscribe(
@@ -65,25 +69,50 @@ export class CreateAppointmentComponent implements OnInit {
         if(this.patNull == true || this.dateNull == true || this.timeNull == true) return
         this.appointmentService.createAppointment(this.appointment).subscribe(
             res => {
-                alert("Appointment napravljen")
+                alert("Appointment created")
+                this.router.navigate(['appointments-by-doctor'])
                 return this.patNull = false, this.dateNull = false, this.timeNull = false
             },
             error => {
+                console.log(this.patNull)
+                console.log(this.dateNull)
+                console.log(this.timeNull)
                 alert("Appointment date and time is not valid")
             }
         )
     }
 
     private isValidInputPatient(): boolean {
+        console.log(this.appointment.patientId)
         this.patNull = false
-        return this.appointment.patientId != 0;
+        return this.appointment.patientId != undefined;
     }
     private isValidInputDate(): boolean {
         this.dateNull = false
         return this.appointment?.startDate != '';
     }
-    private isValidInputTime(): boolean {
-        this.timeNull = false
-        return this.appointment?.startTime != '';
+    private isValidInputTime(): boolean{
+        this.timeNull =false
+        return this.appointment.startTime != ''
+    }
+
+    public dateInPast(checkDate: string){
+        var today = new Date();
+        var check = new Date(checkDate);
+        if(today.setHours(0, 0, 0, 0) >= check.setHours(0, 0, 0, 0)){
+            this.dateValid = true;
+            if(this.patientValid){
+                this.canSchedule = true;
+            }
+        }
+        else{
+            this.dateValid = false;
+            this.canSchedule = false;
+        }
+    }
+
+
+    back(){
+        this.router.navigate(['appointments-by-doctor'])
     }
 }

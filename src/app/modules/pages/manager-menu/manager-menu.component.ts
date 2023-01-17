@@ -1,3 +1,4 @@
+import { AuthService } from './../../hospital/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,12 +9,12 @@ import { Router } from '@angular/router';
 })
 export class ManagerMenuComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private authService: AuthService) { }
   ngOnInit(): void {
   }
 
   LogOutClick() {
-    localStorage.clear();
+    this.authService.logout()
     this.router.navigate(['/']);
   }
 

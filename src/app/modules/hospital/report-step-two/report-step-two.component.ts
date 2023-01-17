@@ -11,9 +11,16 @@ export class ReportStepTwo{
   public backString: string = ""
   @Output() backEmit2 = new EventEmitter<{backString2: string}>()
   @Input() reportId: string = ""
+  @Input() savedDescription: string = ""
 
   constructor(private reportService: ReportService){
 
+  }
+
+  ngOnInit(): void{
+    if(this.savedDescription != ""){
+      this.description = this.savedDescription
+    }
   }
 
   submit(){

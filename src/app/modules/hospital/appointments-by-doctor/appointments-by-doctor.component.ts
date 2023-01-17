@@ -1,6 +1,7 @@
+import { AppointmentToShow } from './../model/appointmentToShow.model';
 import { ReportToShow } from './../model/reportToShow.model';
 import { Patient } from './../model/patient.model';
-import { Component, OnInit, ɵɵqueryRefresh, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, OnInit, ɵɵqueryRefresh, ViewChild, CUSTOM_ELEMENTS_SCHEMA, EventEmitter } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
 import { CreateAppointmentDTO } from '../model/createAppointmentDTO.model';
 import { Appointment } from '../model/appointment.model';
@@ -15,6 +16,7 @@ import { RescheduleAppointmentDTO } from '../model/rescheduleAppointmentDTO.mode
 import { Router } from '@angular/router';
 import { ReportService } from '../services/report.service';
 import { AuthService } from '../services/auth.service';
+import { PatientService } from '../services/patient.service';
 
 @Component({
   selector: 'app-appointments-by-doctor',
@@ -26,7 +28,10 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   public appointments: Appointment[] = [];
   public appointmentsToShow: Appointment[] = [];
+  //public appointmentsToShow: AppointmentToShow[] = []
   public loggedDoctorId: string;
+  public searchTextChanged: EventEmitter<string> = new EventEmitter<string>();
+  public enteredSearchValue: string = "";
   
   public filterAppointmentStatus: number = -1;
   public searchValue: string = "";
@@ -37,14 +42,26 @@ export class AppointmentsByDoctorComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private reportService: ReportService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private patientService: PatientService) { }
+
+  createApp(){
+    this.router.navigate(['appointments/add'])
+  }
 
   ngOnInit(): void {
     this.loggedDoctorId = this.authService.getIdByRole();
+    console.log(this.loggedDoctorId)
     this.appointmentService.getAppointmentsByDoctor(parseInt(this.loggedDoctorId)).subscribe(res => {
 
       this.appointments = res;
-
+      this.appointments.forEach(app =>{
+        this.patientService.getPatient(Number(app.patientId)).subscribe(res=>{
+          app.patientName = res.name
+          app.patientSurname = res.surname
+          app.patientNameAndSurname = res.name + " " + res.surname
+        })
+      })
       this.sortByDateTime();
       this.setDateAndTime();
 
@@ -161,7 +178,7 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   onSearchTextEntered(searchValue : string){
     if(searchValue != ''){
-      this.appointmentsToShow = this.appointments.filter(app => searchValue === '' || app.patientId.toString().includes(searchValue));
+      this.appointmentsToShow = this.appointments.filter(app => searchValue === '' || app.patientNameAndSurname.toLowerCase().includes(searchValue.toLowerCase()));
       console.log('currently shown appointments ',this.appointmentsToShow);
     }
     else
@@ -170,7 +187,9 @@ export class AppointmentsByDoctorComponent implements OnInit {
 
   filterAppointmentsByDate(e: any): void{
     let flagString = this.filterDate.split("-");
-    let fullDate = flagString[0] + '.' + flagString[1] + '.' + flagString[2];
+    let fullDate = flagString[0] + '/' + flagString[1] + '/' + flagString[2];
+    console.log(flagString)
+    console.log(fullDate)
       if(this.filterDate === ''){
         this.appointmentsToShow = this.appointments;
       }

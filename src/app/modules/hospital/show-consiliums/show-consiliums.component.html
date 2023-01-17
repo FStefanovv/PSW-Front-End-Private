@@ -4,25 +4,24 @@
         <sidebar [consiliumsBool]="true"></sidebar>
     </div>
     <div class="ml-[310px] mt-[84px]">
-        <div>
-            <label>Consiliums to show: </label>
-            <!-- <app-search-2 (searchTextChanged)="onSearchTextEntered($event)"></app-search-2> -->
-        </div>
-        
-        <table class="border-black border-2 mt-4">
-            <tr class="border-black border-2 w-10">
-                <th class="border-black border-2 w-28">Start</th>
-                <th class="border-black border-2 w-28">Duration</th>
-                <th class="border-black border-2 w-28">Doctor names</th>
-                <th class="border-black border-2 w-28">Room</th>
-                <th class="border-black border-2 w-28">Topic</th>
+        <table class="w-2/3">
+            <tr class="h-14">
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Start</th>
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Duration</th>
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Room</th>
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Topic</th>
+                <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Doctor names</th>
             </tr>
-            <tr *ngFor="let consilium of consiliumsToShow" class="border-black border-2 w-10">
-                <td class="border-black border-2 w-28">{{consilium.start}}</td>
-                <td class="border-black border-2 w-28">{{consilium.duration}}</td>
-                <td class="border-black border-2 w-28"><button type="button" (click)="showDoctors(consilium)" (click)="show = true">See doctors</button></td>
-                <td class="border-black border-2 w-28">{{consilium.room}}</td>
-                <td class="border-black border-2 w-28">{{consilium.topic}}</td>
+            <tr *ngFor="let consilium of consiliumsToShow" class="h-14">
+                <td class="border-black border-2 border-t-0 text-center">{{consilium.start}}</td>
+                <td class="border-black border-2 border-t-0 text-center">{{consilium.duration}}</td>
+                <td class="border-black border-2 border-t-0 text-center">{{consilium.room}}</td>
+                <td class="border-black border-2 border-t-0 text-center">{{consilium.topic}}</td>
+                <td class="border-black border-2 border-t-0 text-center">
+                    <button class="border-2 h-10 w-full bg-[#57CC99] hover:bg-[#379c70]"  (click)="showDoctors(consilium)" (click)="show = true">
+                        See doctors
+                    </button>
+                </td>
             </tr>
         </table>
         <div *ngIf="show">
@@ -33,7 +32,12 @@
                 </li>
             </ol>
         </div>
-        <button class="border-gray-400 bg-[#38A3A5] w-44 h-16 rounded-xl mt-8" id="goToCreate" (click)="goToCreate()">Create new consilium</button>
+        <div class="fixed max-w-xs h-16 top-20 right-3 px-2 rounded-md bg-[#57CC99] hover:bg-[#379c70]" (click)="goToCreate()">
+            <div class="mt-4 select-none" id="goToCreate" >
+                Create new consilium
+            </div>
+        </div>
+        
     </div>
 </div>
 

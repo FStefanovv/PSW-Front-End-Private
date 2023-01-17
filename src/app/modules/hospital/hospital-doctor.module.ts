@@ -28,6 +28,12 @@ import { SearchBloodIntegration } from "./search-blood-integration/search-blood-
 import { SearchReportsAndPrescriptionsComponent } from "./search-reps-and-prescs/search-reps-and-prescs.component";
 import { ViewPatientDataComponent } from './view-patient-data/view-patient-data.component';
 import { CreateConsiliumComponent } from './create-consilium/create-consilium.component';
+import { ReportMain } from './report-main/report-main.component';
+import { ReportStepOne } from './report-step-one/report-step-one.component';
+import { ReportNavigation } from './report-nav-page/report-nav-page.component';
+import { ReportStepTwo } from './report-step-two/report-step-two.component';
+import { ReportStepThree } from './report-step-three/report-step-three.component';
+import { ReportStepFour } from './report-step-four/report-step-four.component';
 
 const routes: Routes = [
   {
@@ -86,6 +92,8 @@ const routes: Routes = [
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR'} },
   {path: 'patients/treatments/create', component: CreateTreatmentComponent,
   canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR'} },
+  { path: 'reportdev',component: ReportMain,
+  canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR'}},
 ];
 
 @NgModule({
@@ -111,7 +119,13 @@ const routes: Routes = [
     ReportStatistics,
     ViewPatientDataComponent,
     CreateConsiliumComponent,
-    CreateTreatmentComponent
+    CreateTreatmentComponent,
+    ReportMain,
+    ReportStepOne,
+    ReportNavigation,
+    ReportStepTwo,
+    ReportStepThree,
+    ReportStepFour,
   ],
   imports: [
     CommonModule,
