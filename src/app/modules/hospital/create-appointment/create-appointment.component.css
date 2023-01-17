@@ -1,9 +1,0 @@
-button:disabled {
-    color: red;
-    border-color: red;
-}
-
-button:enabled {
-    color: green;
-    border-color: green;
-}

@@ -5,26 +5,26 @@
   </div>
   <div class="ml-[290px] mt-[84px]">
     <div class="px-5 ">
-      Pretrazi: <input [(ngModel)]="searchedContent" type="text" class="ml-5 mb-5 border-2 border-[#22577A] rounded-lg text-center"/>
+      Search: <input [(ngModel)]="searchedContent" type="text" class="ml-5 mb-5 border-2 border-[#22577A] rounded-lg text-center"/>
     </div>
-    <div class="flex mb-5 ml-5">Izaberi filter:
+    <div class="flex mb-5 ml-5">Choose filter:
       <select (change)="filterList()" [(ngModel)]="filter" class="bg-[#38A3A5] ml-5">
-        <option>Nista</option>
+        <option>Nothing</option>
         <option>Report</option>
         <option>Prescription</option>
       </select>
     </div>
     <div>
-      <button (click)="search()" class="ml-5 bg-[#57CC99] hover:bg-[#429b75] w-20 h-10">Pretrazi</button>
+      <button (click)="search()" class="ml-5 bg-[#57CC99] hover:bg-[#429b75] w-20 h-10">Search</button>
     </div>
-    <div class="p-5">Rezultat pretrage:</div>
+    <div class="p-5">Search result:</div>
     <table *ngIf="allBool" class="w-2/3 ml-5">
       <tr class="h-14">
-        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">AppId</th>
-        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Opis</th>
+        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Appointment Id</th>
+        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Description</th>
         <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Patient</th>
-        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Simptomi</th>
-        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Lekovi</th>
+        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Symptoms</th>
+        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Drugs</th>
       </tr>
       <tr *ngFor="let report of listToShow">
         <td class="border-black border-2 border-t-0 text-center ">{{report.appointmentId}}</td>
@@ -36,10 +36,10 @@
     </table>
     <table *ngIf="sympotmsBool" class="w-2/3 ml-5">
       <tr class="h-14">
-        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">AppId</th>
-        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Opis</th>
+        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Appointment Id</th>
+        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Description</th>
         <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Patient</th>
-        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Simptomi</th>
+        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Symptoms</th>
       </tr>
       <tr *ngFor="let report of listToShow" class="h-14">
         <td class="border-black border-2 border-t-0 text-center">{{report.appointmentId}}</td>
@@ -50,10 +50,10 @@
     </table>
     <table *ngIf="drugsBool" class="w-2/3 ml-5">
       <tr class="h-14">
-        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">AppId</th>
-        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Opis</th>
+        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Appointment Id</th>
+        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Description</th>
         <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Patient</th>
-        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Lekovi</th>
+        <th class="select-none font-normal text-white bg-[#22577A] w-1/12">Drugs</th>
       </tr>
       <tr *ngFor="let report of listToShow" class="h-14">
         <td class="border-black border-2 border-t-0 text-center">{{report.appointmentId}}</td>
