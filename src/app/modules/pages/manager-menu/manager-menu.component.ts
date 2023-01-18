@@ -27,6 +27,8 @@ export class ManagerMenuComponent implements OnInit {
   }
 
   ManagerStatisticsClick() {
+    console.log(this.authService.getRole);
+    console.log(this.authService.isLoggedIn());
     this.router.navigate(['/manager-statistics']);
   }
 

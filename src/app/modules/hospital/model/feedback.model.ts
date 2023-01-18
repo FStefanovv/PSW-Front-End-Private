@@ -1,5 +1,6 @@
 export class Feedback {
   id: number = 0;
+  patientId: number = 0;
   patientName: string = '';
   patientSurname: string = '';
   text: string = '';
@@ -11,6 +12,7 @@ export class Feedback {
   public constructor(obj?: any) {
     if (obj) {
       this.id = obj.id;
+      this.patientId = obj.patientId;
       this.patientName = obj.patientName;
       this.patientSurname = obj.patientSurname;
       this.text = obj.text;
