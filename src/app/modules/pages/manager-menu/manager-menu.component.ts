@@ -40,12 +40,12 @@ export class ManagerMenuComponent implements OnInit {
     this.router.navigate(['/feedback']);
 
   }
-  TenderClick() {
-    this.router.navigate(['/tenders/']);
+  SupplyClick() {
+    this.router.navigate(['/blood-supplies']);
 
   }
-  CreateTender() {
-    this.router.navigate(['/create-tender/']);
+  SubscriptionClick() {
+    this.router.navigate(['/blood-subscription']);
 
   }
   ReportStats() {

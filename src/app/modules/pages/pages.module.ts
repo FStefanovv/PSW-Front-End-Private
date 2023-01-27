@@ -12,16 +12,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { RoleGuardService } from '../../auth/role-guard.service';
 import { SidebarComponent } from '../hospital/sidebar/sidebar.component'; 
 import { NavbarComponent } from '../hospital/navbar/navbar.component'; 
+import { BloodSubscriptionComponent } from './blood-subscription/blood-subscription.component';
+import { BloodSuppliesComponent } from './blood-supplies/blood-supplies.component';
+import { MatCard, MatCardModule } from '@angular/material/card';
+import { MaterialModule } from '../../material/material.module';
 
 const routes: Routes = [
 
   {
     path: 'manager-home', component: ManagerHomeComponent,
-    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' }  },
+    canActivate: [RoleGuardService], data: { expectedRole: 'MANAGER' }
+  },
   {
     path: 'doctor-home', component: DoctorHomeComponent,
-    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }  },
-  { path: '', component: LoginComponent }
+    canActivate: [RoleGuardService], data: { expectedRole: 'DOCTOR' }
+  },
+  { path: '', component: LoginComponent },
+  { path: 'blood-subscription', component: BloodSubscriptionComponent },
+  { path: 'blood-supplies', component: BloodSuppliesComponent }
 ];
 
 @NgModule({
@@ -29,8 +37,11 @@ const routes: Routes = [
     DoctorHomeComponent,
     ManagerHomeComponent,
     LoginComponent,
+    BloodSubscriptionComponent,
+    BloodSuppliesComponent,
     SidebarComponent,
-    NavbarComponent
+    NavbarComponent,
+   
   ],
   imports: [
     CommonModule,
@@ -38,6 +49,7 @@ const routes: Routes = [
     FormsModule,
     MatToolbarModule,
     MatButtonModule,
+    MaterialModule,
     RouterModule.forChild(routes),
   ],
     exports:[

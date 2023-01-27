@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="fields">
+    <mat-label>A type amount</mat-label>
+    <mat-form-field appearance="fill">
+      <input matInput [(ngModel)]="subscription.amountOfA">
+    </mat-form-field><br>
+    <mat-label>Adress</mat-label>
+    <mat-form-field appearance="fill">
+      <mat-label>Country</mat-label>
+      <input matInput [(ngModel)]="subscription.amountOfB">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <input matInput [(ngModel)]="subscription.amountOfAB">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Street and number</mat-label>
+      <input matInput [(ngModel)]="subscription.amountOfO">
+    </mat-form-field><br>
+    <mat-label>Description</mat-label>
+    <mat-form-field appearance="fill">
+      <input matInput [(ngModel)]="subscription.deliveryDate">
+    </mat-form-field><br>
+  </div>
+  </div>
+  <div class="buttons">
+    <button class="bttn" id="act" mat-stroked-button (click)="activate()">
+      Submit
+    </button>
+    <button class="bttn" id="cncl" mat-stroked-button (click)="cancel()">
+     Cancel Subscription
+    </button>
+ 
+  </div>
+ 

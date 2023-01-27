@@ -19,10 +19,10 @@ export class PatientProfileComponent implements OnInit {
 
     ngOnInit() : void {
 
-        this.patientService.getPatient(this.route.snapshot.paramMap.get('id')).subscribe(res => {
+      //  this.patientService.getPatient(this.route.snapshot.paramMap.get('id')).subscribe(res => {
             
-            this.patient = res;
+        //    this.patient = res;
 
-        });
+//        });
     }
 }
